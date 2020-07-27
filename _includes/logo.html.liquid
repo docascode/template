@@ -1,7 +1,7 @@
-<a class="navbar-brand" href="{{_rel}}index.html">
-  {%- if _appLogoPath -%}
-  <img id="logo" class="svg" src="{{_rel}}{{_appLogoPath}}" alt="{{_appName}}" >
+<a class="navbar-brand" href="/">
+  {%- if page._appLogoPath -%}
+  <img id="logo" class="svg" src="/{{page._appLogoPath}}">
   {%- else -%}
-  <img id="logo" class="svg" src="{{_rel}}logo.svg" alt="{{_appName}}" >
+  <img id="logo" class="svg" src="/logo.svg">
   {%- endif -%}
 </a>
