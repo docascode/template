@@ -349,7 +349,7 @@ $(function () {
       renderBreadcrumb();
       showSearch();
     }
-    
+
     function showSearch() {
       if ($('#search-results').length !== 0) {
           $('#search').show();
@@ -358,33 +358,22 @@ $(function () {
     }
 
     function loadNavbar() {
-      var navbarPath = $("meta[name='menu_path']").attr("content");
+      var navbarPath = $("meta[property='docfx\\:navrel']").attr("content");
       if (!navbarPath) {
         return;
       }
       navbarPath = navbarPath.replace(/\\/g, '/');
       var tocPath = $("meta[name='toc_rel']").attr("content") || '';
       if (tocPath) tocPath = tocPath.replace(/\\/g, '/');
-      var ul = document.createElement('ul');
-      ul.classList.add('nav');
-      ul.classList.add('level1');
-      ul.classList.add('navbar-nav');
-      fetch(navbarPath).then(response => response.json()).then(data => {
-        data.items.forEach(function (item) {
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          a.href = item.href;
-          a.innerHTML = item.name;
-          li.appendChild(a);
-          ul.appendChild(li);
-        });
-        document.getElementById('navbar').appendChild(ul);
+      $.get(navbarPath, function (data) {
+        $(data).find("#toc>ul").appendTo("#navbar");
         showSearch();
         var index = navbarPath.lastIndexOf('/');
         var navrel = '';
         if (index > -1) {
           navrel = navbarPath.substr(0, index + 1);
         }
+        $('#navbar>ul').addClass('navbar-nav');
         var currentAbsPath = util.getAbsolutePath(window.location.pathname);
         // set active item
         $('#navbar').find('a[href]').each(function (i, e) {
@@ -449,12 +438,18 @@ $(function () {
     function registerTocEvents() {
       var tocFilterInput = $('#toc_filter_input');
       var tocFilterClearButton = $('#toc_filter_clear');
-        
+
       $('.toc .nav > li > .expand-stub').click(function (e) {
         $(e.target).parent().toggleClass(expanded);
       });
       $('.toc .nav > li > .expand-stub + a:not([href])').click(function (e) {
         $(e.target).parent().toggleClass(expanded);
+      });
+      tocFilterInput.on('focus', () => {
+        tocFilterInput.parent().addClass('focused');
+      });
+      tocFilterInput.on('blur', () => {
+        tocFilterInput.parent().removeClass('focused');
       });
       tocFilterInput.on('input', function (e) {
         var val = this.value;
@@ -483,7 +478,7 @@ $(function () {
           parent.removeClass(show);
           parent.removeClass(filtered);
         })
-        
+
         // Get leaf nodes
         $('#toc li>a').filter(function (i, e) {
           return $(e).siblings().length === 0
@@ -524,7 +519,7 @@ $(function () {
           return false;
         }
       });
-      
+
       // toc filter clear button
       tocFilterClearButton.hide();
       tocFilterClearButton.on("click", function(e){
