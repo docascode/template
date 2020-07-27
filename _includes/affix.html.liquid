@@ -1,0 +1,22 @@
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    {%- unless _disableContribution -%}
+    <div class="contribution">
+      <ul class="nav">
+        {%- if docurl -%}
+        <li>
+          <a href="{{docurl}}" class="contribution-link">{{__global.improveThisDoc}}</a>
+        </li>
+        {%- endif -%}
+        {%- if sourceurl -%}
+        <li>
+          <a href="{{sourceurl}}" class="contribution-link">{{__global.viewSource}}</a>
+        </li>
+        {%- endif -%}
+      </ul>
+    </div>
+    {%- endunless -%}
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>

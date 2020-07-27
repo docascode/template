@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	{{metadata}}
+
+	<title>{{ page.title }}</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+	<link rel="stylesheet" href="/styles/docfx.vendor.css">
+	<link rel="stylesheet" href="/styles/docfx.css">
+	<link rel="stylesheet" href="/styles/main.css">
+
+	<script type="text/javascript" src="/styles/docfx.vendor.js"></script>
+	<script type="text/javascript" src="/styles/docfx.js"></script>
+	<script type="text/javascript" src="/styles/main.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix">
+	<div id="wrapper">
+	<header>
+		{%- unless _disableNavbar -%}
+		{%- include navbar.html -%}
+		{%- endunless -%}
+
+		{%- unless _disableBreadcrumb -%}
+		{%- include breadcrumb.html -%}
+		{%- endunless -%}
+	</header>
+
+	<div role="main" class="container body-content">
+		{%- if _disableToc -%}
+		<div class="article row grid">
+		{%- else -%}
+		{%- include toc.html -%}
+		<div class="article row grid-right">
+		{%- endif -%}
+
+			{%- if _disableAffix -%}
+			<div class="col-md-12">
+			{%- else -%}
+			<div class="col-md-10">
+			{%- endif -%}
+
+				<article class="content wrap" id="_content" data-uid="{{uid}}">
+					{{content}}
+				</article>
+
+			</div>
+
+			{%- unless _disableAffix -%}
+			{%- include affix.html -%}
+			{%- endunless -%}
+		</div>
+	</div>
+	{%- include footer.html -%}
+	</div>
+</body>
+
+</html>
