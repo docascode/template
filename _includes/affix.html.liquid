@@ -3,14 +3,9 @@
     {%- unless _disableContribution -%}
     <div class="contribution">
       <ul class="nav">
-        {%- if docurl -%}
+        {%- if page.original_content_git_url -%}
         <li>
-          <a href="{{docurl}}" class="contribution-link">{{__global.improveThisDoc}}</a>
-        </li>
-        {%- endif -%}
-        {%- if sourceurl -%}
-        <li>
-          <a href="{{sourceurl}}" class="contribution-link">{{__global.viewSource}}</a>
+          <a href="{{page.original_content_git_url}}" class="contribution-link">Improve this doc</a>
         </li>
         {%- endif -%}
       </ul>
