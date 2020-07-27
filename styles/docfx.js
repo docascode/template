@@ -358,22 +358,33 @@ $(function () {
     }
 
     function loadNavbar() {
-      var navbarPath = $("meta[property='docfx\\:navrel']").attr("content");
+      var navbarPath = $("meta[name='menu_path']").attr("content");
       if (!navbarPath) {
         return;
       }
       navbarPath = navbarPath.replace(/\\/g, '/');
       var tocPath = $("meta[property='docfx\\:tocrel']").attr("content") || '';
       if (tocPath) tocPath = tocPath.replace(/\\/g, '/');
-      $.get(navbarPath, function (data) {
-        $(data).find("#toc>ul").appendTo("#navbar");
+      var ul = document.createElement('ul');
+      ul.classList.add('nav');
+      ul.classList.add('level1');
+      ul.classList.add('navbar-nav');
+      fetch(navbarPath).then(response => response.json()).then(data => {
+        data.items.forEach(function (item) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = item.href;
+          a.innerHTML = item.name;
+          li.appendChild(a);
+          ul.appendChild(li);
+        });
+        document.getElementById('navbar').appendChild(ul);
         showSearch();
         var index = navbarPath.lastIndexOf('/');
         var navrel = '';
         if (index > -1) {
           navrel = navbarPath.substr(0, index + 1);
         }
-        $('#navbar>ul').addClass('navbar-nav');
         var currentAbsPath = util.getAbsolutePath(window.location.pathname);
         // set active item
         $('#navbar').find('a[href]').each(function (i, e) {
