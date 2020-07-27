@@ -363,7 +363,7 @@ $(function () {
         return;
       }
       navbarPath = navbarPath.replace(/\\/g, '/');
-      var tocPath = $("meta[property='docfx\\:tocrel']").attr("content") || '';
+      var tocPath = $("meta[name='toc_rel']").attr("content") || '';
       if (tocPath) tocPath = tocPath.replace(/\\/g, '/');
       var ul = document.createElement('ul');
       ul.classList.add('nav');
@@ -551,7 +551,7 @@ $(function () {
     }
 
     function loadToc() {
-      var tocPath = $("meta[property='docfx\\:tocrel']").attr("content");
+      var tocPath = $("meta[name='toc_rel']").attr("content");
       if (!tocPath) {
         return;
       }
