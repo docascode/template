@@ -11,8 +11,7 @@
                 "type": "object",
                 "properties": {
                     "name": {
-                        "type": "string",
-                        "contentType": "markdown"
+                        "type": "string"
                     },
                     "href": {
                         "type": "string",
