@@ -1231,7 +1231,7 @@ $(function () {
     entrance.addEventListener('click', () => {
       document.body.classList.remove(getThemeClass(theme));
       theme = theme === 'light' ? 'dark' : 'light';
-      window.localStorage.setItem('docfxTemplateTheme', 'dark');
+      window.localStorage.setItem('docfxTemplateTheme', theme);
       document.body.classList.add(getThemeClass(theme));
     });
   }

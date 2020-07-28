@@ -1155,6 +1155,11 @@ body.theme-dark .affix > ul > li.active > a {
   color: #3689d1;
 }
 
+body.theme-dark .footer {
+  background: #333;
+  color: #ccc;
+}
+
 /* ================== Style for index page ================== */
 
 /* Colors */
