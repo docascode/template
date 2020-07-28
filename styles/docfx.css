@@ -12,6 +12,10 @@ body {
   }
 }
 
+.container.page-type-home {
+  padding: 0;
+}
+
 button,
 a {
   color: #3689d1;
@@ -1091,7 +1095,6 @@ div.embeddedvideo iframe {
     background-image: -o-linear-gradient(45deg,#000 0,#385361 100%);
     background-image: linear-gradient(45deg,#000 0,#385361 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#385361', GradientType=1);
-
 }
 .hero strong {
     color: #e7e7e7;
@@ -1101,8 +1104,34 @@ div.embeddedvideo iframe {
     background: #6cb8e6;
 }
 
-.counter-key-section{
-  border: 2px solid #6E8B60;
+/* End Colors */
+
+.hero {
+    height: 550px;
+    margin-top: 90px;
+    padding-top: 120px;
+    font-weight: 300;
+    text-align: center;
+}
+.hero .buttons-unit-small a {
+  font-size: 16px;
+  height: 13px;
+  line-height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  padding-right: 8px;
+  text-decoration: underline;
+  border-right: 1px solid #97d7fc;
+}
+.hero .buttons-unit-small a:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.key-section {
+  padding: 300px 0;
+  border-bottom: 2px solid #000;
   -webkit-border-image-source: -webkit-gradient(linear, left, right, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, #385361), color-stop(100%, rgba(0, 0, 0, 0)));
   -webkit-border-image-source: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
   -moz-border-image-source: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
@@ -1112,25 +1141,8 @@ div.embeddedvideo iframe {
   border-image-slice: 1;
 }
 
-/* End Colors */
-
-.value-prop-heading {
-  font-size: 24px;
-}
-
-#vp-container{
-  margin-top: 30px;
-}
-
-.hero {
-    height: 550px;
-    margin-top: 200px;
-    padding-top: 120px;
-    font-weight: 300;
-    text-align: center;
-}
-.key-section{
-  padding: 300px 0;
+.key-section:last-child {
+  border-bottom: 0;
 }
 
 .key-section .glyphicon, .counter-key-section .glyphicon {
@@ -1143,22 +1155,16 @@ div.embeddedvideo iframe {
   font-size: 16px;
 }
 
+.key-section .glyphicon {
+  color: green;
+}
+
 .key-section section, .counter-key-section section {
   display: table-cell;
   padding-left: 20px;
   width: 100%;
 }
 
-/* .key-section section p, .counter-key-section section p {
-  text-align: initial;
-} */
-
-.counter-key-section{
-  padding: 300px 0;
-}
-.buttons-unit-small{
-  font-size: 16px;
-}
 .version-link, .github-link{
   margin: 5px;
   text-decoration: underline;
@@ -1175,9 +1181,10 @@ div.embeddedvideo iframe {
     font-size: 20px;
     text-align: center;
     font-family: Candara;
+    margin-top: 20px;
 }
 .buttons-unit {
-    margin-top: 60px;
+    margin-top: 40px;
     text-align: center;
 }
 .hero .button {
@@ -1188,6 +1195,10 @@ div.embeddedvideo iframe {
 }
 .buttons-unit .button {
     font-size: 24px;
+}
+
+.page-type-home h2 a {
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {

@@ -30,7 +30,7 @@
 		{%- endunless -%}
 	</header>
 
-	<div role="main" class="container body-content">
+	<div role="main" class="container body-content page-type-{{pageType}}">
 		{%- if _disableToc -%}
 		<div class="article row grid">
 		{%- else -%}
@@ -46,7 +46,7 @@
 
 				<article class="content wrap" id="_content" data-uid="{{uid}}">
 					{{ heading1 }}
-					{{content}}
+					{{ content }}
 				</article>
 
 			</div>
