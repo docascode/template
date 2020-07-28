@@ -1,0 +1,36 @@
+{{#hero}}
+<div class="hero">
+  <div class="wrap">
+    <div class="text">
+      <strong>{{title}}</strong>
+    </div>
+    {{}}
+    <div class="buttons-unit-small">
+      {{#links}}
+      <a href="{{href}}">{{name}}</a><span>
+      {{/links}}
+    </div>
+    <div class="minitext">{{{description}}}</div>
+    <div class="buttons-unit">
+      {{#buttons}}
+      <a href="{{href}}" class="button"><i class="glyphicon {{icon}}"></i>{{name}}</a>
+      {{/buttons}}
+    </div>
+  </div>
+</div>
+{{/hero}}
+{{#sections}}
+<div class="key-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 text-center">
+        <i class="glyphicon {{icon}}"></i>
+        <section>
+          <h2>{{title}}</h2>
+          {{{description}}}
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+{{/sections}}

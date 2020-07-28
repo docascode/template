@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema##",
+    "description": "The schema for home page",
+    "type": "object",
+    "properties": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "string",
+            "contentType": "markdown"
+        },
+        "hero": {
+            "type": "object",
+            "properties": {
+                "links": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "href": {
+                                "type": "string",
+                                "contentType": "href"
+                            }
+                        }
+                    }
+                },
+                "buttons": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "icon": {
+                                "type": "string"
+                            },
+                            "href": {
+                                "type": "string",
+                                "contentType": "href"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "sections": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "icon": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "contentType": "markdown"
+                    }
+                }
+            }
+        }
+    }
+}
