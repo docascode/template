@@ -1077,6 +1077,84 @@ div.embeddedvideo iframe {
     margin-top: 2em;
 }
 
+/* toggle theme */
+.navbar .toggle-theme {
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+body.theme-dark {
+  background: #333;
+}
+
+body.theme-dark .navbar .toggle-theme svg {
+  fill: #ccc;
+}
+
+body.theme-dark .navbar {
+  background-color: #333;
+  border-color: #ccc;
+}
+
+body.theme-dark .navbar-brand svg {
+  fill: #ccc!important;
+}
+
+body.theme-dark .navbar .navbar-nav li a {
+  color: #ccc!important;
+}
+
+body.theme-dark .navbar .navbar-nav li.active a {
+  background-color: #666!important;
+  color: #ccc!important;
+}
+
+body.theme-dark .subnav .breadcrumb li {
+  color: #ccc;
+}
+
+body.theme-dark .sidefilter .toc-filter {
+  background: #666;
+}
+
+body.theme-dark .sidefilter .filter-icon {
+  color: #ccc;
+}
+
+body.theme-dark .sidefilter input {
+  background: #666;
+  color: #ccc;
+}
+
+body.theme-dark input::placeholder {
+  color: #ccc;
+}
+
+body.theme-dark .sidetoc .toc .nav > li > a {
+  color: #ccc;
+}
+body.theme-dark .sidetoc .toc .nav > li.active > a {
+  color: #3689d1;
+}
+body.theme-dark .sidetoc .toc .nav > li > a:hover {
+  color: #999;
+}
+
+body.theme-dark .article {
+  color: #ccc;
+}
+
+body.theme-dark .affix ul > li > a {
+  color: #ccc;
+}
+
+body.theme-dark .affix > ul > li.active > a {
+  color: #3689d1;
+}
+
 /* ================== Style for index page ================== */
 
 /* Colors */

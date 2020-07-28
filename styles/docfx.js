@@ -6,11 +6,14 @@ $(function () {
   var filtered = 'filtered';
   var show = 'show';
   var hide = 'hide';
+  let theme = window.localStorage.getItem('docfxTemplateTheme') || 'light';
   var util = new utility();
 
+
+  enableSwitchTheme();
   workAroundFixedHeaderForAnchors();
   highlight();
-  enableSearch();
+  // enableSearch();
 
   renderTables();
   renderAlerts();
@@ -1212,6 +1215,24 @@ $(function () {
     $(document).ready(function () {
         // Exclude tabbed content case
         $('a:not([data-tab])').click(function (e) { delegateAnchors(e); });
+    });
+  }
+
+  // enable switch theme
+  function enableSwitchTheme() {
+    let getThemeClass = theme => `theme-${theme}`;
+    document.body.classList.add(getThemeClass(theme));
+
+    let entrance = document.querySelector('.toggle-theme');
+    if (!entrance) {
+      return;
+    }
+
+    entrance.addEventListener('click', () => {
+      document.body.classList.remove(getThemeClass(theme));
+      theme = theme === 'light' ? 'dark' : 'light';
+      window.localStorage.setItem('docfxTemplateTheme', 'dark');
+      document.body.classList.add(getThemeClass(theme));
     });
   }
 });
