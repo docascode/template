@@ -13,3 +13,5 @@ To develop the template with docfx v3:
 - Copy the `styles`, `fonts` folder to `{docset-path}/_site`.
   > This will be copied automatically in the future, but for now it is a manual step.
 - Start a local HTTP static file server in `{docset-path}/_site`. [http-server](https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http) is a good option if you already have node js.
+
+> To show contributor list locally, set `DOCFX_GITHUB_TOKEN` environment variable to your GitHub personal access token.
