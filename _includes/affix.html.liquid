@@ -5,7 +5,10 @@
       <ul class="nav">
         {%- if page.original_content_git_url -%}
         <li>
-          <a href="{{page.original_content_git_url}}" class="contribution-link">Improve this doc</a>
+          <a href="{{page.original_content_git_url}}" class="contribution-link">
+            <img class="svg" src="/svg/edit.svg">
+            <span>Edit this doc</span>
+          </a>
         </li>
         {%- endif -%}
       </ul>

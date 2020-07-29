@@ -698,11 +698,18 @@ article section {
 }
 .sideaffix > div.contribution > ul > li > a.contribution-link {
   padding: 6px 10px;
-  font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
 }
 .sideaffix > div.contribution > ul > li > a.contribution-link:hover {
   background-color: #ffffff;
+}
+
+.sideaffix > div.contribution > ul > li > a.contribution-link svg {
+  width: 16px;
+  height: 16px;
+  position: relative;
+  top: 2px;
+  fill: #3689d1;
 }
 .sideaffix ul.nav > li > a:focus {
   background: none;
@@ -1081,13 +1088,17 @@ div.embeddedvideo iframe {
     margin-top: 2em;
 }
 
-/* toggle theme */
-.navbar .toggle-theme {
+/* switch theme */
+.navbar .switch-theme {
   float: right;
   width: 30px;
   height: 30px;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.navbar .switch-theme .hidden {
+  display: none;
 }
 
 .theme-mask {
@@ -1151,7 +1162,7 @@ body.theme-dark {
   background: #333;
 }
 
-body.theme-dark .navbar .toggle-theme svg {
+body.theme-dark .navbar .switch-theme svg {
   fill: #ccc;
 }
 

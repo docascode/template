@@ -1190,10 +1190,12 @@ $(function () {
     let getThemeClass = theme => `theme-${theme}`;
     document.body.classList.add(getThemeClass(theme));
 
-    let entrance = document.querySelector('.toggle-theme');
+    let entrance = document.querySelector('.switch-theme');
     if (!entrance) {
       return;
     }
+
+    entrance.querySelector(`.${theme === 'light' ? 'dark' : 'light'}-entrance`).classList.remove('hidden');
 
     entrance.addEventListener('click', () => {
       if (isSwitching) {
@@ -1219,6 +1221,8 @@ $(function () {
         document.body.classList.add(getThemeClass(targetTheme));
         document.body.classList.remove('perspective');
         themeMask.classList.remove('show');
+        entrance.querySelector(`.${theme}-entrance`).classList.remove('hidden');
+        entrance.querySelector(`.${targetTheme}-entrance`).classList.add('hidden');
         theme = targetTheme;
         isSwitching = false;
       });
