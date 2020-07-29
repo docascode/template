@@ -20,43 +20,51 @@
 
 <body data-spy="scroll" data-target="#affix">
 	<div id="wrapper">
-	<header>
-		{%- unless _disableNavbar -%}
-		{%- include navbar.html -%}
-		{%- endunless -%}
+		<header>
+			{%- unless _disableNavbar -%}
+			{%- include navbar.html -%}
+			{%- endunless -%}
 
-		{%- unless _disableBreadcrumb -%}
-		{%- include breadcrumb.html -%}
-		{%- endunless -%}
-	</header>
+			{%- unless _disableBreadcrumb -%}
+			{%- include breadcrumb.html -%}
+			{%- endunless -%}
+		</header>
 
-	<div role="main" class="container body-content page-type-{{pageType}}">
-		{%- if _disableToc -%}
-		<div class="article row grid">
-		{%- else -%}
-		{%- include toc.html -%}
-		<div class="article row grid-right">
-		{%- endif -%}
-
-			{%- if _disableAffix -%}
-			<div class="col-md-12">
+		<div role="main" class="container body-content page-type-{{pageType}}">
+			{%- if _disableToc -%}
+			<div class="article row grid">
 			{%- else -%}
-			<div class="col-md-10">
+			{%- include toc.html -%}
+			<div class="article row grid-right">
 			{%- endif -%}
 
-				<article class="content wrap" id="_content" data-uid="{{uid}}">
-					{{ heading1 }}
-					{{ content }}
-				</article>
+				{%- if _disableAffix -%}
+				<div class="col-md-12">
+				{%- else -%}
+				<div class="col-md-10">
+				{%- endif -%}
 
+					<article class="content wrap" id="_content" data-uid="{{uid}}">
+						{{ heading1 }}
+						{{ content }}
+					</article>
+
+				</div>
+
+				{%- unless _disableAffix -%}
+				{%- include affix.html -%}
+				{%- endunless -%}
 			</div>
-
-			{%- unless _disableAffix -%}
-			{%- include affix.html -%}
-			{%- endunless -%}
 		</div>
+		{%- include footer.html -%}
 	</div>
-	{%- include footer.html -%}
+	<div class="theme-mask">
+		<div class="light">
+			<img class="svg" src="/svg/sun.svg">
+		</div>
+		<div class="dark">
+			<img class="svg" src="/svg/moon.svg">
+		</div>
 	</div>
 </body>
 

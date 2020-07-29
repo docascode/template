@@ -1200,6 +1200,7 @@ $(function () {
   }
 
   // enable switch theme
+  let isSwitching = false;
   function enableSwitchTheme() {
     let getThemeClass = theme => `theme-${theme}`;
     document.body.classList.add(getThemeClass(theme));
@@ -1210,10 +1211,36 @@ $(function () {
     }
 
     entrance.addEventListener('click', () => {
+      if (isSwitching) {
+        return;
+      }
+      isSwitching = true;
       document.body.classList.remove(getThemeClass(theme));
-      theme = theme === 'light' ? 'dark' : 'light';
-      window.localStorage.setItem('docfxTemplateTheme', theme);
-      document.body.classList.add(getThemeClass(theme));
+
+      let themeMask = document.querySelector('.theme-mask');
+      let targetTheme = theme === 'light' ? 'dark' : 'light';
+      let targetClass = targetTheme + '-as-front';
+
+      document.body.classList.add('perspective');
+      themeMask.classList.remove(targetClass);
+      themeMask.classList.add(theme + '-as-front', 'show');
+
+      waitForAnimation(300).then(() => {
+        themeMask.classList.remove(theme + '-as-front');
+        themeMask.classList.add(targetClass);
+        return waitForAnimation(1300);
+      }).then(() => {
+        window.localStorage.setItem('docfxTemplateTheme', targetTheme);
+        document.body.classList.add(getThemeClass(targetTheme));
+        document.body.classList.remove('perspective');
+        themeMask.classList.remove('show');
+        theme = targetTheme;
+        isSwitching = false;
+      });
     });
+  }
+
+  function waitForAnimation(time) {
+    return new Promise(r => setTimeout(r, time));
   }
 });
