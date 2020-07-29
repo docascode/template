@@ -373,6 +373,9 @@ $(function () {
       ul.classList.add('level1');
       ul.classList.add('navbar-nav');
       fetch(navbarPath).then(response => response.json()).then(data => {
+        var activeA;
+        var maxItemPathLength = 0;
+        var windowPath = util.getAbsolutePath(window.location.pathname).toLowerCase();
         data.items.forEach(function (item) {
           var li = document.createElement('li');
           var a = document.createElement('a');
@@ -380,43 +383,21 @@ $(function () {
           a.innerHTML = item.name;
           li.appendChild(a);
           ul.appendChild(li);
-        });
-        document.getElementById('navbar').appendChild(ul);
-        showSearch();
-        var index = navbarPath.lastIndexOf('/');
-        var navrel = '';
-        if (index > -1) {
-          navrel = navbarPath.substr(0, index + 1);
-        }
-        $('#navbar>ul').addClass('navbar-nav');
-        var currentAbsPath = util.getAbsolutePath(window.location.pathname);
-        // set active item
-        $('#navbar').find('a[href]').each(function (i, e) {
-          var href = $(e).attr("href");
-          if (util.isRelativePath(href)) {
-            href = navrel + href;
-            $(e).attr("href", href);
 
-            var isActive = false;
-            var originalHref = e.name;
-            if (originalHref) {
-              originalHref = navrel + originalHref;
-              if (util.getDirectory(util.getAbsolutePath(originalHref)) === util.getDirectory(util.getAbsolutePath(tocPath))) {
-                isActive = true;
-              }
-            } else {
-              if (util.getAbsolutePath(href) === currentAbsPath) {
-                var dropdown = $(e).attr('data-toggle') == "dropdown"
-                if (!dropdown) {
-                  isActive = true;
-                }
-              }
-            }
-            if (isActive) {
-              $(e).addClass(active);
+          if (item.href) {
+            var itemPath = util.getAbsolutePath(item.href).toLowerCase();
+            if (itemPath.length > maxItemPathLength && itemPath.startsWith(windowPath)) {
+              maxItemPathLength = itemPath.length;
+              activeA = a;
             }
           }
         });
+
+        if (activeA) {
+          activeA.classList.add('active');
+        }
+        document.getElementById('navbar').appendChild(ul);
+        showSearch();
         renderNavbar();
       });
     }
