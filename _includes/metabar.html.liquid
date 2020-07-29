@@ -1,0 +1,40 @@
+<ul class="metabar">
+  <li>
+    <time datetime="{{ page._op_gitContributorInformation.update_at }}">{{ page._op_gitContributorInformation.update_at }}</time>
+  </li>
+  {%- if page.wordCount < 400 -%}
+    {%- capture minToRead %}2{% endcapture -%}
+  {%- else -%}
+    {%- capture minToRead %}{{ page.wordCount  | divided_by: 200 | round }}{% endcapture -%}
+  {%- endif -%}
+  <li class="readingTime">{{ minToRead}} minutes to read</li>
+  {%- if page._op_gitContributorInformation.contributors and page._op_gitContributorInformation.contributors.size > 0 -%}
+    {%- assign contributorMax = 5 -%}
+    {%- assign contributorSize = page._op_gitContributorInformation.contributors.size -%}
+    {%- if contributorSize <= contributorMax -%}
+      {%- assign contributorCount = contributorSize | minus: 1 -%}
+    {%- else -%}
+      {%- assign contributorCount = contributorMax | minus: 1 -%}
+    {%- endif -%}
+    {%- if contributorSize == 1 -%}
+      {%- capture contributor %}{%- loc contributor -%}{% endcapture -%}
+    {%- else -%}
+      {%- capture contributor %}{%- loc contributors -%}{% endcapture -%}
+    {%- endif -%}
+    <li class="contributors-holder">
+        <ul class="contributors">
+          {%- for i in (0..contributorCount) -%}
+            {%- assign contributor = page._op_gitContributorInformation.contributors[i] -%}
+            {%- if contributor.profile_url and contributor.profile_url.size > 0 -%}
+              <li>
+                <a href="{{ contributor.profile_url }}" title="{{ contributor.display_name }}">
+                  <img src="{{ contributor.profile_url }}.png?size=32" role="presentation"/>
+                </a>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      </a>
+    </li>
+  {%- endif -%}
+</ul>

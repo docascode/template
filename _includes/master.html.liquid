@@ -21,24 +21,24 @@
 <body data-spy="scroll" data-target="#affix">
 	<div id="wrapper">
 		<header>
-			{%- unless _disableNavbar -%}
+			{%- unless disableNavbar -%}
 			{%- include navbar.html -%}
 			{%- endunless -%}
 
-			{%- unless _disableBreadcrumb -%}
+			{%- unless disableBreadcrumb -%}
 			{%- include breadcrumb.html -%}
 			{%- endunless -%}
 		</header>
 
 		<div role="main" class="container body-content page-type-{{pageType}}">
-			{%- if _disableToc -%}
+			{%- if disableToc -%}
 			<div class="article row grid">
 			{%- else -%}
 			{%- include toc.html -%}
 			<div class="article row grid-right">
 			{%- endif -%}
 
-				{%- if _disableAffix -%}
+				{%- if disableAffix -%}
 				<div class="col-md-12">
 				{%- else -%}
 				<div class="col-md-10">
@@ -46,12 +46,15 @@
 
 					<article class="content wrap" id="_content" data-uid="{{uid}}">
 						{{ heading1 }}
+						{%- unless disableMetabar -%}
+						{%- include metabar.html -%}
+						{%- endunless -%}
 						{{ content }}
 					</article>
 
 				</div>
 
-				{%- unless _disableAffix -%}
+				{%- unless disableAffix -%}
 				{%- include affix.html -%}
 				{%- endunless -%}
 			</div>

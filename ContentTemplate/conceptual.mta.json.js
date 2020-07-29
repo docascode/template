@@ -5,6 +5,12 @@ exports.transform = function (model) {
     model.layout = model.layout || "Conceptual";
     delete model.conceptual;
 
+    var contrib = model._op_gitContributorInformation;
+    if (contrib && contrib.author) {
+        contrib.contributors = contrib.contributors || [];
+        contrib.contributors.unshift(contrib.author);
+    }
+
     return {
         content: JSON.stringify(model)
     }
