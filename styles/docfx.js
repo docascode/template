@@ -18,8 +18,9 @@ $(function () {
   renderTables();
   renderAlerts();
   renderLinks();
-  renderNavbar();
-  renderSidebar();
+
+  Promise.all([renderNavbar(), renderToc()]).then(() => renderBreadcrumb());
+
   renderAffix();
   renderFooter();
   renderLogo();
@@ -344,92 +345,92 @@ $(function () {
 
   // Update href in navbar
   function renderNavbar() {
-    var navbar = $('#navbar ul')[0];
-    if (typeof (navbar) === 'undefined') {
-      loadNavbar();
-    } else {
-      $('#navbar ul a.active').parents('li').addClass(active);
-      renderBreadcrumb();
-      showSearch();
+    var navbarPath = $("meta[name='menu_path']").attr("content");
+    if (!navbarPath) {
+      return Promise.resolve();
     }
 
-    function showSearch() {
-      if ($('#search-results').length !== 0) {
-          $('#search').show();
-          $('body').trigger("searchEvent");
-      }
-    }
+    navbarPath = navbarPath.replace(/\\/g, '/');
+    var ul = document.createElement('ul');
+    ul.classList.add('nav');
+    ul.classList.add('level1');
+    ul.classList.add('navbar-nav');
 
-    function loadNavbar() {
-      var navbarPath = $("meta[name='menu_path']").attr("content");
-      if (!navbarPath) {
-        return;
-      }
-      navbarPath = navbarPath.replace(/\\/g, '/');
-      var tocPath = $("meta[name='toc_rel']").attr("content") || '';
-      if (tocPath) tocPath = tocPath.replace(/\\/g, '/');
-      var ul = document.createElement('ul');
-      ul.classList.add('nav');
-      ul.classList.add('level1');
-      ul.classList.add('navbar-nav');
-      fetch(navbarPath).then(response => response.json()).then(data => {
-        var activeA;
-        var maxItemPathLength = 0;
-        var windowPath = util.getAbsolutePath(window.location.pathname).toLowerCase();
-        data.items.forEach(function (item) {
-          var li = document.createElement('li');
-          var a = document.createElement('a');
-          a.href = item.href;
-          a.innerHTML = item.name;
-          li.appendChild(a);
-          ul.appendChild(li);
+    return fetch(navbarPath).then(response => response.json()).then(data => {
+      var activeA;
+      var activeLi;
+      var maxItemPathLength = 1;
+      var navrel = util.getDirectory(navbarPath);
+      var windowPath = util.getAbsolutePath(window.location.pathname).toLowerCase();
+      data.items.forEach(function (item) {
+        var li = document.createElement('li');
+        var a = document.createElement('a');
+        a.href = navrel + '/' + item.href;
+        a.innerHTML = item.name;
+        li.appendChild(a);
+        ul.appendChild(li);
 
-          if (item.href) {
-            var itemPath = util.getAbsolutePath(item.href).toLowerCase();
-            if (itemPath.length > maxItemPathLength && itemPath.startsWith(windowPath)) {
-              maxItemPathLength = itemPath.length;
-              activeA = a;
-            }
+        if (a.href) {
+          var itemPath = util.getAbsolutePath(a.href).toLowerCase();
+          var itemLength = commonPathPrefixLength(windowPath, itemPath);
+          if (itemLength > maxItemPathLength) {
+            maxItemPathLength = itemPath.length;
+            activeA = a;
+            activeLi = li;
           }
-        });
-
-        if (activeA) {
-          activeA.classList.add('active');
         }
-        document.getElementById('navbar').appendChild(ul);
-        showSearch();
-        renderNavbar();
       });
+
+      if (activeA) {
+        activeA.classList.add('active');
+      }
+      if (activeLi) {
+        activeLi.classList.add('active');
+      }
+      document.getElementById('navbar').appendChild(ul);
+    });
+
+    function commonPathPrefixLength(path1, path2) {
+      var items1 = path1.split('/');
+      var items2 = path2.split('/');
+      var length = items1.length > items2.length ? items2.length : items1.length;
+      for (var i = 0; i < length; i++)
+      {
+        if (items1[i] !== items2[i]) {
+          return i;
+        }
+      }
+      return length;
     }
   }
 
-  function renderSidebar() {
-    var sidetoc = $('#sidetoggle .sidetoc')[0];
-    if (typeof (sidetoc) === 'undefined') {
-      loadToc();
-    } else {
-      registerTocEvents();
-      if ($('footer').is(':visible')) {
-        $('.sidetoc').addClass('shiftup');
-      }
-
-      // Scroll to active item
-      var top = 0;
-      $('#toc a.active').parents('li').each(function (i, e) {
-        $(e).addClass(active).addClass(expanded);
-        $(e).children('a').addClass(active);
-      })
-      $('#toc a.active').parents('li').each(function (i, e) {
-        top += $(e).position().top;
-      })
-      $('.sidetoc').scrollTop(top - 50);
-
-      if ($('footer').is(':visible')) {
-        $('.sidetoc').addClass('shiftup');
-      }
-
-      renderBreadcrumb();
+  function renderToc() {
+    var tocPath = $("meta[name='toc_rel']").attr("content");
+    if (!tocPath) {
+      return Promise.resolve();
     }
+    tocPath = tocPath.replace(/\\/g, '/');
+
+    return fetch(tocPath).then(response => response.text()).then(tocHtml => {
+      document.getElementById('sidetoc').innerHTML = tocHtml;
+      var tocrel = util.getDirectory(tocPath);
+      var currentHref = util.getAbsolutePath(window.location.pathname);
+      $('#sidetoc').find('a[href]').each(function (i, e) {
+        var href = $(e).attr("href");
+        if (util.isRelativePath(href)) {
+          href = tocrel + '/' + href;
+          $(e).attr("href", href);
+        }
+
+        if (util.getAbsolutePath(e.href) === currentHref) {
+          $(e).addClass(active);
+        }
+
+        $(e).breakWord();
+      });
+
+      registerTocEvents();
+    });
 
     function registerTocEvents() {
       var tocFilterInput = $('#toc_filter_input');
@@ -450,12 +451,11 @@ $(function () {
       tocFilterInput.on('input', function (e) {
         var val = this.value;
         //Save filter string to local session storage
-        if (typeof(Storage) !== "undefined") {
+        if (typeof (Storage) !== "undefined") {
           try {
             sessionStorage.filterString = val;
-            }
-          catch(e)
-            {}
+          }
+          catch (e) { }
         }
         if (val === '') {
           // Clear 'filtered' class
@@ -518,58 +518,43 @@ $(function () {
 
       // toc filter clear button
       tocFilterClearButton.hide();
-      tocFilterClearButton.on("click", function(e){
+      tocFilterClearButton.on("click", function (e) {
         tocFilterInput.val("");
         tocFilterInput.trigger('input');
-        if (typeof(Storage) !== "undefined") {
+        if (typeof (Storage) !== "undefined") {
           try {
             sessionStorage.filterString = "";
-            }
-          catch(e)
-            {}
+          }
+          catch (e) { }
         }
       });
 
       //Set toc filter from local session storage on page load
-      if (typeof(Storage) !== "undefined") {
+      if (typeof (Storage) !== "undefined") {
         try {
           tocFilterInput.val(sessionStorage.filterString);
           tocFilterInput.trigger('input');
-          }
-        catch(e)
-          {}
-      }
-    }
-
-    function loadToc() {
-      var tocPath = $("meta[name='toc_rel']").attr("content");
-      if (!tocPath) {
-        return;
-      }
-      tocPath = tocPath.replace(/\\/g, '/');
-      $('#sidetoc').load(tocPath + " #sidetoggle > div", function () {
-        var index = tocPath.lastIndexOf('/');
-        var tocrel = '';
-        if (index > -1) {
-          tocrel = tocPath.substr(0, index + 1);
         }
-        var currentHref = util.getAbsolutePath(window.location.pathname);
-        $('#sidetoc').find('a[href]').each(function (i, e) {
-          var href = $(e).attr("href");
-          if (util.isRelativePath(href)) {
-            href = tocrel + href;
-            $(e).attr("href", href);
-          }
+        catch (e) { }
+      }
+      if ($('footer').is(':visible')) {
+        $('.sidetoc').addClass('shiftup');
+      }
 
-          if (util.getAbsolutePath(e.href) === currentHref) {
-            $(e).addClass(active);
-          }
+      // Scroll to active item
+      var top = 0;
+      $('#toc a.active').parents('li').each(function (i, e) {
+        $(e).addClass(active).addClass(expanded);
+        $(e).children('a').addClass(active);
+      })
+      $('#toc a.active').parents('li').each(function (i, e) {
+        top += $(e).position().top;
+      })
+      $('.sidetoc').scrollTop(top - 50);
 
-          $(e).breakWord();
-        });
-
-        renderSidebar();
-      });
+      if ($('footer').is(':visible')) {
+        $('.sidetoc').addClass('shiftup');
+      }
     }
   }
 
@@ -602,7 +587,7 @@ $(function () {
       if ($('footer').is(':visible')) {
         $(".sideaffix").css("bottom", "70px");
       }
-      $('#affix a').click(function(e) {
+      $('#affix a').click(function (e) {
         var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
         var target = e.target.hash;
         if (scrollspy && target) {
@@ -1189,13 +1174,13 @@ $(function () {
     $(window).on('hashchange', scrollToCurrent);
 
     $(window).on('load', function () {
-        // scroll to the anchor if present, offset by the header
-        scrollToCurrent();
+      // scroll to the anchor if present, offset by the header
+      scrollToCurrent();
     });
 
     $(document).ready(function () {
-        // Exclude tabbed content case
-        $('a:not([data-tab])').click(function (e) { delegateAnchors(e); });
+      // Exclude tabbed content case
+      $('a:not([data-tab])').click(function (e) { delegateAnchors(e); });
     });
   }
 
