@@ -5,10 +5,6 @@ body {
   height: 100%;
 }
 
-body.switch {
-  perspective: 1000px;;
-}
-
 @media (min-width:1200px) {
   .container {
     width: 100%;
@@ -1127,63 +1123,6 @@ div.embeddedvideo iframe {
 
 .navbar .switch-theme .hidden {
   display: none;
-}
-
-.theme-mask {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10000;
-  transform-style: preserve-3d;
-}
-
-.theme-mask.show {
-  display: block;
-  transition: transform 1s ease;
-}
-
-.theme-mask.light-as-front {
-  transform: rotateY(0);
-}
-
-.theme-mask.dark-as-front {
-  transform: rotateY(-180deg);
-}
-
-.theme-mask .light,
-.theme-mask .dark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  backface-visibility: hidden;
-}
-
-.theme-mask .light svg,
-.theme-mask .dark svg {
-  width: 300px;
-  height: 300px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin: -150px 0 0 -150px;
-}
-
-.theme-mask .light {
-  background: #fff;
-}
-
-.theme-mask .dark {
-  background: #333;
-  transform: rotateY(-180deg);
-}
-
-.theme-mask .dark svg {
-  fill: #ccc;
 }
 
 body.theme-dark {

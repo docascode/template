@@ -394,8 +394,7 @@ $(function () {
       var items1 = path1.split('/');
       var items2 = path2.split('/');
       var length = items1.length > items2.length ? items2.length : items1.length;
-      for (var i = 0; i < length; i++)
-      {
+      for (var i = 0; i < length; i++) {
         if (items1[i] !== items2[i]) {
           return i;
         }
@@ -1185,7 +1184,6 @@ $(function () {
   }
 
   // enable switch theme
-  let isSwitching = false;
   function enableSwitchTheme() {
     let getThemeClass = theme => `theme-${theme}`;
     document.body.classList.add(getThemeClass(theme));
@@ -1198,38 +1196,15 @@ $(function () {
     entrance.querySelector(`.${theme === 'light' ? 'dark' : 'light'}-entrance`).classList.remove('hidden');
 
     entrance.addEventListener('click', () => {
-      if (isSwitching) {
-        return;
-      }
-      isSwitching = true;
       document.body.classList.remove(getThemeClass(theme));
 
-      let themeMask = document.querySelector('.theme-mask');
       let targetTheme = theme === 'light' ? 'dark' : 'light';
-      let targetClass = targetTheme + '-as-front';
 
-      document.body.classList.add('perspective');
-      themeMask.classList.remove(targetClass);
-      themeMask.classList.add(theme + '-as-front', 'show');
-
-      waitForAnimation(300).then(() => {
-        themeMask.classList.remove(theme + '-as-front');
-        themeMask.classList.add(targetClass);
-        return waitForAnimation(1300);
-      }).then(() => {
-        window.localStorage.setItem('docfxTemplateTheme', targetTheme);
-        document.body.classList.add(getThemeClass(targetTheme));
-        document.body.classList.remove('perspective');
-        themeMask.classList.remove('show');
-        entrance.querySelector(`.${theme}-entrance`).classList.remove('hidden');
-        entrance.querySelector(`.${targetTheme}-entrance`).classList.add('hidden');
-        theme = targetTheme;
-        isSwitching = false;
-      });
+      window.localStorage.setItem('docfxTemplateTheme', targetTheme);
+      document.body.classList.add(getThemeClass(targetTheme));
+      entrance.querySelector(`.${theme}-entrance`).classList.remove('hidden');
+      entrance.querySelector(`.${targetTheme}-entrance`).classList.add('hidden');
+      theme = targetTheme;
     });
-  }
-
-  function waitForAnimation(time) {
-    return new Promise(r => setTimeout(r, time));
   }
 });
