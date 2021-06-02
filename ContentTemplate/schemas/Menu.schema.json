@@ -3,6 +3,7 @@
     "description": "The schema for the main menu bar",
     "type": "object",
     "required": ["items"],
+    "renderType": "Component",
     "properties": {
         "items": {
             "type": "array",
