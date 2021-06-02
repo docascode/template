@@ -20,4 +20,11 @@ docfx build samples --template .
 http-server samples/_site
 ```
 
-> To show contributor list locally, set `DOCFX_GITHUB_TOKEN` environment variable to your GitHub personal access token and rebuild.
+To show contributor list locally, create a `docfx.yml` file under `%USERPROFILE%/.docfx` with the following content:
+
+```yml
+secrets:
+  githubToken: {your-github-personal-access-token}
+```
+
+Make sure the GitHub personal access token has read access to `repo` and `user.email`.
