@@ -1,0 +1,24 @@
+#YamlMime:Home
+title: docfx
+description: An extensible and scalable static documentation generator.
+hero:
+  links:
+  - name: Release Notes
+    href: '../RELEASENOTE.md'
+  - name: View on Github
+    href: https://github.com/dotnet/docfx
+  buttons:
+  - name: Getting Started
+    href: tutorial/docfx_getting_started.md
+  - name: Download
+    href: https://github.com/dotnet/docfx/releases
+sections:
+- title: Generate static sites from Markdown and code files
+  icon: grain
+  description: DocFX can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.
+- title: Run everywhere
+  icon: transfer
+  description: DocFX can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.
+- title: Easily customize the output
+  icon: cutlery
+  description: DocFX provides a flexible way to customize templates and themes.
