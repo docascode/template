@@ -9,6 +9,7 @@ const pixelmatch = require('pixelmatch');
 const urls = [
   '/',
   '/tutorial/docfx_getting_started/',
+  '/tutorial/walkthrough/walkthrough_create_a_docfx_project_2/'
 ]
 
 const viewports = [
