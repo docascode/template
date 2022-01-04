@@ -6,18 +6,22 @@ Default site template for https://github.com/dotnet/docfx
 
 To develop the template:
 
+- Install [Node.js](https://nodejs.org/)
+- Install [yarn](https://yarnpkg.com/)
 - Install [.NET Core](https://www.microsoft.com/net/download)
-- Install latest `docfx` pre release:
+- Install the latest `docfx` pre-release:
 ```powershell
 dotnet tool update -g docfx --version "3.0.0-*" --add-source https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-public-packages/nuget/v3/index.json
 ```
-- Build the samples website using this template
+
+- Build the site template using
 ```powershell
-docfx build samples --template .
+yarn build
 ```
-- Start a local HTTP static file server in `_site`. [http-server](https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http) is a good option if you already have node js.
+
+- Start a local development server using
 ```powershell
-http-server samples/_site
+yarn start
 ```
 
 To show contributor list locally, create a `docfx.yml` file under `%USERPROFILE%/.docfx` with the following content:

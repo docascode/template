@@ -11,14 +11,8 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 # (Please don't specify an indent_size here; that has too many unintended consequences.)
 
-# JSON files
-[*.json]
+[*.{json,js,yml,scss}]
 indent_size = 2
 
-# YAML files
-[*.yml]
-indent_size = 2
-
-# Markdown files
 [*.{md,yml}]
 trim_trailing_whitespace = false
