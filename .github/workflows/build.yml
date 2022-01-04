@@ -19,7 +19,7 @@ jobs:
     - run: yarn diff
       if: ${{ matrix.os == 'windows-latest' }}
     - uses: actions/upload-artifact@v2
-      if: ${{ matrix.os == 'windows-latest' && failure() }}
       with:
         name: screenshots-${{ matrix.os }}
-        path: tests/screenshots
+        path: tests/screenshots/actual
+        if-no-files-found: ignore

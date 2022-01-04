@@ -1,7 +1,10 @@
 const { start } = require('./start.js')
 const { Cluster } = require('puppeteer-cluster')
 const { exit } = require('process')
-const { spawnSync } = require('child_process')
+const { mkdirSync, existsSync, readdirSync, readFileSync, writeFileSync } = require('fs')
+const { join } = require('path')
+const PNG = require('pngjs').PNG;
+const pixelmatch = require('pixelmatch');
 
 const urls = [
   '/',
@@ -29,8 +32,10 @@ async function captureScreenshots(baseurl) {
     maxConcurrency: 2,
   });
 
-  await cluster.task(async ({ page, data : { url, viewport } }) => {
-    const path = `tests/screenshots/${url.slice(1).replace(/[/]+/g, '-')}-${viewport.width}-${viewport.height}.png`
+  ensuredirSync('tests/screenshots/actual')
+
+  await cluster.task(async ({ page, data: { url, viewport } }) => {
+    const path = `tests/screenshots/actual/${url.slice(1).replace(/[/]+/g, '-')}-${viewport.width}-${viewport.height}.png`
     await page.setViewport(viewport)
     await page.goto(baseurl + url);
     await page.screenshot({ path, fullPage: true });
@@ -46,15 +51,42 @@ async function captureScreenshots(baseurl) {
   await cluster.idle();
   await cluster.close();
 
-  if (spawnSync('git diff --exit-code -- tests/screenshots', { shell: true }).status !== 0) {
+  if (!compare('tests/screenshots/expected', 'tests/screenshots/actual')) {
     exit(1)
   }
 
   exit(0)
 }
 
+function ensuredirSync(dir) {
+  if (!existsSync(dir)) {
+    mkdirSync(dir, { recursive: true })
+  }
+}
+
+function compare(base, target) {
+  let hasDiff = false
+
+  for (const filename of readdirSync(base)) {
+
+    const img1 = PNG.sync.read(readFileSync(join(base, filename)))
+    const img2 = PNG.sync.read(readFileSync(join(target, filename)))
+    const { width, height } = img1;
+    const diff = new PNG({ width, height });
+
+    if (pixelmatch(img1.data, img2.data, diff.data, width, height, { threshold: 0.1 }) == 0) {
+      continue
+    }
+
+    writeFileSync(join(target, 'diff.' + filename), PNG.sync.write(diff))
+    hasDiff = true
+  }
+
+  return hasDiff
+}
+
 module.exports = { diff }
 
-if (require.main === module ) {
+if (require.main === module) {
   diff()
 }
