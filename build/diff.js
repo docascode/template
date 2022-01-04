@@ -1,10 +1,11 @@
 const { start } = require('./start.js')
 const { Cluster } = require('puppeteer-cluster')
 const { exit } = require('process')
+const { spawnSync } = require('child_process')
 
 const urls = [
   '/',
-  '/tutorial/docfx_getting_started',
+  '/tutorial/docfx_getting_started/',
 ]
 
 const viewports = [
@@ -44,6 +45,11 @@ async function captureScreenshots(baseurl) {
 
   await cluster.idle();
   await cluster.close();
+
+  if (spawnSync('git diff --exit-code -- tests/screenshots', { shell: true }).status !== 0) {
+    exit(1)
+  }
+
   exit(0)
 }
 
