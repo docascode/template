@@ -31,7 +31,14 @@ function build({ watch } = {}) {
     treeShaking: true,
     plugins: [
       sassPlugin()
-    ]
+    ],
+    loader: {
+      '.eot': 'file',
+      '.svg': 'file',
+      '.ttf': 'file',
+      '.woff': 'file',
+      '.woff2': 'file'
+    }
   }))
 }
 
