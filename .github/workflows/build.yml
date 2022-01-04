@@ -2,8 +2,9 @@ name: build
 on:
   pull_request:
   push:
-  - main
-  - feature/*
+    branches:
+    - main
+    - feature/*
 
 jobs:
   build:
