@@ -1,6 +1,8 @@
 # Default docfx Site Template
 
-Default site template for https://github.com/dotnet/docfx
+Default site template for [docfx](https://github.com/dotnet/docfx).
+
+Sample site: https://docascode.github.io/template/
 
 ### Development Setup
 
@@ -24,11 +26,4 @@ yarn build
 yarn start
 ```
 
-To show contributor list locally, create a `docfx.yml` file under `%USERPROFILE%/.docfx` with the following content:
-
-```yml
-secrets:
-  githubToken: {your-github-personal-access-token}
-```
-
-Make sure the GitHub personal access token has read access to `repo` and `user.email`.
+To show contributor list locally, set the `DOCFX__SECRETS__GITHUB_TOKEN` environment variable to a GitHub token with read access to `repo` and `user.email`.

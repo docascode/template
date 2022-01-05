@@ -7,7 +7,7 @@
   - name: "HowTo: Filter Out Unwanted APIs"
     href: howto_filter_out_unwanted_apis_attributes.md
   - name: Walkthrough Topics
-    href: walkthrough/toc.md
+    href: walkthrough/TOC.md
     homepage: walkthrough/walkthrough_overview.md
 - name: Content
   items:
@@ -26,7 +26,7 @@
   - name: "HowTo: Create Custom Template"
     href: howto_create_custom_template.md
 - name: Incremental Build
-  href: incrementalbuild/toc.yml
+  href: incrementalbuild/TOC.yml
 - name: Extensibility
   items:
   - name: How to build your own type of documentation with custom plug-in
@@ -43,4 +43,4 @@
   - name: How to customize DocFX Flavored Markdown
     href: howto_customize_docfx_flavored_markdown.md
 - name: "Multiple Programming Languages Support"
-  href: universalreference/toc.yml
+  href: universalreference/TOC.yml
