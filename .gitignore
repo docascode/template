@@ -1,5 +1,0 @@
-*.log
-
-_site
-node_modules
-tests/screenshots/actual
