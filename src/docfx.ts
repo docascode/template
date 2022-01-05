@@ -1,4 +1,18 @@
 // Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE file in the project root for full license information.
+const jquery = require('jquery')
+
+window.jQuery = jquery
+window.$ = jquery
+
+require('bootstrap')
+
+const hljs = require('highlight.js')
+
+require('twbs-pagination')
+require('mark.js')
+
+const AnchorJs = require('anchor-js')
+
 $(function () {
   var active = 'active';
   var expanded = 'in';
@@ -67,6 +81,7 @@ $(function () {
 
   // Enable anchors for headings.
   (function () {
+    const anchors = new AnchorJs()
     anchors.options = {
       placement: 'left',
       visible: 'touch'

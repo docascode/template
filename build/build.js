@@ -4,9 +4,6 @@ const { sassPlugin } = require('esbuild-sass-plugin')
 function build({ watch } = {}) {
 
   const watchOptions = watch ? {
-    minify: false,
-    sourcemap: false,
-    treeShaking: false,
     watch: {
       onRebuild(error, result) {
         if (error) {
@@ -27,7 +24,7 @@ function build({ watch } = {}) {
     outdir: 'dist',
     bundle: true,
     minify: true,
-    sourcemap: true,
+    sourcemap: false,
     treeShaking: true,
     plugins: [
       sassPlugin()

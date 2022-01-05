@@ -34,10 +34,10 @@ agent-base@6:
   dependencies:
     debug "4"
 
-anchor-js@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-4.0.0.tgz#1d11e7513c378a56b01612f38c4f50858ccdc1c5"
-  integrity sha1-HRHnUTw3ilawFhLzjE9QhYzNwcU=
+anchor-js@4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/anchor-js/-/anchor-js-4.2.2.tgz#e4edd682752cb2afaecdbc03df5c7b31e3c02922"
+  integrity sha512-Rg1tGaG4K3avYqDh7rOYCE/odWxpUiHStnlKL/bGOt9cl6NjR06zhPGVQcCAjE5PT48oQeHVgqNmLzxh0Kuk4A==
 
 ansi-regex@^2.0.0:
   version "2.1.1"
@@ -919,15 +919,15 @@ isarray@2.0.1:
   resolved "https://registry.yarnpkg.com/isarray/-/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
   integrity sha1-o32U7ZzaLVmGXJ92/llu4fM4dB4=
 
-jquery@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.4.1.tgz#714f1f8d9dde4bdfa55764ba37ef214630d80ef2"
-  integrity sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
-
 jquery@>=1.7.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
+
+jquery@~3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
+  integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
 
 jsonfile@^3.0.0:
   version "3.0.1"
@@ -973,7 +973,7 @@ lunr@2.1.2:
   resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.1.2.tgz#6b6306e04238fb09c04cfab28e45ae550226c479"
   integrity sha512-hQT+nDe6H6Q/9ILTGoK8yx0js1Ke7Ym4cJpJhUkRIUKCH7O9U8mnAahOuMdHAsEShSXcXNk/2kQYb3A2VPGrBw==
 
-mark.js@^8.11.1:
+mark.js@^8.4.1:
   version "8.11.1"
   resolved "https://registry.yarnpkg.com/mark.js/-/mark.js-8.11.1.tgz#180f1f9ebef8b0e638e4166ad52db879beb2ffc5"
   integrity sha1-GA8fnr74sOY45BZq1S24eb6y/8U=
