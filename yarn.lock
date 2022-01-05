@@ -968,10 +968,10 @@ lodash@^4.17.10:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
 
-lunr@2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.1.2.tgz#6b6306e04238fb09c04cfab28e45ae550226c479"
-  integrity sha512-hQT+nDe6H6Q/9ILTGoK8yx0js1Ke7Ym4cJpJhUkRIUKCH7O9U8mnAahOuMdHAsEShSXcXNk/2kQYb3A2VPGrBw==
+lunr@2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.9.tgz#18b123142832337dd6e964df1a5a7707b25d35e1"
+  integrity sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==
 
 mark.js@^8.4.1:
   version "8.11.1"

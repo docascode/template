@@ -11,7 +11,7 @@
     "bootstrap": "~3.4.1",
     "highlight.js": "9.12.0",
     "jquery": "~3.5.1",
-    "lunr": "2.1.2",
+    "lunr": "2.3.9",
     "mark.js": "^8.4.1",
     "twbs-pagination": "josecebe/twbs-pagination#1.3.1"
   },
