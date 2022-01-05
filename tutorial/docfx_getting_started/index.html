@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="conceptual" content="<h2 id=&quot;1-what-is-docfx&quot;>1. What is <em>DocFX</em></h2>
+<p><em>DocFX</em> is an API documentation generator for .NET, which currently supports C#, VB and F#.
+It generates API reference documentation from triple-slash comments in your source code.
+It also allows you to use Markdown files to create additional topics such as tutorials and how-tos, and to customize the generated reference documentation.
+<em>DocFX</em> builds a static HTML website from your source code and Markdown files, which can be easily hosted on any web server (for example, <em>github.io</em>).
+Also, <em>DocFX</em> provides you the flexibility to customize the layout and style of your website through templates.
+If you are interested in creating your own website with your own styles, you can follow <a href=&quot;../howto_create_custom_template/&quot; data-linktype=&quot;relative-path&quot;>how to create custom template</a> to create custom templates.</p>
+<p><em>DocFX</em> also has the following cool features:</p>
+<ul>
+<li>Integration with your source code. You can click &amp;quot;View Source&amp;quot; on an API to navigate to the source code in GitHub (your source code must be pushed to GitHub).</li>
+<li>Cross-platform support. We have an exe version that runs natively on Windows and with Mono it can also run on Linux and macOS.</li>
+<li>Integration with Visual Studio. You can seamlessly use <em>DocFX</em> within Visual Studio.</li>
+<li>Markdown extensions. We introduced <em>DocFX Flavored Markdown(DFM)</em> to help you write API documentation. DFM is <em>100%</em> compatible with <em>GitHub Flavored Markdown(GFM)</em> with some useful extensions, like <em>file inclusion</em>, <em>code snippet</em>, <em>cross reference</em>, and <em>yaml header</em>.
+For a detailed description about DFM, please refer to <a href=&quot;../../spec/docfx_flavored_markdown/&quot; data-linktype=&quot;relative-path&quot;>DFM</a>.</li>
+</ul>
+<div class=&quot;WARNING&quot;>
+<h5>WARNING</h5>
+<p><strong>Prerequisites</strong> <a href=&quot;https://www.visualstudio.com/downloads/&quot; data-linktype=&quot;external&quot;>Visual Studio 2019</a> is needed for <code>docfx metadata</code> msbuild projects. It's not required when generating metadata directly from source code (<code>.cs</code>, <code>.vb</code>) or assemblies (<code>.dll</code>)</p>
+</div>
+<h2 id=&quot;2-use-docfx-as-a-command-line-tool&quot;>2. Use <em>DocFX</em> as a command-line tool</h2>
+<p><em>Step1.</em> Install DocFX. Choose from one of the following sources:</p>
+<ul>
+<li><strong><a href=&quot;https://chocolatey.org/packages/docfx&quot; data-linktype=&quot;external&quot;>Chocolatey</a></strong>: <code>choco install docfx -y</code>.</li>
+<li><strong><a href=&quot;https://formulae.brew.sh/formula/docfx&quot; data-linktype=&quot;external&quot;>Homebrew</a></strong> (owned by community): <code>brew install docfx</code>.</li>
+<li><strong>GitHub</strong>: download and unzip <code>docfx.zip</code> from <a href=&quot;https://github.com/dotnet/docfx/releases&quot; data-linktype=&quot;external&quot;>https://github.com/dotnet/docfx/releases</a>, extract it to a local folder, and add it to PATH so you can run it anywhere.</li>
+<li><strong>NuGet</strong>: <code>nuget install docfx.console</code>. <code>docfx.exe</code> is under folder <em>docfx.console/tools/</em>.</li>
+</ul>
+<p><em>Step2.</em> Create a sample project</p>
+<pre><code>docfx init -q
+</code></pre>
+<p>This command generates a default project named <code>docfx_project</code>.</p>
+<p><em>Step3.</em> Build the website</p>
+<pre><code>docfx docfx_project\docfx.json --serve
+</code></pre>
+<p>Now you can view the generated website on http://localhost:8080.</p>
+<div class=&quot;IMPORTANT&quot;>
+<h5>IMPORTANT</h5>
+<p>For macOS/Linux users: Use <a href=&quot;https://www.mono-project.com/&quot; data-linktype=&quot;external&quot;>Mono</a> version &amp;gt;= 5.10. Do <strong>NOT</strong> install Debian/Ubuntu-provided packages, since they typically do not provide all the packages required (for example, <code>msbuild</code> is missing). Once you have the Mono project's repositories added, the following command line can be used to install the prerequisites on Debian/Ubuntu: <code>sudo apt-get install mono-runtime mono-devel msbuild</code>.</p>
+<p>For macOS users: <strong>DO NOT</strong> Install Mono from Homebrew, but rather from the <a href=&quot;https://www.mono-project.com/download/stable/#download-mac&quot; data-linktype=&quot;external&quot;>Mono download page</a>.</p>
+</div>
+<h2 id=&quot;3-use-docfx-integrated-with-visual-studio&quot;>3. Use <em>DocFX</em> integrated with Visual Studio</h2>
+<p><em>Step1.</em> Create a <strong>Class Library (.NET Framework)</strong> project</p>
+<p><em>Step2.</em> Right click on the project and select <strong>Manage NuGet Package</strong></p>
+<p><em>Step3.</em> Search and install the <a href=&quot;https://www.nuget.org/packages/docfx.console/&quot; data-linktype=&quot;external&quot;><code>docfx.console</code></a> NuGet package. It adds itself to the build targets and adds the <code>docfx.json</code> configuration file along with other files.</p>
+<p><em>Step4.</em> <strong>Build</strong> the project, and a <code>_site</code> folder will be generated with the documentation.</p>
+<div class=&quot;NOTE&quot;>
+<h5>NOTE</h5>
+<p><em>Possible warning</em>:</p>
+<ul>
+<li><p><em>Cache is corrupted</em>: if your project targets multiple frameworks, you have to indicate one to be the main for the documentation, through the <a href=&quot;https://github.com/dotnet/docfx/issues/1254#issuecomment-294080535&quot; data-linktype=&quot;external&quot;><code>TargetFramework</code> property</a> in <code>docfx.json</code>:</p>
+<p>&amp;quot;metadata&amp;quot;: [
+{
+&amp;quot;src&amp;quot;: &amp;quot;...&amp;quot;,
+&amp;quot;dest&amp;quot;: &amp;quot;...&amp;quot;,
+&amp;quot;properties&amp;quot;: {
+&amp;quot;TargetFramework&amp;quot;: &amp;lt;one_of_your_framework&amp;gt;
+}
+},
+]</p>
+</li>
+</ul>
+</div>
+<h2 id=&quot;4-use-docfx-with-a-build-server&quot;>4. Use <em>DocFX</em> with a Build Server</h2>
+<h2 id=&quot;41-steps&quot;>4.1 Steps</h2>
+<p><em>DocFX</em> can be used in a Continuous Integration (CI) environment.</p>
+<p>Consider a typical scenario: We want to set up a job on a CI service (e.g. <a href=&quot;https://azure.microsoft.com/en-us/services/devops/pipelines/&quot; data-linktype=&quot;external&quot;>Azure Pipelines</a>) to build documents automatically and publish to a website (e.g. <a href=&quot;https://pages.github.com/&quot; data-linktype=&quot;external&quot;>GitHub Pages</a>). We can achieve this with a script in a CI job with the following steps:</p>
+<ol>
+<li>clone repo</li>
+<li><code>choco install docfx</code></li>
+<li><code>docfx {docsetPath}</code>, while you can change <code>build.dest</code> in <code>docfx.json</code> to set the output path</li>
+<li>push all the content in <code>docsetPath/_site</code> to <code>gh-pages</code> branch</li>
+</ol>
+<div class=&quot;NOTE&quot;>
+<h5>NOTE</h5>
+<p>These steps give an overall impression of what to do. You can adjust them depending on actual scenario.</p>
+</div>
+<p><a href=&quot;https://github.com/docascode/docfx-seed/blob/master/appveyor.yml&quot; data-linktype=&quot;external&quot;>docfx-seed</a> project provides a sample integrating with AppVeyor.</p>
+<h2 id=&quot;42-set-branch-name&quot;>4.2 Set branch name</h2>
+<p>Most build systems do not checkout the branch that is being built, but use a <code>detached head</code> for the specific commit.  DocFX needs the branch name to implement the <code>View Source</code> link in the API documentation.</p>
+<p>Many build systems set an environment variable with the branch name.  DocFX uses the following automatically:</p>
+<ul>
+<li><code>APPVEYOR_REPO_BRANCH</code> - <a href=&quot;https://www.appveyor.com/&quot; data-linktype=&quot;external&quot;>AppVeyor</a></li>
+<li><code>BUILD_SOURCEBRANCHNAME</code> - <a href=&quot;https://azure.microsoft.com/en-us/services/devops/pipelines/&quot; data-linktype=&quot;external&quot;>Azure Pipelines</a></li>
+<li><code>CI_BUILD_REF_NAME</code> - <a href=&quot;https://about.gitlab.com/gitlab-ci/&quot; data-linktype=&quot;external&quot;>GitLab CI</a></li>
+<li><code>Git_Branch</code> - <a href=&quot;https://www.jetbrains.com/teamcity/&quot; data-linktype=&quot;external&quot;>TeamCity</a></li>
+<li><code>GIT_BRANCH</code> - <a href=&quot;https://jenkins.io/&quot; data-linktype=&quot;external&quot;>Jenkins</a></li>
+<li><code>GIT_LOCAL_BRANCH</code> - <a href=&quot;https://jenkins.io/&quot; data-linktype=&quot;external&quot;>Jenkins</a></li>
+</ul>
+<p>Setting the environment variable <code>DOCFX_SOURCE_BRANCH_NAME</code> tells DocFX which branch name to use, if the CI service you use is not in the list above.</p>
+<div class=&quot;NOTE&quot;>
+<h5>NOTE</h5>
+<p><em>Known issue in AppVeyor</em>: Currently <code>platform: Any CPU</code> in <em>appveyor.yml</em> causes <code>docfx metadata</code> failure. <a href=&quot;https://github.com/dotnet/docfx/issues/1078&quot; data-linktype=&quot;external&quot;>https://github.com/dotnet/docfx/issues/1078</a></p>
+</div>
+<h2 id=&quot;5-a-seed-project-to-play-with-docfx&quot;>5. A seed project to play with <em>DocFX</em></h2>
+<p>Here is a seed project: <a href=&quot;https://github.com/docascode/docfx-seed&quot; data-linktype=&quot;external&quot;>https://github.com/docascode/docfx-seed</a>. It contains</p>
+<ol>
+<li>A basic C# project under <code>src</code>.</li>
+<li>Several conceptual files under <code>articles</code>.</li>
+<li>An overwrite file to add extra content to API under <code>specs</code>.</li>
+<li><code>toc.yml</code> under root folder. It renders as the navbar of the website.</li>
+<li><code>docfx.json</code> under root folder. It is the configuration file that <code>docfx</code> depends upon.</li>
+</ol>
+<div class=&quot;TIP&quot;>
+<h5>TIP</h5>
+<p>It's good practice to separate files with different types into different folders.</p>
+</div>
+<h2 id=&quot;6-qa&quot;>6. Q&amp;amp;A</h2>
+<ol>
+<li>Q: How do I quickly reference APIs from other APIs or conceptual files?
+A: Use <code>@uid</code> syntax.</li>
+<li>Q: What is <code>uid</code> and where do I find <code>uid</code>?
+A: Refer to <a href=&quot;../../spec/docfx_flavored_markdown/#cross-reference&quot; data-linktype=&quot;relative-path&quot;>Cross Reference</a> section in <a href=&quot;../../spec/docfx_flavored_markdown/&quot; data-linktype=&quot;relative-path&quot;>DFM</a>.</li>
+<li>Q: How do I quickly find <code>uid</code> in the website?
+A: In the generated website, hit F12 to view source, and look at the title of an API. You can find <code>uid</code> in <code>data-uid</code> attribute.</li>
+</ol>
+" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="edf53915-010c-7e76-19ff-d78a0ad7c1fc" />
+<meta name="document_version_independent_id" content="374d8525-a204-4933-0edb-38ce5e95c6ad" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/docfx_getting_started.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/feature/ghpage/samples/tutorial/docfx_getting_started.md" />
+<meta name="rawTitle" content="<h1 id=&quot;getting-started-with-docfx&quot;>Getting Started with <em>DocFX</em></h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="921" />
+
+
+	<title>Getting Started with DocFX</title>
+
+	<link rel="stylesheet" href="/dist/docfx.css">
+
+	<script type="text/javascript" src="/styles/docfx.vendor.js"></script>
+	<script type="text/javascript" src="/dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="/svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <form class="navbar-form navbar-right" role="search" id="search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+        </div>
+      </form>
+      <div class="switch-theme" title="Switch Theme">
+        <img class="svg hidden light-entrance" src="/svg/sun.svg">
+        <img class="svg hidden dark-entrance" src="/svg/moon.svg">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+    <ul class="breadcrumb">
+      <li></li>
+    </ul>
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc"></div>
+  </div>
+</div>
+			<div class="article row grid-right">
+
+				<div class="col-md-10">
+
+					<article class="content wrap" id="_content" data-uid="">
+						<h1 id="getting-started-with-docfx">Getting Started with <em>DocFX</em></h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">4 minutes to read</li>
+</ul>						<h2 id="1-what-is-docfx">1. What is <em>DocFX</em></h2>
+<p><em>DocFX</em> is an API documentation generator for .NET, which currently supports C#, VB and F#.
+It generates API reference documentation from triple-slash comments in your source code.
+It also allows you to use Markdown files to create additional topics such as tutorials and how-tos, and to customize the generated reference documentation.
+<em>DocFX</em> builds a static HTML website from your source code and Markdown files, which can be easily hosted on any web server (for example, <em>github.io</em>).
+Also, <em>DocFX</em> provides you the flexibility to customize the layout and style of your website through templates.
+If you are interested in creating your own website with your own styles, you can follow <a href="../howto_create_custom_template/" data-linktype="relative-path">how to create custom template</a> to create custom templates.</p>
+<p><em>DocFX</em> also has the following cool features:</p>
+<ul>
+<li>Integration with your source code. You can click &quot;View Source&quot; on an API to navigate to the source code in GitHub (your source code must be pushed to GitHub).</li>
+<li>Cross-platform support. We have an exe version that runs natively on Windows and with Mono it can also run on Linux and macOS.</li>
+<li>Integration with Visual Studio. You can seamlessly use <em>DocFX</em> within Visual Studio.</li>
+<li>Markdown extensions. We introduced <em>DocFX Flavored Markdown(DFM)</em> to help you write API documentation. DFM is <em>100%</em> compatible with <em>GitHub Flavored Markdown(GFM)</em> with some useful extensions, like <em>file inclusion</em>, <em>code snippet</em>, <em>cross reference</em>, and <em>yaml header</em>.
+For a detailed description about DFM, please refer to <a href="../../spec/docfx_flavored_markdown/" data-linktype="relative-path">DFM</a>.</li>
+</ul>
+<div class="WARNING">
+<h5>WARNING</h5>
+<p><strong>Prerequisites</strong> <a href="https://www.visualstudio.com/downloads/" data-linktype="external">Visual Studio 2019</a> is needed for <code>docfx metadata</code> msbuild projects. It's not required when generating metadata directly from source code (<code>.cs</code>, <code>.vb</code>) or assemblies (<code>.dll</code>)</p>
+</div>
+<h2 id="2-use-docfx-as-a-command-line-tool">2. Use <em>DocFX</em> as a command-line tool</h2>
+<p><em>Step1.</em> Install DocFX. Choose from one of the following sources:</p>
+<ul>
+<li><strong><a href="https://chocolatey.org/packages/docfx" data-linktype="external">Chocolatey</a></strong>: <code>choco install docfx -y</code>.</li>
+<li><strong><a href="https://formulae.brew.sh/formula/docfx" data-linktype="external">Homebrew</a></strong> (owned by community): <code>brew install docfx</code>.</li>
+<li><strong>GitHub</strong>: download and unzip <code>docfx.zip</code> from <a href="https://github.com/dotnet/docfx/releases" data-linktype="external">https://github.com/dotnet/docfx/releases</a>, extract it to a local folder, and add it to PATH so you can run it anywhere.</li>
+<li><strong>NuGet</strong>: <code>nuget install docfx.console</code>. <code>docfx.exe</code> is under folder <em>docfx.console/tools/</em>.</li>
+</ul>
+<p><em>Step2.</em> Create a sample project</p>
+<pre><code>docfx init -q
+</code></pre>
+<p>This command generates a default project named <code>docfx_project</code>.</p>
+<p><em>Step3.</em> Build the website</p>
+<pre><code>docfx docfx_project\docfx.json --serve
+</code></pre>
+<p>Now you can view the generated website on http://localhost:8080.</p>
+<div class="IMPORTANT">
+<h5>IMPORTANT</h5>
+<p>For macOS/Linux users: Use <a href="https://www.mono-project.com/" data-linktype="external">Mono</a> version &gt;= 5.10. Do <strong>NOT</strong> install Debian/Ubuntu-provided packages, since they typically do not provide all the packages required (for example, <code>msbuild</code> is missing). Once you have the Mono project's repositories added, the following command line can be used to install the prerequisites on Debian/Ubuntu: <code>sudo apt-get install mono-runtime mono-devel msbuild</code>.</p>
+<p>For macOS users: <strong>DO NOT</strong> Install Mono from Homebrew, but rather from the <a href="https://www.mono-project.com/download/stable/#download-mac" data-linktype="external">Mono download page</a>.</p>
+</div>
+<h2 id="3-use-docfx-integrated-with-visual-studio">3. Use <em>DocFX</em> integrated with Visual Studio</h2>
+<p><em>Step1.</em> Create a <strong>Class Library (.NET Framework)</strong> project</p>
+<p><em>Step2.</em> Right click on the project and select <strong>Manage NuGet Package</strong></p>
+<p><em>Step3.</em> Search and install the <a href="https://www.nuget.org/packages/docfx.console/" data-linktype="external"><code>docfx.console</code></a> NuGet package. It adds itself to the build targets and adds the <code>docfx.json</code> configuration file along with other files.</p>
+<p><em>Step4.</em> <strong>Build</strong> the project, and a <code>_site</code> folder will be generated with the documentation.</p>
+<div class="NOTE">
+<h5>NOTE</h5>
+<p><em>Possible warning</em>:</p>
+<ul>
+<li><p><em>Cache is corrupted</em>: if your project targets multiple frameworks, you have to indicate one to be the main for the documentation, through the <a href="https://github.com/dotnet/docfx/issues/1254#issuecomment-294080535" data-linktype="external"><code>TargetFramework</code> property</a> in <code>docfx.json</code>:</p>
+<p>&quot;metadata&quot;: [
+{
+&quot;src&quot;: &quot;...&quot;,
+&quot;dest&quot;: &quot;...&quot;,
+&quot;properties&quot;: {
+&quot;TargetFramework&quot;: &lt;one_of_your_framework&gt;
+}
+},
+]</p>
+</li>
+</ul>
+</div>
+<h2 id="4-use-docfx-with-a-build-server">4. Use <em>DocFX</em> with a Build Server</h2>
+<h2 id="41-steps">4.1 Steps</h2>
+<p><em>DocFX</em> can be used in a Continuous Integration (CI) environment.</p>
+<p>Consider a typical scenario: We want to set up a job on a CI service (e.g. <a href="https://azure.microsoft.com/en-us/services/devops/pipelines/" data-linktype="external">Azure Pipelines</a>) to build documents automatically and publish to a website (e.g. <a href="https://pages.github.com/" data-linktype="external">GitHub Pages</a>). We can achieve this with a script in a CI job with the following steps:</p>
+<ol>
+<li>clone repo</li>
+<li><code>choco install docfx</code></li>
+<li><code>docfx {docsetPath}</code>, while you can change <code>build.dest</code> in <code>docfx.json</code> to set the output path</li>
+<li>push all the content in <code>docsetPath/_site</code> to <code>gh-pages</code> branch</li>
+</ol>
+<div class="NOTE">
+<h5>NOTE</h5>
+<p>These steps give an overall impression of what to do. You can adjust them depending on actual scenario.</p>
+</div>
+<p><a href="https://github.com/docascode/docfx-seed/blob/master/appveyor.yml" data-linktype="external">docfx-seed</a> project provides a sample integrating with AppVeyor.</p>
+<h2 id="42-set-branch-name">4.2 Set branch name</h2>
+<p>Most build systems do not checkout the branch that is being built, but use a <code>detached head</code> for the specific commit.  DocFX needs the branch name to implement the <code>View Source</code> link in the API documentation.</p>
+<p>Many build systems set an environment variable with the branch name.  DocFX uses the following automatically:</p>
+<ul>
+<li><code>APPVEYOR_REPO_BRANCH</code> - <a href="https://www.appveyor.com/" data-linktype="external">AppVeyor</a></li>
+<li><code>BUILD_SOURCEBRANCHNAME</code> - <a href="https://azure.microsoft.com/en-us/services/devops/pipelines/" data-linktype="external">Azure Pipelines</a></li>
+<li><code>CI_BUILD_REF_NAME</code> - <a href="https://about.gitlab.com/gitlab-ci/" data-linktype="external">GitLab CI</a></li>
+<li><code>Git_Branch</code> - <a href="https://www.jetbrains.com/teamcity/" data-linktype="external">TeamCity</a></li>
+<li><code>GIT_BRANCH</code> - <a href="https://jenkins.io/" data-linktype="external">Jenkins</a></li>
+<li><code>GIT_LOCAL_BRANCH</code> - <a href="https://jenkins.io/" data-linktype="external">Jenkins</a></li>
+</ul>
+<p>Setting the environment variable <code>DOCFX_SOURCE_BRANCH_NAME</code> tells DocFX which branch name to use, if the CI service you use is not in the list above.</p>
+<div class="NOTE">
+<h5>NOTE</h5>
+<p><em>Known issue in AppVeyor</em>: Currently <code>platform: Any CPU</code> in <em>appveyor.yml</em> causes <code>docfx metadata</code> failure. <a href="https://github.com/dotnet/docfx/issues/1078" data-linktype="external">https://github.com/dotnet/docfx/issues/1078</a></p>
+</div>
+<h2 id="5-a-seed-project-to-play-with-docfx">5. A seed project to play with <em>DocFX</em></h2>
+<p>Here is a seed project: <a href="https://github.com/docascode/docfx-seed" data-linktype="external">https://github.com/docascode/docfx-seed</a>. It contains</p>
+<ol>
+<li>A basic C# project under <code>src</code>.</li>
+<li>Several conceptual files under <code>articles</code>.</li>
+<li>An overwrite file to add extra content to API under <code>specs</code>.</li>
+<li><code>toc.yml</code> under root folder. It renders as the navbar of the website.</li>
+<li><code>docfx.json</code> under root folder. It is the configuration file that <code>docfx</code> depends upon.</li>
+</ol>
+<div class="TIP">
+<h5>TIP</h5>
+<p>It's good practice to separate files with different types into different folders.</p>
+</div>
+<h2 id="6-qa">6. Q&amp;A</h2>
+<ol>
+<li>Q: How do I quickly reference APIs from other APIs or conceptual files?
+A: Use <code>@uid</code> syntax.</li>
+<li>Q: What is <code>uid</code> and where do I find <code>uid</code>?
+A: Refer to <a href="../../spec/docfx_flavored_markdown/#cross-reference" data-linktype="relative-path">Cross Reference</a> section in <a href="../../spec/docfx_flavored_markdown/" data-linktype="relative-path">DFM</a>.</li>
+<li>Q: How do I quickly find <code>uid</code> in the website?
+A: In the generated website, hit F12 to view source, and look at the title of an API. You can find <code>uid</code> in <code>data-uid</code> attribute.</li>
+</ol>
+
+					</article>
+
+				</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a href="https://github.com/docascode/template/blob/feature/ghpage/samples/tutorial/docfx_getting_started.md" class="contribution-link">
+            <img class="svg" src="/svg/edit.svg">
+            <span>Edit this doc</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+			</div>
+		</div>
+<footer>
+  <div class="grad-bottom"></div>
+  <div class="footer">
+    <div class="container">
+      <span class="pull-right">
+        <a href="#top">Back to top</a>
+      </span>
+    <span>Copyright © Microsoft.<br>Generated by <strong>DocFX</strong></span>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>

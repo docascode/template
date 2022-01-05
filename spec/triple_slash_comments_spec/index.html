@@ -1,0 +1,415 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="conceptual" content="<p>DocFX extracts <a href=&quot;https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/xml-documentation-comments&quot; data-linktype=&quot;external&quot;>triple-slash (///) code comments</a> from .NET source code when running <code>docfx metadata</code>. <a href=&quot;https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments&quot; data-linktype=&quot;external&quot;>Tags</a> in triple-slash (///) code comments are converted to corresponding metadata in .NET data model.</p>
+<div class=&quot;NOTE&quot;>
+<h5>NOTE</h5>
+<p><code>docfx</code> supports <a href=&quot;../docfx_flavored_markdown/&quot; data-linktype=&quot;relative-path&quot;>DocFX Flavored Markdown syntax</a> inside triple-slash (///) code comments. You can disable this feature by set <code>shouldSkipMarkup</code> when generating metadata: <code>docfx metadata --shouldSkipMarkup</code>.</p>
+</div>
+<h2 id=&quot;supported-tags&quot;>Supported tags</h2>
+<h3 id=&quot;top-level-block-tags&quot;>Top level block tags</h3>
+<p>Top level block tags are transformed to corresponding metadata in .NET data model.</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Metadata name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary</code></td>
+<td><code>summary</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>remarks</code></td>
+<td><code>remarks</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>returns</code></td>
+<td><code>returns</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>returns</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>exception</code></td>
+<td><code>exception</code></td>
+<td><code>List&amp;lt;</code>@&amp;quot;Microsoft.DocAsCode.DataContracts.ManagedReference.ExceptionInfo&amp;quot;<code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td><code>seealso</code></td>
+<td><code>seealso</code></td>
+<td><code>List&amp;lt;</code>@&amp;quot;Microsoft.DocAsCode.DataContracts.ManagedReference.LinkInfo&amp;quot;<code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td><code>see</code></td>
+<td><code>see</code></td>
+<td><code>List&amp;lt;</code>@&amp;quot;Microsoft.DocAsCode.DataContracts.ManagedReference.LinkInfo&amp;quot;<code>&amp;gt;</code></td>
+</tr>
+<tr>
+<td><code>example</code></td>
+<td><code>example</code></td>
+<td><code>List&amp;lt;string&amp;gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id=&quot;non-toplevel-tags&quot;>Non-toplevel tags</h3>
+<p>Non-toplevel tags transformed to HTML tags in DocFX.</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Transformed</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>para</code></td>
+<td><code>&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><code>&amp;lt;strong&amp;gt;&amp;lt;/strong&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td><code>em</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>see[@langword]</code></td>
+<td><code>&amp;lt;xref&amp;gt;&amp;lt;/xref&amp;gt;</code></td>
+<td><a href=&quot;https://github.com/dotnet/docfx/blob/27f7f55746dc48f0d7700205c52dff071b51427b/Documentation/langwordmapping/langwordMapping.yml&quot; data-linktype=&quot;external&quot;>langwordMapping.yml</a> lists supported language keywords in <code>DocFX</code>. DocFX leverages <a href=&quot;../docfx_flavored_markdown/#cross-reference&quot; data-linktype=&quot;relative-path&quot;>cross reference</a> to reference language keywords. You can disable default langword resolver and apply your customized one by calling <code>docfx build --xref yourLangword.yml --noLangKeyword</code></td>
+</tr>
+<tr>
+<td><code>see[@href]</code></td>
+<td><code>&amp;lt;a&amp;gt;&amp;lt;/a&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>see[@cref]</code></td>
+<td><code>&amp;lt;xref&amp;gt;&amp;lt;/xref&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>paramref</code></td>
+<td><code>&amp;lt;span class=&amp;quot;paramref&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>typeparamref</code></td>
+<td><code>&amp;lt;span class=&amp;quot;typeparamref&amp;quot;&amp;gt;&amp;lt;/span&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&amp;quot;table&amp;quot;</code></td>
+<td><code>&amp;lt;table&amp;gt;&amp;lt;/table&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&amp;quot;bullet&amp;quot;</code></td>
+<td><code>&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&amp;quot;number&amp;quot;</code></td>
+<td><code>&amp;lt;ol&amp;gt;&amp;lt;/ol&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><code>&amp;lt;code&amp;gt;&amp;lt;/code&amp;gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><code>&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id=&quot;custom-tags&quot;>Custom tags</h2>
+<h3 id=&quot;inheritdoc&quot;>inheritdoc</h3>
+<p><code>docfx</code> supports a subset of the <a href=&quot;https://ewsoftware.github.io/XMLCommentsGuide/html/86453FFB-B978-4A2A-9EB5-70E118CA8073.htm&quot; data-linktype=&quot;external&quot;>inheritdoc functionality available in Sandcastle</a>. Specifically, it implements most of the &amp;quot;Top-Level Inheritance Rules&amp;quot;. It does not implement:</p>
+<ul>
+<li>Support for the <code>select</code> attribute.</li>
+<li>Automatic inheritance of documentation for explicit interface implementations.</li>
+<li>Support for inline <code>inheritdoc</code> tags (i.e., an <code>inheritdoc</code> tag inside of an <code>example</code> tag).</li>
+</ul>
+" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="3e537b2d-c263-ae30-9206-e3e8762abec2" />
+<meta name="document_version_independent_id" content="269f9687-ec10-4fbc-374a-c5609aab17e7" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/triple_slash_comments_spec.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/feature/ghpage/samples/spec/triple_slash_comments_spec.md" />
+<meta name="rawTitle" content="<h1 id=&quot;triple-slash--code-comments-support&quot;>Triple-slash (///) Code Comments Support</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="239" />
+
+
+	<title>Triple-slash (///) Code Comments Support</title>
+
+	<link rel="stylesheet" href="/dist/docfx.css">
+
+	<script type="text/javascript" src="/styles/docfx.vendor.js"></script>
+	<script type="text/javascript" src="/dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="/svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <form class="navbar-form navbar-right" role="search" id="search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+        </div>
+      </form>
+      <div class="switch-theme" title="Switch Theme">
+        <img class="svg hidden light-entrance" src="/svg/sun.svg">
+        <img class="svg hidden dark-entrance" src="/svg/moon.svg">
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+    <ul class="breadcrumb">
+      <li></li>
+    </ul>
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc"></div>
+  </div>
+</div>
+			<div class="article row grid-right">
+
+				<div class="col-md-10">
+
+					<article class="content wrap" id="_content" data-uid="">
+						<h1 id="triple-slash--code-comments-support">Triple-slash (///) Code Comments Support</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+</ul>						<p>DocFX extracts <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/xml-documentation-comments" data-linktype="external">triple-slash (///) code comments</a> from .NET source code when running <code>docfx metadata</code>. <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments" data-linktype="external">Tags</a> in triple-slash (///) code comments are converted to corresponding metadata in .NET data model.</p>
+<div class="NOTE">
+<h5>NOTE</h5>
+<p><code>docfx</code> supports <a href="../docfx_flavored_markdown/" data-linktype="relative-path">DocFX Flavored Markdown syntax</a> inside triple-slash (///) code comments. You can disable this feature by set <code>shouldSkipMarkup</code> when generating metadata: <code>docfx metadata --shouldSkipMarkup</code>.</p>
+</div>
+<h2 id="supported-tags">Supported tags</h2>
+<h3 id="top-level-block-tags">Top level block tags</h3>
+<p>Top level block tags are transformed to corresponding metadata in .NET data model.</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Metadata name</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>summary</code></td>
+<td><code>summary</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>remarks</code></td>
+<td><code>remarks</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>returns</code></td>
+<td><code>returns</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>value</code></td>
+<td><code>returns</code></td>
+<td><code>string</code></td>
+</tr>
+<tr>
+<td><code>exception</code></td>
+<td><code>exception</code></td>
+<td><code>List&lt;</code>@&quot;Microsoft.DocAsCode.DataContracts.ManagedReference.ExceptionInfo&quot;<code>&gt;</code></td>
+</tr>
+<tr>
+<td><code>seealso</code></td>
+<td><code>seealso</code></td>
+<td><code>List&lt;</code>@&quot;Microsoft.DocAsCode.DataContracts.ManagedReference.LinkInfo&quot;<code>&gt;</code></td>
+</tr>
+<tr>
+<td><code>see</code></td>
+<td><code>see</code></td>
+<td><code>List&lt;</code>@&quot;Microsoft.DocAsCode.DataContracts.ManagedReference.LinkInfo&quot;<code>&gt;</code></td>
+</tr>
+<tr>
+<td><code>example</code></td>
+<td><code>example</code></td>
+<td><code>List&lt;string&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="non-toplevel-tags">Non-toplevel tags</h3>
+<p>Non-toplevel tags transformed to HTML tags in DocFX.</p>
+<table>
+<thead>
+<tr>
+<th>Tags</th>
+<th>Transformed</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>para</code></td>
+<td><code>&lt;p&gt;&lt;/p&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td><code>&lt;strong&gt;&lt;/strong&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>i</code></td>
+<td><code>em</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>see[@langword]</code></td>
+<td><code>&lt;xref&gt;&lt;/xref&gt;</code></td>
+<td><a href="https://github.com/dotnet/docfx/blob/27f7f55746dc48f0d7700205c52dff071b51427b/Documentation/langwordmapping/langwordMapping.yml" data-linktype="external">langwordMapping.yml</a> lists supported language keywords in <code>DocFX</code>. DocFX leverages <a href="../docfx_flavored_markdown/#cross-reference" data-linktype="relative-path">cross reference</a> to reference language keywords. You can disable default langword resolver and apply your customized one by calling <code>docfx build --xref yourLangword.yml --noLangKeyword</code></td>
+</tr>
+<tr>
+<td><code>see[@href]</code></td>
+<td><code>&lt;a&gt;&lt;/a&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>see[@cref]</code></td>
+<td><code>&lt;xref&gt;&lt;/xref&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>paramref</code></td>
+<td><code>&lt;span class=&quot;paramref&quot;&gt;&lt;/span&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>typeparamref</code></td>
+<td><code>&lt;span class=&quot;typeparamref&quot;&gt;&lt;/span&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&quot;table&quot;</code></td>
+<td><code>&lt;table&gt;&lt;/table&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&quot;bullet&quot;</code></td>
+<td><code>&lt;ul&gt;&lt;/ul&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>list type=&quot;number&quot;</code></td>
+<td><code>&lt;ol&gt;&lt;/ol&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>c</code></td>
+<td><code>&lt;code&gt;&lt;/code&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>code</code></td>
+<td><code>&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="custom-tags">Custom tags</h2>
+<h3 id="inheritdoc">inheritdoc</h3>
+<p><code>docfx</code> supports a subset of the <a href="https://ewsoftware.github.io/XMLCommentsGuide/html/86453FFB-B978-4A2A-9EB5-70E118CA8073.htm" data-linktype="external">inheritdoc functionality available in Sandcastle</a>. Specifically, it implements most of the &quot;Top-Level Inheritance Rules&quot;. It does not implement:</p>
+<ul>
+<li>Support for the <code>select</code> attribute.</li>
+<li>Automatic inheritance of documentation for explicit interface implementations.</li>
+<li>Support for inline <code>inheritdoc</code> tags (i.e., an <code>inheritdoc</code> tag inside of an <code>example</code> tag).</li>
+</ul>
+
+					</article>
+
+				</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a href="https://github.com/docascode/template/blob/feature/ghpage/samples/spec/triple_slash_comments_spec.md" class="contribution-link">
+            <img class="svg" src="/svg/edit.svg">
+            <span>Edit this doc</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+			</div>
+		</div>
+<footer>
+  <div class="grad-bottom"></div>
+  <div class="footer">
+    <div class="container">
+      <span class="pull-right">
+        <a href="#top">Back to top</a>
+      </span>
+    <span>Copyright © Microsoft.<br>Generated by <strong>DocFX</strong></span>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>
