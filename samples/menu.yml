@@ -1,6 +1,0 @@
-#YamlMime:Menu
-items:
-- name: Tutorials
-  href: tutorial/docfx_getting_started.md
-- name: Specifications
-  href: spec/metadata_format_spec.md
