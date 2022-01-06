@@ -18,7 +18,6 @@ function build({ watch } = {}) {
   return esbuild.build(Object.assign(watchOptions, {
     entryPoints: [
       'src/docfx.ts',
-      'src/docfx.worker.ts',
       'src/docfx.scss',
     ],
     outdir: 'dist',

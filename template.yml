@@ -3,4 +3,3 @@ description: The default docfx site template.
 assets:
 - svg/**
 - dist/**
-- styles/**

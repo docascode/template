@@ -6,6 +6,8 @@ import $ from 'jquery'
 window.jQuery = $
 window.$ = $
 
+require('bootstrap')
+
 import { enableAnchor } from './scripts/anchor'
 import { renderFooter, renderLogo, workAroundFixedHeaderForAnchors } from './scripts/header'
 import { highlight } from './scripts/highlight'
@@ -14,14 +16,11 @@ import { renderAffix, renderBreadcrumb, renderNavbar } from './scripts/nav'
 import { enableSwitchTheme } from './scripts/theme'
 import { renderToc } from './scripts/toc'
 
-require('bootstrap')
-
 $(function () {
   enableAnchor()
   enableSwitchTheme();
   workAroundFixedHeaderForAnchors();
   highlight();
-  // enableSearch();
 
   renderTables();
   renderAlerts();
