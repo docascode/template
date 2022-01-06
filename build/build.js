@@ -3,7 +3,12 @@ const { sassPlugin } = require('esbuild-sass-plugin')
 
 function build({ watch } = {}) {
 
-  const watchOptions = watch ? {
+  const debug = {
+    outdir: 'debug/dist',
+    bundle: true,
+    minify: false,
+    sourcemap: true,
+    treeShaking: true,
     watch: {
       onRebuild(error, result) {
         if (error) {
@@ -13,18 +18,22 @@ function build({ watch } = {}) {
         }
       }
     }
-  } : {}
+  }
 
-  return esbuild.build(Object.assign(watchOptions, {
+  const release = {
+    outdir: 'dist',
+    bundle: true,
+    minify: true,
+    minifySyntax: true,
+    sourcemap: false,
+    treeShaking: true,
+  }
+
+  return esbuild.build(Object.assign(watch ? debug : release, {
     entryPoints: [
       'src/docfx.ts',
       'src/docfx.scss',
     ],
-    outdir: 'dist',
-    bundle: true,
-    minify: true,
-    sourcemap: false,
-    treeShaking: true,
     plugins: [
       sassPlugin()
     ],

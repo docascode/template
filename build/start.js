@@ -22,10 +22,11 @@ function serve({ open, ready } = { open: true }) {
       ready: ready ? (err, bs)  => ready(bs.options.get('urls').get('local')) : undefined
     },
     files: [
-      'dist',
+      'debug/dist',
       join(site, '**')
     ],
     server: [
+      'debug',
       '.',
       site
     ]
