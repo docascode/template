@@ -1,7 +1,7 @@
 ﻿- name: Getting Started
   items:
   - name: Quickstart
-    href: docfx_getting_started.md
+    href: getting-started.md
   - name: DocFX User Manual
     href: docfx.exe_user_manual.md
   - name: "HowTo: Filter Out Unwanted APIs"
