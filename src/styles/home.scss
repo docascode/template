@@ -1,0 +1,134 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+.hero button,
+.hero a,
+.hero .btn-primary {
+  color: #97d7fc;
+}
+.hero {
+    color: #97d7fc;
+    background-color: #385361;
+    background-image: -webkit-gradient(linear,left bottom,right top,color-stop(0%,#000),color-stop(100%,#385361));
+    background-image: -webkit-linear-gradient(45deg,#000 0,#385361 100%);
+    background-image: -moz-linear-gradient(45deg,#000 0,#385361 100%);
+    background-image: -ms-linear-gradient(45deg,#000 0,#385361 100%);
+    background-image: -o-linear-gradient(45deg,#000 0,#385361 100%);
+    background-image: linear-gradient(45deg,#000 0,#385361 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000', endColorstr='#385361', GradientType=1);
+}
+.hero strong {
+    color: #e7e7e7;
+}
+.buttons-unit .button {
+    color: #fff;
+    background: #6cb8e6;
+}
+
+/* End Colors */
+
+.hero {
+    height: 550px;
+    margin-top: 50px;
+    padding-top:  120px;
+    font-weight: 300;
+    text-align: center;
+}
+.hero .buttons-unit-small a {
+  font-size: 16px;
+  height: 13px;
+  line-height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+  padding-right: 8px;
+  text-decoration: underline;
+  border-right: 1px solid #97d7fc;
+}
+.hero .buttons-unit-small a:last-child {
+  margin-right: 0;
+  padding-right: 0;
+  border-right: 0;
+}
+
+.key-section {
+  padding: 80px 0;
+  border-bottom: 2px solid #000;
+  -webkit-border-image-source: -webkit-gradient(linear, left, right, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(50%, #385361), color-stop(100%, rgba(0, 0, 0, 0)));
+  -webkit-border-image-source: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -moz-border-image-source: -moz-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -ms-border-image-source: -ms-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  -o-border-image-source: -o-linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  border-image-source: linear-gradient(90deg, rgba(0, 0, 0, 0), #385361 50%, rgba(0, 0, 0, 0));
+  border-image-slice: 1;
+}
+
+.key-section:last-child {
+  border-bottom: 0;
+}
+
+.key-section .glyphicon, .counter-key-section .glyphicon {
+  font-size: 4em;
+  display: table-cell;
+  vertical-align: middle;
+}
+.glyphicon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.key-section .glyphicon {
+  color: green;
+}
+
+.key-section section, .counter-key-section section {
+  display: table-cell;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.version-link, .github-link{
+  margin: 5px;
+  text-decoration: underline;
+}
+.hero strong {
+    font-weight: 400;
+    font-family: Rockwell;
+}
+.hero .text {
+    font-size: 64px;
+    text-align: center;
+}
+.hero .minitext {
+    font-size: 20px;
+    text-align: center;
+    font-family: Candara;
+    margin-top: 20px;
+}
+.buttons-unit {
+    margin-top: 40px;
+    text-align: center;
+}
+.hero .button {
+    border-radius: 4px;
+    padding: 8px 16px;
+    margin: 0 12px;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+}
+.buttons-unit .button {
+    font-size: 24px;
+}
+
+.page-type-home h2 a {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    height: 500px;
+    margin-top: 0px;
+  }
+  .hero .button {
+    display: block;
+    margin: 12px;
+  }
+}

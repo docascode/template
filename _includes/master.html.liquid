@@ -25,34 +25,39 @@
 		</header>
 
 		<div role="main" class="container body-content page-type-{{pageType}}">
-			{%- if disableToc -%}
-			<div class="article row grid">
+			{%- if fullPage -%}
+				{{ content }}
 			{%- else -%}
-			{%- include toc.html -%}
-			<div class="article row grid-right">
-			{%- endif -%}
-
-				{%- if disableAffix -%}
-				<div class="col-md-12">
+				{%- if disableToc -%}
+				<div class="article row grid">
 				{%- else -%}
-				<div class="col-md-10">
+				{%- include toc.html -%}
+				<div class="article row grid-right">
 				{%- endif -%}
 
-					<article class="content wrap" id="_content" data-uid="{{uid}}">
-						{{ heading1 }}
-						{%- unless disableMetabar -%}
-						{%- include metabar.html -%}
-						{%- endunless -%}
-						{{ content }}
-					</article>
+					{%- if disableAffix -%}
+					<div class="col-md-12">
+					{%- else -%}
+					<div class="col-md-10">
+					{%- endif -%}
 
+						<article class="content wrap" id="_content" data-uid="{{uid}}">
+							{{ heading1 }}
+							{%- unless disableMetabar -%}
+							{%- include metabar.html -%}
+							{%- endunless -%}
+							{{ content }}
+						</article>
+
+					</div>
+
+					{%- unless disableAffix -%}
+					{%- include affix.html -%}
+					{%- endunless -%}
 				</div>
-
-				{%- unless disableAffix -%}
-				{%- include affix.html -%}
-				{%- endunless -%}
-			</div>
+			{%- endif -%}
 		</div>
+
 		{%- include footer.html -%}
 	</div>
 </body>
