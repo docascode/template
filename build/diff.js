@@ -30,7 +30,7 @@ function ready(url) {
 async function captureScreenshots(baseurl) {
   const cluster = await Cluster.launch({
     concurrency: Cluster.CONCURRENCY_CONTEXT,
-    maxConcurrency: 2,
+    maxConcurrency: 8,
   });
 
   ensuredirSync('tests/screenshots/actual')
