@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-let theme = window.localStorage.getItem('docfxTemplateTheme') || 'light';
+import cookie  from 'js-cookie'
+
+let theme = cookie.get('docfx.theme') || 'light';
 
 export function enableSwitchTheme() {
   let getThemeClass = theme => `theme-${theme}`;
@@ -19,7 +21,7 @@ export function enableSwitchTheme() {
 
     let targetTheme = theme === 'light' ? 'dark' : 'light';
 
-    window.localStorage.setItem('docfxTemplateTheme', targetTheme);
+    cookie.set('docfx.theme', targetTheme);
     document.body.classList.add(getThemeClass(targetTheme));
     entrance.querySelector(`.${theme}-entrance`).classList.remove('hidden');
     entrance.querySelector(`.${targetTheme}-entrance`).classList.add('hidden');

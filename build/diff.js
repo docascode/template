@@ -12,6 +12,11 @@ const urls = [
   '/tutorial/walkthrough/walkthrough_create_a_docfx_project_2/'
 ]
 
+const themes = [
+  'light',
+  'dark'
+]
+
 const viewports = [
   { width: 1920, height: 1080 },
   { width: 1152, height: 648 },
@@ -35,17 +40,24 @@ async function captureScreenshots(baseurl) {
 
   ensuredirSync('tests/screenshots/actual')
 
-  await cluster.task(async ({ page, data: { url, viewport } }) => {
-    const path = `tests/screenshots/actual/${url.slice(1).replace(/[/]+/g, '-')}-${viewport.width}-${viewport.height}.png`
-    await page.setViewport(viewport)
-    await page.goto(baseurl + url);
-    await page.screenshot({ path, fullPage: true });
-    console.log(`Save screenshot to ${path}`)
+  await cluster.task(async ({ page, data: { url, viewport, theme } }) => {
+    try {
+      const path = `tests/screenshots/actual/${url.slice(1).replace(/[/]+/g, '-')}-${viewport.width}-${viewport.height}-${theme}.png`
+      await page.setCookie({ name: 'docfx.theme', value: theme, domain: 'localhost' })
+      await page.setViewport(viewport)
+      await page.goto(baseurl + url)
+      await page.screenshot({ path, fullPage: true })
+      console.log(`Save screenshot to ${path}`)
+    } catch (e) {
+      console.error(e)
+    }
   });
 
-  for (const viewport of viewports) {
-    for (const url of urls) {
-      cluster.queue({ url, viewport });
+  for (const theme of themes) {
+    for (const viewport of viewports) {
+      for (const url of urls) {
+        cluster.queue({ url, viewport, theme });
+      }
     }
   }
 
