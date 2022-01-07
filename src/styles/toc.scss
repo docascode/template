@@ -1,0 +1,193 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+.sidetoc {
+  position: fixed;
+  width: 260px;
+  top: 170px;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.sidetoc.shiftup {
+  bottom: 70px;
+}
+
+.sidetoc .level2 li {
+  min-height: 30px;
+  line-height: 30px;
+}
+
+/* body .toc{
+  overflow-x: hidden;
+} */
+
+.sidetoggle.ng-hide {
+  display: block !important;
+}
+.sidetoc-expand > .caret {
+  margin-left: 0px;
+  margin-top: -2px;
+}
+.sidetoc-expand > .caret-side {
+  border-left: 4px solid;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  margin-left: 4px;
+  margin-top: -4px;
+}
+.sidetoc-heading {
+  font-weight: 500;
+}
+
+.toc {
+  margin: 0px 0 0 10px;
+  padding: 0 10px;
+}
+.expand-stub {
+  position: absolute;
+  left: -10px;
+}
+.toc .nav > li > a.sidetoc-expand {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.toc .nav > li > a {
+  color: #666666;
+  margin-left: 5px;
+  display: block;
+  padding: 0;
+}
+.toc .nav > li > a:hover,
+.toc .nav > li > a:focus {
+  color: #000000;
+  background: none;
+  text-decoration: inherit;
+}
+.toc .nav > li.active > a {
+  color: #3689d1;
+}
+.toc .nav > li.active > a:hover,
+.toc .nav > li.active > a:focus {
+  color: #3689d1;
+}
+
+.toc .nav > li> .expand-stub {
+  cursor: pointer;
+}
+
+/* .toc .nav > li.active > .expand-stub::before,
+.toc .nav > li.in > .expand-stub::before,
+.toc .nav > li.in.active > .expand-stub::before,
+.toc .nav > li.filtered > .expand-stub::before {
+    content: "-";
+}
+
+.toc .nav > li > .expand-stub::before,
+.toc .nav > li.active > .expand-stub::before {
+    content: "+";
+} */
+.toc .nav > li.active > .expand-stub::before {
+  color: #3689d1;
+}
+
+.toc .nav > li > .expand-stub::before {
+    content: ">";
+    transition: transform .2s ease;
+    font-family: Consolas;
+    display: block;
+    /* + */
+}
+
+.toc .nav > li.in > .expand-stub:before,
+.toc .nav > li.filtered > .expand-stub::before {
+  transform: rotate(90deg);
+  /* - */
+}
+
+.toc .nav > li.filtered > ul,
+.toc .nav > li.in > ul {
+  display: block;
+}
+
+.toc .nav > li > ul {
+  display: none;
+}
+
+.toc ul{
+  font-size: 12px;
+  margin: 0 0 0 3px;
+}
+
+.toc .level1 > li {
+  font-weight: bold;
+  margin-top: 10px;
+  position: relative;
+  font-size: 16px;
+}
+.toc .level2 {
+  font-weight: normal;
+  /* margin: 5px 0 0 15px; */
+  margin: 5px 0 0 0;
+  padding-left: 15px;
+  font-size: 14px;
+}
+.toc-toggle {
+  display: none;
+  margin: 0 15px 0px 15px;
+}
+.sidefilter {
+  position: fixed;
+  top: 110px;
+  width: 260px;
+  padding: 5px;
+  z-index: 1;
+}
+.toc-filter {
+  border-radius: 5px;
+  background: #fff;
+  color: #666666;
+  padding: 5px 5px 5px 10px;
+  position: relative;
+  border: 1px solid gray;
+  transition: box-shadow .2s ease;
+}
+.toc-filter.focused {
+  border-color: #3689d1;
+  box-shadow: 0px 0px 5px 2px #3689D1;
+}
+.toc-filter > input {
+  border: 0;
+  color: #666666;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+}
+.toc-filter > input:focus {
+  outline: 0;
+}
+.toc-filter > .filter-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.toc-filter > .clear-icon {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  cursor: pointer;
+}
+
+/* For toc iframe */
+@media (max-width: 260px) {
+  .toc .level2 > li {
+    display: block;
+  }
+
+  .toc .level2 > li:after {
+    display: none;
+  }
+}
