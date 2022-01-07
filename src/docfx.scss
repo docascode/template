@@ -1118,25 +1118,8 @@ div.embeddedvideo iframe {
     margin-top: 2em;
 }
 
-/* switch theme */
-.navbar .switch-theme {
-  float: right;
-  width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-.navbar .switch-theme .hidden {
-  display: none;
-}
-
 body.theme-dark {
   background: #333;
-}
-
-body.theme-dark .navbar .switch-theme svg {
-  fill: #ccc;
 }
 
 body.theme-dark .navbar {

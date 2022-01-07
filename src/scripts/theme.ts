@@ -9,22 +9,18 @@ export function enableSwitchTheme() {
   let getThemeClass = theme => `theme-${theme}`;
   document.body.classList.add(getThemeClass(theme));
 
-  let entrance = document.querySelector('.switch-theme');
-  if (!entrance) {
+  let button = document.getElementById('switch-theme');
+  if (!button) {
     return;
   }
 
-  entrance.querySelector(`.${theme === 'light' ? 'dark' : 'light'}-entrance`).classList.remove('hidden');
-
-  entrance.addEventListener('click', () => {
+  button.addEventListener('click', () => {
     document.body.classList.remove(getThemeClass(theme));
 
     let targetTheme = theme === 'light' ? 'dark' : 'light';
 
     cookie.set('docfx.theme', targetTheme);
     document.body.classList.add(getThemeClass(targetTheme));
-    entrance.querySelector(`.${theme}-entrance`).classList.remove('hidden');
-    entrance.querySelector(`.${targetTheme}-entrance`).classList.add('hidden');
     theme = targetTheme;
   });
 }
