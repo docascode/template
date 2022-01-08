@@ -33,17 +33,4 @@ $(function () {
 
   breakText();
   renderTabs();
-
-  window.refresh = function (article) {
-    // Update markup result
-    if (typeof article == 'undefined' || typeof article.content == 'undefined')
-      console.error("Null Argument");
-    $("article.content").html(article.content);
-
-    highlight();
-    renderTables();
-    renderAlerts();
-    renderAffix();
-    renderTabs();
-  }
 });
