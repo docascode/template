@@ -31,8 +31,6 @@ export function renderToc() {
       if (getAbsolutePath(e.href) === currentHref) {
         $(e).addClass(active);
       }
-
-      $(e).breakWord();
     });
 
     registerTocEvents();
