@@ -2,14 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
-@import '../node_modules/highlight.js/styles/github-gist.css';
+@import '../node_modules/highlight.js/styles/stackoverflow-light.css';
+@import './styles/font.scss';
 @import './styles/home.scss';
 @import './styles/nav.scss';
 @import './styles/toc.scss';
 
 html,
 body {
-  font-family: 'Segoe UI', Tahoma, Helvetica, sans-serif;
   height: 100%;
 }
 
