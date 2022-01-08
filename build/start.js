@@ -34,9 +34,7 @@ function serve({ open, ready } = { open: true }) {
 }
 
 function buildContent() {
-  const options = { stdio: 'inherit', shell: true }
-  spawnSync('dotnet tool update -g docfx --version "3.0.0-*" --add-source https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-public-packages/nuget/v3/index.json', options)
-  spawnSync('docfx build samples --template .', options)
+  spawnSync('docfx build samples --template .', { stdio: 'inherit', shell: true })
 }
 
 module.exports = { start }
