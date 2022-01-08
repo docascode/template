@@ -79,17 +79,6 @@
   cursor: pointer;
 }
 
-/* .toc .nav > li.active > .expand-stub::before,
-.toc .nav > li.in > .expand-stub::before,
-.toc .nav > li.in.active > .expand-stub::before,
-.toc .nav > li.filtered > .expand-stub::before {
-    content: "-";
-}
-
-.toc .nav > li > .expand-stub::before,
-.toc .nav > li.active > .expand-stub::before {
-    content: "+";
-} */
 .toc .nav > li.active > .expand-stub::before {
   color: #3689d1;
 }
@@ -123,14 +112,11 @@
 }
 
 .toc .level1 > li {
-  font-weight: bold;
   margin-top: 10px;
   position: relative;
-  font-size: 16px;
+  font-size: 14px;
 }
 .toc .level2 {
-  font-weight: normal;
-  /* margin: 5px 0 0 15px; */
   margin: 5px 0 0 0;
   padding-left: 15px;
   font-size: 14px;

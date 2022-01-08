@@ -6,8 +6,8 @@ import AnchorJs from 'anchor-js';
 export function enableAnchor() {
   const anchors = new AnchorJs()
   anchors.options = {
-    placement: 'left',
-    visible: 'touch'
+    placement: 'right',
+    visible: 'hover'
   };
-  anchors.add('article h2:not(.no-anchor), article h3:not(.no-anchor), article h4:not(.no-anchor)');
+  anchors.add('article h2:not(.no-anchor)');
 }
