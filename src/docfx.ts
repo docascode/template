@@ -9,7 +9,7 @@ window.$ = $
 require('bootstrap')
 
 import { enableAnchor } from './scripts/anchor'
-import { renderFooter, renderLogo, workAroundFixedHeaderForAnchors } from './scripts/header'
+import { renderLogo, workAroundFixedHeaderForAnchors } from './scripts/header'
 import { highlight } from './scripts/highlight'
 import { breakText, renderAlerts, renderLinks, renderTables, renderTabs } from './scripts/markdown'
 import { renderAffix, renderBreadcrumb, renderNavbar } from './scripts/nav'
@@ -29,7 +29,6 @@ $(function () {
   Promise.all([renderNavbar(), renderToc()]).then(() => renderBreadcrumb());
 
   renderAffix();
-  renderFooter();
   renderLogo();
 
   breakText();

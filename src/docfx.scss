@@ -117,10 +117,6 @@ span.languagekeyword{
 .btn + .btn {
   margin-left: 10px;
 }
-.btn.pull-right {
-  margin-left: 10px;
-  margin-top: 5px;
-}
 .table {
   margin: 10px 0 20px;
 }
@@ -180,10 +176,6 @@ article h4{
   border: 0;
   font-weight: bold;
   margin-top: 2em;
-}
-
-article span.small.pull-right{
-  margin-top: 20px;
 }
 
 article section {
@@ -459,9 +451,6 @@ footer {
     margin-left: 0;
   }
   .grad-top,
-  .grad-bottom {
-    display: none;
-  }
   .toc-toggle {
     display: block;
   }
