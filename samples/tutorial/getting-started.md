@@ -38,3 +38,6 @@ docfx serve mydocs --watch
 ```
 
 After the command shell indicates that the website has started, browse to https://localhost:5001.
+
+
+[!code[name](TOC.yml?highlight=1,2-2,4-)]
