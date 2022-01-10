@@ -5,22 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<h2 id=&quot;1-overview&quot;>1. Overview</h2>
-<p>DocFX supports different <a href=&quot;../../tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in/&quot; data-linktype=&quot;relative-path&quot;>document processors</a> to handle different kinds of input. With a new data model introduced in, a new document processor is required to support that model, even most of the code logic is the same for these processors. With this situation considered, a Schema-driven Document Processor (abbreviated to <em>SDP</em> below) is introduced to simplify the process. Togethor with a well defined <a href=&quot;../docfx_document_schema/&quot; data-linktype=&quot;relative-path&quot;>DocFX Document Schema</a>, SDP is able to <em>validate</em> and <em>process</em> a new data model with no extra effort needed.</p>
-<h2 id=&quot;2-workflow&quot;>2. Workflow</h2>
-<p>The workflow for SDP is illustrated below. In general, the schema file, with suggested naming convention, has <code>documentType</code> in its name, as <code>{documentType}</code>.schema.json (When <code>title</code> is defined in the schema file, <code>title</code> is considered as the <code>documentType</code> for this schema). <code>docfx</code> loads the schema files from <code>schemas</code> subfolder in <code>template</code> folder, and creates processors for these schema files with per schema file per processor. With data models are processed, <code>docfx</code> applies templates for that <code>documentType</code> to these data model, as details illustrated in <a href=&quot;../../tutorial/intro_template/#naming-rule-for-a-renderer-file&quot; data-linktype=&quot;relative-path&quot;>Template Introduction</a> and generates output documentation.</p>
-<p><img src=&quot;../images/sdp_workflow.png&quot; alt=&quot;Workflow for SDP&quot; data-linktype=&quot;relative-path&quot;/></p>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="f1f20c2c-4ae1-6901-e819-d00900ba1978" />
 <meta name="document_version_independent_id" content="07e75c0d-773b-19a8-dec4-6f49e84bf403" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/sdp_design_spec.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/spec/sdp_design_spec.md" />
-<meta name="rawTitle" content="<h1 id=&quot;schema-driven-document-processorsdp-design-spec&quot;>Schema-driven Document Processor(SDP) Design Spec</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="176" />
 
@@ -73,7 +67,7 @@
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="schema-driven-document-processorsdp-design-spec">Schema-driven Document Processor(SDP) Design Spec</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>

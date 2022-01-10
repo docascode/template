@@ -5,169 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<p>In this topic, we will support hyperlinking in rtf files.</p>
-<p>Create a hyperlink in the rtf file:</p>
-<ol>
-<li>Open <code>foo.rtf</code> by <code>Word</code>.</li>
-<li>Add a hyperlink in content</li>
-<li>Set the link target to an existing <code>bar.rtf</code></li>
-<li>Save the document.</li>
-</ol>
-<h2 id=&quot;about-link&quot;>About link</h2>
-<p>An author can write any valid hyperlink in the document, and then needs to run <code>DocFX build</code> to update file links.</p>
-<h3 id=&quot;what-is-file-link&quot;>What is file link:</h3>
-<ol>
-<li>The hyperlink must be a relative path and not rooted.
-<ul>
-<li>valid: <code>foo\bar.rtf</code>, <code>../foobar.rtf</code></li>
-<li>invalid: <code>/foo.rtf</code>, <code>c:\foo\bar.rtf</code>, <code>http://foo.bar/</code>, <code>mailto:foo@bar.foobar</code></li>
-</ul>
-</li>
-<li>The file must exist.</li>
-</ol>
-<h3 id=&quot;why-update-file-link&quot;>Why update file link:</h3>
-<p>The story is:</p>
-<ol>
-<li>In <code>foo.rtf</code>, it has a file link to <code>bar.rtf</code>.</li>
-<li>In document build, <code>bar.rtf</code> generates a file with the name <code>bar.html</code>.</li>
-<li>But in <code>foo.rtf</code>, the link target is still <code>bar.rtf</code>, thus in the output folder we cannot find this file and we will get a broken link.</li>
-<li>To resolve the broken link, we need to update the link target from <code>bar.rtf</code> to <code>bar.html</code>.</li>
-</ol>
-<p>File link is a relative path, but we cannot track the relative path easily.
-So we track the <em>normalized file path</em> instead.</p>
-<h3 id=&quot;what-is-a-normalized-file-path&quot;>What is a <em>normalized file path</em>:</h3>
-<ol>
-<li>It always starts from the working folder (the folder that contains <code>docfx.json</code>), and we write it as <code>~/</code>.</li>
-<li>No <code>../</code> or <code>./</code> or <code>//</code></li>
-<li>Replace <code>\</code> with <code>/</code>.</li>
-<li>No url encoding. The path must be same as it in the file system.</li>
-<li>No anchor.</li>
-</ol>
-<p>Finally, a valid <em>normalized file path</em> looks like: <code>~/foo/bar.rtf</code>.</p>
-<ul>
-<li><p>Pros</p>
-<ul>
-<li><p>Same form in different documents when the target is the same file.</p>
-<p>When file structure is:</p>
-<pre><code>z:\a\b\foo.rtf
-z:\a\b\c\bar.rtf
-z:\a\b\c\foobar.rtf
-</code></pre>
-<p>Link target <code>c/foobar.rtf</code> in <code>foo.rtf</code> and link target <code>foobar.rtf</code> in <code>bar.rtf</code> is the same file.
-When the working folder is <code>z:\a\</code>, the link target is always <code>~/b/c/foobar.rtf</code>.</p>
-</li>
-<li><p>Avoids differences in style when referring to the same file.</p>
-<p>For example, the following hyperlinks target the same file: <code>a/foo.rtf</code>, <code>./a/foo.rtf</code>, <code>a/b/../foo.rtf</code>, <code>a//foo.rtf</code>, <code>a\foo.rtf</code></p>
-</li>
-</ul>
-</li>
-<li><p>Cons</p>
-<ul>
-<li>A folder with the name <code>~</code> is not supported.</li>
-</ul>
-</li>
-</ul>
-<h2 id=&quot;prepare&quot;>Prepare</h2>
-<ol>
-<li><p>Open the rtf plug-in library project in <code>Visual Studio</code>.</p>
-</li>
-<li><p>Add nuget packages:<br/>
-for plug-in: <code>Microsoft.DocAsCode.Utility</code></p>
-</li>
-<li><p>Add framework assembly reference:
-<code>System.Core</code>, <code>System.Web</code>, <code>System.Xml.Linq</code></p>
-</li>
-</ol>
-<h2 id=&quot;update-rtf-document-processor&quot;>Update rtf document processor</h2>
-<ol>
-<li><p>Following the rules for hyperlink, add a <code>FixLink</code> help method:</p>
-<pre><code class=&quot;lang-csharp&quot; name=&quot;FixLink&quot;>private static void FixLink(XAttribute link, RelativePath filePath, HashSet&amp;lt;string&amp;gt; linkToFiles)
-{
-    string linkFile;
-    string anchor = null;
-    if (PathUtility.IsRelativePath(link.Value))
-    {
-        var index = link.Value.IndexOf('#');
-        if (index == -1)
-        {
-            linkFile = link.Value;
-        }
-        else if (index == 0)
-        {
-            return;
-        }
-        else
-        {
-            linkFile = link.Value.Remove(index);
-            anchor = link.Value.Substring(index);
-        }
-        var path = filePath + (RelativePath)linkFile;
-        var file = (string)path.GetPathFromWorkingFolder();
-        link.Value = file + anchor;
-        linkToFiles.Add(HttpUtility.UrlDecode(file));
-    }
-}
-</code></pre>
-<p><code>RelativePath</code> helps us generate the links correctly.</p>
-</li>
-<li><p>Then add <code>CollectLinksAndFixDocument</code> method:</p>
-<pre><code class=&quot;lang-csharp&quot; name=&quot;CollectLinksAndFixDocument&quot;>private static HashSet&amp;lt;string&amp;gt; CollectLinksAndFixDocument(FileModel model)
-{
-    string content = (string)((Dictionary&amp;lt;string, object&amp;gt;)model.Content)[&amp;quot;conceptual&amp;quot;];
-    var doc = XDocument.Parse(content);
-    var links =
-        from attr in doc.Descendants().Attributes()
-        where &amp;quot;href&amp;quot;.Equals(attr.Name.LocalName, StringComparison.OrdinalIgnoreCase) || &amp;quot;src&amp;quot;.Equals(attr.Name.LocalName, StringComparison.OrdinalIgnoreCase)
-        select attr;
-    var path = (RelativePath)model.File;
-    var linkToFiles = new HashSet&amp;lt;string&amp;gt;();
-    foreach (var link in links)
-    {
-        FixLink(link, path, linkToFiles);
-    }
-    using (var sw = new StringWriter())
-    {
-        doc.Save(sw);
-        ((Dictionary&amp;lt;string, object&amp;gt;)model.Content)[&amp;quot;conceptual&amp;quot;] = sw.ToString();
-    }
-    return linkToFiles;
-}
-</code></pre></li>
-<li><p>Modify <code>Save</code> method with report links:</p>
-<pre><code class=&quot;lang-csharp&quot; name=&quot;Save&quot;>public SaveResult Save(FileModel model)
-{
-    HashSet&amp;lt;string&amp;gt; linkToFiles = CollectLinksAndFixDocument(model);
-
-    return new SaveResult
-    {
-        DocumentType = &amp;quot;Conceptual&amp;quot;,
-        ModelFile = model.File,
-        LinkToFiles = linkToFiles.ToImmutableArray(),
-    };
-}
-</code></pre></li>
-</ol>
-<!-- todo : `Update Reference` is preserved for next version of plugin. -->
-<p>View final <a href=&quot;../../codesnippet/rtf/hyperlink/rtfdocumentprocessor.cs&quot; data-linktype=&quot;relative-path&quot;>RtfDocumentProcessor.cs</a></p>
-<h2 id=&quot;test-and-verify&quot;>Test and verify</h2>
-<ol>
-<li>Build project.</li>
-<li>Copy dll to <code>Plugins</code> folder.</li>
-<li>Modify rtf file, create hyperlink, link to another rtf file, and save.</li>
-<li>Build with command <code>DocFX build</code>.</li>
-<li>Verify output html file.</li>
-</ol>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="d1d25ad4-bcfc-3e6e-e4f4-6d028c75e3ed" />
 <meta name="document_version_independent_id" content="2329581c-7914-52e8-0975-0555be3c2d61" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/advanced_support_hyperlink.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/advanced_support_hyperlink.md" />
-<meta name="rawTitle" content="<h1 id=&quot;-advanced-support-hyperlink&quot;>🔧 Advanced: Support Hyperlink</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="561" />
 
@@ -220,7 +67,7 @@ for plug-in: <code>Microsoft.DocAsCode.Utility</code></p>
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="-advanced-support-hyperlink">🔧 Advanced: Support Hyperlink</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>

@@ -5,61 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<h2 id=&quot;1-prerequisite&quot;>1. Prerequisite</h2>
-<ul>
-<li><a href=&quot;https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool&quot; data-linktype=&quot;external&quot;>DocFX</a></li>
-<li><a href=&quot;https://nodejs.org/en/download/&quot; data-linktype=&quot;external&quot;>Node.js</a> (includes npm)</li>
-</ul>
-<h2 id=&quot;2-steps&quot;>2. Steps</h2>
-<h3 id=&quot;21-prepare-source-code&quot;>2.1 Prepare Source Code</h3>
-<p>Prepare the JavaScript source code for generating document. In this tutorial, we take <a href=&quot;https://www.npmjs.com/package/azure-batch&quot; data-linktype=&quot;external&quot;>azure-batch</a> as an example</p>
-<pre><code>npm install azure-batch
-</code></pre>
-<h3 id=&quot;22-generate-metadata&quot;>2.2 Generate Metadata</h3>
-<p>We use <a href=&quot;https://www.npmjs.com/package/node2docfx&quot; data-linktype=&quot;external&quot;>Node2DocFX</a> tool to generate YAML files.</p>
-<pre><code>npm install node2docfx
-</code></pre>
-<p>Create the <code>node2docfx.json</code> for the tool configuration:</p>
-<pre><code class=&quot;lang-json&quot;>{
-  &amp;quot;source&amp;quot;: {
-    &amp;quot;include&amp;quot;: [&amp;quot;node_modules/azure-batch/lib&amp;quot;]
-  },
-  &amp;quot;destination&amp;quot;: &amp;quot;yml&amp;quot;
-}
-</code></pre>
-<p>With this config, the tool will read source code under <code>node_modules/azure-batch/lib</code>, and extract metadata to YAML files under <code>yml</code> folder:</p>
-<pre><code>node node_modules/node2docfx/node2docfx.js node2docfx.json
-</code></pre>
-<h3 id=&quot;23-build-document&quot;>2.3 Build Document</h3>
-<p>Create the configuration <code>docfx.json</code> for DocFX:</p>
-<pre><code class=&quot;lang-json&quot;>{
-  &amp;quot;build&amp;quot;: {
-    &amp;quot;content&amp;quot;: [
-      {
-        &amp;quot;files&amp;quot;: [&amp;quot;**/*.yml&amp;quot;],
-        &amp;quot;src&amp;quot;: &amp;quot;yml&amp;quot;,
-        &amp;quot;dest&amp;quot;: &amp;quot;api&amp;quot;
-      }
-    ],
-    &amp;quot;dest&amp;quot;: &amp;quot;_site&amp;quot;
-  }
-}
-</code></pre>
-<p>More information about <code>docfx.json</code> can be found in <a href=&quot;https://dotnet.github.io/docfx/tutorial/docfx.exe_user_manual.html&quot; data-linktype=&quot;external&quot;>user manual</a>. Run:</p>
-<pre><code>docfx docfx.json --serve
-</code></pre>
-<p>Now you can see your generated pages: http://localhost:8080/api/Account.html</p>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="8ce5b704-7b60-cccb-9b64-6c8a0042a883" />
 <meta name="document_version_independent_id" content="935d9990-594b-cbe7-8081-94ae5ef5cdbc" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/universalreference/gen_doc_for_js.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/universalreference/gen_doc_for_js.md" />
-<meta name="rawTitle" content="<h1 id=&quot;generate-api-documentation-for-javascript&quot;>Generate API Documentation for JavaScript</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="132" />
 
@@ -112,7 +67,7 @@
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="generate-api-documentation-for-javascript">Generate API Documentation for JavaScript</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>

@@ -5,173 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<div class=&quot;WARNING&quot;>
-<h5>WARNING</h5>
-<p>Currently, there're two markdown engines in DocFX: <strong>dfm engine</strong> and <strong>markdig engine</strong>. This tutorial is about how to customize dfm engine, so it doesn't work with markdig engine.
-<strong>markdig engine</strong> will be enabled only when <code>docfx.json</code> contains <code>markdownEngineName: markdig</code> in build configuration part, otherwise <strong>dfm engine</strong> will be enabled.</p>
-</div>
-<h2 id=&quot;customize-renderer&quot;>Customize Renderer</h2>
-<p>DocFX Flavored Markdown introduced <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@Microsoft.DocAsCode.Dfm.IDfmCustomizedRendererPartProvider</span> from v2.17.
-In older version, you need to define a new markdown renderer and export a new <a href=&quot;&quot;>markdown service</a>.</p>
-<p>Now, you can customize a part of renderer as a DocFX plugin.</p>
-<h3 id=&quot;default-rendering-for-block-code&quot;>Default rendering for block code</h3>
-<p>For standard markdown, block code is following:</p>
-<pre><code class=&quot;lang-md&quot;>```cs
-Console.WriteLine();
-```
-</code></pre>
-<p>And the html will be:</p>
-<pre><code class=&quot;lang-html&quot;>&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;lang-cs&amp;quot;&amp;gt;Console.WriteLine();
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-</code></pre>
-<h3 id=&quot;set-goal&quot;>Set goal</h3>
-<p>Now we want any csharp code (<code>cs</code>, <code>c#</code>, <code>csharp</code>) will generate following html:</p>
-<pre><code class=&quot;lang-html&quot;>&amp;lt;pre&amp;gt;&amp;lt;code class=&amp;quot;lang-csharp&amp;quot;&amp;gt;Console.WriteLine();
-&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-</code></pre>
-<h3 id=&quot;create-customize-rendering-plugin-project&quot;>Create customize rendering plugin project</h3>
-<p>To complete this goal, we need to create a customized rendering plugin.</p>
-<ol>
-<li><p>Create a project, set project names.</p>
-</li>
-<li><p>Add required nuget package: <code>Microsoft.DocAsCode.Dfm</code> with version &amp;gt;= 2.17, <code>Microsoft.Composition</code> with version 1.0.31.</p>
-</li>
-<li><p>Create a class, for example with name <code>CustomBlockCodeRendererPart</code>.</p>
-</li>
-<li><p>Inherit <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@&amp;quot;Microsoft.DocAsCode.Dfm.DfmCustomizedRendererPartBase`3&amp;quot;</span> (which implements <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@Microsoft.DocAsCode.Dfm.IDfmCustomizedRendererPart)</span>.</p>
-</li>
-<li><p>Implements renderer part class like following:</p>
-<pre><code class=&quot;lang-cs&quot;>public class CustomBlockCodeRendererPart : DfmCustomizedRendererPartBase&amp;lt;IMarkdownRenderer, MarkdownCodeBlockToken, MarkdownBlockContext&amp;gt;
-{
-    public override string Name =&amp;gt; &amp;quot;MyFirstCustomRendererPart&amp;quot;;
-
-    public override bool Match(IMarkdownRenderer renderer, MarkdownCodeBlockToken token, MarkdownBlockContext context)
-    {
-        return token.Lang == &amp;quot;cs&amp;quot; || token.Lang == &amp;quot;c#&amp;quot; || token.Lang == &amp;quot;csharp&amp;quot;;
-    }
-
-    public override StringBuffer Render(IMarkdownRenderer renderer, MarkdownCodeBlockToken token, MarkdownBlockContext context)
-    {
-        StringBuffer result = &amp;quot;&amp;lt;pre&amp;gt;&amp;lt;code class=\&amp;quot;&amp;quot;;
-        result += renderer.Options.LangPrefix;
-        result += &amp;quot;csharp&amp;quot;;
-        result += &amp;quot;\&amp;quot;&amp;gt;&amp;quot;;
-        result += token.Code;
-        result += &amp;quot;\n&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&amp;quot;;
-        return result;
-    }
-}
-</code></pre>
-<div class=&quot;TIP&quot;>
-<h5>TIP</h5>
-<p>If your part require dispose some resource, please implement <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@System.IDisposable</span>.</p>
-</div>
-</li>
-<li><p>Create another class, for example with name <code>CustomBlockCodeRendererPartProvider</code></p>
-</li>
-<li><p>Implements <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@Microsoft.DocAsCode.Dfm.IDfmCustomizedRendererPartProvider</span> and export like following:</p>
-<pre><code class=&quot;lang-cs&quot;>[Export(typeof(IDfmCustomizedRendererPartProvider))]
-public class CustomBlockCodeRendererPartProvider : IDfmCustomizedRendererPartProvider
-{
-    public IEnumerable&amp;lt;IDfmCustomizedRendererPart&amp;gt; CreateParts(IReadOnlyDictionary&amp;lt;string, object&amp;gt; parameters)
-    {
-        yield return new CustomBlockCodeRendererPart();
-    }
-}
-</code></pre>
-</li>
-<li><p>Build the project.</p>
-</li>
-</ol>
-<h3 id=&quot;enable-customize-rendering-plugin&quot;>Enable customize rendering plugin</h3>
-<ol>
-<li>Copy output assemblies to x\plugins, x is any folder.</li>
-<li>Run <code>docfx.exe</code> with template x (<a href=&quot;../howto_build_your_own_type_of_documentation_with_custom_plug-in/#enable-plug-in&quot; data-linktype=&quot;relative-path&quot;>details</a>)</li>
-</ol>
-<h2 id=&quot;customize-markdown-extension&quot;>Customize Markdown Extension</h2>
-<p>In DocFX Flavored Markdown, we can add new markdown extensions by existing plugin system.</p>
-<h3 id=&quot;compare-with-markdown-lite&quot;>Compare with markdown lite</h3>
-<p>In markdown lite, we can <a href=&quot;../intro_markdown_lite/#how-to-customize-markdown-syntax&quot; data-linktype=&quot;relative-path&quot;>customize markdown extension</a> by following steps:</p>
-<ol>
-<li>Create a new token</li>
-<li>Create a new rule</li>
-<li>Create a new renderer</li>
-<li>Create a new engine builder</li>
-</ol>
-<p>In DocFX Flavored Markdown, we introduced <span class=&quot;no-loc&quot; dir=&quot;ltr&quot; lang=&quot;en-us&quot;>@Microsoft.DocAsCode.Dfm.IDfmEngineCustomizer</span> from v2.17.</p>
-<p>Now, we need to following step:</p>
-<ol>
-<li>Create a new token</li>
-<li>Create a new rule</li>
-<li>Create a new renderer part</li>
-<li>Create a new renderer part provider</li>
-<li>Create a new DFM engine customizer</li>
-</ol>
-<p>Difference:</p>
-<ul>
-<li>DFM markdown extension is a part plugin, markdown lite is a whole engine plugin.</li>
-<li>You can combine two or more DFM markdown extensions, but you must choose one of markdown lite engine plugin.</li>
-</ul>
-<h3 id=&quot;how-to-create-a-new-markdown-extension-by-plugin&quot;>How to create a new markdown extension by plugin</h3>
-<ol>
-<li><p>Define markdown syntax (same with <a href=&quot;../intro_markdown_lite/#define-markdown-syntax&quot; data-linktype=&quot;relative-path&quot;>markdown lite</a>).</p>
-</li>
-<li><p>Select token kind (same with <a href=&quot;../intro_markdown_lite/#select-token-kind&quot; data-linktype=&quot;relative-path&quot;>markdown lite</a>).</p>
-</li>
-<li><p>Define token (same with <a href=&quot;../intro_markdown_lite/#define-token&quot; data-linktype=&quot;relative-path&quot;>markdown lite</a>).</p>
-</li>
-<li><p>Define rule (same with <a href=&quot;../intro_markdown_lite/#define-rule&quot; data-linktype=&quot;relative-path&quot;>markdown lite</a>).</p>
-</li>
-<li><p>Create a new renderer part.</p>
-<pre><code class=&quot;lang-cs&quot;>public sealed class LabelRendererPart : DfmCustomizedRendererPartBase&amp;lt;IMarkdownRenderer, MarkdownMyLabelBlockToken, MarkdownBlockContext&amp;gt;
-{
-    public override string Name =&amp;gt; &amp;quot;LabelRendererPart&amp;quot;;
-
-    public override bool Match(IMarkdownRenderer renderer, MarkdownMyLabelBlockToken token, MarkdownBlockContext context) =&amp;gt; true;
-
-    public override StringBuffer Render(IMarkdownRenderer renderer, MarkdownMyLabelBlockToken token, MarkdownBlockContext context) =&amp;gt; &amp;quot;&amp;lt;div id=\&amp;quot;&amp;quot; + token.Label + &amp;quot;\&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;&amp;quot;;
-}
-</code></pre>
-</li>
-<li><p>Create a new renderer part provider.</p>
-<pre><code class=&quot;lang-cs&quot;>[Export(typeof(IDfmCustomizedRendererPartProvider))]
-public class LabelRendererPartProvider : IDfmCustomizedRendererPartProvider
-{
-    public IEnumerable&amp;lt;IDfmCustomizedRendererPart&amp;gt; CreateParts(IReadOnlyDictionary&amp;lt;string, object&amp;gt; parameters)
-    {
-        yield return new LabelRendererPart();
-    }
-}
-</code></pre>
-</li>
-<li><p>Create a new DFM engine customizer.</p>
-<pre><code class=&quot;lang-cs&quot;>[Export(typeof(IDfmEngineCustomizer))]
-public class MyDfmEngineCustomizer : IDfmEngineCustomizer
-{
-    public void Customize(DfmEngineBuilder builder, IReadOnlyDictionary&amp;lt;string, object&amp;gt; parameters)
-    {
-        var index = builder.BlockRules.FindIndex(r =&amp;gt; r is MarkdownHeadingBlockRule);
-        builder.BlockRules = builder.BlockRules.Insert(index, new MyHeadingRule());
-    }
-}
-</code></pre>
-</li>
-<li><p>Build project.</p>
-</li>
-<li><p>Enable and test your plugin.</p>
-</li>
-</ol>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="780b605e-6b33-5113-15de-2600e10cf2c6" />
 <meta name="document_version_independent_id" content="0eafa1d3-bf07-786f-06b5-4ffe4e92ed3c" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/howto_customize_docfx_flavored_markdown.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/howto_customize_docfx_flavored_markdown.md" />
-<meta name="rawTitle" content="<h1 id=&quot;how-to-customize-dfm-engine&quot;>How-to: Customize DFM Engine</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="590" />
 
@@ -224,7 +67,7 @@ public class MyDfmEngineCustomizer : IDfmEngineCustomizer
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="how-to-customize-dfm-engine">How-to: Customize DFM Engine</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>

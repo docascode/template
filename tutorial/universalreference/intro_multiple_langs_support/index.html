@@ -5,37 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<h2 id=&quot;1-introduction&quot;>1. Introduction</h2>
-<p>DocFX supports generating API documentation for C# and VB natively. However, it's not limited to these. DocFX is designed to support any language. When generating documents for a language, two steps are required: generating metadata and building documents from the metadata.</p>
-<h2 id=&quot;2-workflow&quot;>2. Workflow</h2>
-<h3 id=&quot;21-generate-metadata&quot;>2.1 Generate Metadata</h3>
-<p>As different programming language has different tool written with different language to generate API documentation, this step is not included in DocFX core. We call the tool used as <strong>Metadata Tool</strong>.</p>
-<p>As <a href=&quot;https://github.com/dotnet/docfx/tree/dev/src/Microsoft.DocAsCode.Build.UniversalReference&quot; data-linktype=&quot;external&quot;>UniversalReferenceDocumentProcessor</a> is used to process these metadata files, the metadata tool should generate files according the processor's input schema. The files should:</p>
-<ol>
-<li>be in YAML format and end with <code>.yml</code> or <code>.yaml</code></li>
-<li>have YamlMime <code>### YamlMime:UniversalReference</code> as the first line</li>
-<li>conform to the <a href=&quot;https://github.com/dotnet/docfx/tree/dev/src/Microsoft.DocAsCode.DataContracts.UniversalReference&quot; data-linktype=&quot;external&quot;>data model defined for UniversalReference</a></li>
-</ol>
-<p>Usually, a TOC should be generated along with YAML files for easy navigation among files.</p>
-<h3 id=&quot;22-build-document&quot;>2.2 Build Document</h3>
-<p>The YAML files generated are used as input to DocFX. DocFX will build these YAML files into HTML pages.</p>
-<h2 id=&quot;3-supported-languages&quot;>3. Supported Languages</h2>
-<ul>
-<li><a href=&quot;../gen_doc_for_js/&quot; data-linktype=&quot;relative-path&quot;>JavaScript</a></li>
-<li>TypeScript (coming soon ...)</li>
-<li>Python (coming soon ...)</li>
-</ul>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="41994ae4-9bdd-4bbc-b2b5-18d9616d9caf" />
 <meta name="document_version_independent_id" content="fc604c35-c0de-08af-8e50-3326cc27b2ff" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/universalreference/intro_multiple_langs_support.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/universalreference/intro_multiple_langs_support.md" />
-<meta name="rawTitle" content="<h1 id=&quot;introduction-to-multiple-languages-support&quot;>Introduction to Multiple Languages Support</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="175" />
 
@@ -88,7 +67,7 @@
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="introduction-to-multiple-languages-support">Introduction to Multiple Languages Support</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>

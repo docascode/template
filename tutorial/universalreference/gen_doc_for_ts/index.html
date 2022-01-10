@@ -5,71 +5,16 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="conceptual" content="<h2 id=&quot;1-prerequisite&quot;>1. Prerequisite</h2>
-<ul>
-<li><a href=&quot;https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool&quot; data-linktype=&quot;external&quot;>DocFX</a></li>
-<li><a href=&quot;https://nodejs.org/en/download/&quot; data-linktype=&quot;external&quot;>Node.js</a> (includes npm)</li>
-<li><a href=&quot;https://git-scm.com/&quot; data-linktype=&quot;external&quot;>Git</a></li>
-</ul>
-<h2 id=&quot;2-steps&quot;>2. Steps</h2>
-<h3 id=&quot;21-prepare-source-code&quot;>2.1 Prepare Source Code</h3>
-<p>Prepare the TypeScript source code for generating document. In this tutorial, we take <a href=&quot;https://github.com/Azure/azure-iot-sdk-node/tree/master/device/core&quot; data-linktype=&quot;external&quot;>azure-iot-device</a> as an example.</p>
-<pre><code>git clone https://github.com/Azure/azure-iot-sdk-node.git
-</code></pre>
-<h3 id=&quot;22-generate-metadata-for-a-package&quot;>2.2 Generate Metadata for a package</h3>
-<p>We use <a href=&quot;http://typedoc.org/&quot; data-linktype=&quot;external&quot;>typedoc</a> tool and <a href=&quot;https://www.npmjs.com/package/type2docfx&quot; data-linktype=&quot;external&quot;>type2docfx</a> to generate YAML files.</p>
-<p>First, let's install the tools globally.</p>
-<pre><code>npm install -g typedoc type2docfx
-</code></pre>
-<h4 id=&quot;221-typedoc-to-parse-source-code-into-a-json-format-output&quot;>2.2.1 TypeDoc to parse source code into a JSON format output</h4>
-<p>Go to the folder where package.json file locate.
-Run</p>
-<pre><code>typedoc --json api.json azure-iot-sdk-node/device/core/src --module commonjs --includeDeclarations --ignoreCompilerErrors --excludeExternals
-</code></pre>
-<p>The parameter may differ for your needs. You can use <code>typedoc -h</code> to explore more options.</p>
-<h4 id=&quot;222-type2docfx-to-extract-the-json-format-output-into-yaml-files&quot;>2.2.2 Type2docfx to extract the JSON format output into YAML files</h4>
-<p>Find the output <code>api.json</code> file and run:</p>
-<pre><code>type2docfx api.json yml
-</code></pre>
-<p>The <code>yml</code> stands for the output folder, you can specify the folder as the content publishing folder in Section 2.3. And you can explore more option by <code>type2docfx -h</code>. With <code>--sourceUrl, --sourceBranch, and --basePath</code> parameters, you can generate yaml files referencing to the source code in Github, which will help developer to find the corresponding source code easily.</p>
-<div class=&quot;NOTE&quot;>
-<h5>NOTE</h5>
-<p>All sources under <code>node_modules</code> path will be automatically ignored.</p>
-</div>
-<h3 id=&quot;23-build-document&quot;>2.3 Build Document</h3>
-<p>Create the configuration <code>docfx.json</code> for DocFX:</p>
-<pre><code class=&quot;lang-json&quot;>{
-  &amp;quot;build&amp;quot;: {
-    &amp;quot;content&amp;quot;: [
-      {
-        &amp;quot;files&amp;quot;: [&amp;quot;**/*.yml&amp;quot;],
-        &amp;quot;src&amp;quot;: &amp;quot;yml&amp;quot;,
-        &amp;quot;dest&amp;quot;: &amp;quot;api&amp;quot;
-      }
-    ],
-    &amp;quot;dest&amp;quot;: &amp;quot;_site&amp;quot;
-  }
-}
-</code></pre>
-<p>More information about <code>docfx.json</code> can be found in <a href=&quot;https://dotnet.github.io/docfx/tutorial/docfx.exe_user_manual.html&quot; data-linktype=&quot;external&quot;>user manual</a>. Run:</p>
-<pre><code>docfx docfx.json --serve
-</code></pre>
-<p>Now you can see your generated pages: http://localhost:8080/api/azure-iot-device/Client.html#azure_iot_device_Client</p>
-<h2 id=&quot;3-know-issues&quot;>3. Know issues</h2>
-<ol>
-<li>Some types can't link to the property correctly now. They displays in plain text and prefixed with <code>@</code>.</li>
-</ol>
-" />
-<meta name="depot_name" content="." />
+	<meta name="depot_name" content="." />
 <meta name="document_id" content="a6f5678f-435e-3435-ce93-f2740b10ee96" />
 <meta name="document_version_independent_id" content="4e115801-7dea-d36d-3d1d-6019acd22595" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/universalreference/gen_doc_for_ts.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/universalreference/gen_doc_for_ts.md" />
-<meta name="rawTitle" content="<h1 id=&quot;generate-api-documentation-for-typescript&quot;>Generate API Documentation for TypeScript</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc/" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="262" />
 
@@ -122,7 +67,7 @@ Run</p>
 					<div class="col-md-10">
 
 						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="generate-api-documentation-for-typescript">Generate API Documentation for TypeScript</h1>
+							
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
