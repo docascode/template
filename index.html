@@ -6,17 +6,17 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="depot_name" content="." />
-<meta name="description" content="<p>An extensible and scalable static documentation generator.</p>
+<meta name="description" content="<p>Static site generator for .NET API documentation.</p>
 " />
 <meta name="document_id" content="c115ee68-f136-8518-0a52-d614ddd68b18" />
 <meta name="document_version_independent_id" content="c115ee68-f136-8518-0a52-d614ddd68b18" />
-<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/index.yml" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/840c757f2832f4a435714b49961835e84ceec3dd/samples/index.yml" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/index.yml" />
 <meta name="schema" content="Home" />
 <meta name="site_name" content="Docs" />
-<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="updated_at" content="2022-01-06 11:49 AM" />
 
 
 	<title>docfx</title>
@@ -25,7 +25,7 @@
 	<script type="text/javascript" src="/dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#affix">
+<body data-spy="scroll" data-target="#affix" data-offset="120">
 	<div id="wrapper">
 		<header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
@@ -42,15 +42,6 @@
 </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
-      <form class="navbar-form navbar-right" role="search" id="search">
-        <div class="form-group">
-          <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-        </div>
-      </form>
-      <div class="switch-theme" title="Switch Theme">
-        <img class="svg hidden light-entrance" src="/svg/sun.svg">
-        <img class="svg hidden dark-entrance" src="/svg/moon.svg">
-      </div>
     </div>
   </div>
 </nav>
@@ -58,13 +49,7 @@
 		</header>
 
 		<div role="main" class="container body-content page-type-home">
-			<div class="article row grid">
-
-				<div class="col-md-12">
-
-					<article class="content wrap" id="_content" data-uid="">
-						
-						<div class="hero">
+				<div class="hero">
   <div class="wrap">
     <div class="text">
       <strong>docfx</strong>
@@ -73,10 +58,10 @@
       <a href="../RELEASENOTE.md" data-linktype="relative-path">Release Notes</a>
       <a href="https://github.com/dotnet/docfx" data-linktype="external">View on Github</a>
     </div>
-    <div class="minitext"><p>An extensible and scalable static documentation generator.</p>
+    <div class="minitext"><p>Static site generator for .NET API documentation.</p>
 </div>
     <div class="buttons-unit">
-      <a href="tutorial/docfx_getting_started/" class="button" data-linktype="relative-path"><i class="glyphicon "></i>Getting Started</a>
+      <a href="tutorial/getting-started/" class="button" data-linktype="relative-path"><i class="glyphicon "></i>Getting Started</a>
       <a href="https://github.com/dotnet/docfx/releases" class="button" data-linktype="external"><i class="glyphicon "></i>Download</a>
     </div>
   </div>
@@ -88,8 +73,8 @@
         <i class="glyphicon glyphicon-grain"></i>
         <section>
           <h2>Generate static sites from Markdown and code files</h2>
-          <p>DocFX can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.</p>
-
+          <div class="lead"><p>DocFX can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.</p>
+</div>
         </section>
       </div>
     </div>
@@ -102,8 +87,8 @@
         <i class="glyphicon glyphicon-transfer"></i>
         <section>
           <h2>Run everywhere</h2>
-          <p>DocFX can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.</p>
-
+          <div class="lead"><p>DocFX can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.</p>
+</div>
         </section>
       </div>
     </div>
@@ -116,28 +101,23 @@
         <i class="glyphicon glyphicon-cutlery"></i>
         <section>
           <h2>Easily customize the output</h2>
-          <p>DocFX provides a flexible way to customize templates and themes.</p>
-
+          <div class="lead"><p>DocFX provides a flexible way to customize templates and themes.</p>
+</div>
         </section>
       </div>
     </div>
   </div>
 </div>
 
-					</article>
-
-				</div>
-
-			</div>
 		</div>
+
 <footer>
-  <div class="grad-bottom"></div>
   <div class="footer">
     <div class="container">
-      <span class="pull-right">
-        <a href="#top">Back to top</a>
-      </span>
-    <span>Copyright © Microsoft.<br>Generated by <strong>DocFX</strong></span>
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
     </div>
   </div>
 </footer>
