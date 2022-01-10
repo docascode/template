@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="5c78c79c-db77-21d4-db0d-d328726cf71f" />
+<meta name="document_version_independent_id" content="9a63539b-dc93-5fb8-d058-f32eb15f2c41" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/incrementalbuild/intro_incremental_post_processing.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/develop/samples/tutorial/incrementalbuild/intro_incremental_post_processing.md" />
+<meta name="rawTitle" content="<h1 id=&quot;introduction-to-docfx-incremental-post-processing&quot;>Introduction to <em>DocFX Incremental Post Processing</em></h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc/" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="214" />
+
+
+	<title>Introduction to DocFX Incremental Post Processing</title>
+
+	<link rel="stylesheet" href="../../../dist/docfx.css">
+	<script type="text/javascript" src="../../../dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix" data-offset="120">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="../../../svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+    <ul class="breadcrumb">
+      <li></li>
+    </ul>
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc"></div>
+  </div>
+</div>
+				<div class="article row grid-right">
+
+					<div class="col-md-10">
+
+						<article class="content wrap" id="_content" data-uid="">
+							<h1 id="introduction-to-docfx-incremental-post-processing">Introduction to <em>DocFX Incremental Post Processing</em></h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>							<h2 id="workflow">Workflow</h2>
+<p><img src="../images/incrementalpostprocessingframework.png" alt="DocFX incremental post processing workflow" data-linktype="relative-path"/></p>
+<p>Overall, the output of all post processors would be cached in following:</p>
+<ol>
+<li>Manifest items: to restore incremental manifest items.</li>
+<li>Log message info: to replay the log message.</li>
+<li>Output files: to restore the post processing outputs.</li>
+</ol>
+<p>Based on incremental build result, <code>IsIncremental</code> flag of the manifest item could hint whether the item is incremental or not.</p>
+<ol>
+<li>If the post processing meets <a href="#incremental-condition" data-linktype="self-bookmark">Incremental Condition</a>:
+<ol>
+<li>For the incremental manifest items, restore from cache.</li>
+<li>For the non-incremental manifest items, they will be handled by post processors, and save the information into cache at the same time.</li>
+</ol>
+</li>
+<li>If the post processing doesn't meet <a href="#incremental-condition" data-linktype="self-bookmark">Incremental Condition</a>, set <code>IsIncremental</code> flag to false to all manifest items, then they will be handled by post processors.</li>
+</ol>
+<h2 id="incremental-condition">Incremental Condition</h2>
+<p>The post processing could be incremental only if it meets all of the following conditions:</p>
+<ol>
+<li>Both last cache file <a href="../advanced_cache_file_structure/" data-linktype="relative-path"><code>build.info</code></a> and its <a href="../advanced_cache_file_structure/#postprocessinfo-model" data-linktype="relative-path"><code>PostProcessInfo</code></a> exist, which is essential to restore the last incremental post processing info.</li>
+<li>Not set option <code>forcePostProcess</code> and <code>force</code> of build command or <code>docfx.json</code> config, to enable incremental post processing.</li>
+<li>Post processor requirement:
+<ol>
+<li>Each of the post processor implements <span class="no-loc" dir="ltr" lang="en-us">@Microsoft.DocAsCode.Plugins.ISupportIncrementalPostProcessor</span>. Currently, <span class="no-loc" dir="ltr" lang="en-us">@Microsoft.DocAsCode.Build.Engine.HtmlPostProcessor</span> implements the interface while <span class="no-loc" dir="ltr" lang="en-us">@Microsoft.DocAsCode.Build.Engine.ExtractSearchIndex</span> does not. Refer to <a href="../customize_a_post_processor_to_be_incremental/" data-linktype="relative-path">Customize a post processor to be incremental</a> for more details.</li>
+<li>Post processor number isn't changed.</li>
+<li>Each post processor's <code>IncrementalContextHash</code> isn't changed</li>
+</ol>
+</li>
+</ol>
+
+						</article>
+
+					</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a id="switch-theme" class="contribution-link">
+            <span class="glyphicon glyphicon-cog"></span>Theme
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/incrementalbuild/intro_incremental_post_processing.md" class="contribution-link">
+            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+				</div>
+		</div>
+
+<footer>
+  <div class="footer">
+    <div class="container">
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>

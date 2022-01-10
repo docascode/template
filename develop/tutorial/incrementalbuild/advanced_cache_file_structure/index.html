@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="c56d2e15-c18e-f377-61f9-faca2928efd8" />
+<meta name="document_version_independent_id" content="0e2ba384-659f-fe09-66b8-df8271370a3a" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/incrementalbuild/advanced_cache_file_structure.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/develop/samples/tutorial/incrementalbuild/advanced_cache_file_structure.md" />
+<meta name="rawTitle" content="<h1 id=&quot;-advanced-cache-file-structure&quot;>🔧 Advanced: Cache File Structure</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc/" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="384" />
+
+
+	<title>🔧 Advanced: Cache File Structure</title>
+
+	<link rel="stylesheet" href="../../../dist/docfx.css">
+	<script type="text/javascript" src="../../../dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix" data-offset="120">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="../../../svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+    <ul class="breadcrumb">
+      <li></li>
+    </ul>
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc"></div>
+  </div>
+</div>
+				<div class="article row grid-right">
+
+					<div class="col-md-10">
+
+						<article class="content wrap" id="_content" data-uid="">
+							<h1 id="-advanced-cache-file-structure">🔧 Advanced: Cache File Structure</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>							<p>DocFX incremental build cache files are centralized and put in a folder specified with option <code>--intermediateFolder</code> or <code>obj/.cache/build/</code> relative to your <code>docfx.json</code> by default.</p>
+<p>In the root folder of the cache files, there is a <code>build.info</code>, it is kind of index page, which is the entry point of the cache files. Below table lists the major information inside.</p>
+<h3 id="buildinfo-model">BuildInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DirectoryName</td>
+<td>string</td>
+<td>Base directory of the cache files of last successful build</td>
+</tr>
+<tr>
+<td>DocfxVersion</td>
+<td>string</td>
+<td>DocFX version</td>
+</tr>
+<tr>
+<td>PluginHash</td>
+<td>string</td>
+<td>The hash of plugins plugged in DocFX</td>
+</tr>
+<tr>
+<td>TemplateHash</td>
+<td>string</td>
+<td>The hash of specified Templates</td>
+</tr>
+<tr>
+<td>Versions</td>
+<td>List&lt;<a href="#buildversioninfo-model" data-linktype="self-bookmark">BuildVersionInfo</a>&gt;</td>
+<td>entry point of the cache files per version</td>
+</tr>
+<tr>
+<td>PostProcessInfo</td>
+<td><a href="#postprocessinfo-model" data-linktype="self-bookmark">PostProcessInfo</a></td>
+<td>The entry point of the cache files for postprocessor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="buildversioninfo-model">BuildVersionInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VersionName</td>
+<td>string</td>
+<td>Version name</td>
+</tr>
+<tr>
+<td>ConfigHash</td>
+<td>string</td>
+<td>The hash of configs for the version</td>
+</tr>
+<tr>
+<td>DependencyFile</td>
+<td>string</td>
+<td>The file link for dependency</td>
+</tr>
+<tr>
+<td>AttributesFile</td>
+<td>string</td>
+<td>The file link for file attributes</td>
+</tr>
+<tr>
+<td>OutputFile</td>
+<td>string</td>
+<td>The file link for build outputs</td>
+</tr>
+<tr>
+<td>ManifestFile</td>
+<td>string</td>
+<td>The file link for the manifest file</td>
+</tr>
+<tr>
+<td>XRefSpecMapFile</td>
+<td>string</td>
+<td>The file link for the XRefMap file</td>
+</tr>
+<tr>
+<td>ExternalXRefSpecFile</td>
+<td>string</td>
+<td>The file link for the ExternalXRefSpec file</td>
+</tr>
+<tr>
+<td>FileMapFile</td>
+<td>string</td>
+<td>The file link for the FileMap file</td>
+</tr>
+<tr>
+<td>BuildMessageFile</td>
+<td>string</td>
+<td>The file link for build message file</td>
+</tr>
+<tr>
+<td>TocRestructionsFile</td>
+<td>string</td>
+<td>The file link for TocRestructions file</td>
+</tr>
+<tr>
+<td>Processors</td>
+<td>List&lt;<a href="#processorinfo-model" data-linktype="self-bookmark">ProcessorInfo</a>&gt;</td>
+<td>The entry point of the cache files per processor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="processorinfo-model">ProcessorInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>string</td>
+<td>The name of the processor</td>
+</tr>
+<tr>
+<td>IncrementalContextHash</td>
+<td>string</td>
+<td>The context hash of the processor</td>
+</tr>
+<tr>
+<td>IntermediateModelManifestFile</td>
+<td>string</td>
+<td>The file link for the BuildModel manifest file</td>
+</tr>
+<tr>
+<td>Steps</td>
+<td>List&lt;<a href="#processorstepinfo-model" data-linktype="self-bookmark">ProcessorStepInfo</a>&gt;</td>
+<td>The entry point of cache files per step for the processor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="processorstepinfo-model">ProcessorStepInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>string</td>
+<td>The name of the step</td>
+</tr>
+<tr>
+<td>IncrementalContextHash</td>
+<td>string</td>
+<td>The context hash of the step</td>
+</tr>
+<tr>
+<td>ContextInfoFile</td>
+<td>string</td>
+<td>The file link for the context info for the step</td>
+</tr>
+</tbody>
+</table>
+<h3 id="postprocessinfo-model">PostProcessInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MessageInfoFile</td>
+<td>string</td>
+<td>The file link for the log message file, to restore the warning message</td>
+</tr>
+<tr>
+<td>ManifestItemsFile</td>
+<td>string</td>
+<td>The file link for the manifest items file, to restore the manifest items</td>
+</tr>
+<tr>
+<td>PostProcessOutputsFile</td>
+<td>string</td>
+<td>The file link for post processing outputs</td>
+</tr>
+<tr>
+<td>PostProcessorInfos</td>
+<td>List&lt;<a href="#postprocessorinfo-model" data-linktype="self-bookmark">PostProcessorInfo</a>&gt;</td>
+<td>The information of post processors</td>
+</tr>
+</tbody>
+</table>
+<h3 id="postprocessorinfo-model">PostProcessorInfo model</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>string</td>
+<td>The name of the step</td>
+</tr>
+<tr>
+<td>IncrementalContextHash</td>
+<td>string</td>
+<td>The context hash of the step</td>
+</tr>
+<tr>
+<td>ContextInfoFile</td>
+<td>string</td>
+<td>The file link for the context info</td>
+</tr>
+</tbody>
+</table>
+
+						</article>
+
+					</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a id="switch-theme" class="contribution-link">
+            <span class="glyphicon glyphicon-cog"></span>Theme
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/incrementalbuild/advanced_cache_file_structure.md" class="contribution-link">
+            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+				</div>
+		</div>
+
+<footer>
+  <div class="footer">
+    <div class="container">
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>
