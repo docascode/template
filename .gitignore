@@ -1,5 +1,6 @@
 *.log
 
+bin
 _site
 debug
 node_modules

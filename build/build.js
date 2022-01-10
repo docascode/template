@@ -1,6 +1,9 @@
 const esbuild = require('esbuild')
 const { sassPlugin } = require('esbuild-sass-plugin')
 const { spawnSync } = require('child_process')
+const { join } = require('path')
+
+process.env.PATH = join(__dirname, '../bin') + process.env.PATH
 
 function buildTemplate({ watch } = {}) {
 

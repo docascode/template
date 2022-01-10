@@ -6,7 +6,7 @@
     "start": "node build/start.js",
     "diff": "node build/diff.js",
     "accept-diff": "node build/diff.js --accept",
-    "postinstall": "dotnet tool update -g docfx --version 3.0.0-* --add-source https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-public-packages/nuget/v3/index.json"
+    "postinstall": "dotnet build -c Release -o bin extern/docfx/src/docfx"
   },
   "dependencies": {
     "anchor-js": "4.3.1",

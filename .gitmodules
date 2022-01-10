@@ -1,0 +1,3 @@
+[submodule "extern/docfx"]
+	path = extern/docfx
+	url = https://github.com/dotnet/docfx
