@@ -20,7 +20,7 @@ jobs:
       env:
         DOCFX__SECRETS__GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: |
-        $dir = ${GITHUB_REF##*/}
+        dir=${GITHUB_REF##*/}
         git fetch origin gh-pages
         git checkout gh-pages
         git rm -r --ignore-unmatch $dir
