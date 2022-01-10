@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="depot_name" content="." />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
 <meta name="document_id" content="f1f20c2c-4ae1-6901-e819-d00900ba1978" />
 <meta name="document_version_independent_id" content="07e75c0d-773b-19a8-dec4-6f49e84bf403" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/sdp_design_spec.md" />
@@ -22,8 +23,8 @@
 
 	<title>Schema-driven Document Processor(SDP) Design Spec</title>
 
-	<link rel="stylesheet" href="/dist/docfx.css">
-	<script type="text/javascript" src="/dist/docfx.js"></script>
+	<link rel="stylesheet" href="../../dist/docfx.css">
+	<script type="text/javascript" src="../../dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -74,6 +75,16 @@
     <time datetime="6/2/2021">6/2/2021</time>
   </li>
   <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
 </ul>							<h2 id="1-overview">1. Overview</h2>
 <p>DocFX supports different <a href="../../tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in/" data-linktype="relative-path">document processors</a> to handle different kinds of input. With a new data model introduced in, a new document processor is required to support that model, even most of the code logic is the same for these processors. With this situation considered, a Schema-driven Document Processor (abbreviated to <em>SDP</em> below) is introduced to simplify the process. Togethor with a well defined <a href="../docfx_document_schema/" data-linktype="relative-path">DocFX Document Schema</a>, SDP is able to <em>validate</em> and <em>process</em> a new data model with no extra effort needed.</p>
 <h2 id="2-workflow">2. Workflow</h2>

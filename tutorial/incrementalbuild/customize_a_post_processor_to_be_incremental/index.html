@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="depot_name" content="." />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
 <meta name="document_id" content="6d7aa675-b7e3-b567-15f2-adffd31f2152" />
 <meta name="document_version_independent_id" content="5d1df20a-39ea-cc4c-748f-8420f8a6505a" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/incrementalbuild/customize_a_post_processor_to_be_incremental.md" />
@@ -22,8 +23,8 @@
 
 	<title>Walkthrough: Customize a post processor to be incremental</title>
 
-	<link rel="stylesheet" href="/dist/docfx.css">
-	<script type="text/javascript" src="/dist/docfx.js"></script>
+	<link rel="stylesheet" href="../../../dist/docfx.css">
+	<script type="text/javascript" src="../../../dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -74,6 +75,16 @@
     <time datetime="6/2/2021">6/2/2021</time>
   </li>
   <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
 </ul>							<p>In this tutorial, we'll walk through how to enable a post processor to be incremental.</p>
 <h2 id="implement--for-the-post-processor">Implement <span class="no-loc" dir="ltr" lang="en-us">@Microsoft.DocAsCode.Plugins.ISupportIncrementalPostProcessor</span> for the post processor</h2>
 <pre><code class="lang-csharp">public class AppendIntegerPostProcessor : ISupportIncrementalPostProcessor

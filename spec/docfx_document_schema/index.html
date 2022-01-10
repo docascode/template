@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="depot_name" content="." />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
 <meta name="document_id" content="25808af3-0c09-3a42-ffba-9f1e56d56ea0" />
 <meta name="document_version_independent_id" content="ad66d06b-783e-f9c5-0771-7b461a915f9c" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/docfx_document_schema.md" />
@@ -22,8 +23,8 @@
 
 	<title>DocFX Document Schema v1.0 Specification</title>
 
-	<link rel="stylesheet" href="/dist/docfx.css">
-	<script type="text/javascript" src="/dist/docfx.js"></script>
+	<link rel="stylesheet" href="../../dist/docfx.css">
+	<script type="text/javascript" src="../../dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -74,6 +75,16 @@
     <time datetime="6/2/2021">6/2/2021</time>
   </li>
   <li class="readingTime">10 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
 </ul>							<h2 id="1-introduction">1. Introduction</h2>
 <p>DocFX supports different <a href="../../tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in/" data-linktype="relative-path">document processors</a> to handle different kinds of input. For now, if the data model changes a bit, a new document processor is needed, even most of the work in processors are the same.</p>
 <p>DocFX Document Schema (abbreviated to <em>THIS schema</em> below) is introduced to address this problem. This schema is a JSON media type for defining the structure of a DocFX document. This schema is intended to <strong>annotate</strong>, <strong>validate</strong> and <strong>interpret</strong> the document data.</p>

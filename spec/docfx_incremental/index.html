@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="depot_name" content="." />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
 <meta name="document_id" content="07688668-0f27-2818-2cfa-5fdc657d3bc2" />
 <meta name="document_version_independent_id" content="0f483b5b-1c9a-7396-ec78-b8aa15f0fc07" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/docfx_incremental.md" />
@@ -22,8 +23,8 @@
 
 	<title>Doc-as-code: DocFx.exe Incremental Build Specification</title>
 
-	<link rel="stylesheet" href="/dist/docfx.css">
-	<script type="text/javascript" src="/dist/docfx.js"></script>
+	<link rel="stylesheet" href="../../dist/docfx.css">
+	<script type="text/javascript" src="../../dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -74,6 +75,16 @@
     <time datetime="6/2/2021">6/2/2021</time>
   </li>
   <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
 </ul>							<p>This documentation describes the implementation of incrementally extracting metadata from source. Currently we are using <em>Roslyn</em> to compile and analyse source code on the fly. When input sources are large, it may take minutes to load and process the files. To speed up the extraction, previous extracted details are saved to cache for further reference.</p>
 <p>There are two level caches in current implementation. First one is called <em>Application</em> Level cache, and the other one is <em>Project</em> level cache.</p>
 <p><em>Application</em> level cache is saved in file <code>%LocalAppData%/xdoc/cache</code>.</p>

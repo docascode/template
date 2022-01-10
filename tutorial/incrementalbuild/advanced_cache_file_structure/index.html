@@ -5,7 +5,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="depot_name" content="." />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
 <meta name="document_id" content="c56d2e15-c18e-f377-61f9-faca2928efd8" />
 <meta name="document_version_independent_id" content="0e2ba384-659f-fe09-66b8-df8271370a3a" />
 <meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/incrementalbuild/advanced_cache_file_structure.md" />
@@ -22,8 +23,8 @@
 
 	<title>🔧 Advanced: Cache File Structure</title>
 
-	<link rel="stylesheet" href="/dist/docfx.css">
-	<script type="text/javascript" src="/dist/docfx.js"></script>
+	<link rel="stylesheet" href="../../../dist/docfx.css">
+	<script type="text/javascript" src="../../../dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -74,6 +75,16 @@
     <time datetime="6/2/2021">6/2/2021</time>
   </li>
   <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
 </ul>							<p>DocFX incremental build cache files are centralized and put in a folder specified with option <code>--intermediateFolder</code> or <code>obj/.cache/build/</code> relative to your <code>docfx.json</code> by default.</p>
 <p>In the root folder of the cache files, there is a <code>build.info</code>, it is kind of index page, which is the entry point of the cache files. Below table lists the major information inside.</p>
 <h3 id="buildinfo-model">BuildInfo model</h3>
