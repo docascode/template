@@ -35,7 +35,7 @@ function serve({ open, ready, notify } = { open: true, notify: true }) {
 }
 
 function buildContent() {
-  spawnSync('docfx build samples --template .', { stdio: 'inherit', shell: true })
+  spawnSync('docfx build samples', { stdio: 'inherit', shell: true })
 }
 
 module.exports = { start }
