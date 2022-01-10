@@ -22,7 +22,6 @@ jobs:
     - run: yarn
     - run: yarn build
     - run: yarn diff
-      if: ${{ matrix.os == 'windows-latest' }}
     - uses: actions/upload-artifact@v2
       if: ${{ failure() }}
       with:
