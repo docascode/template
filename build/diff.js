@@ -1,10 +1,11 @@
-const { start } = require('./start.js')
 const { Cluster } = require('puppeteer-cluster')
 const { exit } = require('process')
 const { mkdirSync, existsSync, readdirSync, readFileSync, writeFileSync, cpSync, rmSync } = require('fs')
 const { join } = require('path')
-const PNG = require('pngjs').PNG;
-const pixelmatch = require('pixelmatch');
+const PNG = require('pngjs').PNG
+const pixelmatch = require('pixelmatch')
+const http = require('http')
+const statik = require('node-static')
 
 const expectedDir = 'tests/screenshots/expected'
 const actualDir = 'tests/screenshots/actual'
@@ -28,12 +29,24 @@ const viewports = [
   { width: 375, height: 812, isMobile: true, hasTouch: true }
 ]
 
-function diff() {
-  start({ open: false, notify: false, ready })
+async function diff() {
+  const url = await serve('./samples/_site')
+  await captureScreenshots(url)
 }
 
-function ready(url) {
-  captureScreenshots(url)
+async function serve(dir) {
+  return new Promise((resolve, reject) => {
+    const file = new statik.Server(dir)
+    const server = http.createServer((req, res) => file.serve(req, res))
+
+    server.listen(0, 'localhost', async err => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(`http://localhost:${server.address().port}`)
+      }
+    })
+  })
 }
 
 async function captureScreenshots(baseurl) {
