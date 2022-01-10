@@ -5,7 +5,8 @@ const { join } = require('path')
 const PNG = require('pngjs').PNG
 const pixelmatch = require('pixelmatch')
 const http = require('http')
-const statik = require('node-static')
+const finalhandler = require('finalhandler')
+const serveStatic = require('serve-static')
 
 const expectedDir = 'tests/screenshots/expected'
 const actualDir = 'tests/screenshots/actual'
@@ -36,8 +37,8 @@ async function diff() {
 
 async function serve(dir) {
   return new Promise((resolve, reject) => {
-    const file = new statik.Server(dir)
-    const server = http.createServer((req, res) => file.serve(req, res))
+    const serve =  serveStatic(dir, { index: ['index.html'] })
+    const server = http.createServer((req, res) => serve(req, res, finalhandler(res, res)))
 
     server.listen(0, 'localhost', async err => {
       if (err) {
