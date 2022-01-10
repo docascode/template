@@ -4,3 +4,4 @@ _site
 debug
 node_modules
 tests/screenshots/actual
+tests/screenshots/diff

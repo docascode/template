@@ -12,12 +12,13 @@ function start(options) {
   ])
 }
 
-function serve({ open, ready } = { open: true }) {
+function serve({ open, ready, notify } = { open: true, notify: true }) {
   const site = "samples/_site";
   const browserSync = bs.create('docfx')
 
   return browserSync.init({
     open,
+    notify,
     callbacks: {
       ready: ready ? (err, bs)  => ready(bs.options.get('urls').get('local')) : undefined
     },
