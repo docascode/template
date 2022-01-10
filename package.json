@@ -5,6 +5,7 @@
     "build": "node build/build.js",
     "start": "node build/start.js",
     "diff": "node build/diff.js",
+    "accept-diff": "node build/diff.js --accept",
     "postinstall": "dotnet tool update -g docfx --version 3.0.0-* --add-source https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-public-packages/nuget/v3/index.json"
   },
   "dependencies": {
@@ -18,6 +19,7 @@
     "browser-sync": "^2.27.7",
     "esbuild": "^0.14.11",
     "esbuild-sass-plugin": "^2.0.3",
+    "node-static": "^0.7.11",
     "pixelmatch": "^5.2.1",
     "puppeteer": "^13.0.1",
     "puppeteer-cluster": "^0.22.0"

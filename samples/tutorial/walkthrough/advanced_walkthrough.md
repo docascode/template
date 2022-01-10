@@ -1,4 +1,4 @@
-🔧 Walkthrough Advanced: Customize Your Website
+Walkthrough Advanced: Customize Your Website
 ===================================
 
 ## Apply your own styles to the website or PDF

@@ -1,7 +1,8 @@
 const esbuild = require('esbuild')
 const { sassPlugin } = require('esbuild-sass-plugin')
+const { spawnSync } = require('child_process')
 
-function build({ watch } = {}) {
+function buildTemplate({ watch } = {}) {
 
   const debug = {
     outdir: 'debug/dist',
@@ -47,8 +48,14 @@ function build({ watch } = {}) {
   }))
 }
 
-module.exports = { build }
+
+function buildContent() {
+  spawnSync('docfx build samples', { stdio: 'inherit', shell: true })
+}
+
+module.exports = { buildTemplate, buildContent }
 
 if (require.main === module) {
-  build()
+  buildTemplate()
+  buildContent()
 }
