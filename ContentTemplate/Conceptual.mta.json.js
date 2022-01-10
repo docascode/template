@@ -4,7 +4,6 @@ exports.transform = function (model) {
     model.toc_rel = model._tocRel;
     model.layout = model.layout || "Conceptual";
     delete model.conceptual;
-    delete model.rawTitle;
 
     var contrib = model._op_gitContributorInformation;
     if (contrib && contrib.author) {
