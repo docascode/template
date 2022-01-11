@@ -4,9 +4,7 @@ const { mkdirSync, existsSync, readdirSync, readFileSync, writeFileSync, cpSync,
 const { join } = require('path')
 const PNG = require('pngjs').PNG
 const pixelmatch = require('pixelmatch')
-const http = require('http')
-const finalhandler = require('finalhandler')
-const serveStatic = require('serve-static')
+const { createServer } = require('http-server')
 
 const expectedDir = 'tests/screenshots/expected'
 const actualDir = 'tests/screenshots/actual'
@@ -35,11 +33,9 @@ async function diff() {
   await captureScreenshots(url)
 }
 
-async function serve(dir) {
+async function serve(root) {
   return new Promise((resolve, reject) => {
-    const serve =  serveStatic(dir, { index: ['index.html'] })
-    const server = http.createServer((req, res) => serve(req, res, finalhandler(res, res)))
-
+    const { server } = createServer({ root })
     server.listen(0, 'localhost', async err => {
       if (err) {
         reject(err)
