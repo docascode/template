@@ -1,9 +1,7 @@
 const esbuild = require('esbuild')
 const { sassPlugin } = require('esbuild-sass-plugin')
 const { spawnSync } = require('child_process')
-const { join } = require('path')
-
-process.env.PATH = join(__dirname, '../bin') + ';' + process.env.PATH
+const { existsSync } = require('fs')
 
 function buildTemplate({ watch } = {}) {
 
@@ -53,7 +51,8 @@ function buildTemplate({ watch } = {}) {
 
 
 function buildContent() {
-  spawnSync('docfx build samples --verbose', { stdio: 'inherit', shell: true })
+  const docfx = existsSync('bin/docfx.exe') ? 'bin/docfx.exe' : 'bin/docfx'
+  spawnSync(`${docfx} build samples --verbose`, { stdio: 'inherit', shell: true })
 }
 
 module.exports = { buildTemplate, buildContent }
