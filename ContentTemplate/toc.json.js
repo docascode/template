@@ -1,9 +1,9 @@
 exports.transform = function (model) {
 
-	groupChildren(model, model);
+	groupChildren(model, model)
 
 	return {
-		content: JSON.stringify(model)
+		items: model.items
 	};
 };
 

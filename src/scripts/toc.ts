@@ -17,8 +17,9 @@ export function renderToc() {
   }
   tocPath = tocPath.replace(/\\/g, '/');
 
-  return fetch(tocPath).then(response => response.text()).then(tocHtml => {
-    document.getElementById('sidetoc').innerHTML = tocHtml;
+  return fetch(tocPath).then(response => response.json()).then(toc => {
+    renderTocNodes(document.getElementById('toc'), toc.items)
+
     var tocrel = getDirectory(tocPath);
     var currentHref = getAbsolutePath(window.location.pathname);
     $('#sidetoc').find('a[href]').each(function (i, e) {
@@ -35,6 +36,38 @@ export function renderToc() {
 
     registerTocEvents();
   });
+
+  function renderTocNodes(container: HTMLElement, nodes, level: number = 1) {
+    for (const node of nodes) {
+      const ul = document.createElement('ul')
+      ul.classList.add('nav')
+      ul.classList.add('level' + level)
+      const li = document.createElement('li')
+
+      if (node.items && node.items.length > 0) {
+        const span = document.createElement('span')
+        span.classList.add('expand-stub')
+        li.appendChild(span)
+      }
+      
+      const a = document.createElement('a')
+      if (node.href) {
+        a.href = node.href
+      }
+      if (node.name) {
+        a.title = node.name
+        a.innerText = node.name
+      }
+      li.appendChild(a)
+
+      if (node.items && node.items.length > 0) {
+        renderTocNodes(li, node.items, level + 1)
+      }
+
+      ul.appendChild(li)
+      container.appendChild(ul)
+    }
+  }
 
   function registerTocEvents() {
     var tocFilterInput = $('#toc_filter_input');
