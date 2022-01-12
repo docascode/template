@@ -165,10 +165,7 @@ article {
 article h1, article h2, article h3, article h4{
   margin-top: 25px;
 }
-article h1:first-child,
-article h2:first-child,
-article h3:first-child,
-article h4:first-child {
+article h1:first-of-type {
   margin-top: 0;
 }
 

@@ -4,3 +4,5 @@ items:
   href: tutorial/getting-started.md
 - name: Specifications
   href: spec/metadata_format_spec.md
+- name: API Reference
+  href: api/CatLibrary.yml
