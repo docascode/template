@@ -7,7 +7,7 @@ on:
 
 jobs:
   gh-pages:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
       with:
@@ -21,10 +21,11 @@ jobs:
       env:
         DOCFX__SECRETS__GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: |
+        mkdir -p ${{ runner.temp }}/_site
         cp -r samples/_site/* ${{ runner.temp }}/_site
         dir=${GITHUB_REF##*/}
         git fetch origin gh-pages
-        git checkout gh-pages
+        git checkout -f gh-pages
         git rm -r --ignore-unmatch $dir
         mkdir -p $dir
         cp -r ${{ runner.temp }}/_site/* $dir
@@ -33,4 +34,5 @@ jobs:
         git config user.name ${{ github.event.head_commit.author.name }}
         # Ignore empty commits
         git diff-index --quiet HEAD || (git commit -a -m "docfx: ${{ github.event.head_commit.message }}" && git push)
+      shell: bash
       name: Publish GitHub Pages
