@@ -1,0 +1,14 @@
+{{#isNotClsCompliant}}
+	<div class="alert is-primary">
+		{{{__global.important}}}
+		<p>{{__global.clsCompliant}}</p>
+		{{#altCompliant}}
+			<dl class="attributeList halfStack">
+				<dt>{{__global.clsCompliantAlt}}</dt>
+				<dd>
+					<xref uid="{{ . }}" template="partials/dotnet/xref-fullName-title.tmpl" />
+				</dd>
+			</dl>
+		{{/altCompliant}}
+	</div>
+{{/isNotClsCompliant}}

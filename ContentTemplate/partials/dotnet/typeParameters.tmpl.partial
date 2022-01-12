@@ -1,0 +1,24 @@
+{{#typeParameters.0}}
+    <h4 class="propertyInfoTitle stack">{{__global.typeParameters}}</h4>
+{{/typeParameters.0}}
+{{#typeParameters}}
+    <div class="propertyInfo{{className}}">
+        <dl class="parameterList">
+            <dt>{{name}}</dt>
+            <dd>
+			{{#constraints}}
+                {{parameterAttribute}} {{baseTypeName}}
+            {{/constraints}}
+			</dd>
+        </dl> 
+        {{{description}}}
+
+		{{#isContravariant}}
+			{{{__global.contravariantDescription}}}
+		{{/isContravariant}}
+
+		{{#isCovariant}}
+			{{{__global.covariantDescription}}}
+		{{/isCovariant}}
+    </div>
+{{/typeParameters}}

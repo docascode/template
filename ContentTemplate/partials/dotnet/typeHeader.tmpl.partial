@@ -1,0 +1,36 @@
+<h2 id="definition">{{__global.definition}}</h2>
+
+<div class="metadata">
+	{{#namespace}}
+		<dl class="attributeList">
+			<dt>{{__global.namespace}}:</dt>
+			<dd>
+				<span class="break-text"> <xref uid="{{ . }}" template="partials/dotnet/xref-name.tmpl" /> </span>
+			</dd>
+		</dl>
+	{{/namespace}}
+
+	{{#assemblies}}
+		<dl class="attributeList">
+			<dt>{{assemblyText}}:</dt><dd>{{assemblies}}</dd>
+		</dl>
+	{{/assemblies}}
+
+	{{#assembliesWithMoniker}}
+		<dl class="attributeList" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+			<dt>{{assemblyTitle}}:</dt><dd>{{value}}</dd>
+		</dl>
+	{{/assembliesWithMoniker}}
+
+	{{#packagesWithMoniker}}
+		<dl class="attributeList" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+			<dt>{{packageTitle}}:</dt><dd>{{value}}</dd>
+		</dl>
+	{{/packagesWithMoniker}}
+
+	{{#package}}
+		<dl class="attributeList">
+			<dt>{{__global.package}}:</dt><dd>{{package}}</dd>
+		</dl>
+	{{/package}}
+</div>

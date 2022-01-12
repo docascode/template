@@ -1,0 +1,494 @@
+{
+	"title": "NetDelegate",
+	"$schema": "https://dotnet.github.io/docfx/schemas/v1.0/schema.json#",
+	"version": "1.0.0",
+	"description": "The schema for NetDelegate page",
+	"id": "https://static.docs.com/ui/latest/schemas/NetDelegate.schema.json",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["name", "uid"],
+	"renderType": "content",
+	"archivable": false,
+	"properties": {
+		"altCompliant": {
+			"contentType": "xref",
+			"description": "A reference to an alternative delegate that is compliant with the Common Language Specification (CLS). Only necessary if this delegate is not CLS compliant..",
+			"type": "string"
+		},
+		"assembliesWithMoniker": {
+			"description": "A monikerized collection of assemblies in which this delegate function resides.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"obsoleteMessagesWithMoniker": {
+			"description": "A versioned collection of obsolete messages",
+			"items": {
+				"$ref": "#/definitions/versionedMDString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributesWithMoniker": {
+			"description": "A monikerized collection of references to Attributes applied to this delegate.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["value"],
+				"properties": {
+					"monikers": {
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"value": {
+						"contentType": "xref",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributeMonikers": {
+			"description": "A collection of all monikers that apply to this delegate's attributes.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"capabilities": {
+			"type": "array",
+			"description": "Application specific capabilities.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1
+		},
+		"commentId": {
+			"description": "The delegate comment id.",
+			"type": "string"
+		},
+		"devLangs": {
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"examples": {
+			"contentType": "markdown",
+			"description": "Detailed examples for usage of the delegate.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"extensionMethods": {
+			"items": {
+				"additionalProperties": false,
+				"required": ["monikers", "uid"],
+				"properties": {
+					"monikers": {
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"uid": {
+						"contentType": "xref",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"fullName": {
+			"description": "The full name of the delegate.",
+			"type": "string"
+		},
+		"inheritances": {
+			"description": "[nonEditable] A collection of references to objects (classes, interfaces, etc) that this delegate inherits.",
+			"items": {
+				"contentType": "markdown",
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"isDeprecated": {
+			"description": "Whether or not this delegate is deprecated.",
+			"type": "boolean"
+		},
+		"isInternalOnly": {
+			"type": "boolean"
+		},
+		"isNotClsCompliant": {
+			"description": "Whether or not the delegate is compliant with the Common Language Specification.",
+			"type": "boolean"
+		},
+		"metadata": {
+			"properties": {
+				"description": {
+					"type": "string",
+					"tags": ["localizable"]
+				},
+				"title": {
+					"type": "string",
+					"tags": ["localizable"]
+				}
+			},
+			"type": "object"
+		},
+		"monikers": {
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"name": {
+			"description": "The name of the delegate.",
+			"type": "string"
+		},
+		"nameWithType": {
+			"type": "string"
+		},
+		"namespace": {
+			"contentType": "xref",
+			"description": "A reference to the namespace owning this delegate.",
+			"type": "string"
+		},
+		"osRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"description": "The minimum required operating system.",
+			"required": ["name", "minVersion"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"minVersion": {
+					"type": "string"
+				}
+			}
+		},
+		"packagesWithMoniker": {
+			"description": "A monikerized collection of packages that contain this type.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"parameters": {
+			"items": {
+				"additionalProperties": false,
+				"required": ["type"],
+				"properties": {
+					"description": {
+						"contentType": "markdown",
+						"tags": ["localizable"],
+						"type": "string"
+					},
+					"name": {
+						"description": "Name of the parameter without versioning. Either name or namesWithMoniker is required.",
+						"type": "string"
+					},
+					"namesWithMoniker": {
+						"description": "A monikerized collection of names.",
+						"items": {
+							"$ref": "#/definitions/versionedString"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"type": {
+						"description": "[nonEditable] Type of the parameter.",
+						"contentType": "markdown",
+						"type": "string"
+					},
+					"typePerLanguage": {
+						"description": "Alternative type strings for other languages.",
+						"items": {
+							"$ref": "#/definitions/MDStringPerLanguage"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"sdkRequirements": {
+			"type": "object",
+			"description": "The required SDK needed for api support.",
+			"additionalProperties": false,
+			"required": ["name", "url"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"url": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"remarks": {
+			"contentType": "markdown",
+			"description": "A detailed description of the delegate, used for supplementary information or detailed usage.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"returnsWithMoniker": {
+			"description": "A monikerized collection of return types for this delegate.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"minItems": 1,
+					"type": "array",
+					"items": {
+						"$ref": "#/definitions/versionedMDStringPerLanguage"
+					}
+				},
+				"description": {
+					"description": "[nonEditable] Type of return value.",
+					"contentType": "markdown",
+					"tags": ["localizable"],
+					"type": "string"
+				}
+			}
+		},
+		"seeAlso": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"source": {
+			"additionalProperties": false,
+			"required": ["path", "branch", "repo"],
+			"type": "object",
+			"properties": {
+				"path": {
+					"type": "string"
+				},
+				"branch": {
+					"type": "string"
+				},
+				"repo": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"summary": {
+			"contentType": "markdown",
+			"description": "The main summary of the delegate.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"syntaxWithMoniker": {
+			"description": "A monikerized collection of all signatures in different languages.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["lang", "values"],
+				"properties": {
+					"lang": {
+						"type": "string"
+					},
+					"values": {
+						"description": "A monikerized collection of syntax content.",
+						"items": {
+							"$ref": "#/definitions/versionedString"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"typeParameters": {
+			"items": {
+				"additionalProperties": false,
+				"required": ["name"],
+				"properties": {
+					"description": {
+						"contentType": "markdown",
+						"tags": ["localizable"],
+						"type": "string"
+					},
+					"isContravariant": {
+						"type": "boolean"
+					},
+					"isCovariant": {
+						"type": "boolean"
+					},
+					"name": {
+						"type": "string"
+					},
+					"constraints": {
+						"items": {
+							"additionalProperties": false,
+							"required": ["parameterAttribute", "baseTypeName"],
+							"properties": {
+								"parameterAttribute": {
+									"type": "string"
+								},
+								"baseTypeName": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"uid": {
+			"contentType": "uid",
+			"description": "The delegate unique identifier.",
+			"type": "string"
+		},
+		"uwpRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["apiContracts", "deviceFamilies"],
+			"properties": {
+				"apiContracts": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Windows API contract required for usage.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"deviceFamilies": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Widows device family the api is supported on.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"definitions": {
+		"MDStringPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"langs": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedMDString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedMDStringPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				},
+				"valuePerLanguage": {
+					"description": "Alternative type strings for other languages.",
+					"items": {
+						"$ref": "#/definitions/MDStringPerLanguage"
+					},
+					"minItems": 1,
+					"type": "array"
+				}
+			},
+			"type": "object"
+		},
+		"versionedString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"metadata": "/metadata",
+	"xrefProperties": ["commentId", "fullName", "monikers", "name", "nameWithType", "summary"]
+}

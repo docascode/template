@@ -1,0 +1,55 @@
+{{^isOverload}}
+    {{#members.0}}
+        <a id="{{htmlId}}"></a>
+    {{/members.0}}
+{{/isOverload}}
+
+<h1>{{{title}}}</h1>
+
+{{>partials/reference-metadata}}
+
+{{>partials/dotnet/typeHeader}}
+{{>partials/dotnet/monikerBoilerplate}}
+
+{{#isOverload}}
+    {{>partials/dotnet/summary}}
+{{/isOverload}}
+
+{{>partials/docOutline}}
+
+{{#isOverload}}
+    <h2>{{__global.overloads}}</h2>
+
+    <table class="nameValue stack">
+        {{#members}}
+		    <tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			<td>
+						<xref uid="{{ uid }}" template="partials/dotnet/xref-name.tmpl" />
+					</td>
+					<td>
+						<xref uid="{{ uid }}" template="partials/dotnet/xref-summary.tmpl" />
+					</td>
+        	</tr>
+        {{/members}}
+    </table>
+
+    {{>partials/dotnet/typeContent}}
+
+    {{#members}}
+        {{>partials/dotnet/overloadMember}}
+    {{/members}}
+
+{{/isOverload}}
+
+{{^isOverload}}
+    {{#members}}
+        {{>partials/dotnet/member}}
+    {{/members}}
+{{/isOverload}}
+
+{{#threadSafety}}
+	<h2>{{__global.threadSafety}}</h2>
+	{{{customizedContent}}}
+{{/threadSafety}}

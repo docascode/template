@@ -1,0 +1,669 @@
+{
+	"title": "NetType",
+	"$schema": "https://dotnet.github.io/docfx/schemas/v1.0/schema.json#",
+	"version": "1.0.0",
+	"description": "The schema for NetType page for class and struct",
+	"id": "https://static.docs.com/ui/latest/schemas/NetType.schema.json",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["name", "uid"],
+	"renderType": "content",
+	"archivable": false,
+	"properties": {
+		"additionalNotes": {
+			"additionalProperties": false,
+			"required": [],
+			"properties": {
+				"caller": {
+					"contentType": "markdown",
+					"tags": ["localizable"],
+					"type": "string"
+				},
+				"implementer": {
+					"contentType": "markdown",
+					"tags": ["localizable"],
+					"type": "string"
+				},
+				"inheritor": {
+					"contentType": "markdown",
+					"tags": ["localizable"],
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"altCompliant": {
+			"contentType": "xref",
+			"type": "string"
+		},
+		"assembliesWithMoniker": {
+			"description": "A monikerized collection of assemblies that contain this type.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attachedEvents": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attachedProperties": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributesWithMoniker": {
+			"description": "A monikerized collection of references to Attributes applied to this type.",
+			"items": {
+				"$ref": "#/definitions/versionedXrefPerLanguage"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributeMonikers": {
+			"description": "A collection of all monikers that apply to this type's attributes.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"capabilities": {
+			"type": "array",
+			"description": "Application specific capabilities.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1
+		},
+		"commentId": {
+			"type": "string"
+		},
+		"constructors": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"crossInheritdocsUid": {
+			"contentType": "xref",
+			"type": "string"
+		},
+		"derivedClassesMonikers": {
+			"description": "The union of all monikers that apply to this type's derived classes.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"derivedClassesWithMoniker": {
+			"description": "A monikerized collection of derived classes of this type.",
+			"items": {
+				"$ref": "#/definitions/versionedXref"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"devLangs": {
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"eiis": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"events": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"examples": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"extensionMethods": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"fields": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"fullName": {
+			"type": "string"
+		},
+		"obsoleteMessagesWithMoniker": {
+			"description": "A versioned collection of obsolete messages.",
+			"items": {
+				"$ref": "#/definitions/versionedMDString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"implementsWithMoniker": {
+			"description": "[nonEditable] A versioned collection of interfaces that this type implements.",
+			"items": {
+				"$ref": "#/definitions/versionedMDStringPerLanguage"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"implementsMonikers": {
+			"description": "A collection of all monikers that apply to this type's implements.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"inheritancesWithMoniker": {
+			"description": "[nonEditable] A monikerized collection of references to objects (classes, interfaces, etc) that this type inherits.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["values"],
+				"properties": {
+					"monikers": {
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"values": {
+						"items": {
+							"contentType": "markdown",
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"valuesPerLanguage": {
+						"items": {
+							"$ref": "#/definitions/MDStringPerLanguage"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"isDeprecated": {
+			"type": "boolean"
+		},
+		"isInternalOnly": {
+			"type": "boolean"
+		},
+		"isNotClsCompliant": {
+			"type": "boolean"
+		},
+		"metadata": {
+			"properties": {
+				"description": {
+					"type": "string",
+					"tags": ["localizable"]
+				},
+				"title": {
+					"type": "string",
+					"tags": ["localizable"]
+				}
+			},
+			"type": "object"
+		},
+		"methods": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"monikers": {
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"name": {
+			"type": "string"
+		},
+		"nameWithType": {
+			"type": "string"
+		},
+		"namespace": {
+			"contentType": "xref",
+			"type": "string"
+		},
+		"operators": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"osRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"description": "The minimum required operating system.",
+			"required": ["name", "minVersion"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"minVersion": {
+					"type": "string"
+				}
+			}
+		},
+		"packagesWithMoniker": {
+			"description": "A monikerized collection of packages that contain this type.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"permissions": {
+			"items": {
+				"additionalProperties": false,
+				"required": ["type"],
+				"properties": {
+					"description": {
+						"contentType": "markdown",
+						"tags": ["localizable"],
+						"type": "string"
+					},
+					"type": {
+						"contentType": "markdown",
+						"description": "[nonEditable] Type of the permission.",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"properties": {
+			"items": {
+				"$ref": "#/definitions/member"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"remarks": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"sdkRequirements": {
+			"type": "object",
+			"description": "The required SDK needed for api support.",
+			"additionalProperties": false,
+			"required": ["name", "url"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"url": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"seeAlso": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"source": {
+			"additionalProperties": false,
+			"required": ["path", "branch", "repo"],
+			"type": "object",
+			"properties": {
+				"path": {
+					"type": "string"
+				},
+				"branch": {
+					"type": "string"
+				},
+				"repo": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"summary": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"syntaxWithMoniker": {
+			"description": "A monikerized collection of all signatures in different languages.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["lang", "values"],
+				"properties": {
+					"lang": {
+						"type": "string"
+					},
+					"values": {
+						"items": {
+							"$ref": "#/definitions/versionedString"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"threadSafety": {
+			"additionalProperties": false,
+			"required": [],
+			"properties": {
+				"customizedContent": {
+					"contentType": "markdown",
+					"tags": ["localizable"],
+					"type": "string"
+				},
+				"isSupported": {
+					"type": "boolean"
+				},
+				"memberScope": {
+					"enum": ["all", "instance", "static", "unsupported"],
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"type": {
+			"enum": ["class", "struct", "interface"],
+			"type": "string"
+		},
+		"typeParameters": {
+			"items": {
+				"additionalProperties": false,
+				"required": ["name"],
+				"properties": {
+					"description": {
+						"contentType": "markdown",
+						"tags": ["localizable"],
+						"type": "string"
+					},
+					"isContravariant": {
+						"type": "boolean"
+					},
+					"isCovariant": {
+						"type": "boolean"
+					},
+					"name": {
+						"type": "string"
+					},
+					"constraints": {
+						"items": {
+							"additionalProperties": false,
+							"required": ["parameterAttribute", "baseTypeName"],
+							"properties": {
+								"parameterAttribute": {
+									"type": "string"
+								},
+								"baseTypeName": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"type": "array"
+		},
+		"uid": {
+			"contentType": "uid",
+			"type": "string"
+		},
+		"uwpRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["apiContracts", "deviceFamilies"],
+			"properties": {
+				"apiContracts": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Windows API contract required for usage.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"deviceFamilies": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Widows device family the api is supported on.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"xamlSyntax": {
+			"type": "string"
+		}
+	},
+	"definitions": {
+		"MDStringPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"langs": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"member": {
+			"additionalProperties": false,
+			"required": ["monikers", "uid"],
+			"properties": {
+				"crossInheritdocsUid": {
+					"contentType": "xref",
+					"type": "string"
+				},
+				"inheritedFrom": {
+					"contentType": "xref",
+					"type": "string"
+				},
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"uid": {
+					"contentType": "xref",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedMDString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedMDStringPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				},
+				"valuePerLanguage": {
+					"description": "Alternative type strings for other languages.",
+					"items": {
+						"$ref": "#/definitions/MDStringPerLanguage"
+					},
+					"minItems": 1,
+					"type": "array"
+				}
+			},
+			"type": "object"
+		},
+		"versionedString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedXref": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "xref",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedXrefPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "xref",
+					"type": "string"
+				},
+				"valuePerLanguage": {
+					"description": "Alternative type strings for other languages.",
+					"items": {
+						"additionalProperties": false,
+						"required": ["value"],
+						"properties": {
+							"langs": {
+								"items": {
+									"type": "string"
+								},
+								"minItems": 1,
+								"type": "array"
+							},
+							"value": {
+								"contentType": "xref",
+								"type": "string"
+							}
+						},
+						"type": "object"
+					},
+					"minItems": 1,
+					"type": "array"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"metadata": "/metadata",
+	"xrefProperties": ["commentId", "fullName", "monikers", "nameWithType", "name", "type", "summary"]
+}

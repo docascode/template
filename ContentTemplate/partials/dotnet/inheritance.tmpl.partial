@@ -1,0 +1,22 @@
+{{#hasInheritancesWithMonikers}}
+	{{#inheritancesWithMoniker}}
+		<dl class="attributeList stack" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+			<dt>{{__global.inheritance}}</dt>
+			<dd>
+				<div class="pdlHolder">
+				    {{^hasPerLanguageInheritancesWithMonikers}}
+						{{#values}}
+							<div class="pdl">{{{ . }}}</div> 
+						{{/values}}
+					{{/hasPerLanguageInheritancesWithMonikers}}
+					{{#hasPerLanguageInheritancesWithMonikers}}
+						{{#valuesPerLanguage}}
+						   <span class="pdl {{#langs}} lang-{{.}}{{/langs}}" >{{{value}}}</span>
+						{{/valuesPerLanguage}}
+			    	{{/hasPerLanguageInheritancesWithMonikers}}
+					{{#rootName}} <span>{{{rootName}}}</span> {{/rootName}}
+				</div>
+			</dd>
+		</dl>
+	{{/inheritancesWithMoniker}}
+{{/hasInheritancesWithMonikers}}

@@ -1,0 +1,13 @@
+  <div>
+  <h3>{{__global.appliesTo}}</h3>
+  <details>
+    <summary class="margin-bottom-xs">
+    </summary>
+    <div class="table-scroll-wrapper moniker-applies-to-overloadmember">
+      <table class='table border has-inner-borders has-header-background has-row-header-background'>
+        <thead>
+        </thead>
+      </table>
+    </div>
+  </details>
+</div>

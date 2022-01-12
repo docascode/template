@@ -1,0 +1,7 @@
+{{#permissions}}
+	<p>
+		{{{type}}}
+		<br/>
+		{{{description}}}
+	</p>
+{{/permissions}}

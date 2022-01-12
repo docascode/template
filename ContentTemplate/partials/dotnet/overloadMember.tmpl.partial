@@ -1,0 +1,50 @@
+<div data-moniker="{{#monikers}} {{.}}{{/monikers}} ">
+
+<div class="memberNameHolder">
+	<h2 id="{{htmlId}}">
+	    {{name}}
+	</h2>
+</div>
+
+<div class="memberInfo">
+  {{>partials/dotnet/deprecated}}
+  {{>partials/dotnet/clsCompliantAlternative}}
+  {{>partials/dotnet/summary}}
+  {{>partials/dotnet/syntax}}
+  {{>partials/dotnet/typeParameters}}
+  {{>partials/dotnet/parameters}}
+  {{>partials/dotnet/returns}}
+  {{>partials/dotnet/memberCommon}}
+  {{>partials/dotnet/uwpProperties}}
+  {{>partials/dotnet/additionalRequirements}}
+  
+  {{#examples}}
+  <h3>{{__global.examples}}</h3>
+    	{{{.}}}
+    {{/examples}}
+
+    {{#remarks}}
+    	<h3>{{__global.remarks}}</h3>		
+    	{{{.}}}
+    {{/remarks}}
+
+    {{>partials/dotnet/additionalNotes}}
+
+    {{#hasPermissions}}
+    	<h3>{{__global.security}}</h3>
+    	{{>partials/dotnet/security}}
+    {{/hasPermissions}}
+
+    {{#threadSafety}}
+    	<h3>{{__global.threadSafety}}</h3>
+    	{{{threadSafety}}}
+    {{/threadSafety}}
+
+    {{#seeAlso}}
+    	<h3>{{__global.seeAlso}}</h3>
+    	{{{ . }}}
+    {{/seeAlso}}
+    {{>partials/dotnet/monikerOverloadMember}}
+</div>
+
+</div>

@@ -1,0 +1,154 @@
+{
+	"title": "NetNamespace",
+	"$schema": "https://dotnet.github.io/docfx/schemas/v1.0/schema.json#",
+	"version": "1.0.0",
+	"description": "The schema for NetNamespace page",
+	"id": "https://static.docs.com/ui/latest/schemas/NetNamespace.schema.json",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["name", "uid"],
+	"renderType": "content",
+	"archivable": false,
+	"properties": {
+		"classes": {
+			"items": {
+				"$ref": "#/definitions/typeWithMoniker"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"commentId": {
+			"type": "string"
+		},
+		"delegates": {
+			"items": {
+				"$ref": "#/definitions/typeWithMoniker"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"devLangs": {
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"enums": {
+			"items": {
+				"$ref": "#/definitions/typeWithMoniker"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"examples": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"fullName": {
+			"type": "string"
+		},
+		"interfaces": {
+			"items": {
+				"$ref": "#/definitions/typeWithMoniker"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"isInternalOnly": {
+			"type": "boolean"
+		},
+		"metadata": {
+			"properties": {
+				"description": {
+					"type": "string",
+					"tags": ["localizable"]
+				},
+				"title": {
+					"type": "string",
+					"tags": ["localizable"]
+				}
+			},
+			"type": "object"
+		},
+		"monikers": {
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"name": {
+			"type": "string"
+		},
+		"remarks": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"seeAlso": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"structs": {
+			"items": {
+				"$ref": "#/definitions/typeWithMoniker"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"source": {
+			"additionalProperties": false,
+			"required": ["path", "branch", "repo"],
+			"type": "object",
+			"properties": {
+				"path": {
+					"type": "string"
+				},
+				"branch": {
+					"type": "string"
+				},
+				"repo": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"summary": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"uid": {
+			"contentType": "uid",
+			"type": "string"
+		}
+	},
+	"definitions": {
+		"typeWithMoniker": {
+			"additionalProperties": false,
+			"required": ["monikers", "uid"],
+			"properties": {
+				"crossInheritdocsUid": {
+					"contentType": "xref",
+					"type": "string"
+				},
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"uid": {
+					"contentType": "xref",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"metadata": "/metadata",
+	"xrefProperties": ["commentId", "fullName", "monikers", "name", "summary"]
+}

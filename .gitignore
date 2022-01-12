@@ -1,7 +1,11 @@
 *.log
 
+.vs
+.vscode
 bin
+obj
 _site
+api
 debug
 node_modules
 tests/screenshots/actual

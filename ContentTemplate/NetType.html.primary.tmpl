@@ -1,0 +1,206 @@
+<h1>{{{title}}}</h1>
+
+{{>partials/reference-metadata}}
+
+{{>partials/dotnet/typeHeader}}
+{{>partials/dotnet/monikerBoilerplate}}
+{{>partials/dotnet/deprecated}}
+{{>partials/dotnet/clsCompliantAlternative}}
+{{>partials/dotnet/summary}}
+{{>partials/docOutline}}
+
+{{>partials/dotnet/syntax}}
+{{>partials/dotnet/typeParameters}}
+{{>partials/dotnet/inheritance}}
+{{>partials/dotnet/derivedClass}}
+{{>partials/dotnet/attribute}}
+{{>partials/dotnet/implement}}
+{{>partials/dotnet/uwpProperties}}
+{{>partials/dotnet/additionalRequirements}}
+{{>partials/dotnet/typeContent}}
+
+{{>partials/dotnet/additionalNotesWithBigHeader}}
+
+{{#constructorsInfo}}
+	<h2 id="constructors"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.constructorsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#constructors}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/constructors}}
+	</table>
+{{/constructorsInfo}}
+
+{{#fieldsInfo}}
+	<h2 id="fields"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.fieldsInSubtitle}}
+    </h2>
+	<table class="nameValue">
+        {{#fields}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/fields}}
+	</table>
+{{/fieldsInfo}}
+
+{{#propertiesInfo}}
+	<h2 id="properties"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.propertiesInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#properties}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/properties}}
+	</table>
+{{/propertiesInfo}}
+
+{{#attachedPropertiesInfo}}
+	<h2 id="attached-properties"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.attachedPropertiesInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#attachedProperties}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/attachedProperties}}
+	</table>
+{{/attachedPropertiesInfo}}
+
+{{#methodsInfo}}
+	<h2 id="methods"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.methodsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#methods}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/methods}}
+	</table>
+{{/methodsInfo}}
+
+{{#operatorsInfo}}
+	<h2 id="operators"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.operatorsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+         {{#operators}}
+         	<tr {{^isInAllMonikers}}
+         			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+         		{{/isInAllMonikers}}>
+         			{{>partials/dotnet/typeMember}}
+         	</tr>
+         {{/operators}}
+	</table>
+{{/operatorsInfo}}
+
+{{#eventsInfo}}
+	<h2 id="events"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.eventsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#events}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/events}}
+	</table>
+{{/eventsInfo}}
+
+{{#attachedEventsInfo}}
+	<h2 id="attached-events"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.attachedEventsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#attachedEvents}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/attachedEvents}}
+	</table>
+{{/attachedEventsInfo}}
+
+{{#eiisInfo}}
+	<h2 id="explicit-interface-implementations"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.eiisInSubtitle}}
+	</h2>
+	<table class="nameValue">
+        {{#eiis}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/eiis}}
+	</table>
+{{/eiisInfo}}
+
+{{#extensionMethodsInfo}}
+	<h2 id="extension-methods">{{__global.extensionMethodsInSubtitle}}</h2>
+	<table class="nameValue">
+        {{#extensionMethods}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/extensionMethods}}
+	</table>
+{{/extensionMethodsInfo}}
+
+{{#permissions.0}}
+	<h2 id="security">{{__global.security}}</h2>
+{{/permissions.0}}
+{{>partials/dotnet/security}}
+
+{{>partials/dotnet/moniker}}
+
+{{>partials/dotnet/typeFooter}}

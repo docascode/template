@@ -1,0 +1,18 @@
+{{#parameters.0}}
+	<h4 class="propertyInfoTitle stack">{{__global.parameters}}</h4>
+{{/parameters.0}}
+{{#parameters}}
+	<div class="propertyInfo{{className}}">
+		<dl class="parameterList">
+			<dt>
+			{{^namesWithMoniker}}{{name}}{{/namesWithMoniker}}
+			{{#namesWithMoniker}}<span {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>{{value}}</span>{{/namesWithMoniker}}
+			</dt>
+			<dd>
+				{{^typePerLanguage}}{{{type}}}{{/typePerLanguage}}
+				{{#typePerLanguage}}<span class="{{#langs}} lang-{{.}}{{/langs}}">{{{value}}}</span>{{/typePerLanguage}}
+			</dd>
+		</dl>
+		{{{description}}}
+	</div>
+{{/parameters}}

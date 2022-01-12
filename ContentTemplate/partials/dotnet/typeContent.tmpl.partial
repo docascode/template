@@ -1,0 +1,10 @@
+{{! this partial template contains h2 tags with static id, so please only use it once in one page.}}
+{{#examples}}
+	<h2 id="examples">{{__global.examples}}</h2>
+	{{{.}}}
+{{/examples}}
+
+{{#remarks}}
+	<h2 id="remarks">{{{__global.remarks}}}</h2>
+	{{{.}}}
+{{/remarks}}

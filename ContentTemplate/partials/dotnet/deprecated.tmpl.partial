@@ -1,0 +1,15 @@
+{{#obsoleteMessagesWithMoniker}}
+    <div class="alert is-danger" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+        <span aria-hidden="true" class="icon is-small">
+	        <span class="docon docon-status-failure-outline"></span>
+        </span>
+        <div class="alert-title" style="display:inline-block">{{{__global.caution}}}</div>
+        {{^value}}
+            <p>{{__global.deprecated}}</p>
+        {{/value}}
+        {{#value}}
+            {{{.}}}
+        {{/value}}
+    </div>
+{{/obsoleteMessagesWithMoniker}}
+

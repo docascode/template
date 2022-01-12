@@ -1,0 +1,14 @@
+{{#isInheritedFrom}}
+	<td>
+		<span class="break-text">
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name.tmpl" />
+		</span>
+	</td>
+	<td class="summary">
+		<xref uid="{{ uid }}" template="partials/dotnet/xref-summary.tmpl" />
+		({{__global.inheritedFrom}} <xref uid="{{ inheritedFrom }}" template="partials/dotnet/xref-name.tmpl" />)
+	</td>
+{{/isInheritedFrom}}
+{{^isInheritedFrom}}
+	<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary.tmpl" />
+{{/isInheritedFrom}}

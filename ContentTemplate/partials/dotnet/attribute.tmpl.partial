@@ -1,0 +1,20 @@
+{{#hasAttributesWithMoniker}}
+	<dl class="attributeList stack" {{#attributeMonikers.0}}data-moniker="{{#attributeMonikers}} {{.}}{{/attributeMonikers}} "{{/attributeMonikers.0}}>
+		<dt>{{__global.attributes}}</dt>
+		<dd>
+			<div class="cdlHolder">
+			{{#attributesWithMoniker}}
+				{{^valuePerLanguage}}
+					<span class="cdl break-text" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						<xref uid="{{value}}" template="partials/dotnet/xref-name-with-title.tmpl" /></span>
+				{{/valuePerLanguage}}
+				{{#valuePerLanguage}}
+					<span class="cdl break-text {{#langs}} lang-{{.}}{{/langs}}" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						<xref uid="{{value}}" template="partials/dotnet/xref-name-with-title.tmpl" />
+					</span>
+				{{/valuePerLanguage}}
+			{{/attributesWithMoniker}}
+			</div>
+		</dd>
+	</dl>
+{{/hasAttributesWithMoniker}}

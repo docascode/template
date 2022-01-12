@@ -1,0 +1,444 @@
+{
+	"title": "NetEnum",
+	"$schema": "https://dotnet.github.io/docfx/schemas/v1.0/schema.json#",
+	"version": "1.0.0",
+	"description": "The schema for NetEnum page",
+	"id": "https://static.docs.com/ui/latest/schemas/NetEnum.schema.json",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["name", "uid"],
+	"renderType": "content",
+	"archivable": false,
+	"properties": {
+		"assembliesWithMoniker": {
+			"description": "A monikerized collection of assemblies that contain this enum.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"obsoleteMessagesWithMoniker": {
+			"description": "A versioned collection of obsolete messages",
+			"items": {
+				"$ref": "#/definitions/versionedMDString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributesWithMoniker": {
+			"description": "A monikerized collection of references to Attributes applied to this enum.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["value"],
+				"properties": {
+					"monikers": {
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"value": {
+						"contentType": "xref",
+						"type": "string"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"attributeMonikers": {
+			"description": "A collection of all monikers that apply to this enum's attributes.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"capabilities": {
+			"type": "array",
+			"description": "Application specific capabilities.",
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1
+		},
+		"commentId": {
+			"description": "The enum comment id.",
+			"type": "string"
+		},
+		"devLangs": {
+			"items": {
+				"type": "string"
+			},
+			"type": "array"
+		},
+		"examples": {
+			"contentType": "markdown",
+			"description": "Detailed examples for usage of the enum.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"fields": {
+			"description": "A collection of fields that the enum defines.",
+			"items": {
+				"$ref": "#/definitions/enumField"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"fullName": {
+			"description": "The full name of the enum.",
+			"type": "string"
+		},
+		"inheritancesWithMoniker": {
+			"description": "[nonEditable] A monikerized collection of references to objects (classes, interfaces, etc) that this enum inherits.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["values"],
+				"properties": {
+					"monikers": {
+						"items": {
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"values": {
+						"items": {
+							"contentType": "markdown",
+							"type": "string"
+						},
+						"minItems": 1,
+						"type": "array"
+					},
+					"valuesPerLanguage": {
+						"items": {
+							"$ref": "#/definitions/MDStringPerLanguage"
+						},
+						"minItems": 1,
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"isDeprecated": {
+			"description": "Whether or not this enum is deprecated.",
+			"type": "boolean"
+		},
+		"isFlags": {
+			"type": "boolean"
+		},
+		"isInternalOnly": {
+			"type": "boolean"
+		},
+		"metadata": {
+			"properties": {
+				"description": {
+					"type": "string",
+					"tags": ["localizable"]
+				},
+				"title": {
+					"type": "string",
+					"tags": ["localizable"]
+				}
+			},
+			"type": "object"
+		},
+		"monikers": {
+			"items": {
+				"type": "string"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"name": {
+			"description": "The name of the enum.",
+			"type": "string"
+		},
+		"nameWithType": {
+			"type": "string"
+		},
+		"namespace": {
+			"contentType": "xref",
+			"description": "A reference to the namespace owning this enum.",
+			"type": "string"
+		},
+		"osRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"description": "The minimum required operating system.",
+			"required": ["name", "minVersion"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"minVersion": {
+					"type": "string"
+				}
+			}
+		},
+		"packagesWithMoniker": {
+			"description": "A monikerized collection of packages that contain this type.",
+			"items": {
+				"$ref": "#/definitions/versionedString"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"remarks": {
+			"contentType": "markdown",
+			"description": "A detailed description of the enum, used for supplementary information or detailed usage.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"sdkRequirements": {
+			"type": "object",
+			"description": "The required SDK needed for api support.",
+			"additionalProperties": false,
+			"required": ["name", "url"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"url": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"seeAlso": {
+			"contentType": "markdown",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"source": {
+			"additionalProperties": false,
+			"required": ["path", "branch", "repo"],
+			"type": "object",
+			"properties": {
+				"path": {
+					"type": "string"
+				},
+				"branch": {
+					"type": "string"
+				},
+				"repo": {
+					"contentType": "href",
+					"type": "string"
+				}
+			}
+		},
+		"summary": {
+			"contentType": "markdown",
+			"description": "The main summary for the enum.",
+			"tags": ["localizable"],
+			"type": "string"
+		},
+		"syntaxWithMoniker": {
+			"description": "A monikerized collection of all signatures in different languages.",
+			"items": {
+				"additionalProperties": false,
+				"required": ["lang", "values"],
+				"properties": {
+					"lang": {
+						"type": "string"
+					},
+					"values": {
+						"items": {
+							"additionalProperties": false,
+							"required": ["value"],
+							"properties": {
+								"monikers": {
+									"items": {
+										"type": "string"
+									},
+									"minItems": 1,
+									"type": "array"
+								},
+								"value": {
+									"type": "string"
+								}
+							},
+							"type": "object"
+						},
+						"type": "array"
+					}
+				},
+				"type": "object"
+			},
+			"minItems": 1,
+			"type": "array"
+		},
+		"uid": {
+			"contentType": "uid",
+			"description": "The enum unique identifier.",
+			"type": "string"
+		},
+		"uwpRequirements": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["apiContracts", "deviceFamilies"],
+			"properties": {
+				"apiContracts": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Windows API contract required for usage.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				},
+				"deviceFamilies": {
+					"type": "array",
+					"minItems": 1,
+					"description": "The Widows device family the api is supported on.",
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["name", "version"],
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"version": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"xamlSyntax": {
+			"type": "string",
+			"description": "Xaml syntax of the enum, displayed in a code block in the document."
+		}
+	},
+	"definitions": {
+		"enumField": {
+			"additionalProperties": false,
+			"required": [
+				"commentId",
+				"fullName",
+				"literalValue",
+				"monikers",
+				"name",
+				"nameWithType",
+				"uid"
+			],
+			"properties": {
+				"commentId": {
+					"description": "The field comment id.",
+					"type": "string"
+				},
+				"fullName": {
+					"description": "The field full name.",
+					"type": "string"
+				},
+				"literalValue": {
+					"description": "The field value.",
+					"type": "string"
+				},
+				"monikers": {
+					"description": "The field monikers.",
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"name": {
+					"description": "The field name.",
+					"type": "string"
+				},
+				"nameWithType": {
+					"description": "The field name with type.",
+					"type": "string"
+				},
+				"summary": {
+					"contentType": "markdown",
+					"description": "The short summary for the field.",
+					"tags": ["localizable"],
+					"type": "string"
+				},
+				"uid": {
+					"contentType": "uid",
+					"description": "The field unique identifier.",
+					"schemaType": "NetEnumField",
+					"type": "string"
+				}
+			},
+			"type": "object",
+			"xrefProperties": ["commentId", "fullName", "monikers", "name", "nameWithType", "summary"]
+		},
+		"versionedString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"versionedMDString": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"monikers": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		},
+		"MDStringPerLanguage": {
+			"additionalProperties": false,
+			"required": ["value"],
+			"properties": {
+				"langs": {
+					"items": {
+						"type": "string"
+					},
+					"minItems": 1,
+					"type": "array"
+				},
+				"value": {
+					"contentType": "markdown",
+					"type": "string"
+				}
+			},
+			"type": "object"
+		}
+	},
+	"metadata": "/metadata",
+	"xrefProperties": ["commentId", "fullName", "monikers", "name", "nameWithType", "summary"]
+}

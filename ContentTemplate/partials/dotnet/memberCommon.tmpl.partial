@@ -1,0 +1,43 @@
+{{#hasImplements}}
+	<h4 class="propertyInfoTitle stack">{{__global.implements}}</h4>
+	<div class="propertyInfo">
+		<div class="cdlHolder">
+			{{#implements}}
+				<span class="cdl break-text">{{{.}}}</span>
+			{{/implements}}
+		</div>
+	</div>
+{{/hasImplements}}
+{{#hasImplementsWithMoniker}}
+	<h4 class="propertyInfoTitle stack" {{#implementsMonikers.0}}data-moniker="{{#implementsMonikers}} {{.}}{{/implementsMonikers}} "{{/implementsMonikers.0}}>{{__global.implements}}</h4>
+	<div class="propertyInfo">
+		<div class="cdlHolder">
+			{{#implementsWithMoniker}}
+				{{^valuePerLanguage}}
+					<span class="cdl break-text" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						{{{value}}}
+					</span>
+				{{/valuePerLanguage}}
+				{{#valuePerLanguage}}
+						<span class="cdl break-text {{#langs}} lang-{{.}}{{/langs}}" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+							{{{value}}}
+						</span>
+				{{/valuePerLanguage}}
+			{{/implementsWithMoniker}}
+		</div>
+	</div>
+{{/hasImplementsWithMoniker}}
+
+{{>partials/dotnet/attribute}}
+
+{{#hasExceptions}}
+	<h4 class="propertyInfoTitle stack">{{__global.exceptions}}</h4>
+	{{#exceptions}}
+		<div class="propertyInfo{{className}}">
+		    <div class="subtle">
+			    {{{type}}}
+		    </div>
+		    {{{description}}}
+		</div>
+	{{/exceptions}}
+{{/hasExceptions}}

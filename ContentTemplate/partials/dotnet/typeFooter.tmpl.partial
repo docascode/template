@@ -1,0 +1,7 @@
+{{! this partial template contains h2 tags with static id, so please only use it once in one page.}}
+{{#threadSafety}}
+	<h2 id="thread-safety">{{__global.threadSafety}}</h2>
+	{{{threadSafety}}}
+{{/threadSafety}}
+
+{{>partials/dotnet/seeAlso}}

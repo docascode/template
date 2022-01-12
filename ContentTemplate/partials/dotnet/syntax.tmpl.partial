@@ -1,0 +1,11 @@
+{{#syntaxWithMoniker}}
+    {{#values}}
+	<pre class="wrap" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}><code class="{{lang}} lang-{{lang}}" dir="ltr">{{value}}</code></pre>
+	{{/values}}
+{{/syntaxWithMoniker}}
+{{#xamlSyntax}}
+	<pre class="wrap"><code class="xaml lang-xaml" dir="ltr">{{.}}</code></pre>
+{{/xamlSyntax}}
+{{#xamlMemberSyntax}}
+	<pre class="wrap"><code class="xaml lang-xaml" dir="ltr">{{.}}</code></pre>
+{{/xamlMemberSyntax}}

@@ -1,0 +1,20 @@
+{{#returnsWithMoniker}}
+	{{#returnLabel}}
+	<h4 class="propertyInfoTitle stack">{{returnLabel}}</h4>
+	{{/returnLabel}}
+
+	{{^returnLabel}}
+	<h4 class="propertyInfoTitle stack">{{__global.returnValue}}</h4>
+	{{/returnLabel}}
+
+	{{#type}}
+    <dl class="propertyInfo" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+	    <dt>
+			{{^valuePerLanguage}}{{{value}}}{{/valuePerLanguage}}
+			{{#valuePerLanguage}}<span class="{{#langs}} lang-{{.}}{{/langs}}">{{{value}}}</span>{{/valuePerLanguage}}
+		</dt>
+    </dl>
+	{{/type}}
+	
+	{{{description}}}
+{{/returnsWithMoniker}}

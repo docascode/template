@@ -1,0 +1,81 @@
+<h1>{{{title}}}</h1>
+
+{{>partials/reference-metadata}}
+
+{{>partials/dotnet/monikerBoilerplate}}
+{{>partials/dotnet/summary}}
+{{>partials/docOutline}}
+
+{{#classesInfo}}
+	<h2 id="classes"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.classesInSubtitle}}
+	</h2>
+	<table class="nameValue">
+		{{#classes}}
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary-tr.tmpl" />
+		{{/classes}}
+	</table>
+{{/classesInfo}}
+
+{{#structsInfo}}
+	<h2 id="structs"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.structsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+		{{#structs}}
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary-tr.tmpl" />
+		{{/structs}}
+	</table>
+{{/structsInfo}}
+
+{{#interfacesInfo}}
+	<h2 id="interfaces"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.interfacesInSubtitle}}
+	</h2>
+	<table class="nameValue">
+		{{#interfaces}}
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary-tr.tmpl" />
+		{{/interfaces}}
+	</table>
+{{/interfacesInfo}}
+
+{{#enumsInfo}}
+	<h2 id="enums"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.enumsInSubtitle}}
+	</h2>
+	<table class="nameValue">
+		{{#enums}}
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary-tr.tmpl" />
+		{{/enums}}
+	</table>
+{{/enumsInfo}}
+
+{{#delegatesInfo}}
+	<h2 id="delegates"
+		{{^isInAllMonikers}}
+        	data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        {{/isInAllMonikers}}>
+		{{__global.delegatesInSubtitle}}
+	</h2>
+	<table class="nameValue">
+		{{#delegates}}
+			<xref uid="{{ uid }}" template="partials/dotnet/xref-name-summary-tr.tmpl" />
+		{{/delegates}}
+	</table>
+{{/delegatesInfo}}
+
+{{>partials/dotnet/examples}}
+{{>partials/dotnet/remarks}}
+{{>partials/dotnet/seeAlso}}

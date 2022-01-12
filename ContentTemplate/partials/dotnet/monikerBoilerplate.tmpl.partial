@@ -1,0 +1,6 @@
+<div class="alert is-primary is-hidden moniker-display-boilerplate">
+    <p class="alert-title">
+      <span class="docon docon-status-info-outline" aria-hidden="true"></span> {{__global.boilerplateTitle}}
+    </p>
+    <p>{{__global.prereleaseBoilerplate}}</p>
+</div>

@@ -1,0 +1,27 @@
+{{#summary}}
+	<div class="summaryHolder">
+		<div class="summary clearFix">
+			{{#editLink}}
+				<div class="inlineEditButton">
+					<a href="{{editLink}}" data-bi-name="editType"><span class="docon docon-edit-outline" aria-hidden="true"></span>{{__global.edit}}</a>
+				</div>
+			{{/editLink}}
+			{{{summary}}}
+			{{#isFlags}}
+			    <p>{{{__global.flagsAttributeDisclaimer}}}</p>
+			{{/isFlags}}
+			{{#isInternalOnly}}
+				<p>{{__global.internalUseOnly}}</p>
+			{{/isInternalOnly}}
+		</div>
+	</div>
+{{/summary}}
+{{^summary}}
+	{{#crossInheritdocsUid}}
+		<div class="summaryHolder">
+			<div class="summary clearFix">
+				<xref uid="{{ crossInheritdocsUid }}" template="partials/dotnet/xref-summary.tmpl" />
+			</div>
+		</div>
+	{{/crossInheritdocsUid}}
+{{/summary}}

@@ -1,0 +1,28 @@
+{{#hasDerivedClassesWithMoniker}}
+	<dl id="derived" class="attributeList stack" {{#derivedClassesMonikers.0}}data-moniker="{{#derivedClassesMonikers}} {{.}}{{/derivedClassesMonikers}} "{{/derivedClassesMonikers.0}}>
+		<dt>{{__global.derived}}</dt>
+		<dd>
+			{{#derivedClassesWithMoniker}}
+				<div>
+					<span class="break-text" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						{{#value}}
+							<xref uid="{{ . }}" template="partials/dotnet/xref-fullName.tmpl" />
+						{{/value}}
+					</span>
+				</div>
+			{{/derivedClassesWithMoniker}}
+			{{#hiddenDerivedClassesWithMoniker.0}}
+				{{#hiddenDerivedClassesWithMoniker}}
+					<div class="hiddenDerivedClass" hidden>
+						<span class="break-text" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+							{{#value}}
+								<xref uid="{{ . }}" template="partials/dotnet/xref-fullName.tmpl" />
+							{{/value}}
+						</span>
+					</div>
+				{{/hiddenDerivedClassesWithMoniker}}
+				<div><a class="derivedClassesButton" href="#" title="{{__global.showAllDerived}}">{{{__global.loadMore}}}</a></div>
+			{{/hiddenDerivedClassesWithMoniker.0}}
+		</dd>
+	</dl>
+{{/hasDerivedClassesWithMoniker}}

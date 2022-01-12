@@ -1,0 +1,43 @@
+<div data-moniker="{{#monikers}} {{.}}{{/monikers}} ">
+
+{{>partials/dotnet/deprecated}}
+{{>partials/dotnet/clsCompliantAlternative}}
+{{>partials/dotnet/summary}}
+{{>partials/dotnet/syntax}}
+{{>partials/dotnet/typeParameters}}
+{{>partials/dotnet/parameters}}
+{{>partials/dotnet/returns}}
+{{>partials/dotnet/memberCommon}}
+{{>partials/dotnet/uwpProperties}}
+{{>partials/dotnet/additionalRequirements}}
+
+{{#examples}}
+	<h2>{{__global.examples}}</h2>
+	{{{.}}}
+{{/examples}}
+
+{{#remarks}}
+	<h2>{{__global.remarks}}</h2>
+	{{{.}}}
+{{/remarks}}
+
+{{>partials/dotnet/additionalNotesWithBigHeader}}
+
+{{#hasPermissions}}
+	<h2>{{__global.security}}</h2>
+	{{>partials/dotnet/security}}
+{{/hasPermissions}}
+
+{{>partials/dotnet/moniker}}
+
+{{#threadSafety}}
+	<h2>{{__global.threadSafety}}</h2>
+	{{{threadSafety}}}
+{{/threadSafety}}
+
+{{#seeAlso}}
+	<h2>{{__global.seeAlso}}</h2>
+	{{{ . }}}
+{{/seeAlso}}
+
+</div>

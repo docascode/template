@@ -1,0 +1,44 @@
+{{#displayUWPRequirements}}
+	<h4 class="propertyInfoTitle stack">{{__global.win10Requirements}}</h4>
+	<table class="attributeList">
+	{{#uwpRequirements}}
+		{{#deviceFamilies.0}}
+			<tr>
+				<td>{{__global.win10_deviceFamily}}</td>
+				<td>
+					<div class="pdl">
+						{{#deviceFamilies}}
+							<span class="cdl">{{name}} ({{introducedInVersion}})<br/></span>
+						{{/deviceFamilies}}
+					</div>
+				</td>
+			</tr>
+		{{/deviceFamilies.0}}
+
+		{{#apiContracts.0}}
+			<tr>
+				<td>API contract</td><td>
+					<div class="pdl">
+						{{#apiContracts}}
+							<span class="cdl">{{name}} ({{introducedInVersion}})<br/></span>
+						{{/apiContracts}}
+					</div>
+				</td>
+			</tr>
+		{{/apiContracts.0}}
+	{{/uwpRequirements}}
+
+	{{#capabilities.0}}
+		<tr>
+			<td><a href="https://aka.ms/appcap">{{__global.win10_appCapabilities}}</a></td>
+			<td>
+				<div class="cdlHolder">
+					{{#capabilities}}
+						<span class="cdl break-text">{{.}}</span>
+					{{/capabilities}}
+				</div>
+			</td>
+		</tr>
+	{{/capabilities.0}}
+	</table>
+{{/displayUWPRequirements}}

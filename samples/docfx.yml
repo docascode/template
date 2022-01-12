@@ -1,3 +1,9 @@
 template: ..
+exclude:
+- dotnet/**
+monikerDefinition:
+  monikers:
+  - moniker_name: net6.0
+  - product_name: .NET Core
 globalMetadata:
   menu_path: menu.yml

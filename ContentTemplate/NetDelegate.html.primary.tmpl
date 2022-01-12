@@ -1,0 +1,38 @@
+<h1>{{{title}}}</h1>
+
+{{>partials/reference-metadata}}
+
+{{>partials/dotnet/typeHeader}}
+{{>partials/dotnet/monikerBoilerplate}}
+{{>partials/dotnet/deprecated}}
+{{>partials/dotnet/clsCompliantAlternative}}
+{{>partials/dotnet/summary}}
+{{>partials/docOutline}}
+
+{{>partials/dotnet/syntax}}
+
+{{>partials/dotnet/typeParameters}}
+{{>partials/dotnet/parameters}}
+{{>partials/dotnet/returns}}
+{{>partials/dotnet/inheritance}}
+{{>partials/dotnet/attribute}}
+{{>partials/dotnet/uwpProperties}}
+{{>partials/dotnet/additionalRequirements}}
+{{>partials/dotnet/typeContent}}
+
+{{#extensionMethodsInfo}}
+	<h2 id="extension-methods">{{__global.extensionMethodsInSubtitle}}</h2>
+	<table class="nameValue">
+        {{#extensionMethods}}
+        	<tr {{^isInAllMonikers}}
+        			data-moniker="{{#monikers}} {{.}}{{/monikers}} "
+        		{{/isInAllMonikers}}>
+        			{{>partials/dotnet/typeMember}}
+        	</tr>
+        {{/extensionMethods}}
+	</table>
+{{/extensionMethodsInfo}}
+
+{{>partials/dotnet/moniker}}
+
+{{>partials/dotnet/typeFooter}}

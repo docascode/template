@@ -1,0 +1,4 @@
+{{#remarks}}
+	<h2 id="remarks">{{__global.remarks}}</h2>
+	{{{remarks}}}
+{{/remarks}}

@@ -1,0 +1,26 @@
+{{#displayAdditionalRequirements}}
+	<h4 class="propertyInfoTitle stack">{{__global.additionalFeaturesAndRequirements}}</h4>
+	<table class="attributeList">
+	{{#sdkRequirements}}
+		<tr>
+			<td>{{__global.softwareDevelopmentKit}}</td>
+			<td>
+				<div class="cdlHolder">
+				<span class="cdl"><a href="{{url}}">{{name}}</a></span>
+				</div>
+			</td>
+		</tr>
+	{{/sdkRequirements}}
+
+	{{#osRequirements}}
+		<tr>
+			<td>{{__global.minimumSupportedOS}}</td>
+			<td>
+				<div class="cdlHolder">
+					<span class="cdl">{{name}} ({{minVersion}})</span>
+				</div>
+			</td>
+		</tr>
+	{{/osRequirements}}
+	</table>
+{{/displayAdditionalRequirements}}

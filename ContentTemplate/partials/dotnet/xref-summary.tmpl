@@ -1,0 +1,9 @@
+{{#isInternalOnly}}
+	<p>{{__global.internalUseOnly}}</p>
+{{/isInternalOnly}}
+{{#obsoleteMessagesWithMoniker}}
+	<div {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+		<strong>{{__global.obsolete}} </strong>
+	</div>
+{{/obsoleteMessagesWithMoniker}}
+{{{summary}}}

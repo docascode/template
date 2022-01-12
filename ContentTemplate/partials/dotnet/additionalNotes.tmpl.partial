@@ -1,0 +1,16 @@
+{{#additionalNotes}}
+	{{#implementer}}
+		<h3>{{__global.notesToImplementers}}</h3>
+		{{{implementer}}}
+	{{/implementer}}
+
+	{{#inheritor}}
+		<h3>{{__global.notesToInheritors}}</h3>
+		{{{inheritor}}}
+	{{/inheritor}}
+
+	{{#caller}}
+		<h3>{{__global.notesToCallers}}</h3>
+		{{{caller}}}
+	{{/caller}}
+{{/additionalNotes}}

@@ -1,0 +1,20 @@
+{{#hasImplementsWithMoniker}}
+	<dl class="attributeList stack" {{#implementsMonikers.0}}data-moniker="{{#implementsMonikers}} {{.}}{{/implementsMonikers}} "{{/implementsMonikers.0}}>
+		<dt>{{__global.implements}}</dt><dd>
+		<div class="cdlHolder">
+			{{#implementsWithMoniker}}
+				{{^valuePerLanguage}}
+					<span class="cdl" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						<span class="break-text">{{{ value }}}</span>
+					</span>
+				{{/valuePerLanguage}}
+				{{#valuePerLanguage}}
+					<span class="cdl {{#langs}} lang-{{.}}{{/langs}}" {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+						<span class="break-text">{{{ value }}}</span>
+					</span>
+				{{/valuePerLanguage}}
+			{{/implementsWithMoniker}}
+		</div>
+		</dd>
+	</dl>
+{{/hasImplementsWithMoniker}}

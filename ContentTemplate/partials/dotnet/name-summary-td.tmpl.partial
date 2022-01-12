@@ -1,0 +1,23 @@
+<td {{^summary}}{{^crossInheritdocsUid}}colspan="2"{{/crossInheritdocsUid}}{{/summary}}>
+	<span class="break-text">
+		<a class="xref" href="{{href}}">{{name}}</a>
+	</span>
+</td>
+{{#summary}}
+	<td class="summary"> 
+	    {{#isInternalOnly}}
+			<p>{{__global.internalUseOnly}}</p>
+		{{/isInternalOnly}}
+		{{#obsoleteMessagesWithMoniker}}
+			<div  {{#monikers.0}}data-moniker="{{#monikers}} {{.}}{{/monikers}} "{{/monikers.0}}>
+				<strong>{{__global.obsolete}} </strong>
+			</div>
+		{{/obsoleteMessagesWithMoniker}}
+		{{{summary}}}
+	</td>
+{{/summary}}
+{{^summary}}
+	{{#crossInheritdocsUid}}
+		<td class="summary"><xref uid="{{ . }}" template="partials/dotnet/xref-summary.tmpl" /></td>
+	{{/crossInheritdocsUid}}
+{{/summary}}
