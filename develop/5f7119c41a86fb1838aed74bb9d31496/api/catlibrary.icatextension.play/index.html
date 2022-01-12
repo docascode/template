@@ -17,7 +17,7 @@
 <meta name="document_id" content="da37ff2f-c6fa-8071-ef5a-9abb0f28a304" />
 <meta name="document_version_independent_id" content="7e8d6b38-c0e1-81cc-e986-43221fb46656" />
 <meta name="fullName" content="CatLibrary.ICatExtension.Play" />
-<meta name="gitcommit" content="https://github.com/docascode/template/blob/30f1b8b93e7f5a6da67f67737e855a99e97d93d2/samples/api/CatLibrary.ICatExtension.Play.yml" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/1d78ed4d91debaac4a616a3c6162e52f01b10e0b/samples/api/CatLibrary.ICatExtension.Play.yml" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="../../../menu.json" />
 <meta name="monikers" content="net6.0" />
@@ -29,11 +29,11 @@
 <meta name="page_type" content="dotnet" />
 <meta name="schema" content="NetMember" />
 <meta name="site_name" content="Docs" />
-<meta name="toc_rel" content="../../../api/toc/" />
+<meta name="toc_rel" content="../../../api/toc.json" />
 <meta name="TopicType" content="apiref" />
 <meta name="type" content="method" />
 <meta name="uid" content="CatLibrary.ICatExtension.Play*" />
-<meta name="updated_at" content="2022-01-12 08:08 AM" />
+<meta name="updated_at" content="2022-01-12 08:52 AM" />
 
 
 	<title>ICatExtension.Play(ICat, String) Method (CatLibrary)</title>
@@ -76,7 +76,23 @@
 <div class="sidenav hide-when-search">
   <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
   <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc"></div>
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 				<div class="article row grid-right">

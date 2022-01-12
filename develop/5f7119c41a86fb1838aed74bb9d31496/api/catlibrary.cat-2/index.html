@@ -27,7 +27,7 @@ unsafe
 <p>As you see, here we bring in <strong>pointer</strong> so we need to add <code data-dev-comment-type=&quot;languageKeyword&quot;>unsafe</code> keyword.</p>
 " />
 <meta name="fullName" content="CatLibrary.Cat<T,K>" />
-<meta name="gitcommit" content="https://github.com/docascode/template/blob/30f1b8b93e7f5a6da67f67737e855a99e97d93d2/samples/api/CatLibrary.Cat-2.yml" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/1d78ed4d91debaac4a616a3c6162e52f01b10e0b/samples/api/CatLibrary.Cat-2.yml" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="../../../menu.json" />
 <meta name="monikers" content="net6.0" />
@@ -47,11 +47,11 @@ unsafe
 <p>this class is a template class. It has two Generic parameter. they are: <code data-dev-comment-type=&quot;typeparamref&quot;>T</code> and <code data-dev-comment-type=&quot;typeparamref&quot;>K</code>.</p>
 <p>The extension method of this class can refer to <a class=no-loc href='../catlibrary.icatextension/'>ICatExtension</a> class</p>
 " />
-<meta name="toc_rel" content="../../../api/toc/" />
+<meta name="toc_rel" content="../../../api/toc.json" />
 <meta name="TopicType" content="apiref" />
 <meta name="type" content="class" />
 <meta name="uid" content="CatLibrary.Cat`2" />
-<meta name="updated_at" content="2022-01-12 08:08 AM" />
+<meta name="updated_at" content="2022-01-12 08:52 AM" />
 
 
 	<title>Cat<T,K> Class (CatLibrary)</title>
@@ -94,7 +94,23 @@ unsafe
 <div class="sidenav hide-when-search">
   <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
   <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc"></div>
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 				<div class="article row grid-right">

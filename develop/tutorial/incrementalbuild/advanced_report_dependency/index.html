@@ -16,7 +16,7 @@
 <meta name="rawTitle" content="<h1 id=&quot;-advanced-report-dependency&quot;>🔧 Advanced: Report Dependency</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
-<meta name="toc_rel" content="../../toc/" />
+<meta name="toc_rel" content="../../toc.json" />
 <meta name="updated_at" content="2021-06-02 06:23 AM" />
 <meta name="wordCount" content="458" />
 
@@ -61,7 +61,23 @@
 <div class="sidenav hide-when-search">
   <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
   <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc"></div>
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 				<div class="article row grid-right">
