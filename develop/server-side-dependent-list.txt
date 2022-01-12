@@ -192,6 +192,7 @@
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\docfx.yml","to_file_path":"D:\\a\\template\\template\\samples\\menu.yml"}
 {"dependency_type":"metadata","from_file_path":"D:\\a\\template\\template\\samples\\index.yml","to_file_path":"D:\\a\\template\\template\\samples\\TOC.yml"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\index.yml","to_file_path":"D:\\a\\template\\template\\samples\\tutorial\\getting-started.md"}
+{"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\menu.yml","to_file_path":"D:\\a\\template\\template\\samples\\api\\CatLibrary.yml"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\menu.yml","to_file_path":"D:\\a\\template\\template\\samples\\spec\\metadata_format_spec.md"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\menu.yml","to_file_path":"D:\\a\\template\\template\\samples\\tutorial\\getting-started.md"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\spec\\docfx_build_manifest_file.md","to_file_path":"D:\\a\\template\\template\\samples\\spec\\docfx_flavored_markdown.md"}
