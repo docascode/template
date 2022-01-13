@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-import { formList, getAbsolutePath, getDirectory } from "./utility";
+import React from 'jsx-dom'
+import { formList, getAbsolutePath, getDirectory } from './utility';
 
 export function renderNavbar() {
   var navbarPath = $("meta[name='menu_path']").attr("content");
@@ -77,8 +78,13 @@ export function renderBreadcrumb() {
     });
   })
 
-  var html = formList(breadcrumb, 'breadcrumb');
-  $('#breadcrumb').html(html);
+  document.getElementById('breadcrumb').appendChild(
+    <ul class='breadcrumb'> {
+      breadcrumb.map(item => <li> {
+        item.href ? <a href={item.href}>{item.name}</a> : item.name
+      } </li>)
+    } </ul>
+  )
 }
 
 export function renderAffix() {
