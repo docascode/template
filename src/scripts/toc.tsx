@@ -2,7 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 import $ from 'jquery'
-import { getAbsolutePath, getDirectory, isRelativePath } from './utility';
+import React, { createRef } from 'jsx-dom'
+import { getAbsolutePath, getDirectory, isRelativePath, meta, toggleClass } from './utility'
 
 const active = 'active';
 const expanded = 'in';
@@ -10,75 +11,46 @@ const filtered = 'filtered';
 const show = 'show';
 const hide = 'hide';
 
-export function renderToc() {
-  var tocPath = $("meta[name='toc_rel']").attr("content");
-  if (!tocPath) {
-    return Promise.resolve();
+interface TocNode {
+  name: string
+  href: string | undefined
+  items: TocNode[] | undefined
+}
+
+export async function renderToc() {
+  const tocPath = meta('toc_rel')?.replace(/\\/g, '/')
+  const tocMount = document.getElementById('toc')
+  if (!tocPath || !tocMount) {
+    return
   }
-  tocPath = tocPath.replace(/\\/g, '/');
 
-  return fetch(tocPath).then(response => response.json()).then(toc => {
-    renderTocNodes(document.getElementById('toc'), toc.items)
+  const toc = await (await fetch(tocPath)).json()
+  const tocrel = getDirectory(tocPath)
+  const currentHref = getAbsolutePath(window.location.pathname)
+  tocMount.appendChild(<ul class='nav level1'>{buildTocNodes(toc.items)}</ul>)
+  registerTocEvents()
 
-    var tocrel = getDirectory(tocPath);
-    var currentHref = getAbsolutePath(window.location.pathname);
-    $('#sidetoc').find('a[href]').each(function (i, e) {
-      var href = $(e).attr("href");
-      if (isRelativePath(href)) {
-        href = tocrel + '/' + href;
-        $(e).attr("href", href);
-      }
-
-      if (getAbsolutePath(e.href) === currentHref) {
-        $(e).addClass(active);
-      }
-    });
-
-    registerTocEvents();
-  });
-
-  function renderTocNodes(container: HTMLElement, nodes, level: number = 1) {
-    for (const node of nodes) {
-      const ul = document.createElement('ul')
-      ul.classList.add('nav')
-      ul.classList.add('level' + level)
-      const li = document.createElement('li')
-
-      if (node.items && node.items.length > 0) {
-        const span = document.createElement('span')
-        span.classList.add('expand-stub')
-        li.appendChild(span)
-      }
-      
-      const a = document.createElement('a')
-      if (node.href) {
-        a.href = node.href
-      }
-      if (node.name) {
-        a.title = node.name
-        a.innerText = node.name
-      }
-      li.appendChild(a)
-
-      if (node.items && node.items.length > 0) {
-        renderTocNodes(li, node.items, level + 1)
-      }
-
-      ul.appendChild(li)
-      container.appendChild(ul)
-    }
+  function buildTocNodes(nodes: TocNode[], level: number = 1) {
+    return nodes.map(node => {
+      const li = createRef()
+      const href = isRelativePath(node.href) ? tocrel + '/' + node.href : node.href
+      const isLeaf = !node.items || node.items.length <= 0
+      const isActive = getAbsolutePath(href) == currentHref
+      return (
+        <li ref={li}>
+          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleClass(li.current, expanded)}></span>}
+          {href
+            ? <a class={isActive ? active : null} href={href}>{node.name}</a>
+            : <a onClick={() => toggleClass(li.current, expanded)}>{node.name}</a>}
+          {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(node.items, level + 1)}</ul>}
+        </li>)
+    })
   }
 
   function registerTocEvents() {
     var tocFilterInput = $('#toc_filter_input');
     var tocFilterClearButton = $('#toc_filter_clear');
 
-    $('.toc .nav > li > .expand-stub').click(function (e) {
-      $(e.target).parent().toggleClass(expanded);
-    });
-    $('.toc .nav > li > .expand-stub + a:not([href])').click(function (e) {
-      $(e.target).parent().toggleClass(expanded);
-    });
     tocFilterInput.on('focus', () => {
       tocFilterInput.parent().addClass('focused');
     });
@@ -194,3 +166,4 @@ export function renderToc() {
     }
   }
 }
+

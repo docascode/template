@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 import React from 'jsx-dom'
-import { formList, getAbsolutePath, getDirectory } from './utility';
+import { getAbsolutePath, getDirectory } from './utility';
 
 export function renderNavbar() {
   var navbarPath = $("meta[name='menu_path']").attr("content");
@@ -78,36 +78,42 @@ export function renderBreadcrumb() {
     });
   })
 
-  document.getElementById('breadcrumb').appendChild(
-    <ul class='breadcrumb'> {
-      breadcrumb.map(item => <li> {
-        item.href ? <a href={item.href}>{item.name}</a> : item.name
-      } </li>)
-    } </ul>
+  document.getElementById('breadcrumb')?.appendChild(
+    <ul class='breadcrumb'>
+      {breadcrumb.map(item => <li> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}
+    </ul>
   )
 }
 
 export function renderAffix() {
-  var sections = Array.from(document.querySelectorAll(".article article h2"))
+  const affixMount = document.getElementById('affix')
+  const sections = Array.from(document.querySelectorAll(".article article h2"))
     .map(item => ({ name: htmlEncode(item.textContent), href: '#' + item.id }))
 
-  if (sections.length > 0) {
-    var html = '<h5 class="title">In This Article</h5>'
-    html += formList(sections, ['nav', 'bs-docs-sidenav']);
-    $("#affix").empty().append(html);
-    if ($('footer').is(':visible')) {
-      $(".sideaffix").css("bottom", "70px");
-    }
-    $('#affix a').click(function (e) {
-      var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
-      var target = e.target.hash;
-      if (scrollspy && target) {
-        scrollspy.activate(target);
-      }
-    });
+  if (!affixMount || sections.length <= 0) {
+    return
   }
 
-  function htmlEncode(str) {
+  affixMount.appendChild(<h5 class='title'>In this Article</h5>)
+  affixMount.appendChild(
+    <ul class='nav bs-docs-sidenav'>
+      {sections.map(item => <li><a href={item.href} onClick={scroll}>{item.name}</a></li>)}
+    </ul>
+  )
+
+  if ($('footer').is(':visible')) {
+    $(".sideaffix").css("bottom", "70px");
+  }
+
+  function scroll (e) {
+    var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
+    var target = e.target.hash;
+    if (scrollspy && target) {
+      scrollspy.activate(target);
+    }
+  }
+
+  function htmlEncode(str: string): string {
     if (!str) return str;
     return str
       .replace(/&/g, '&amp;')
