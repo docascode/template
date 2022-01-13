@@ -5,7 +5,7 @@ import hljs from 'highlight.js';
 
 export function highlight() {
   document.querySelectorAll('pre code').forEach(block => {
-    hljs.highlightBlock(block as HTMLElement)
+    hljs.highlightElement(block as HTMLElement)
   })
 
   document.querySelectorAll('pre code[highlight-lines]').forEach(block => {
