@@ -11,13 +11,15 @@ To develop the template:
 - Install [Node.js](https://nodejs.org/)
 - Install [yarn](https://yarnpkg.com/)
 - Install [.NET Core](https://www.microsoft.com/net/download)
-- Install the latest `docfx` pre-release:
-```powershell
-dotnet tool update -g docfx --version "3.0.0-*" --add-source https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-public-packages/nuget/v3/index.json
+
+- Checkout submodules using
+```
+git submodule update --init
 ```
 
 - Build the site template using
 ```powershell
+yarn
 yarn build
 ```
 
