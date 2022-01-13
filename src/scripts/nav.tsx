@@ -68,13 +68,13 @@ export function renderBreadcrumb() {
   $('#navbar a.active').each(function (i, e) {
     breadcrumb.push({
       href: e.href,
-      name: e.innerHTML
+      name: e.innerText
     });
   })
   $('#toc a.active').each(function (i, e) {
     breadcrumb.push({
       href: e.href,
-      name: e.innerHTML
+      name: e.innerText
     });
   })
 
@@ -88,7 +88,7 @@ export function renderBreadcrumb() {
 export function renderAffix() {
   const affixMount = document.getElementById('affix')
   const sections = Array.from(document.querySelectorAll(".article article h2"))
-    .map(item => ({ name: htmlEncode(item.textContent), href: '#' + item.id }))
+    .map(item => ({ name: item.textContent, href: '#' + item.id }))
 
   if (!affixMount || sections.length <= 0) {
     return
@@ -111,15 +111,5 @@ export function renderAffix() {
     if (scrollspy && target) {
       scrollspy.activate(target);
     }
-  }
-
-  function htmlEncode(str: string): string {
-    if (!str) return str;
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;');
   }
 }
