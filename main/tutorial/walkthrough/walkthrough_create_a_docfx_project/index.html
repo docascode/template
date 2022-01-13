@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="8b466217-2dfd-158a-1906-b631a2eacddf" />
+<meta name="document_version_independent_id" content="466bb2b9-930d-2bb3-e928-5ce1ce2ba62c" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/tutorial/walkthrough/walkthrough_create_a_docfx_project.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="../../../menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/tutorial/walkthrough/walkthrough_create_a_docfx_project.md" />
+<meta name="rawTitle" content="<h1 id=&quot;walkthrough-part-i-generate-a-simple-documentation-website&quot;>Walkthrough Part I: Generate a Simple Documentation Website</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../../toc.json" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="528" />
+
+
+	<title>Walkthrough Part I: Generate a Simple Documentation Website</title>
+
+	<link rel="stylesheet" href="../../../dist/docfx.css">
+	<script type="text/javascript" src="../../../dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix" data-offset="120">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="../../../svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+				<div class="article row grid-right">
+
+					<div class="col-md-10">
+
+						<article class="content wrap" id="_content" data-uid="">
+							<h1 id="walkthrough-part-i-generate-a-simple-documentation-website">Walkthrough Part I: Generate a Simple Documentation Website</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>							<p>By completing this walkthrough, you'll become familiar with the workflow of <code>docfx</code> and the general principle of organizing documents inside <code>docfx</code>. You will finish this walkthrough with a static website that can be published to any host service. Download the files used in this walkthrough <a href="../artifacts/walkthrough1.zip" data-linktype="relative-path">here</a>.</p>
+<h2 id="step1-setup-docfx">Step1. Setup DocFX</h2>
+<p>Download <em>docfx</em> from <a href="http://dotnet.github.io/docfx/" data-linktype="external">http://dotnet.github.io/docfx/</a>. <a href="http://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-exe-directly" data-linktype="external">Getting Started with docfx</a> describes three ways to install <em>docfx</em>. This walkthrough uses the first one: Use <em>docfx.exe</em> directly.</p>
+<ol>
+<li>Download <em>docfx.zip</em> and unzip it to <code>D:\docfx\</code></li>
+<li>Add <code>D:\docfx\</code> to <code>PATH</code> so that the command <code>docfx</code> can be directly called from everywhere for convenience. (For example, for Windows, <code>set PATH=%PATH%;D:\docfx\</code>.)</li>
+</ol>
+<h2 id="step2-init-a-docfx-project">Step2. Init a DocFX project</h2>
+<ol>
+<li>Create a new folder <code>D:\docfx_walkthrough</code></li>
+<li>Start Command Line under <code>D:\docfx_walkthrough</code></li>
+<li>Call <code>docfx init -q</code>. This command generates a <code>docfx_project</code> folder with the default <code>docfx.json</code> file under it. <code>docfx.json</code> is the configuration file <code>docfx</code> uses to generate documentation. <code>-q</code> option means generating the project quietly using default values, you can also try <code>docfx init</code> and follow the instructions to provide your own settings.</li>
+</ol>
+<h2 id="step3-build-our-website">Step3. Build our website</h2>
+<p>Run command <code>docfx docfx_project/docfx.json</code>. Note that a new subfolder <code>_site</code> is generated under that folder. This is where the static website is generated.</p>
+<h2 id="step4-preview-our-website">Step4. Preview our website</h2>
+<p>The generated static website can be published to GitHub pages, Azure websites, or your own hosting services without any further changes. You can also run command <code>docfx serve docfx_project/_site</code> to preview the website locally.</p>
+<p>If port <code>8080</code> is not in use, <code>docfx</code> will host <code>_site</code> under <code>http://localhost:8080</code>. If <code>8080</code> is in use, you can use <code>docfx serve _site -p &lt;port&gt;</code> to change the port to be used by <code>docfx</code>.</p>
+<p>Congrats! You can now see a simple website similar to:
+<img src="../images/walkthrough_simple_homepage.png" alt="Homepage" data-linktype="relative-path"/></p>
+<hr/>
+<h2 id="step5-add-a-set-of-articles-to-the-website">Step5. Add a set of articles to the website</h2>
+<ol>
+<li><p>Place more <code>.md</code> files into <code>articles</code>, e.g., <code>details1.md</code>, <code>details2.md</code>, <code>details3.md</code>. If the files reference any resources, put those resources into the <code>images</code> folder.</p>
+</li>
+<li><p>In order to organize these articles, we add these files into <code>toc.yml</code> under <code>articles</code> subfolder. The content of <code>toc.yml</code> is as below:</p>
+<pre><code class="lang-yml">- name: Introduction
+  href: intro.md
+- name: Details 1
+  href: details1.md
+- name: Details 2
+  href: details2.md
+- name: Details 3
+  href: details3.md
+</code></pre>
+<p>So now our folder layout is:</p>
+<pre><code>|- index.md
+|- toc.yml
+|- articles
+|    |- intro.md
+|    |- details1.md
+|    |- details2.md
+|    |- details3.md
+|    |- toc.yml
+|- images
+    |- details1_image.png
+</code></pre>
+</li>
+<li><p>Run <strong>Step3</strong> and <strong>Step4</strong> again, and the website is now:
+<img src="../images/walkthrough_step5.png" alt="Step7" data-linktype="relative-path"/>.</p>
+</li>
+</ol>
+<p>Notice that more items are added to the sidebar for <em>Articles</em> nav page. The title inside the sidebar is exactly what we set in the <code>toc.yml</code> inside <code>articles</code> subfolder.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In this walkthrough, we built a website from a set of <code>.md</code> files. We call these <code>.md</code> files <strong>Conceptual Documentation</strong>. In walkthrough part 2, we will learn to add <strong>API Documentation</strong> to our website. The <strong>API Documentation</strong> is extracted directly from .NET source code. In a series of advanced walkthroughs, we will learn advanced concepts in <code>docfx</code>, such as <em>cross reference</em> between articles, <em>external reference</em> to other documentation sets, etc. We will also learn to customize our websites, from theme to layout to metadata extraction.</p>
+<h2 id="read-more">Read more</h2>
+<ul>
+<li><p><a href="../walkthrough_create_a_docfx_project_2/" data-linktype="relative-path">Walkthrough Part II: Adding API Documentation to the Website</a></p>
+</li>
+<li><p><a href="../advanced_walkthrough/" data-linktype="relative-path">Walkthrough Advanced: Customize Your Website</a></p>
+</li>
+</ul>
+
+						</article>
+
+					</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a id="switch-theme" class="contribution-link">
+            <span class="glyphicon glyphicon-cog"></span>Theme
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/docascode/template/blob/main/samples/tutorial/walkthrough/walkthrough_create_a_docfx_project.md" class="contribution-link">
+            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+				</div>
+		</div>
+
+<footer>
+  <div class="footer">
+    <div class="container">
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>

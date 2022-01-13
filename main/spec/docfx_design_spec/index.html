@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="48e2e845-9693-edc4-a120-6fc8603c7ebc" />
+<meta name="document_version_independent_id" content="a27a3740-7bc2-dd0d-9b4d-41fda5423182" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/b800b502012fd6e3c03390528278ff13ccbdfca9/samples/spec/docfx_design_spec.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="../../menu.json" />
+<meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/spec/docfx_design_spec.md" />
+<meta name="rawTitle" content="<h1 id=&quot;docfx-design-spec&quot;><code>docfx</code> Design Spec</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc.json" />
+<meta name="updated_at" content="2021-06-02 06:23 AM" />
+<meta name="wordCount" content="101" />
+
+
+	<title>docfx Design Spec</title>
+
+	<link rel="stylesheet" href="../../dist/docfx.css">
+	<script type="text/javascript" src="../../dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix" data-offset="120">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="/">
+  <img id="logo" class="svg" src="../../svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+				<div class="article row grid-right">
+
+					<div class="col-md-10">
+
+						<article class="content wrap" id="_content" data-uid="">
+							<h1 id="docfx-design-spec"><code>docfx</code> Design Spec</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="6/2/2021">6/2/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>							<h2 id="0-terms">0. Terms</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DFM</td>
+<td><a href="../docfx_flavored_markdown/" data-linktype="relative-path">DocFX Flavored Markdown</a></td>
+</tr>
+<tr>
+<td>API</td>
+<td>The API generated from source code</td>
+</tr>
+<tr>
+<td>Overwrite Files</td>
+<td>The files with YAML header used to override YAML files when <code>uid</code> matches.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-scenarios">1. Scenarios</h2>
+<p><code>docfx</code> should support the following scenarios:</p>
+<ol>
+<li>Source Code =&gt; Website</li>
+<li>Conceptual =&gt; Website</li>
+<li>YAML files =&gt; Website</li>
+</ol>
+<!--break list-->
+<h2 id="2-architecture">2. Architecture</h2>
+<p><img src="../images/docfx_workflow.png" alt="Workflow" data-linktype="relative-path"/></p>
+<h2 id="3-feature-list">3. Feature List</h2>
+<ol>
+<li>Support for <a href="../docfx_flavored_markdown/" data-linktype="relative-path">DocFX Flavored Markdown</a></li>
+<li>Ability to parse TOC.json/TOC.yml/TOC.md</li>
+<li>Custom template naming: {type}.{extension}.tmpl under folder {templateName}</li>
+</ol>
+<h2 id="4-open-issues">4. Open Issues</h2>
+<ol>
+<li>Should we support other conceptual file format, for example, RST?
+==&gt; How to parse?</li>
+<li>How do you know which link to replace to html, and which not?
+==&gt;</li>
+</ol>
+
+						</article>
+
+					</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a id="switch-theme" class="contribution-link">
+            <span class="glyphicon glyphicon-cog"></span>Theme
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/docascode/template/blob/main/samples/spec/docfx_design_spec.md" class="contribution-link">
+            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+				</div>
+		</div>
+
+<footer>
+  <div class="footer">
+    <div class="container">
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>
