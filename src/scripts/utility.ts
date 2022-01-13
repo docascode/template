@@ -19,10 +19,9 @@ export function getAbsolutePath(href: string): string {
   if (!href) {
     return
   }
-  // Use anchor to normalize href
-  var anchor = $('<a href="' + href + '"></a>')[0];
-  // Ignore protocal, remove search and query
-  return anchor.host + anchor.pathname;
+  const a = document.createElement('a')
+  a.href = href
+  return a.host + a.pathname;
 }
 
 export function isRelativePath(href: string): boolean {
@@ -36,11 +35,8 @@ export function isAbsolutePath(href: string): boolean {
   return (/^(?:[a-z]+:)?\/\//i).test(href);
 }
 
-export function getDirectory(href) {
-  if (!href) return '';
+export function getDirectory(href: string): string {
+  if (!href) return '.';
   var index = href.lastIndexOf('/');
-  if (index == -1) return '';
-  if (index > -1) {
-    return href.substr(0, index);
-  }
+  return index < 0 ? '.' : href.slice(0, index);
 }

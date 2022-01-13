@@ -12,20 +12,23 @@ function start(options) {
 }
 
 function serve() {
-  const site = "samples/_site";
+  const site = 'samples/_site'
   const browserSync = bs.create('docfx')
 
   return browserSync.init({
     open: true,
+    startPath: '/test',
     files: [
       'debug/dist',
       join(site, '**')
     ],
-    server: [
-      'debug',
-      '.',
-      site
-    ]
+    server: {
+      routes: {
+        '/test/dist': 'debug/dist',
+        '/test/svg': '.',
+        '/test': site
+      }
+    }
   })
 }
 

@@ -2,53 +2,44 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 import React from 'jsx-dom'
-import { getAbsolutePath, getDirectory } from './utility';
+import { getAbsolutePath, getDirectory, meta } from './utility';
 
-export function renderNavbar() {
-  var navbarPath = $("meta[name='menu_path']").attr("content");
-  if (!navbarPath) {
-    return Promise.resolve();
+export async function renderNavbar() {
+  const navbarMount = document.getElementById('navbar')
+  const navbarPath = meta('menu_path')?.replace(/\\/g, '/')
+  if (!navbarPath || !navbarMount) {
+    return
   }
 
-  navbarPath = navbarPath.replace(/\\/g, '/');
-  var ul = document.createElement('ul');
-  ul.classList.add('nav');
-  ul.classList.add('level1');
-  ul.classList.add('navbar-nav');
+  const data = await (await fetch(navbarPath)).json()
 
-  return fetch(navbarPath).then(response => response.json()).then(data => {
-    var activeA;
-    var activeLi;
-    var maxItemPathLength = 1;
-    var navrel = getDirectory(navbarPath);
-    var windowPath = getAbsolutePath(window.location.pathname).toLowerCase();
-    data.items.forEach(function (item) {
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.href = navrel + '/' + item.href;
-      a.innerHTML = item.name;
-      li.appendChild(a);
-      ul.appendChild(li);
+  let activeItem
+  let maxItemPathLength = 1
+  const navrel = getDirectory(navbarPath)
+  const windowPath = getAbsolutePath(window.location.pathname).toLowerCase()
 
-      if (a.href) {
-        var itemPath = getAbsolutePath(a.href).toLowerCase();
-        var itemLength = commonPathPrefixLength(windowPath, itemPath);
-        if (itemLength > maxItemPathLength) {
-          maxItemPathLength = itemPath.length;
-          activeA = a;
-          activeLi = li;
-        }
+  const items = data.items.map(item => {
+    const href = navrel + '/' + item.href
+    const result = { href: href, name: item.name }
+    if (href) {
+      const itemPath = getAbsolutePath(href).toLowerCase();
+      const itemLength = commonPathPrefixLength(windowPath, itemPath);
+      if (itemLength > maxItemPathLength) {
+        maxItemPathLength = itemLength
+        activeItem = result
       }
-    });
+    }
+    return result
+  })
 
-    if (activeA) {
-      activeA.classList.add('active');
-    }
-    if (activeLi) {
-      activeLi.classList.add('active');
-    }
-    document.getElementById('navbar').appendChild(ul);
-  });
+  if (activeItem) {
+    activeItem.active = 'active'
+  }
+
+  navbarMount.appendChild(
+    <ul class='nav navbar-nav level1'>
+      {items.map(item => <li class={item.active}><a href={item.href} class={item.active}>{item.name}</a></li>)}
+    </ul>);
 
   function commonPathPrefixLength(path1, path2) {
     var items1 = path1.split('/');
@@ -105,7 +96,7 @@ export function renderAffix() {
     $(".sideaffix").css("bottom", "70px");
   }
 
-  function scroll (e) {
+  function scroll(e) {
     var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
     var target = e.target.hash;
     if (scrollspy && target) {
