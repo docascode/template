@@ -3,6 +3,7 @@ on:
   push:
     branches:
     - main
+    - develop
 
 jobs:
   gh-pages:
@@ -22,7 +23,7 @@ jobs:
     - run: |
         mkdir -p ${{ runner.temp }}/_site
         cp -r samples/_site/* ${{ runner.temp }}/_site
-        dir=.
+        dir=${GITHUB_REF##*/}
         git fetch origin gh-pages
         git checkout -f gh-pages
         git rm -r --ignore-unmatch $dir
