@@ -3,21 +3,18 @@
 
 import $ from 'jquery'
 import React, { createRef } from 'jsx-dom'
+import { NavItem } from './nav';
 import { getAbsolutePath, getDirectory, isRelativePath, meta, toggleClass } from './utility'
 
-const active = 'active';
-const expanded = 'in';
 const filtered = 'filtered';
 const show = 'show';
 const hide = 'hide';
 
-interface TocNode {
-  name: string
-  href: string | undefined
-  items: TocNode[] | undefined
+interface TocNode extends NavItem {
+  items?: TocNode[]
 }
 
-export async function renderToc() {
+export async function renderToc(): Promise<TocNode[]> {
   const tocPath = meta('toc_rel')?.replace(/\\/g, '/')
   const tocMount = document.getElementById('toc')
   if (!tocPath || !tocMount) {
@@ -27,22 +24,62 @@ export async function renderToc() {
   const toc = await (await fetch(tocPath)).json()
   const tocrel = getDirectory(tocPath)
   const currentHref = getAbsolutePath(window.location.pathname)
+  const activeNodes: TocNode[] = []
+  let activeElement: React.RefObject<HTMLElement>
+
+  toc.items ||= []
+  toc.items.map(expandNodes)
   tocMount.appendChild(<ul class='nav level1'>{buildTocNodes(toc.items)}</ul>)
   registerTocEvents()
+
+  if (activeElement) {
+    activeElement.current.scrollIntoView()
+  }
+
+  return activeNodes
+
+  function expandNodes(node: TocNode): boolean {
+    let isActive = false
+    if (node.href) {
+      node.href = isRelativePath(node.href) ? tocrel + '/' + node.href : node.href
+      if (getAbsolutePath(node.href) == currentHref) {
+        isActive = true
+      }
+    }
+    
+    if (node.items) {
+      for (const item of node.items) {
+        if (expandNodes(item)) {
+          isActive = true
+        }
+      }
+    }
+
+    if (isActive) {
+      activeNodes.unshift(node)
+      return true
+    }
+    return false
+  }
 
   function buildTocNodes(nodes: TocNode[], level: number = 1) {
     return nodes.map(node => {
       const li = createRef()
-      const href = isRelativePath(node.href) ? tocrel + '/' + node.href : node.href
-      const isLeaf = !node.items || node.items.length <= 0
-      const isActive = getAbsolutePath(href) == currentHref
+      const { href, name, items } = node
+      const isLeaf = !items || items.length <= 0
+      const active = activeNodes.includes(node)
+
+      if (active) {
+        activeElement = li
+      }
+
       return (
-        <li ref={li}>
-          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleClass(li.current, expanded)}></span>}
+        <li ref={li} class={active ? ['in', 'active'] : null}>
+          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleClass(li.current, 'in')}></span>}
           {href
-            ? <a class={isActive ? active : null} href={href}>{node.name}</a>
-            : <a onClick={() => toggleClass(li.current, expanded)}>{node.name}</a>}
-          {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(node.items, level + 1)}</ul>}
+            ? <a class={active ? 'active' : null} href={href}>{name}</a>
+            : <a class={active ? 'active' : null} onClick={() => toggleClass(li.current, 'in')}>{name}</a>}
+          {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(items, level + 1)}</ul>}
         </li>)
     })
   }
@@ -149,17 +186,6 @@ export async function renderToc() {
     if ($('footer').is(':visible')) {
       $('.sidetoc').addClass('shiftup');
     }
-
-    // Scroll to active item
-    var top = 0;
-    $('#toc a.active').parents('li').each(function (i, e) {
-      $(e).addClass(active).addClass(expanded);
-      $(e).children('a').addClass(active);
-    })
-    $('#toc a.active').parents('li').each(function (i, e) {
-      top += $(e).position().top;
-    })
-    $('.sidetoc').scrollTop(top - 50);
 
     if ($('footer').is(':visible')) {
       $('.sidetoc').addClass('shiftup');

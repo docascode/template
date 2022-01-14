@@ -4,7 +4,12 @@
 import React from 'jsx-dom'
 import { getAbsolutePath, getDirectory, meta } from './utility';
 
-export async function renderNavbar() {
+export interface NavItem {
+  name: string
+  href?: string
+}
+
+export async function renderNavbar(): Promise<NavItem> {
   const navbarMount = document.getElementById('navbar')
   const navbarPath = meta('menu_path')?.replace(/\\/g, '/')
   if (!navbarPath || !navbarMount) {
@@ -13,7 +18,7 @@ export async function renderNavbar() {
 
   const data = await (await fetch(navbarPath)).json()
 
-  let activeItem
+  let activeItem: NavItem
   let maxItemPathLength = 1
   const navrel = getDirectory(navbarPath)
   const windowPath = getAbsolutePath(window.location.pathname).toLowerCase()
@@ -32,14 +37,15 @@ export async function renderNavbar() {
     return result
   })
 
-  if (activeItem) {
-    activeItem.active = 'active'
-  }
-
   navbarMount.appendChild(
-    <ul class='nav navbar-nav level1'>
-      {items.map(item => <li class={item.active}><a href={item.href} class={item.active}>{item.name}</a></li>)}
-    </ul>);
+    <ul class='nav navbar-nav level1'> {
+      items.map(item => {
+        const className = item === activeItem ? 'active' : null
+        return <li class={className}><a href={item.href} class={className}>{item.name}</a></li>
+      })
+    } </ul>);
+
+  return activeItem
 
   function commonPathPrefixLength(path1, path2) {
     var items1 = path1.split('/');
@@ -54,21 +60,7 @@ export async function renderNavbar() {
   }
 }
 
-export function renderBreadcrumb() {
-  var breadcrumb = [];
-  $('#navbar a.active').each(function (i, e) {
-    breadcrumb.push({
-      href: e.href,
-      name: e.innerText
-    });
-  })
-  $('#toc a.active').each(function (i, e) {
-    breadcrumb.push({
-      href: e.href,
-      name: e.innerText
-    });
-  })
-
+export function renderBreadcrumb(breadcrumb: NavItem[]): void {
   document.getElementById('breadcrumb')?.appendChild(
     <ul class='breadcrumb'>
       {breadcrumb.map(item => <li> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}

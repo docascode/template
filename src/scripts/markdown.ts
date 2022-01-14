@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+import { meta } from "./utility";
+
 // Styling for tables in conceptual documents using Bootstrap.
 // See http://getbootstrap.com/css/#tables
 export function renderTables() {
@@ -16,7 +18,7 @@ export function renderAlerts() {
 
 // Open links to different host in a new window.
 export function renderLinks() {
-  if ($("meta[property='docfx:newtab']").attr("content") === "true") {
+  if (meta('docfx:newtab') === 'true') {
     $(document.links).filter(function () {
       return this.hostname !== window.location.hostname;
     }).attr('target', '_blank');

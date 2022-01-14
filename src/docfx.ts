@@ -16,7 +16,9 @@ import { renderAffix, renderBreadcrumb, renderNavbar } from './scripts/nav'
 import { enableSwitchTheme } from './scripts/theme'
 import { renderToc } from './scripts/toc'
 
-$(function () {
+document.addEventListener('DOMContentLoaded', onContentLoad)
+
+function onContentLoad() {
   enableAnchor()
   enableSwitchTheme();
   workAroundFixedHeaderForAnchors();
@@ -26,10 +28,11 @@ $(function () {
   renderAlerts();
   renderLinks();
 
-  Promise.all([renderNavbar(), renderToc()]).then(() => renderBreadcrumb());
+  Promise.all([renderNavbar(), renderToc()])
+         .then(([nav, toc]) => renderBreadcrumb([nav, ...toc]));
 
   renderAffix();
   renderLogo();
 
   renderTabs();
-});
+}
