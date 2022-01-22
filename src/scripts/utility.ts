@@ -5,14 +5,6 @@ export function meta(name: string): string {
   return (document.querySelector(`meta[name="${name}"]`) as HTMLMetaElement)?.content
 }
 
-export function toggleClass(e: HTMLElement, className: string): void {
-  if (e.classList.contains(className)) {
-    e.classList.remove(className)
-  } else {
-    e.classList.add(className)
-  }
-}
-
 export function getAbsolutePath(href: string): string {
   if (!href) {
     return

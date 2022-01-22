@@ -1,14 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-import $ from 'jquery'
 import React, { createRef } from 'jsx-dom'
 import { NavItem } from './nav';
-import { getAbsolutePath, getDirectory, isRelativePath, meta, toggleClass } from './utility'
-
-const filtered = 'filtered';
-const show = 'show';
-const hide = 'hide';
+import { getAbsolutePath, getDirectory, isRelativePath, meta } from './utility'
 
 interface TocNode extends NavItem {
   items?: TocNode[]
@@ -33,7 +28,7 @@ export async function renderToc(): Promise<TocNode[]> {
   registerTocEvents()
 
   if (activeElement) {
-    activeElement.current.scrollIntoView()
+    activeElement.current.scrollIntoView({ block: 'nearest' })
   }
 
   return activeNodes
@@ -75,121 +70,76 @@ export async function renderToc(): Promise<TocNode[]> {
 
       return (
         <li ref={li} class={active ? ['in', 'active'] : null}>
-          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleClass(li.current, 'in')}></span>}
+          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleTocNode(li.current)}></span>}
           {href
             ? <a class={active ? 'active' : null} href={href}>{name}</a>
-            : <a class={active ? 'active' : null} onClick={() => toggleClass(li.current, 'in')}>{name}</a>}
+            : <a class={active ? 'active' : null} onClick={() => toggleTocNode(li.current)}>{name}</a>}
           {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(items, level + 1)}</ul>}
         </li>)
     })
   }
 
+  function toggleTocNode(li: HTMLLIElement) {
+    if (li.classList.contains('in') || li.classList.contains('filtered')) {
+      li.classList.remove('in')
+      li.classList.remove('filtered')
+    } else {
+      li.classList.add('in')
+        }
+      }
+
   function registerTocEvents() {
-    var tocFilterInput = $('#toc_filter_input');
-    var tocFilterClearButton = $('#toc_filter_clear');
+    const tocFilter = document.getElementById('toc-filter') as HTMLInputElement
+    if (!tocFilter) {
+      return
+      }
 
-    tocFilterInput.on('focus', () => {
-      tocFilterInput.parent().addClass('focused');
-    });
-    tocFilterInput.on('blur', () => {
-      tocFilterInput.parent().removeClass('focused');
-    });
-    tocFilterInput.on('input', function (e) {
-      var val = this.value;
-      //Save filter string to local session storage
-      if (typeof (Storage) !== "undefined") {
-        try {
-          sessionStorage.filterString = val;
+    tocFilter.addEventListener('focus', () => tocFilter.parentElement?.classList.add('focused'))
+    tocFilter.addEventListener('blur', () => tocFilter.parentElement?.classList.remove('focused'))
+    tocFilter.addEventListener('input', () => onTocFilterTextChange())
+
+    // Set toc filter from local session storage on page load
+    const filterString = sessionStorage?.filterString
+    if (filterString) {
+      tocFilter.value = filterString
+      onTocFilterTextChange()
         }
-        catch (e) { }
-      }
-      if (val === '') {
-        // Clear 'filtered' class
-        $('#toc li').removeClass(filtered).removeClass(hide);
-        tocFilterClearButton.fadeOut();
-        return;
-      }
-      tocFilterClearButton.fadeIn();
 
-      // set all parent nodes status
-      $('#toc li>a').filter(function (i, e) {
-        return $(e).siblings().length > 0
-      }).each(function (i, anchor) {
-        var parent = $(anchor).parent();
-        parent.addClass(hide);
-        parent.removeClass(show);
-        parent.removeClass(filtered);
+    function onTocFilterTextChange() {
+      const filter = tocFilter.value?.toLocaleLowerCase() || ''
+      if (sessionStorage) {
+        sessionStorage.filterString = filter
+      }
+
+      const toc = document.getElementById('toc')
+      const anchors = toc.querySelectorAll('a')
+
+      if (filter == '') {
+        anchors.forEach(a => a.parentElement.classList.remove('filtered', 'hide'))
+        return
+        }
+
+      const filteredLI = new Set<HTMLElement>()
+      anchors.forEach(a => {
+        const text = a.innerText
+        if (text && text.toLowerCase().indexOf(filter) >= 0) {
+          let e: HTMLElement = a
+          while (e && e !== toc) {
+            e = e.parentElement
+            filteredLI.add(e)
+      }
+    }
       })
 
-      // Get leaf nodes
-      $('#toc li>a').filter(function (i, e) {
-        return $(e).siblings().length === 0
-      }).each(function (i, anchor) {
-        var text = $(anchor).attr('title');
-        var parent = $(anchor).parent();
-        var parentNodes = parent.parents('ul>li');
-        for (const parentNode of parentNodes) {
-          var parentText = $(parentNode).children('a').attr('title');
-          if (parentText) text = parentText + '.' + text;
-        };
-        if (filterNavItem(text, val)) {
-          parent.addClass(show);
-          parent.removeClass(hide);
+      anchors.forEach(a => {
+        const li = a.parentElement
+        if (filteredLI.has(li)) {
+          li.classList.remove('hide')
+          li.classList.add('filtered')
         } else {
-          parent.addClass(hide);
-          parent.removeClass(show);
-        }
-      });
-      $('#toc li>a').filter(function (i, e) {
-        return $(e).siblings().length > 0
-      }).each(function (i, anchor) {
-        var parent = $(anchor).parent();
-        if (parent.find('li.show').length > 0) {
-          parent.addClass(show);
-          parent.addClass(filtered);
-          parent.removeClass(hide);
-        } else {
-          parent.addClass(hide);
-          parent.removeClass(show);
-          parent.removeClass(filtered);
-        }
+          li.classList.add('hide')
+    }
       })
-
-      function filterNavItem(name, text) {
-        if (!text) return true;
-        if (name && name.toLowerCase().indexOf(text.toLowerCase()) > -1) return true;
-        return false;
-      }
-    });
-
-    // toc filter clear button
-    tocFilterClearButton.hide();
-    tocFilterClearButton.on("click", function (e) {
-      tocFilterInput.val("");
-      tocFilterInput.trigger('input');
-      if (typeof (Storage) !== "undefined") {
-        try {
-          sessionStorage.filterString = "";
-        }
-        catch (e) { }
-      }
-    });
-
-    //Set toc filter from local session storage on page load
-    if (typeof (Storage) !== "undefined") {
-      try {
-        tocFilterInput.val(sessionStorage.filterString);
-        tocFilterInput.trigger('input');
-      }
-      catch (e) { }
-    }
-    if ($('footer').is(':visible')) {
-      $('.sidetoc').addClass('shiftup');
-    }
-
-    if ($('footer').is(':visible')) {
-      $('.sidetoc').addClass('shiftup');
     }
   }
 }
-
