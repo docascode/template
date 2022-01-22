@@ -10,9 +10,9 @@ export interface NavItem {
 }
 
 export async function renderNavbar(): Promise<NavItem> {
-  const navbarMount = document.getElementById('navbar')
+  const navbarElement = document.getElementById('navbar')
   const navbarPath = meta('menu_path')?.replace(/\\/g, '/')
-  if (!navbarPath || !navbarMount) {
+  if (!navbarPath || !navbarElement) {
     return
   }
 
@@ -37,7 +37,7 @@ export async function renderNavbar(): Promise<NavItem> {
     return result
   })
 
-  navbarMount.appendChild(
+  navbarElement.appendChild(
     <ul class='nav navbar-nav level1'> {
       items.map(item => {
         const className = item === activeItem ? 'active' : null
@@ -68,17 +68,17 @@ export function renderBreadcrumb(breadcrumb: NavItem[]): void {
   )
 }
 
-export function renderAffix() {
-  const affixMount = document.getElementById('affix')
+export function renderAside() {
+  const asideElement = document.getElementById('aside')
   const sections = Array.from(document.querySelectorAll(".article article h2"))
     .map(item => ({ name: item.textContent, href: '#' + item.id }))
 
-  if (!affixMount || sections.length <= 0) {
+  if (!asideElement || sections.length <= 0) {
     return
   }
 
-  affixMount.appendChild(<h5 class='title'>In this Article</h5>)
-  affixMount.appendChild(
+  asideElement.appendChild(<h5 class='title'>In this Article</h5>)
+  asideElement.appendChild(
     <ul class='nav bs-docs-sidenav'>
       {sections.map(item => <li><a href={item.href} onClick={scroll}>{item.name}</a></li>)}
     </ul>

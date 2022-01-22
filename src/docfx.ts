@@ -12,7 +12,7 @@ import { enableAnchor } from './scripts/anchor'
 import { renderLogo, workAroundFixedHeaderForAnchors } from './scripts/header'
 import { highlight } from './scripts/highlight'
 import { renderAlerts, renderLinks, renderTables, renderTabs } from './scripts/markdown'
-import { renderAffix, renderBreadcrumb, renderNavbar } from './scripts/nav'
+import { renderAside, renderBreadcrumb, renderNavbar } from './scripts/nav'
 import { enableSwitchTheme } from './scripts/theme'
 import { renderToc } from './scripts/toc'
 
@@ -31,7 +31,7 @@ function onContentLoad() {
   Promise.all([renderNavbar(), renderToc()])
          .then(([nav, toc]) => renderBreadcrumb([nav, ...toc]));
 
-  renderAffix();
+  renderAside();
   renderLogo();
 
   renderTabs();

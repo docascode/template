@@ -11,8 +11,8 @@ interface TocNode extends NavItem {
 
 export async function renderToc(): Promise<TocNode[]> {
   const tocPath = meta('toc_rel')?.replace(/\\/g, '/')
-  const tocMount = document.getElementById('toc')
-  if (!tocPath || !tocMount) {
+  const tocElement = document.getElementById('toc')
+  if (!tocPath || !tocElement) {
     return
   }
 
@@ -24,7 +24,7 @@ export async function renderToc(): Promise<TocNode[]> {
 
   toc.items ||= []
   toc.items.map(expandNodes)
-  tocMount.appendChild(<ul class='nav level1'>{buildTocNodes(toc.items)}</ul>)
+  tocElement.appendChild(<ul class='nav level1'>{buildTocNodes(toc.items)}</ul>)
   registerTocEvents()
 
   if (activeElement) {
@@ -103,7 +103,7 @@ export async function renderToc(): Promise<TocNode[]> {
     if (filterString) {
       tocFilter.value = filterString
       onTocFilterTextChange()
-        }
+    }
 
     function onTocFilterTextChange() {
       const filter = tocFilter.value?.toLocaleLowerCase() || ''
@@ -117,7 +117,7 @@ export async function renderToc(): Promise<TocNode[]> {
       if (filter == '') {
         anchors.forEach(a => a.parentElement.classList.remove('filtered', 'hide'))
         return
-        }
+      }
 
       const filteredLI = new Set<HTMLElement>()
       anchors.forEach(a => {
@@ -127,8 +127,8 @@ export async function renderToc(): Promise<TocNode[]> {
           while (e && e !== toc) {
             e = e.parentElement
             filteredLI.add(e)
-      }
-    }
+          }
+        }
       })
 
       anchors.forEach(a => {
@@ -138,7 +138,7 @@ export async function renderToc(): Promise<TocNode[]> {
           li.classList.add('filtered')
         } else {
           li.classList.add('hide')
-    }
+        }
       })
     }
   }
