@@ -2,64 +2,64 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{{metadata}}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {{metadata}}
 
-	<title>{{ page.title }}</title>
+  <title>{{ page.title }}</title>
 
-	<link rel="stylesheet" href="{{ page._rel }}dist/docfx.css">
-	<script type="text/javascript" src="{{ page._rel }}dist/docfx.js"></script>
+  <link rel="stylesheet" href="{{ page._rel }}dist/docfx.css">
+  <script type="text/javascript" src="{{ page._rel }}dist/docfx.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#affix" data-offset="120">
-	<div id="wrapper">
-		<header>
-			{%- unless disableNavbar -%}
-			{%- include navbar -%}
-			{%- endunless -%}
+  <div id="wrapper">
+    <header>
+        {%- unless disableNavbar -%}
+        {%- include navbar -%}
+        {%- endunless -%}
 
-			{%- unless disableBreadcrumb -%}
-			{%- include breadcrumb -%}
-			{%- endunless -%}
-		</header>
+        {%- unless disableBreadcrumb -%}
+        {%- include breadcrumb -%}
+        {%- endunless -%}
+    </header>
 
-		<div role="main" class="container body-content page-type-{{pageType}}">
-			{%- if fullPage -%}
-				{{ content }}
-			{%- else -%}
-				{%- if disableToc -%}
-				<div class="article row grid">
-				{%- else -%}
-				{%- include toc -%}
-				<div class="article row grid-right">
-				{%- endif -%}
+    <div role="main" class="container body-content page-type-{{pageType}}">
+      {%- if fullPage -%}
+        {{ content }}
+      {%- else -%}
+        {%- if disableToc -%}
+        <div class="article row grid">
+        {%- else -%}
+        {%- include toc -%}
+        <div class="article row grid-right">
+        {%- endif -%}
 
-					{%- if disableAffix -%}
-					<div class="col-md-12">
-					{%- else -%}
-					<div class="col-md-10">
-					{%- endif -%}
+          {%- if disableAffix -%}
+          <div class="col-md-12">
+          {%- else -%}
+          <div class="col-md-10">
+          {%- endif -%}
 
-						<article class="content wrap" id="_content" data-uid="{{uid}}">
-							{{ heading1 }}
-							{%- unless disableMetabar -%}
-							{%- include metabar -%}
-							{%- endunless -%}
-							{{ content }}
-						</article>
+            <article class="content wrap" id="_content" data-uid="{{uid}}">
+              {{ heading1 }}
+              {%- unless disableMetabar -%}
+              {%- include metabar -%}
+              {%- endunless -%}
+              {{ content }}
+            </article>
 
-					</div>
+          </div>
 
-					{%- unless disableAffix -%}
-					{%- include affix -%}
-					{%- endunless -%}
-				</div>
-			{%- endif -%}
-		</div>
+          {%- unless disableAffix -%}
+          {%- include affix -%}
+          {%- endunless -%}
+        </div>
+      {%- endif -%}
+    </div>
 
-		{%- include footer -%}
-	</div>
+    {%- include footer -%}
+  </div>
 </body>
 
 </html>
