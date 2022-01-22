@@ -16,7 +16,7 @@
     {%- include header -%}
   </header>
 
-  <main class="container layout-{{layout}}">
+  <main class="container layout-{{layout}} page-type-{{pageType}}">
     {%- if layout == "conceptual" -%}
       {%- unless disableBreadcrumb -%}
         <nav class="layout-breadcrumb" id="breadcrumb"></nav>

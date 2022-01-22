@@ -1,0 +1,31 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+main.page-type-reference {
+  .is-hidden {
+    display: none;
+  }
+
+  h2#applies-to {
+    display: none;
+  }
+
+  .metadata {
+    margin: 1rem 0 2rem 0;
+    color: rgb(120, 120, 120);
+    dl.attributeList {
+      display: flex;
+      font-size: 14px;
+      font-weight: 400;
+      margin: 1rem 0;
+
+      dt {
+        font-weight: 400;
+      }
+
+      dd {
+        margin-left: 8px;
+      }
+    }
+  }
+}

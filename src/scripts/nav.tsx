@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 import React from 'jsx-dom'
-import { getAbsolutePath, getDirectory, meta } from './utility';
+import { getAbsolutePath, getDirectory, isVisible, meta } from './utility';
 
 export interface NavItem {
   name: string
@@ -71,6 +71,7 @@ export function renderBreadcrumb(breadcrumb: NavItem[]): void {
 export function renderAside() {
   const inThisArticle = document.getElementById('in-this-article')
   const sections = Array.from(document.querySelectorAll("article h2"))
+    .filter(e => isVisible(e))
     .map(item => ({ name: item.textContent, href: '#' + item.id }))
 
   if (!inThisArticle || sections.length <= 0) {

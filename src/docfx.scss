@@ -8,6 +8,7 @@
 @import './styles/home.scss';
 @import './styles/nav.scss';
 @import './styles/toc.scss';
+@import './styles/dotnet.scss';
 
 @media (min-width:1200px) {
   .container {
@@ -376,17 +377,6 @@ div.embeddedvideo iframe {
   margin: 0; }
 
 /* Color theme */
-
-/* These are not important, tune down **/
-.decalaration, .fieldValue, .parameters, .returns {
-  color: #a2a2a2;
-}
-
-/* Major sections, increase visibility **/
-#fields, #properties, #methods, #events {
-    font-weight: bold;
-    margin-top: 2em;
-}
 
 body.theme-dark {
   background: #333;
