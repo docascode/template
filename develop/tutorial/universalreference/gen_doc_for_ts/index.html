@@ -24,12 +24,10 @@
   <title>Generate API Documentation for TypeScript</title>
 
   <link rel="stylesheet" href="../../../dist/docfx.css">
-  <script type="text/javascript" src="../../../dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#aside" data-offset="120">
-  <div id="wrapper">
-    <header>
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -47,39 +45,36 @@
     </div>
   </div>
 </nav>
+  </header>
 
-      <nav class="subnav navbar navbar-default">
-        <div class="container" id="breadcrumb"></div>
-      </nav>
-    </header>
+  <main class="container layout-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
 
-    <main class="container page-type-conceptual">
-        <nav class="sidenav">
-<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-<div class="sidetoggle collapse" id="sidetoggle">
-  <div>
-    <div id="sidetoggle">
-      <div>
-        <div class="sidefilter">
-          <form class="toc-filter">
-            <span class="glyphicon glyphicon-search filter-icon"></span>
-            <input type="text" id="toc-filter" placeholder="Filter">
-          </form>
-        </div>
-        <div class="sidetoc">
-          <div class="toc" id="toc">
+      <nav class="layout-toc">
+<div class="sticky-top">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div>
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <input type="text" id="toc-filter" placeholder="Filter">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-        </nav>
+</div>      </nav>
 
-        <div class="article row grid-right">
-
-          <article class="content wrap col-md-10" data-uid="">
-            <h1 id="generate-api-documentation-for-typescript">Generate API Documentation for TypeScript</h1>
+      <article>
+        <h1 id="generate-api-documentation-for-typescript">Generate API Documentation for TypeScript</h1>
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
@@ -95,7 +90,7 @@
         </ul>
       </a>
     </li>
-</ul>            <h2 id="1-prerequisite">1. Prerequisite</h2>
+</ul>        <h2 id="1-prerequisite">1. Prerequisite</h2>
 <ul>
 <li><a href="https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool" data-linktype="external">DocFX</a></li>
 <li><a href="https://nodejs.org/en/download/" data-linktype="external">Node.js</a> (includes npm)</li>
@@ -150,10 +145,10 @@ Run</p>
 <li>Some types can't link to the property correctly now. They displays in plain text and prefixed with <code>@</code>.</li>
 </ol>
 
-          </article>
+      </article>
 
-          <aside class="hidden-sm col-md-2">
-<div class="sideaffix">
+      <aside>
+<div class="sideaffix sticky-top">
   <div class="contribution">
     <ul class="nav">
       <li>
@@ -168,21 +163,21 @@ Run</p>
       </li>
     </ul>
   </div>
-  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="aside">
+  <nav id="in-this-article" class="in-this-article">
   </nav>
-</div>          </aside>
-        </div>
-    </main>
+</div>      </aside>
+  </main>
 
-    <footer>
-<div class="container footer">
+  <footer>
+<div class="container">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
 </div>
-    </footer>
-  </div>
+  </footer>
+
+  <script type="text/javascript" src="../../../dist/docfx.js"></script>
 </body>
 
 </html>

@@ -24,12 +24,10 @@
   <title>Introduction to DocFX Incremental Build</title>
 
   <link rel="stylesheet" href="../../../dist/docfx.css">
-  <script type="text/javascript" src="../../../dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#aside" data-offset="120">
-  <div id="wrapper">
-    <header>
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -47,39 +45,36 @@
     </div>
   </div>
 </nav>
+  </header>
 
-      <nav class="subnav navbar navbar-default">
-        <div class="container" id="breadcrumb"></div>
-      </nav>
-    </header>
+  <main class="container layout-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
 
-    <main class="container page-type-conceptual">
-        <nav class="sidenav">
-<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-<div class="sidetoggle collapse" id="sidetoggle">
-  <div>
-    <div id="sidetoggle">
-      <div>
-        <div class="sidefilter">
-          <form class="toc-filter">
-            <span class="glyphicon glyphicon-search filter-icon"></span>
-            <input type="text" id="toc-filter" placeholder="Filter">
-          </form>
-        </div>
-        <div class="sidetoc">
-          <div class="toc" id="toc">
+      <nav class="layout-toc">
+<div class="sticky-top">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div>
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <input type="text" id="toc-filter" placeholder="Filter">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-        </nav>
+</div>      </nav>
 
-        <div class="article row grid-right">
-
-          <article class="content wrap col-md-10" data-uid="">
-            <h1 id="introduction-to-docfx-incremental-build">Introduction to <em>DocFX Incremental Build</em></h1>
+      <article>
+        <h1 id="introduction-to-docfx-incremental-build">Introduction to <em>DocFX Incremental Build</em></h1>
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
@@ -95,7 +90,7 @@
         </ul>
       </a>
     </li>
-</ul>            <p>Workflow for DocFX build with incremental.</p>
+</ul>        <p>Workflow for DocFX build with incremental.</p>
 <p><img src="../images/incrementalbuildframework.png" alt="DocFX incremental build workflow" data-linktype="relative-path"/></p>
 <p>DocFX's build workflow is divided into three phases, namely <code>Compile</code>, <code>Link</code> and <code>PostProcess</code>.</p>
 <p>By default, changed files would be collected by comparing file's <code>LastWriteTimeUtc</code> and <code>MD5</code>. We also provide the command option <code>--changesFile</code> to overwrite the default behavior. About the style of the changesFile, please refer to <a href="#changes-file" data-linktype="self-bookmark">ChangesFile</a> section.</p>
@@ -229,10 +224,10 @@ articles/test.md       Deleted
 	}]
 </code></pre>
 
-          </article>
+      </article>
 
-          <aside class="hidden-sm col-md-2">
-<div class="sideaffix">
+      <aside>
+<div class="sideaffix sticky-top">
   <div class="contribution">
     <ul class="nav">
       <li>
@@ -247,21 +242,21 @@ articles/test.md       Deleted
       </li>
     </ul>
   </div>
-  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="aside">
+  <nav id="in-this-article" class="in-this-article">
   </nav>
-</div>          </aside>
-        </div>
-    </main>
+</div>      </aside>
+  </main>
 
-    <footer>
-<div class="container footer">
+  <footer>
+<div class="container">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
 </div>
-    </footer>
-  </div>
+  </footer>
+
+  <script type="text/javascript" src="../../../dist/docfx.js"></script>
 </body>
 
 </html>

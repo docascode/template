@@ -24,12 +24,10 @@
   <title>Triple-slash (///) Code Comments Support</title>
 
   <link rel="stylesheet" href="../../dist/docfx.css">
-  <script type="text/javascript" src="../../dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#aside" data-offset="120">
-  <div id="wrapper">
-    <header>
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -47,39 +45,36 @@
     </div>
   </div>
 </nav>
+  </header>
 
-      <nav class="subnav navbar navbar-default">
-        <div class="container" id="breadcrumb"></div>
-      </nav>
-    </header>
+  <main class="container layout-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
 
-    <main class="container page-type-conceptual">
-        <nav class="sidenav">
-<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-<div class="sidetoggle collapse" id="sidetoggle">
-  <div>
-    <div id="sidetoggle">
-      <div>
-        <div class="sidefilter">
-          <form class="toc-filter">
-            <span class="glyphicon glyphicon-search filter-icon"></span>
-            <input type="text" id="toc-filter" placeholder="Filter">
-          </form>
-        </div>
-        <div class="sidetoc">
-          <div class="toc" id="toc">
+      <nav class="layout-toc">
+<div class="sticky-top">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div>
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <input type="text" id="toc-filter" placeholder="Filter">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-        </nav>
+</div>      </nav>
 
-        <div class="article row grid-right">
-
-          <article class="content wrap col-md-10" data-uid="">
-            <h1 id="triple-slash--code-comments-support">Triple-slash (///) Code Comments Support</h1>
+      <article>
+        <h1 id="triple-slash--code-comments-support">Triple-slash (///) Code Comments Support</h1>
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
@@ -95,7 +90,7 @@
         </ul>
       </a>
     </li>
-</ul>            <p>DocFX extracts <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/xml-documentation-comments" data-linktype="external">triple-slash (///) code comments</a> from .NET source code when running <code>docfx metadata</code>. <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments" data-linktype="external">Tags</a> in triple-slash (///) code comments are converted to corresponding metadata in .NET data model.</p>
+</ul>        <p>DocFX extracts <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/xml-documentation-comments" data-linktype="external">triple-slash (///) code comments</a> from .NET source code when running <code>docfx metadata</code>. <a href="https://docs.microsoft.com/en-us/dotnet/articles/csharp/programming-guide/xmldoc/recommended-tags-for-documentation-comments" data-linktype="external">Tags</a> in triple-slash (///) code comments are converted to corresponding metadata in .NET data model.</p>
 <div class="NOTE">
 <h5>NOTE</h5>
 <p><code>docfx</code> supports <a href="../docfx_flavored_markdown/" data-linktype="relative-path">DocFX Flavored Markdown syntax</a> inside triple-slash (///) code comments. You can disable this feature by set <code>shouldSkipMarkup</code> when generating metadata: <code>docfx metadata --shouldSkipMarkup</code>.</p>
@@ -241,10 +236,10 @@
 <li>Support for inline <code>inheritdoc</code> tags (i.e., an <code>inheritdoc</code> tag inside of an <code>example</code> tag).</li>
 </ul>
 
-          </article>
+      </article>
 
-          <aside class="hidden-sm col-md-2">
-<div class="sideaffix">
+      <aside>
+<div class="sideaffix sticky-top">
   <div class="contribution">
     <ul class="nav">
       <li>
@@ -259,21 +254,21 @@
       </li>
     </ul>
   </div>
-  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="aside">
+  <nav id="in-this-article" class="in-this-article">
   </nav>
-</div>          </aside>
-        </div>
-    </main>
+</div>      </aside>
+  </main>
 
-    <footer>
-<div class="container footer">
+  <footer>
+<div class="container">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
 </div>
-    </footer>
-  </div>
+  </footer>
+
+  <script type="text/javascript" src="../../dist/docfx.js"></script>
 </body>
 
 </html>

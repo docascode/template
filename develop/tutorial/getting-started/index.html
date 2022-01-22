@@ -24,12 +24,10 @@
   <title>Getting Started</title>
 
   <link rel="stylesheet" href="../../dist/docfx.css">
-  <script type="text/javascript" src="../../dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#aside" data-offset="120">
-  <div id="wrapper">
-    <header>
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -47,39 +45,36 @@
     </div>
   </div>
 </nav>
+  </header>
 
-      <nav class="subnav navbar navbar-default">
-        <div class="container" id="breadcrumb"></div>
-      </nav>
-    </header>
+  <main class="container layout-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
 
-    <main class="container page-type-conceptual">
-        <nav class="sidenav">
-<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-<div class="sidetoggle collapse" id="sidetoggle">
-  <div>
-    <div id="sidetoggle">
-      <div>
-        <div class="sidefilter">
-          <form class="toc-filter">
-            <span class="glyphicon glyphicon-search filter-icon"></span>
-            <input type="text" id="toc-filter" placeholder="Filter">
-          </form>
-        </div>
-        <div class="sidetoc">
-          <div class="toc" id="toc">
+      <nav class="layout-toc">
+<div class="sticky-top">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div>
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <input type="text" id="toc-filter" placeholder="Filter">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-        </nav>
+</div>      </nav>
 
-        <div class="article row grid-right">
-
-          <article class="content wrap col-md-10" data-uid="">
-            <h1 id="getting-started">Getting Started</h1>
+      <article>
+        <h1 id="getting-started">Getting Started</h1>
 <ul class="metabar">
   <li>
     <time datetime="1/8/2022">1/8/2022</time>
@@ -95,7 +90,7 @@
         </ul>
       </a>
     </li>
-</ul>            <p>This tutorial shows how to build a documentation website.</p>
+</ul>        <p>This tutorial shows how to build a documentation website.</p>
 <p>You'll learn how to:</p>
 <ul>
 <li>Create the documentation project.</li>
@@ -165,10 +160,10 @@ docfx serve mydocs --watch
 - name: &quot;Multiple Programming Languages Support&quot;
   href: universalreference/TOC.yml
 </code></pre>
-          </article>
+      </article>
 
-          <aside class="hidden-sm col-md-2">
-<div class="sideaffix">
+      <aside>
+<div class="sideaffix sticky-top">
   <div class="contribution">
     <ul class="nav">
       <li>
@@ -183,21 +178,21 @@ docfx serve mydocs --watch
       </li>
     </ul>
   </div>
-  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="aside">
+  <nav id="in-this-article" class="in-this-article">
   </nav>
-</div>          </aside>
-        </div>
-    </main>
+</div>      </aside>
+  </main>
 
-    <footer>
-<div class="container footer">
+  <footer>
+<div class="container">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
 </div>
-    </footer>
-  </div>
+  </footer>
+
+  <script type="text/javascript" src="../../dist/docfx.js"></script>
 </body>
 
 </html>
