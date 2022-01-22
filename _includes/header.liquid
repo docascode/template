@@ -8,10 +8,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{ page._rel }}">
-        {%- if page._appLogoPath -%}
-        <img class="svg" src="{{ page._rel }}{{page._appLogoPath}}">
-        {%- else -%}
-        <img class="svg" src="{{ page._rel }}svg/logo.svg">
+        {%- if page._logo -%}
+        <img src="{{ page._logo }}">
         {%- endif -%}
       </a>
     </div>

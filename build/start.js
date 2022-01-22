@@ -25,7 +25,6 @@ function serve() {
     server: {
       routes: {
         '/test/dist': 'debug/dist',
-        '/test/svg': '.',
         '/test': site
       }
     }

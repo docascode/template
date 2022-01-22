@@ -6,6 +6,10 @@
         "menu_path": {
             "type": "string",
             "contentType": "href"
+        },
+        "_logo": {
+            "type": "string",
+            "contentType": "href"
         }
     }
 }
