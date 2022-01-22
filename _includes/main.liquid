@@ -16,11 +16,11 @@
 	<div id="wrapper">
 		<header>
 			{%- unless disableNavbar -%}
-			{%- include navbar.html -%}
+			{%- include navbar -%}
 			{%- endunless -%}
 
 			{%- unless disableBreadcrumb -%}
-			{%- include breadcrumb.html -%}
+			{%- include breadcrumb -%}
 			{%- endunless -%}
 		</header>
 
@@ -31,7 +31,7 @@
 				{%- if disableToc -%}
 				<div class="article row grid">
 				{%- else -%}
-				{%- include toc.html -%}
+				{%- include toc -%}
 				<div class="article row grid-right">
 				{%- endif -%}
 
@@ -44,7 +44,7 @@
 						<article class="content wrap" id="_content" data-uid="{{uid}}">
 							{{ heading1 }}
 							{%- unless disableMetabar -%}
-							{%- include metabar.html -%}
+							{%- include metabar -%}
 							{%- endunless -%}
 							{{ content }}
 						</article>
@@ -52,13 +52,13 @@
 					</div>
 
 					{%- unless disableAffix -%}
-					{%- include affix.html -%}
+					{%- include affix -%}
 					{%- endunless -%}
 				</div>
 			{%- endif -%}
 		</div>
 
-		{%- include footer.html -%}
+		{%- include footer -%}
 	</div>
 </body>
 
