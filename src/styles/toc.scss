@@ -2,27 +2,15 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 .sidetoc {
-  position: fixed;
-  width: 260px;
-  top: 170px;
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 1;
-}
-
-.sidetoc.shiftup {
-  bottom: 70px;
 }
 
 .sidetoc .level2 li {
   min-height: 30px;
   line-height: 30px;
 }
-
-/* body .toc{
-  overflow-x: hidden;
-} */
 
 .sidetoggle.ng-hide {
   display: block !important;
@@ -44,7 +32,6 @@
 
 .toc {
   margin: 0px 0 0 10px;
-  padding: 0 10px;
 }
 .expand-stub {
   position: absolute;
@@ -126,10 +113,7 @@
   margin: 0 15px 0px 15px;
 }
 .sidefilter {
-  position: fixed;
-  top: 110px;
   width: 260px;
-  padding: 5px;
   z-index: 1;
 }
 .toc-filter {

@@ -9,7 +9,6 @@ window.$ = $
 require('bootstrap')
 
 import { enableAnchor } from './scripts/anchor'
-import { renderLogo, workAroundFixedHeaderForAnchors } from './scripts/header'
 import { highlight } from './scripts/highlight'
 import { renderAlerts, renderLinks, renderTables, renderTabs } from './scripts/markdown'
 import { renderAside, renderBreadcrumb, renderNavbar } from './scripts/nav'
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', onContentLoad)
 function onContentLoad() {
   enableAnchor()
   enableSwitchTheme();
-  workAroundFixedHeaderForAnchors();
   highlight();
 
   renderTables();
@@ -32,7 +30,5 @@ function onContentLoad() {
          .then(([nav, toc]) => renderBreadcrumb([nav, ...toc]));
 
   renderAside();
-  renderLogo();
-
   renderTabs();
 }

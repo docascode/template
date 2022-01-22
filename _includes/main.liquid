@@ -9,48 +9,44 @@
   <title>{{ page.title }}</title>
 
   <link rel="stylesheet" href="{{ page._rel }}dist/docfx.css">
-  <script type="text/javascript" src="{{ page._rel }}dist/docfx.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#aside" data-offset="120">
-  <div id="wrapper">
-    <header>
-      {%- include header -%}
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
+    {%- include header -%}
+  </header>
 
+  <main class="container layout-{{layout}}">
+    {%- if layout == "conceptual" -%}
       {%- unless disableBreadcrumb -%}
-      <nav class="subnav navbar navbar-default">
-        <div class="container" id="breadcrumb"></div>
-      </nav>
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
       {%- endunless -%}
-    </header>
 
-    <main class="container page-type-{{pageType}}">
-      {%- if fullPage -%}
+      <nav class="layout-toc">
+        {%- include toc -%}
+      </nav>
+
+      <article>
+        {{ heading1 }}
+        {%- unless disableMetabar -%}
+          {%- include metabar -%}
+        {%- endunless -%}
         {{ content }}
-      {%- else -%}
-        <nav class="sidenav">
-          {%- include toc -%}
-        </nav>
+      </article>
 
-        <div class="article row grid-right">
+      <aside>
+        {%- include aside -%}
+      </aside>
+    {%- else -%}
+      {{ content }}
+    {%- endif -%}
+  </main>
 
-          <article class="content wrap col-md-10" data-uid="{{uid}}">
-            {{ heading1 }}
-            {%- include metabar -%}
-            {{ content }}
-          </article>
+  <footer>
+    {%- include footer -%}
+  </footer>
 
-          <aside class="hidden-sm col-md-2">
-            {%- include aside -%}
-          </aside>
-        </div>
-      {%- endif -%}
-    </main>
-
-    <footer>
-      {%- include footer -%}
-    </footer>
-  </div>
+  <script type="text/javascript" src="{{ page._rel }}dist/docfx.js"></script>
 </body>
 
 </html>

@@ -69,30 +69,18 @@ export function renderBreadcrumb(breadcrumb: NavItem[]): void {
 }
 
 export function renderAside() {
-  const asideElement = document.getElementById('aside')
-  const sections = Array.from(document.querySelectorAll(".article article h2"))
+  const inThisArticle = document.getElementById('in-this-article')
+  const sections = Array.from(document.querySelectorAll("article h2"))
     .map(item => ({ name: item.textContent, href: '#' + item.id }))
 
-  if (!asideElement || sections.length <= 0) {
+  if (!inThisArticle || sections.length <= 0) {
     return
   }
 
-  asideElement.appendChild(<h5 class='title'>In this Article</h5>)
-  asideElement.appendChild(
+  inThisArticle.appendChild(<h5 class='title'>In this Article</h5>)
+  inThisArticle.appendChild(
     <ul class='nav bs-docs-sidenav'>
-      {sections.map(item => <li><a href={item.href} onClick={scroll}>{item.name}</a></li>)}
+      {sections.map(item => <li><a href={item.href}>{item.name}</a></li>)}
     </ul>
   )
-
-  if ($('footer').is(':visible')) {
-    $(".sideaffix").css("bottom", "70px");
-  }
-
-  function scroll(e) {
-    var scrollspy = $('[data-spy="scroll"]').data()['bs.scrollspy'];
-    var target = e.target.hash;
-    if (scrollspy && target) {
-      scrollspy.activate(target);
-    }
-  }
 }

@@ -1,0 +1,55 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+}
+
+$aside-break: 1086px;
+
+main.layout-conceptual {
+ display: grid;
+ gap: 1rem 4rem;
+ grid-template-columns: 26rem auto 20rem;
+ grid-template-rows: auto auto;
+ grid-template-areas:
+  'breadcrumb breadcrumb actionbar'
+  'toc article aside';
+
+  @media only screen and (max-width: $aside-break) {
+    grid-template-areas:
+     'breadcrumb breadcrumb actionbar'
+     'toc article article';
+  }
+
+  @media only screen and (max-width: 768px) {
+    grid-template-columns: auto;
+    grid-template-areas:
+     'breadcrumb'
+     'actionbar'
+     'toc'
+     'article'
+  }
+}
+
+nav.layout-breadcrumb {
+  grid-area: breadcrumb;
+}
+
+nav.layout-toc {
+  grid-area: toc;
+}
+
+aside {
+  grid-area: aside;
+
+  @media only screen and (max-width: $aside-break) {
+    display: none;
+  }
+}
+
+article {
+  grid-area: article;
+  margin-bottom: 2rem;
+}

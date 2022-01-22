@@ -3,15 +3,11 @@
 
 @import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../node_modules/highlight.js/styles/stackoverflow-light.css';
+@import './styles/layout.scss';
 @import './styles/markdown.scss';
 @import './styles/home.scss';
 @import './styles/nav.scss';
 @import './styles/toc.scss';
-
-html,
-body {
-  height: 100%;
-}
 
 @media (min-width:1200px) {
   .container {
@@ -179,9 +175,6 @@ article section {
   margin-left: 0;
 }
 .collapse.in,
-.collapsing {
-  text-align: center;
-}
 .collapsing .navbar-form {
   margin: 0 auto;
   max-width: 400px;
@@ -238,31 +231,15 @@ article section {
   border-radius: 50%;
 }
 
-.article {
-  margin-top: 110px;
-  margin-bottom: 115px;
-}
-
-.article.grid-right {
-  margin-left: 280px;
-}
-
-.article img {
+article img {
   max-width: 100%;
 }
 
 footer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1000;
-}
-.footer {
-  border-top: 1px solid #e7e7e7;
   background-color: #f8f8f8;
-  padding: 15px 0;
+  padding: 4rem 0;
 }
+
 @media (min-width: 768px) {
   #sidetoggle.collapse {
     display: block;
@@ -278,11 +255,8 @@ footer {
 }
 @media only screen and (max-width: 768px) {
   /* TOC display for responsive */
-  .article {
+  article {
     margin-top: 30px !important;
-  }
-  header {
-    position: static;
   }
   .topnav {
     text-align: center;
@@ -293,15 +267,9 @@ footer {
     margin-right: -15px;
   }
   .sidefilter {
-    position: static;
-    width: auto;
-    float: none;
     border: none;
   }
   .sidetoc {
-    position: static;
-    width: auto;
-    float: none;
     padding-bottom: 0px;
     border: none;
   }
@@ -321,7 +289,7 @@ footer {
   .toc .level1 > li:after {
     display: none;
   }
-  .article.grid-right {
+  article.grid-right {
     margin-left: 0;
   }
   .grad-top,
@@ -392,14 +360,14 @@ div.embeddedvideo iframe {
 
 /* For printer */
 @media print{
-  .article.grid-right {
+  article.grid-right {
     margin-top: 0px;
     margin-left: 0px;
   }
   .sideaffix {
     display: none;
   }
-  .footer {
+  footer {
     display: none;
   }
 }
@@ -473,7 +441,7 @@ body.theme-dark .sidetoc .toc .nav > li > a:hover {
   color: #999;
 }
 
-body.theme-dark .article {
+body.theme-dark article {
   color: #ccc;
 }
 
@@ -485,7 +453,7 @@ body.theme-dark .affix > ul > li.active > a {
   color: #3689d1;
 }
 
-body.theme-dark .footer {
+body.theme-dark footer {
   background: #333;
   color: #ccc;
 }
