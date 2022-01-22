@@ -56,62 +56,6 @@ h6 mark {
   padding: 0;
 }
 
-.inheritance .level0:before,
-.inheritance .level1:before,
-.inheritance .level2:before,
-.inheritance .level3:before,
-.inheritance .level4:before,
-.inheritance .level5:before {
-    content: '↳';
-    margin-right: 5px;
-}
-
-.inheritance .level0 {
-    margin-left: 0em;
-}
-
-.inheritance .level1 {
-    margin-left: 1em;
-}
-
-.inheritance .level2 {
-    margin-left: 2em;
-}
-
-.inheritance .level3 {
-    margin-left: 3em;
-}
-
-.inheritance .level4 {
-    margin-left: 4em;
-}
-
-.inheritance .level5 {
-    margin-left: 5em;
-}
-
-.level0.summary {
-  margin: 2em 0 2em 0;
-}
-
-.level1.summary {
-  margin: 1em 0 1em 0;
-}
-
-span.parametername,
-span.paramref,
-span.typeparamref {
-    font-style: italic;
-}
-span.languagekeyword{
-    font-weight: bold;
-}
-
-.hljs {
-  display: inline;
-  background-color: inherit;
-  padding: 0;
-}
 /* additional spacing fixes */
 .btn + .btn {
   margin-left: 10px;
@@ -149,11 +93,6 @@ h6,
 .h6 {
   margin-top: 10px;
   margin-bottom: 5px;
-}
-
-.inheritance h5, .inheritedMembers h5{
-  padding-bottom: 5px;
-  border-bottom: 1px solid #ccc;
 }
 
 article {
@@ -299,77 +238,19 @@ article section {
   border-radius: 50%;
 }
 
-.fixed_header {
-  position: fixed;
-  width: 100%;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  margin: 0px;
-  top: 0;
-  z-index: 9999;
-  left: 0;
-}
-
-.fixed_header+.toc{
-  margin-top: 50px;
-  margin-left: 0;
-}
-
 .article {
   margin-top: 110px;
   margin-bottom: 115px;
-}
-
-#_content>a{
-  margin-top: 105px;
 }
 
 .article.grid-right {
   margin-left: 280px;
 }
 
-.inheritance hr {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
 .article img {
   max-width: 100%;
 }
-.codewrapper {
-  position: relative;
-}
-.trydiv {
-  height: 0px;
-}
-.tryspan {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  border-style: solid;
-  border-radius: 0px 4px;
-  box-sizing: border-box;
-  border-width: 1px;
-  border-color: #cccccc;
-  text-align: center;
-  padding: 2px 8px;
-  background-color: white;
-  font-size: 12px;
-  cursor: pointer;
-  z-index: 100;
-  display: none;
-  color: #767676;
-}
-.tryspan:hover {
-  background-color: #3b8bd0;
-  color: white;
-  border-color: #3b8bd0;
-}
-.codewrapper:hover .tryspan {
-  display: block;
-}
-.sample-response .response-content{
-  max-height: 200px;
-}
+
 footer {
   position: absolute;
   left: 0;
@@ -396,9 +277,6 @@ footer {
   }
 }
 @media only screen and (max-width: 768px) {
-  #mobile-indicator {
-    display: block;
-  }
   /* TOC display for responsive */
   .article {
     margin-top: 30px !important;
@@ -491,14 +369,6 @@ a code:hover {
   text-decoration: underline;
 }
 
-.hljs-keyword {
-  color: rgb(86,156,214);
-}
-
-.hljs-string {
-  color: rgb(214, 157, 133);
-}
-
 pre {
   border: 0;
   margin: 20px 0;
@@ -542,51 +412,6 @@ div.embeddedvideo iframe {
     display: none;
   }
 }
-
-/* For tabbed content */
-
-.tabGroup {
-  margin-top: 1rem; }
-  .tabGroup ul[role="tablist"] {
-    margin: 0;
-    padding: 0;
-    list-style: none; }
-    .tabGroup ul[role="tablist"] > li {
-      list-style: none;
-      display: inline-block; }
-  .tabGroup a[role="tab"] {
-    color: #6e6e6e;
-    box-sizing: border-box;
-    display: inline-block;
-    padding: 5px 7.5px;
-    text-decoration: none;
-    border-bottom: 2px solid #fff; }
-    .tabGroup a[role="tab"]:hover, .tabGroup a[role="tab"]:focus, .tabGroup a[role="tab"][aria-selected="true"] {
-      border-bottom: 2px solid #0050C5; }
-    .tabGroup a[role="tab"][aria-selected="true"] {
-      color: #222; }
-    .tabGroup a[role="tab"]:hover, .tabGroup a[role="tab"]:focus {
-      color: #0050C5; }
-    .tabGroup a[role="tab"]:focus {
-      outline: 1px solid #0050C5;
-      outline-offset: -1px; }
-  @media (min-width: 768px) {
-    .tabGroup a[role="tab"] {
-      padding: 5px 15px; } }
-  .tabGroup section[role="tabpanel"] {
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin: 0;
-    overflow: hidden; }
-    .tabGroup section[role="tabpanel"] > .codeHeader,
-    .tabGroup section[role="tabpanel"] > pre {
-      margin-left: -16px;
-      margin-right: -16px; }
-    .tabGroup section[role="tabpanel"] > :first-child {
-      margin-top: 0; }
-    .tabGroup section[role="tabpanel"] > pre:last-child {
-      display: block;
-      margin-bottom: -16px; }
 
 .mainContainer[dir='rtl'] main ul[role="tablist"] {
   margin: 0; }
