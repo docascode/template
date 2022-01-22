@@ -39,9 +39,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-<a class="navbar-brand" href="../../">
-  <img id="logo" class="svg" src="../../svg/logo.svg">
-</a>
+      <a class="navbar-brand" href="../../">
+        <img class="svg" src="../../svg/logo.svg">
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
     </div>
@@ -54,34 +54,33 @@
 </div>
     </header>
 
-    <div role="main" class="container body-content page-type-conceptual">
-<div class="sidenav hide-when-search">
-  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-  <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc">
-      <div id="sidetoggle">
-        <div>
-          <div class="sidefilter">
-            <form class="toc-filter">
-              <span class="glyphicon glyphicon-search filter-icon"></span>
-              <input type="text" id="toc-filter" placeholder="Filter">
-            </form>
-          </div>
-          <div class="sidetoc">
-            <div class="toc" id="toc">
-            </div>
+    <main class="container page-type-conceptual">
+        <nav class="sidenav hide-when-search">
+<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+<div class="sidetoggle collapse" id="sidetoggle">
+  <div>
+    <div id="sidetoggle">
+      <div>
+        <div class="sidefilter">
+          <form class="toc-filter">
+            <span class="glyphicon glyphicon-search filter-icon"></span>
+            <input type="text" id="toc-filter" placeholder="Filter">
+          </form>
+        </div>
+        <div class="sidetoc">
+          <div class="toc" id="toc">
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+        </nav>
+
         <div class="article row grid-right">
 
-          <div class="col-md-10">
-
-            <article class="content wrap" id="_content" data-uid="">
-              <h1 id="getting-started">Getting Started</h1>
+          <article class="content wrap col-md-10" id="_content" data-uid="">
+            <h1 id="getting-started">Getting Started</h1>
 <ul class="metabar">
   <li>
     <time datetime="1/8/2022">1/8/2022</time>
@@ -97,7 +96,7 @@
         </ul>
       </a>
     </li>
-</ul>              <p>This tutorial shows how to build a documentation website.</p>
+</ul>            <p>This tutorial shows how to build a documentation website.</p>
 <p>You'll learn how to:</p>
 <ul>
 <li>Create the documentation project.</li>
@@ -167,43 +166,38 @@ docfx serve mydocs --watch
 - name: &quot;Multiple Programming Languages Support&quot;
   href: universalreference/TOC.yml
 </code></pre>
-            </article>
+          </article>
 
-          </div>
-
-<div class="hidden-sm col-md-2" role="complementary">
-  <div class="sideaffix">
-    <div class="contribution">
-      <ul class="nav">
-        <li>
-          <a id="switch-theme" class="contribution-link">
-            <span class="glyphicon glyphicon-cog"></span>Theme
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/getting-started.md" class="contribution-link">
-            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
-          </a>
-        </li>
-      </ul>
-    </div>
-    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-    </nav>
+          <aside class="hidden-sm col-md-2">
+<div class="sideaffix">
+  <div class="contribution">
+    <ul class="nav">
+      <li>
+        <a id="switch-theme" class="contribution-link">
+          <span class="glyphicon glyphicon-cog"></span>Theme
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/getting-started.md" class="contribution-link">
+          <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+        </a>
+      </li>
+    </ul>
   </div>
-</div>
+  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+  </nav>
+</div>          </aside>
         </div>
-    </div>
+    </main>
 
-<footer>
-  <div class="footer">
-    <div class="container">
+    <footer>
+<div class="container footer">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
-    </div>
-  </div>
-</footer>
+</div>
+    </footer>
   </div>
 </body>
 

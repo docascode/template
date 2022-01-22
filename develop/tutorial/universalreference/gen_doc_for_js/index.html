@@ -39,9 +39,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-<a class="navbar-brand" href="../../../">
-  <img id="logo" class="svg" src="../../../svg/logo.svg">
-</a>
+      <a class="navbar-brand" href="../../../">
+        <img class="svg" src="../../../svg/logo.svg">
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
     </div>
@@ -54,34 +54,33 @@
 </div>
     </header>
 
-    <div role="main" class="container body-content page-type-conceptual">
-<div class="sidenav hide-when-search">
-  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-  <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc">
-      <div id="sidetoggle">
-        <div>
-          <div class="sidefilter">
-            <form class="toc-filter">
-              <span class="glyphicon glyphicon-search filter-icon"></span>
-              <input type="text" id="toc-filter" placeholder="Filter">
-            </form>
-          </div>
-          <div class="sidetoc">
-            <div class="toc" id="toc">
-            </div>
+    <main class="container page-type-conceptual">
+        <nav class="sidenav hide-when-search">
+<a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
+<div class="sidetoggle collapse" id="sidetoggle">
+  <div>
+    <div id="sidetoggle">
+      <div>
+        <div class="sidefilter">
+          <form class="toc-filter">
+            <span class="glyphicon glyphicon-search filter-icon"></span>
+            <input type="text" id="toc-filter" placeholder="Filter">
+          </form>
+        </div>
+        <div class="sidetoc">
+          <div class="toc" id="toc">
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+        </nav>
+
         <div class="article row grid-right">
 
-          <div class="col-md-10">
-
-            <article class="content wrap" id="_content" data-uid="">
-              <h1 id="generate-api-documentation-for-javascript">Generate API Documentation for JavaScript</h1>
+          <article class="content wrap col-md-10" id="_content" data-uid="">
+            <h1 id="generate-api-documentation-for-javascript">Generate API Documentation for JavaScript</h1>
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
@@ -97,7 +96,7 @@
         </ul>
       </a>
     </li>
-</ul>              <h2 id="1-prerequisite">1. Prerequisite</h2>
+</ul>            <h2 id="1-prerequisite">1. Prerequisite</h2>
 <ul>
 <li><a href="https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool" data-linktype="external">DocFX</a></li>
 <li><a href="https://nodejs.org/en/download/" data-linktype="external">Node.js</a> (includes npm)</li>
@@ -142,43 +141,38 @@
 </code></pre>
 <p>Now you can see your generated pages: http://localhost:8080/api/Account.html</p>
 
-            </article>
+          </article>
 
-          </div>
-
-<div class="hidden-sm col-md-2" role="complementary">
-  <div class="sideaffix">
-    <div class="contribution">
-      <ul class="nav">
-        <li>
-          <a id="switch-theme" class="contribution-link">
-            <span class="glyphicon glyphicon-cog"></span>Theme
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/universalreference/gen_doc_for_js.md" class="contribution-link">
-            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
-          </a>
-        </li>
-      </ul>
-    </div>
-    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-    </nav>
+          <aside class="hidden-sm col-md-2">
+<div class="sideaffix">
+  <div class="contribution">
+    <ul class="nav">
+      <li>
+        <a id="switch-theme" class="contribution-link">
+          <span class="glyphicon glyphicon-cog"></span>Theme
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/docascode/template/blob/develop/samples/tutorial/universalreference/gen_doc_for_js.md" class="contribution-link">
+          <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+        </a>
+      </li>
+    </ul>
   </div>
-</div>
+  <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+  </nav>
+</div>          </aside>
         </div>
-    </div>
+    </main>
 
-<footer>
-  <div class="footer">
-    <div class="container">
+    <footer>
+<div class="container footer">
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
-    </div>
-  </div>
-</footer>
+</div>
+    </footer>
   </div>
 </body>
 
