@@ -1,14 +1,10 @@
-<footer>
-  <div class="footer">
-    <div class="container">
-    {%- if _appFooter -%}
+<div class="container footer">
+  {%- if _appFooter -%}
     {{_appFooter}}
-    {%- else -%}
+  {%- else -%}
     © Microsoft
     <div class="github-star-button">
       <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
-    {%- endif -%}
-    </div>
-  </div>
-</footer>
+  {%- endif -%}
+</div>

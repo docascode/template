@@ -15,50 +15,39 @@
 <body data-spy="scroll" data-target="#affix" data-offset="120">
   <div id="wrapper">
     <header>
-        {%- unless disableNavbar -%}
-        {%- include navbar -%}
-        {%- endunless -%}
+      {%- include header -%}
 
-        {%- unless disableBreadcrumb -%}
+      {%- unless disableBreadcrumb -%}
         {%- include breadcrumb -%}
-        {%- endunless -%}
+      {%- endunless -%}
     </header>
 
-    <div role="main" class="container body-content page-type-{{pageType}}">
+    <main class="container page-type-{{pageType}}">
       {%- if fullPage -%}
         {{ content }}
       {%- else -%}
-        {%- if disableToc -%}
-        <div class="article row grid">
-        {%- else -%}
-        {%- include toc -%}
+        <nav class="sidenav hide-when-search">
+          {%- include toc -%}
+        </nav>
+
         <div class="article row grid-right">
-        {%- endif -%}
 
-          {%- if disableAffix -%}
-          <div class="col-md-12">
-          {%- else -%}
-          <div class="col-md-10">
-          {%- endif -%}
+          <article class="content wrap col-md-10" id="_content" data-uid="{{uid}}">
+            {{ heading1 }}
+            {%- include metabar -%}
+            {{ content }}
+          </article>
 
-            <article class="content wrap" id="_content" data-uid="{{uid}}">
-              {{ heading1 }}
-              {%- unless disableMetabar -%}
-              {%- include metabar -%}
-              {%- endunless -%}
-              {{ content }}
-            </article>
-
-          </div>
-
-          {%- unless disableAffix -%}
-          {%- include affix -%}
-          {%- endunless -%}
+          <aside class="hidden-sm col-md-2">
+            {%- include aside -%}
+          </aside>
         </div>
       {%- endif -%}
-    </div>
+    </main>
 
-    {%- include footer -%}
+    <footer>
+      {%- include footer -%}
+    </footer>
   </div>
 </body>
 

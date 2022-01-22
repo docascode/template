@@ -7,7 +7,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      {%- include logo -%}
+      <a class="navbar-brand" href="{{ page._rel }}">
+        {%- if page._appLogoPath -%}
+        <img class="svg" src="{{ page._rel }}{{page._appLogoPath}}">
+        {%- else -%}
+        <img class="svg" src="{{ page._rel }}svg/logo.svg">
+        {%- endif -%}
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
     </div>
