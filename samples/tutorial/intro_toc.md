@@ -95,7 +95,7 @@ Each case is described in detail below.
 
 If the *TOC Item* is linking to some other *TOC File* in relative path, it is considered as a placeholder of the referenced *TOC File*. DocFX will extract the array of *TOC Item Object* from that *TOC File* and insert into current *TOC Item* **recursively**.
 
-This technique is especially useful when you want DocFX to combine several *TOC File*s to build into one single TOC.
+This technique is especially useful when you want DocFX to combine several *TOC File*s to build into one single toc.
 
 If ~~`homepage`~~ `topicHref` is set for this *TOC Item*, it will be considered as the `href` of the expanded *TOC Item*.
 

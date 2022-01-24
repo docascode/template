@@ -26,7 +26,7 @@ Overwrite Files | The files with YAML header used to override YAML files when `u
 ## 3. Feature List
 
 1. Support for [DocFX Flavored Markdown](docfx_flavored_markdown.md)
-2. Ability to parse TOC.json/TOC.yml/TOC.md
+2. Ability to parse toc.json/toc.yml/toc.md
 3. Custom template naming: {type}.{extension}.tmpl under folder {templateName} 
 
 ## 4. Open Issues

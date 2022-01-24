@@ -102,10 +102,10 @@ If `toc.yml` or `toc.md` is found in current folder, it will be rendered as the 
 Property | Description
 ---------|-----------------------------
 name     | **Required**. The title of the navigation page.
-href     | **Required**. Can be a folder or a file *UNDER* current folder. A folder must end with `/`. In case of a folder, TOC.md inside the folder will be rendered as second level TABLE-OF-CONTENT. As in website, it will be rendered as a sidebar.
+href     | **Required**. Can be a folder or a file *UNDER* current folder. A folder must end with `/`. In case of a folder, toc.md inside the folder will be rendered as second level TABLE-OF-CONTENT. As in website, it will be rendered as a sidebar.
 homepage | The default content shown when no article is selected.
 
-**TOC.yml Sample**
+**toc.yml Sample**
 ```yaml
 - name: Home
   href: articles/Home.md
@@ -115,7 +115,7 @@ homepage | The default content shown when no article is selected.
   href: api_roslyn/
   homepage: homepages/roslyn_language_features.md
 ```
-**TOC.md Sample**
+**toc.md Sample**
 ```markdown
 ## [Home](articles/Home.md)
 ## [Roslyn Wiki](roslyn_wiki/)
