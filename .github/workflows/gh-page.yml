@@ -3,7 +3,6 @@ on:
   push:
     branches:
     - main
-    - develop
 
 jobs:
   gh-pages:
@@ -23,15 +22,15 @@ jobs:
     - run: |
         mkdir -p ${{ runner.temp }}/_site
         cp -r samples/_site/* ${{ runner.temp }}/_site
-        dir=${GITHUB_REF##*/}
         git fetch origin gh-pages
         git checkout -f gh-pages
-        git rm -r --ignore-unmatch $dir
-        mkdir -p $dir
-        cp -r ${{ runner.temp }}/_site/* $dir
-        git add $dir
+        git clean -xdff
+        git rm -r --ignore-unmatch .
+        cp -r ${{ runner.temp }}/_site/* .
+        git add *
         git config user.email ${{ github.event.head_commit.author.email }}
         git config user.name ${{ github.event.head_commit.author.name }}
+
         # Ignore empty commits
         git diff-index --quiet HEAD || (git commit -a -m "docfx: ${{ github.event.head_commit.message }}" && git push)
       shell: bash
