@@ -23,6 +23,6 @@
     "http-server": "^14.1.0",
     "pixelmatch": "^5.2.1",
     "puppeteer": "^13.0.1",
-    "puppeteer-cluster": "^0.22.0"
+    "puppeteer-cluster": "^0.23.0"
   }
 }
