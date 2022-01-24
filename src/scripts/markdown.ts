@@ -6,22 +6,32 @@ import { meta } from "./utility";
 // Styling for tables in conceptual documents using Bootstrap.
 // See http://getbootstrap.com/css/#tables
 export function renderTables() {
-  $('table').addClass('table table-bordered table-striped table-condensed').wrap('<div class=\"table-responsive\"></div>');
+  document.querySelectorAll('table').forEach(table => {
+    table.classList.add('table', 'table-bordered', 'table-striped', 'table-condensed')
+    const wrapper = document.createElement('div')
+    wrapper.className = 'table-responsive'
+    table.parentElement.insertBefore(wrapper, table)
+    wrapper.appendChild(table)
+  })
 }
 
 // Styling for alerts.
 export function renderAlerts() {
-  $('.NOTE, .TIP').addClass('alert alert-info');
-  $('.WARNING').addClass('alert alert-warning');
-  $('.IMPORTANT, .CAUTION').addClass('alert alert-danger');
+  document.querySelectorAll('.NOTE, .TIP').forEach(e => e.classList.add('alert', 'alert-info'));
+  document.querySelectorAll('.WARNING').forEach(e => e.classList.add('alert', 'alert-warning'));
+  document.querySelectorAll('.IMPORTANT, .CAUTION').forEach(e => e.classList.add('alert', 'alert-danger'));
 }
 
-// Open links to different host in a new window.
+// Open external links to different host in a new window.
 export function renderLinks() {
   if (meta('docfx:newtab') === 'true') {
-    $(document.links).filter(function () {
-      return this.hostname !== window.location.hostname;
-    }).attr('target', '_blank');
+    const links = document.links
+    for (let i = 0; i < links.length; i++) {
+      const link = links.item(i)
+      if (link.hostname !== window.location.hostname) {
+        link.target = '_blank'
+      }
+    }
   }
 }
 
@@ -105,9 +115,8 @@ export function renderTabs() {
     if (state.groups.length === 0) {
       return state;
     }
-    selectTabs(queryStringTabs, container);
+    selectTabs(queryStringTabs);
     updateTabsQueryStringParam(state);
-    notifyContentUpdated();
     return state;
   }
 
@@ -208,7 +217,6 @@ export function renderTabs() {
       }
       updateTabsQueryStringParam(state);
     }
-    notifyContentUpdated();
     var top = info.anchor.getBoundingClientRect().top;
     if (top !== originalTop && event instanceof MouseEvent) {
       window.scrollTo(0, window.pageYOffset + top - originalTop);
@@ -255,7 +263,7 @@ export function renderTabs() {
     return parts.join('&');
   }
 
-  function parseQueryString(queryString) {
+  function parseQueryString(queryString = undefined): any {
     var match;
     var pl = /\+/g;
     var search = /([^&=]+)=?([^&]*)/g;
@@ -282,10 +290,5 @@ export function renderTabs() {
       }
     }
     return false;
-  }
-
-  function notifyContentUpdated() {
-    // Dispatch this event when needed
-    // window.dispatchEvent(new CustomEvent('content-update'));
   }
 }
