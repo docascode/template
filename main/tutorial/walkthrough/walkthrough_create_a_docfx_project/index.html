@@ -3,9 +3,9 @@
 <html>
 
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="author" content="yufeih" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="yufeih" />
 <meta name="depot_name" content="." />
 <meta name="document_id" content="8b466217-2dfd-158a-1906-b631a2eacddf" />
 <meta name="document_version_independent_id" content="466bb2b9-930d-2bb3-e928-5ce1ce2ba62c" />
@@ -21,15 +21,13 @@
 <meta name="wordCount" content="528" />
 
 
-	<title>Walkthrough Part I: Generate a Simple Documentation Website</title>
+  <title>Walkthrough Part I: Generate a Simple Documentation Website</title>
 
-	<link rel="stylesheet" href="../../../dist/docfx.css">
-	<script type="text/javascript" src="../../../dist/docfx.js"></script>
+  <link rel="stylesheet" href="../../../dist/docfx.css">
 </head>
 
-<body data-spy="scroll" data-target="#affix" data-offset="120">
-	<div id="wrapper">
-		<header>
+<body data-spy="scroll" data-target="#in-this-article">
+  <header>
 <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -39,33 +37,30 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-<a class="navbar-brand" href="/">
-  <img id="logo" class="svg" src="../../../svg/logo.svg">
-</a>
+      <a class="navbar-brand" href="../../../">
+        <img src="../../../logo.svg">
+      </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
     </div>
   </div>
 </nav>
+  </header>
 
-<div class="subnav navbar navbar-default">
-  <div class="container hide-when-search" id="breadcrumb">
-  </div>
-</div>
-		</header>
+  <main class="container layout-conceptual page-type-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
 
-		<div role="main" class="container body-content page-type-conceptual">
-<div class="sidenav hide-when-search">
-  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+      <nav class="layout-toc">
+<div class="sticky-top">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
   <div class="sidetoggle collapse" id="sidetoggle">
-    <div id="sidetoc">
+    <div>
       <div id="sidetoggle">
         <div>
           <div class="sidefilter">
             <form class="toc-filter">
               <span class="glyphicon glyphicon-search filter-icon"></span>
-              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
-              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+              <input type="text" id="toc-filter" placeholder="Filter">
             </form>
           </div>
           <div class="sidetoc">
@@ -76,13 +71,10 @@
       </div>
     </div>
   </div>
-</div>
-				<div class="article row grid-right">
+</div>      </nav>
 
-					<div class="col-md-10">
-
-						<article class="content wrap" id="_content" data-uid="">
-							<h1 id="walkthrough-part-i-generate-a-simple-documentation-website">Walkthrough Part I: Generate a Simple Documentation Website</h1>
+      <article>
+        <h1 id="walkthrough-part-i-generate-a-simple-documentation-website">Walkthrough Part I: Generate a Simple Documentation Website</h1>
 <ul class="metabar">
   <li>
     <time datetime="6/2/2021">6/2/2021</time>
@@ -98,7 +90,7 @@
         </ul>
       </a>
     </li>
-</ul>							<p>By completing this walkthrough, you'll become familiar with the workflow of <code>docfx</code> and the general principle of organizing documents inside <code>docfx</code>. You will finish this walkthrough with a static website that can be published to any host service. Download the files used in this walkthrough <a href="../artifacts/walkthrough1.zip" data-linktype="relative-path">here</a>.</p>
+</ul>        <p>By completing this walkthrough, you'll become familiar with the workflow of <code>docfx</code> and the general principle of organizing documents inside <code>docfx</code>. You will finish this walkthrough with a static website that can be published to any host service. Download the files used in this walkthrough <a href="../artifacts/walkthrough1.zip" data-linktype="relative-path">here</a>.</p>
 <h2 id="step1-setup-docfx">Step1. Setup DocFX</h2>
 <p>Download <em>docfx</em> from <a href="http://dotnet.github.io/docfx/" data-linktype="external">http://dotnet.github.io/docfx/</a>. <a href="http://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-exe-directly" data-linktype="external">Getting Started with docfx</a> describes three ways to install <em>docfx</em>. This walkthrough uses the first one: Use <em>docfx.exe</em> directly.</p>
 <ol>
@@ -161,44 +153,39 @@
 </li>
 </ul>
 
-						</article>
+      </article>
 
-					</div>
-
-<div class="hidden-sm col-md-2" role="complementary">
-  <div class="sideaffix">
-    <div class="contribution">
-      <ul class="nav">
-        <li>
-          <a id="switch-theme" class="contribution-link">
-            <span class="glyphicon glyphicon-cog"></span>Theme
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/docascode/template/blob/main/samples/tutorial/walkthrough/walkthrough_create_a_docfx_project.md" class="contribution-link">
-            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
-          </a>
-        </li>
-      </ul>
-    </div>
-    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-    </nav>
+      <aside>
+<div class="sideaffix sticky-top">
+  <div class="contribution">
+    <ul class="nav">
+      <li>
+        <a id="switch-theme" class="contribution-link">
+          <span class="glyphicon glyphicon-cog"></span>Theme
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/docascode/template/blob/main/samples/tutorial/walkthrough/walkthrough_create_a_docfx_project.md" class="contribution-link">
+          <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+        </a>
+      </li>
+    </ul>
   </div>
-</div>
-				</div>
-		</div>
+  <nav id="in-this-article" class="in-this-article">
+  </nav>
+</div>      </aside>
+  </main>
 
-<footer>
-  <div class="footer">
-    <div class="container">
+  <footer>
+<div class="container">
     © Microsoft
     <div class="github-star-button">
-      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+      <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
     </div>
-    </div>
-  </div>
-</footer>
-	</div>
+</div>
+  </footer>
+
+  <script type="text/javascript" src="../../../dist/docfx.js"></script>
 </body>
 
 </html>

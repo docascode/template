@@ -189,6 +189,7 @@
 {"dependency_type":"uid","from_file_path":"D:\\a\\template\\template\\samples\\api\\toc.yml","to_file_path":"D:\\a\\template\\template\\samples\\api\\CatLibrary.yml"}
 {"dependency_type":"uid","from_file_path":"D:\\a\\template\\template\\samples\\api\\toc.yml","to_file_path":"D:\\a\\template\\template\\samples\\api\\MRef.Demo.Enumeration.ColorType.yml"}
 {"dependency_type":"uid","from_file_path":"D:\\a\\template\\template\\samples\\api\\toc.yml","to_file_path":"D:\\a\\template\\template\\samples\\api\\MRef.Demo.Enumeration.yml"}
+{"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\docfx.yml","to_file_path":"D:\\a\\template\\template\\samples\\logo.svg"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\docfx.yml","to_file_path":"D:\\a\\template\\template\\samples\\menu.yml"}
 {"dependency_type":"metadata","from_file_path":"D:\\a\\template\\template\\samples\\index.yml","to_file_path":"D:\\a\\template\\template\\samples\\TOC.yml"}
 {"dependency_type":"file","from_file_path":"D:\\a\\template\\template\\samples\\index.yml","to_file_path":"D:\\a\\template\\template\\samples\\tutorial\\getting-started.md"}
