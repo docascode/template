@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+$navbar-padding-y: 0;
+
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/highlight.js/styles/stackoverflow-light.css';
 @import './styles/layout.scss';
 @import './styles/markdown.scss';

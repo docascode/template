@@ -38,12 +38,13 @@ export async function renderNavbar(): Promise<NavItem> {
   })
 
   navbarElement.appendChild(
-    <ul class='nav navbar-nav level1'> {
+    <ul class='nav navbar-nav'> {
       items.map(item => {
-        const className = item === activeItem ? 'active' : null
-        return <li class={className}><a href={item.href} class={className}>{item.name}</a></li>
+        const current = (item === activeItem ? 'page' : false)
+        const active = (item === activeItem ? 'active' : null)
+        return <li class='nav-item'><a class={['nav-link', active]} href={item.href} aria-current={current}>{item.name}</a></li>
       })
-    } </ul>);
+    } </ul>)
 
   return activeItem
 
