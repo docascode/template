@@ -24,7 +24,7 @@ export async function renderToc(): Promise<TocNode[]> {
 
   toc.items ||= []
   toc.items.map(expandNodes)
-  tocElement.appendChild(<ul class='nav level1'>{buildTocNodes(toc.items)}</ul>)
+  tocElement.appendChild(<ul>{buildTocNodes(toc.items)}</ul>)
   registerTocEvents()
 
   if (activeElement) {
@@ -41,7 +41,7 @@ export async function renderToc(): Promise<TocNode[]> {
         isActive = true
       }
     }
-    
+
     if (node.items) {
       for (const item of node.items) {
         if (expandNodes(item)) {
@@ -57,45 +57,44 @@ export async function renderToc(): Promise<TocNode[]> {
     return false
   }
 
-  function buildTocNodes(nodes: TocNode[], level: number = 1) {
+  function buildTocNodes(nodes: TocNode[]) {
     return nodes.map(node => {
       const li = createRef()
       const { href, name, items } = node
       const isLeaf = !items || items.length <= 0
       const active = activeNodes.includes(node)
+      const activeClass= active ? 'active' : null
 
       if (active) {
         activeElement = li
       }
 
       return (
-        <li ref={li} class={active ? ['in', 'active'] : null}>
-          {isLeaf ? null : <span class='expand-stub' onClick={() => toggleTocNode(li.current)}></span>}
+        <li ref={li} class={activeClass}>
+          {isLeaf ? null : <span class='toggle' onClick={() => toggleTocNode(li.current)}></span>}
           {href
-            ? <a class={active ? 'active' : null} href={href}>{name}</a>
-            : <a class={active ? 'active' : null} onClick={() => toggleTocNode(li.current)}>{name}</a>}
-          {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(items, level + 1)}</ul>}
+            ? <a class={activeClass} href={href}>{name}</a>
+            : <a class={activeClass} onClick={() => toggleTocNode(li.current)}>{name}</a>}
+          {isLeaf ? null : <ul>{buildTocNodes(items)}</ul>}
         </li>)
     })
   }
 
   function toggleTocNode(li: HTMLLIElement) {
-    if (li.classList.contains('in') || li.classList.contains('filtered')) {
-      li.classList.remove('in')
+    if (li.classList.contains('active') || li.classList.contains('filtered')) {
+      li.classList.remove('active')
       li.classList.remove('filtered')
     } else {
-      li.classList.add('in')
-        }
-      }
+      li.classList.add('active')
+    }
+  }
 
   function registerTocEvents() {
     const tocFilter = document.getElementById('toc-filter') as HTMLInputElement
     if (!tocFilter) {
       return
-      }
+    }
 
-    tocFilter.addEventListener('focus', () => tocFilter.parentElement?.classList.add('focused'))
-    tocFilter.addEventListener('blur', () => tocFilter.parentElement?.classList.remove('focused'))
     tocFilter.addEventListener('input', () => onTocFilterTextChange())
 
     // Set toc filter from local session storage on page load

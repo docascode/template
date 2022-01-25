@@ -10,6 +10,7 @@ $aside-break: 1086px;
 
 main.layout-conceptual {
  display: grid;
+ margin-top: 1rem;
  gap: 1rem 4rem;
  grid-template-columns: 26rem auto 20rem;
  grid-template-rows: auto auto;

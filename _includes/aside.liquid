@@ -1,22 +1,15 @@
-<div class="sideaffix sticky-top">
-  {%- unless disableContribution -%}
-  <div class="contribution">
+<div class="sticky-top">
+  <div class="actionbar">
     <ul class="nav">
-      <li>
-        <a id="switch-theme" class="contribution-link">
-          <span class="glyphicon glyphicon-cog"></span>Theme
-        </a>
+      <li class="action-item">
+        <a id="switch-theme">Theme</a>
       </li>
       {%- if page.original_content_git_url -%}
-      <li>
-        <a href="{{page.original_content_git_url}}" class="contribution-link">
-          <span class="glyphicon glyphicon-pencil"></span>Edit this doc
-        </a>
+      <li class="action-item>
+        <a href="{{page.original_content_git_url}}">Edit</a>
       </li>
       {%- endif -%}
     </ul>
   </div>
-  {%- endunless -%}
-  <nav id="in-this-article" class="in-this-article">
-  </nav>
+  <nav id="in-this-article" class="in-this-article"></nav>
 </div>

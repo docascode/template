@@ -1,13 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-import $ from 'jquery'
-
-window.jQuery = $
-window.$ = $
-
-require('bootstrap')
-
+import 'bootstrap'
 import { enableAnchor } from './scripts/anchor'
 import { highlight } from './scripts/highlight'
 import { renderAlerts, renderLinks, renderTables, renderTabs } from './scripts/markdown'

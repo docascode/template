@@ -1,77 +1,29 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-.navbar {
-  margin-bottom: 0;
-}
+header {
+  .navbar-light {
+    border-bottom: $gray-400 solid 1px;
 
-/* blends header footer and content together with gradient effect */
-.grad-top {
-  /* For Safari 5.1 to 6.0 */
-  /* For Opera 11.1 to 12.0 */
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0));
-  /* Standard syntax */
-  height: 5px;
-}
-.divider {
-  margin: 0 5px;
-  color: #cccccc;
-}
-hr {
-  border-color: #cccccc;
-}
+    .nav-link {
+      color: $navbar-light-color;
 
-header .navbar {
-  border-width: 0 0 1px;
-  border-radius: 0;
-  background-color: #fff;
-  border-color: #e3e3e3;
-}
-.navbar-brand {
-  font-size: inherit;
-  padding: 0;
-}
-.navbar-brand svg {
-  fill: #333!important;
-}
-.navbar-collapse {
-  margin: 0 -15px;
-}
-.navbar-default {
-  background-color: #fff;
-  border-bottom: 0;
-}
+      &:hover,
+      &:focus {
+        color: $navbar-light-hover-color;
+      }
 
-.subnav {
-  min-height: 40px;
-}
+      &.disabled {
+        color: $navbar-light-disabled-color;
+      }
+    }
 
-.sideaffix {
-  font-size: 12px;
-  overflow: hidden;
-}
-
-.sideaffix > div.contribution {
-  margin-bottom: 20px;
-}
-.sideaffix > div.contribution > ul > li > a.contribution-link {
-  padding: 6px 10px;
-  font-size: 16px;
-}
-.sideaffix > div.contribution > ul > li > a.contribution-link:hover {
-  background-color: #ffffff;
-}
-
-.sideaffix > div.contribution > ul > li > a.contribution-link svg {
-  width: 16px;
-  height: 16px;
-  position: relative;
-  top: 2px;
-  fill: #3689d1;
-}
-.sideaffix ul.nav > li > a:focus {
-  background: none;
+    .show > .nav-link,
+    .nav-link.active {
+      color: $color-contrast-light;
+      background-color: $primary;
+    }
+  }
 }
 
 .in-this-article{
@@ -137,9 +89,15 @@ header .navbar {
   }
 }
 
-footer .github-star-button {
-  display: inline-block;
-  position: relative;
-  top: 5px;
-  margin: 0 10px;
+
+footer {
+  background-color: #f8f8f8;
+  padding: 4rem 0;
+  
+  .github-star-button {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin: 0 10px;
+  }  
 }

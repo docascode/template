@@ -63,9 +63,10 @@ export async function renderNavbar(): Promise<NavItem> {
 
 export function renderBreadcrumb(breadcrumb: NavItem[]): void {
   document.getElementById('breadcrumb')?.appendChild(
-    <ul class='breadcrumb'>
-      {breadcrumb.map(item => <li> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}
-    </ul>
+    <ol class='breadcrumb'>
+      {breadcrumb.map(item =>
+        <li class="breadcrumb-item"> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}
+    </ol>
   )
 }
 
