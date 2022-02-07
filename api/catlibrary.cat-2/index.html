@@ -12,8 +12,6 @@
 <meta name="depot_name" content="." />
 <meta name="description" content="Learn more about the CatLibrary.Cat<T,K> in the CatLibrary namespace." />
 <meta name="devLangs" content="csharp" />
-<meta name="devLangs" content="vb" />
-<meta name="devLangs" content="cpp" />
 <meta name="document_id" content="2df04b8c-fbed-8a47-62fb-6a49541ece8d" />
 <meta name="document_version_independent_id" content="82784687-1696-dd7e-90bf-19a2f17e7828" />
 <meta name="examples" content="<p>Here's example of how to create an instance of this class. As T is limited with <code data-dev-comment-type=&quot;c&quot;>class</code> and K is limited with <code data-dev-comment-type=&quot;c&quot;>struct</code>.</p>
@@ -27,7 +25,7 @@ unsafe
 <p>As you see, here we bring in <strong>pointer</strong> so we need to add <code data-dev-comment-type=&quot;languageKeyword&quot;>unsafe</code> keyword.</p>
 " />
 <meta name="fullName" content="CatLibrary.Cat<T,K>" />
-<meta name="gitcommit" content="https://github.com/docascode/template/blob/d278c3865e6e6ff6d0375d139c2eb10c83777ee8/samples/api/CatLibrary.Cat-2.yml" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/d6229666bad13651e77eff575ca26fd2c1928531/samples/api/CatLibrary.Cat-2.yml" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="../../menu.json" />
 <meta name="monikers" content="net6.0" />
@@ -51,7 +49,7 @@ unsafe
 <meta name="TopicType" content="apiref" />
 <meta name="type" content="class" />
 <meta name="uid" content="CatLibrary.Cat`2" />
-<meta name="updated_at" content="2022-02-07 05:19 AM" />
+<meta name="updated_at" content="2022-02-07 09:00 AM" />
 
 
   <title>Cat<T,K> Class (CatLibrary)</title>
@@ -144,12 +142,8 @@ unsafe
 		</div>
 	</div>
 
-	<pre class="wrap" data-moniker=" net6.0 "><code class="cpp lang-cpp" dir="ltr">generic &lt;typename T, typename K&gt;
- where T : class, gcnew() where K : value classpublic ref class Cat : CatLibrary::ICat</code></pre>
 	<pre class="wrap" data-moniker=" net6.0 "><code class="csharp lang-csharp" dir="ltr">[System.Serializable]
 public class Cat&lt;T,K&gt; : CatLibrary.ICat where T : class, new() where K : struct</code></pre>
-	<pre class="wrap" data-moniker=" net6.0 "><code class="vb lang-vb" dir="ltr">Public Class Cat(Of T, K)
-Implements ICat</code></pre>
     <h4 class="propertyInfoTitle stack">Type Parameters</h4>
     <div class="propertyInfo">
         <dl class="parameterList">
