@@ -620,13 +620,13 @@ esbuild-openbsd-64@0.14.19:
   resolved "https://registry.yarnpkg.com/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.19.tgz#7315464f4981acc21ba9f0f7ef1e303bba5f66f8"
   integrity sha512-W6aQZlLkMHerQ6wKCR869pwkg5ohTUKNuhC8EBl9t6Cb8kv2KLWC8hG+477hksdeWMaVimu3pHvzCMVkBDIhmw==
 
-esbuild-sass-plugin@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/esbuild-sass-plugin/-/esbuild-sass-plugin-2.0.3.tgz#f472627fdd6fc5834333ed6e1b8c5604b31adb72"
-  integrity sha512-rQzJRaSgcU1oQlJ1Crbr3SuNYTomc0dE0Pc8qS/T8dWLBxnd5xp/5wQvOOEY3lXmPy8lToZnPqGd1TtfuKc+Cg==
+esbuild-sass-plugin@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/esbuild-sass-plugin/-/esbuild-sass-plugin-2.2.2.tgz#1a7de2232cbeb1240d3e5a2471cfcd6ee90665b9"
+  integrity sha512-ca9LQPqfRR21iFqOWlPJFKzV7gMOHf51eQfumZhOorOrlsrSUOP/c0AJUO932z2my6kxMNfBYEloBk+2Gea+UQ==
   dependencies:
-    esbuild "^0.14.8"
-    sass "^1.45.1"
+    esbuild "^0.14.13"
+    sass "^1.49.0"
 
 esbuild-sunos-64@0.14.19:
   version "0.14.19"
@@ -648,7 +648,7 @@ esbuild-windows-arm64@0.14.19:
   resolved "https://registry.yarnpkg.com/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.19.tgz#cbb66fa06143ec7fe5538b5aef904daaa1c69a0e"
   integrity sha512-i1vTm6dwHCoXB+Dg2bmyr/DlJevA05nHem0QlKK4XmR0lGqJjOmmvNKyOEyXCYMBCSqnJKpg5bDBY3O1mRO8Cw==
 
-esbuild@^0.14.19, esbuild@^0.14.8:
+esbuild@^0.14.13, esbuild@^0.14.19:
   version "0.14.19"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.14.19.tgz#d9cc016f3fa7affe705617126e3ed51791374324"
   integrity sha512-aBbxc+wvD608wYlpKGtOjUGnhiM/0LLndrkVL8dYxIRb3I+lEBJ1w3i2A4rfd5z3Tf4IzJJ1c+HHliC02WQdJg==
@@ -1451,10 +1451,10 @@ safe-buffer@~5.2.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
-sass@^1.45.1:
-  version "1.45.1"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.45.1.tgz#fa03951f924d1ba5762949567eaf660e608a1ab0"
-  integrity sha512-pwPRiq29UR0o4X3fiQyCtrESldXvUQAAE0QmcJTpsI4kuHHcLzZ54M1oNBVIXybQv8QF2zfkpFcTxp8ta97dUA==
+sass@^1.49.0:
+  version "1.49.7"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.49.7.tgz#22a86a50552b9b11f71404dfad1b9ff44c6b0c49"
+  integrity sha512-13dml55EMIR2rS4d/RDHHP0sXMY3+30e1TKsyXaSz3iLWVoDWEoboY8WzJd5JMnxrRHffKO3wq2mpJ0jxRJiEQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
