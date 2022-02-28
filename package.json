@@ -19,7 +19,7 @@
   "devDependencies": {
     "browser-sync": "^2.27.7",
     "esbuild": "^0.14.23",
-    "esbuild-sass-plugin": "^2.2.2",
+    "esbuild-sass-plugin": "^2.2.4",
     "http-server": "^14.1.0",
     "pixelmatch": "^5.2.1",
     "puppeteer": "^13.3.2",

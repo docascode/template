@@ -632,10 +632,10 @@ esbuild-openbsd-64@0.14.23:
   resolved "https://registry.yarnpkg.com/esbuild-openbsd-64/-/esbuild-openbsd-64-0.14.23.tgz#f2fc51714b4ddabc86e4eb30ca101dd325db2f7d"
   integrity sha512-uYYNqbVR+i7k8ojP/oIROAHO9lATLN7H2QeXKt2H310Fc8FJj4y3Wce6hx0VgnJ4k1JDrgbbiXM8rbEgQyg8KA==
 
-esbuild-sass-plugin@^2.2.2:
-  version "2.2.2"
-  resolved "https://registry.yarnpkg.com/esbuild-sass-plugin/-/esbuild-sass-plugin-2.2.2.tgz#1a7de2232cbeb1240d3e5a2471cfcd6ee90665b9"
-  integrity sha512-ca9LQPqfRR21iFqOWlPJFKzV7gMOHf51eQfumZhOorOrlsrSUOP/c0AJUO932z2my6kxMNfBYEloBk+2Gea+UQ==
+esbuild-sass-plugin@^2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/esbuild-sass-plugin/-/esbuild-sass-plugin-2.2.4.tgz#8654098ef3eb7ea8d6b088c4c4143f4eb0d21d0a"
+  integrity sha512-qUggbxl4fWJ0M7VTtuD/Tiw9M4ryl00AU15M44ufiEQnt1leiWVwMakX0nFYsC5k1s5QPapBRjXodat7cQ3sgQ==
   dependencies:
     esbuild "^0.14.13"
     sass "^1.49.0"
