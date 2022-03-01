@@ -15,6 +15,9 @@
       }
     ]
   },
+  "xref": [
+    "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
+  ],
   "globalMetadata": {
     "_logo": "logo.svg",
     "menu_path": "menu.yml"
