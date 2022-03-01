@@ -1,0 +1,41 @@
+<Type Name="TomFromBaseClass" FullName="CatLibrary.TomFromBaseClass">
+  <TypeSignature Language="C#" Value="public class TomFromBaseClass : CatLibrary.Tom" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit TomFromBaseClass extends CatLibrary.Tom" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.TomFromBaseClass" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CatLibrary.Tom</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            *TomFromBaseClass* inherits from @
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public TomFromBaseClass (int k);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 k) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.TomFromBaseClass.#ctor(System.Int32)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="k" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="k" />
+        <summary>
+            This is a #ctor with parameter
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

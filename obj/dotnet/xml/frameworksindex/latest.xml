@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Framework Name="latest">
+  <Assemblies>
+    <Assembly Name="CatLibrary" Version="1.0.0.0" />
+  </Assemblies>
+  <Namespace Name="CatLibrary">
+    <Type Name="CatLibrary.Cat`2" Id="T:CatLibrary.Cat`2">
+      <Member Id="E:CatLibrary.Cat`2.CatLibrary#ICat#eat" />
+      <Member Id="E:CatLibrary.Cat`2.ownEat" />
+      <Member Id="F:CatLibrary.Cat`2.isHealthy" />
+      <Member Id="M:CatLibrary.Cat`2.#ctor" />
+      <Member Id="M:CatLibrary.Cat`2.#ctor(`0)" />
+      <Member Id="M:CatLibrary.Cat`2.#ctor(System.String,System.Int32@,System.String,System.Boolean)" />
+      <Member Id="M:CatLibrary.Cat`2.CalculateFood(System.DateTime)" />
+      <Member Id="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat" />
+      <Member Id="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat(System.String)" />
+      <Member Id="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat``1(``0)" />
+      <Member Id="M:CatLibrary.Cat`2.Equals(System.Object)" />
+      <Member Id="M:CatLibrary.Cat`2.GetTailLength(System.Int32*,System.Object[])" />
+      <Member Id="M:CatLibrary.Cat`2.Jump(`0,`1,System.Boolean@)" />
+      <Member Id="M:CatLibrary.Cat`2.op_Addition(CatLibrary.Cat{`0,`1},System.Int32)" />
+      <Member Id="M:CatLibrary.Cat`2.op_Explicit(CatLibrary.Cat{`0,`1})~CatLibrary.Tom" />
+      <Member Id="M:CatLibrary.Cat`2.op_Subtraction(CatLibrary.Cat{`0,`1},System.Int32)" />
+      <Member Id="P:CatLibrary.Cat`2.Age" />
+      <Member Id="P:CatLibrary.Cat`2.CatLibrary#IAnimal#Item(System.Int32)" />
+      <Member Id="P:CatLibrary.Cat`2.Item(System.String)" />
+      <Member Id="P:CatLibrary.Cat`2.Name" />
+    </Type>
+    <Type Name="CatLibrary.CatException`1" Id="T:CatLibrary.CatException`1">
+      <Member Id="M:CatLibrary.CatException`1.#ctor" />
+    </Type>
+    <Type Name="CatLibrary.Complex`2" Id="T:CatLibrary.Complex`2">
+      <Member Id="M:CatLibrary.Complex`2.#ctor" />
+    </Type>
+    <Type Name="CatLibrary.FakeDelegate`1" Id="T:CatLibrary.FakeDelegate`1" />
+    <Type Name="CatLibrary.IAnimal" Id="T:CatLibrary.IAnimal">
+      <Member Id="M:CatLibrary.IAnimal.Eat" />
+      <Member Id="M:CatLibrary.IAnimal.Eat(System.String)" />
+      <Member Id="M:CatLibrary.IAnimal.Eat``1(``0)" />
+      <Member Id="P:CatLibrary.IAnimal.Item(System.Int32)" />
+      <Member Id="P:CatLibrary.IAnimal.Name" />
+    </Type>
+    <Type Name="CatLibrary.ICat" Id="T:CatLibrary.ICat">
+      <Member Id="E:CatLibrary.ICat.eat" />
+    </Type>
+    <Type Name="CatLibrary.ICatExtension" Id="T:CatLibrary.ICatExtension">
+      <Member Id="M:CatLibrary.ICatExtension.Play(CatLibrary.ICat,System.String)" />
+      <Member Id="M:CatLibrary.ICatExtension.Sleep(CatLibrary.ICat,System.Int64)" />
+    </Type>
+    <Type Name="CatLibrary.MRefDelegate`3" Id="T:CatLibrary.MRefDelegate`3" />
+    <Type Name="CatLibrary.MRefNormalDelegate" Id="T:CatLibrary.MRefNormalDelegate" />
+    <Type Name="CatLibrary.Tom" Id="T:CatLibrary.Tom">
+      <Member Id="M:CatLibrary.Tom.#ctor" />
+      <Member Id="M:CatLibrary.Tom.TomMethod(CatLibrary.Complex{CatLibrary.TomFromBaseClass,CatLibrary.TomFromBaseClass},System.Tuple{System.String,CatLibrary.Tom})" />
+    </Type>
+    <Type Name="CatLibrary.TomFromBaseClass" Id="T:CatLibrary.TomFromBaseClass">
+      <Member Id="M:CatLibrary.TomFromBaseClass.#ctor(System.Int32)" />
+    </Type>
+  </Namespace>
+  <Namespace Name="MRef.Demo.Enumeration">
+    <Type Name="MRef.Demo.Enumeration.ColorType" Id="T:MRef.Demo.Enumeration.ColorType">
+      <Member Id="F:MRef.Demo.Enumeration.ColorType.Blue" />
+      <Member Id="F:MRef.Demo.Enumeration.ColorType.Red" />
+      <Member Id="F:MRef.Demo.Enumeration.ColorType.Yellow" />
+    </Type>
+  </Namespace>
+</Framework>

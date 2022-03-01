@@ -1,0 +1,40 @@
+<Type Name="FakeDelegate&lt;T&gt;" FullName="CatLibrary.FakeDelegate&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public delegate int FakeDelegate&lt;T&gt;(long num, string name, params object[] scores);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed FakeDelegate`1&lt;T&gt; extends System.MulticastDelegate" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.FakeDelegate`1" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T" />
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="num" Type="System.Int64" />
+    <Parameter Name="name" Type="System.String" />
+    <Parameter Name="scores" Type="System.Object[]">
+      <Attributes>
+        <Attribute>
+          <AttributeName Language="C#">[System.ParamArray]</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Parameter>
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Int32</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <typeparam name="T">Fake para</typeparam>
+    <param name="num">Fake para</param>
+    <param name="name">Fake para</param>
+    <param name="scores">Optional Parameter.</param>
+    <summary>
+            Fake delegate
+            </summary>
+    <returns>Return a fake number to confuse you.</returns>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

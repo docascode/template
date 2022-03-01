@@ -1,0 +1,65 @@
+<Type Name="Tom" FullName="CatLibrary.Tom">
+  <TypeSignature Language="C#" Value="public class Tom" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Tom extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.Tom" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            Tom class is only inherit from Object. Not any member inside itself.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Tom ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Tom.#ctor" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TomMethod">
+      <MemberSignature Language="C#" Value="public CatLibrary.Complex&lt;string,CatLibrary.TomFromBaseClass&gt; TomMethod (CatLibrary.Complex&lt;CatLibrary.TomFromBaseClass,CatLibrary.TomFromBaseClass&gt; a, Tuple&lt;string,CatLibrary.Tom&gt; b);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CatLibrary.Complex`2&lt;string, class CatLibrary.TomFromBaseClass&gt; TomMethod(class CatLibrary.Complex`2&lt;class CatLibrary.TomFromBaseClass, class CatLibrary.TomFromBaseClass&gt; a, class System.Tuple`2&lt;string, class CatLibrary.Tom&gt; b) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Tom.TomMethod(CatLibrary.Complex{CatLibrary.TomFromBaseClass,CatLibrary.TomFromBaseClass},System.Tuple{System.String,CatLibrary.Tom})" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CatLibrary.Complex&lt;System.String,CatLibrary.TomFromBaseClass&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CatLibrary.Complex&lt;CatLibrary.TomFromBaseClass,CatLibrary.TomFromBaseClass&gt;" />
+        <Parameter Name="b" Type="System.Tuple&lt;System.String,CatLibrary.Tom&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="a">A complex input</param>
+        <param name="b">Another complex input</param>
+        <summary>
+            This is a Tom Method with complex type as return
+            </summary>
+        <returns>Complex @CatLibrary.TomFromBaseClass</returns>
+        <remarks>To be added.</remarks>
+        <exception cref="T:System.NotImplementedException">This is not implemented</exception>
+        <exception cref="T:System.ArgumentException">This is the exception to be thrown when implemented</exception>
+        <exception cref="T:CatLibrary.CatException`1">This is the exception in current documentation</exception>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

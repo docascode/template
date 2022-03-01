@@ -1,0 +1,27 @@
+<Type Name="MRefNormalDelegate" FullName="CatLibrary.MRefNormalDelegate">
+  <TypeSignature Language="C#" Value="public delegate void MRefNormalDelegate(List&lt;string&gt; pics, out string name);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MRefNormalDelegate extends System.MulticastDelegate" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.MRefNormalDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="pics" Type="System.Collections.Generic.List&lt;System.String&gt;" />
+    <Parameter Name="name" Type="System.String" RefType="out" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="pics">a name list of pictures.</param>
+    <param name="name">give out the needed name.</param>
+    <summary>
+            Delegate in the namespace
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

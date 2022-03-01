@@ -1,0 +1,136 @@
+<Type Name="IAnimal" FullName="CatLibrary.IAnimal">
+  <TypeSignature Language="C#" Value="public interface IAnimal" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract IAnimal" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.IAnimal" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>
+            This is <b>basic</b> interface of all animal.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Eat">
+      <MemberSignature Language="C#" Value="public void Eat ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Eat() cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.IAnimal.Eat" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Animal's eat method.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Eat">
+      <MemberSignature Language="C#" Value="public void Eat (string food);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Eat(string food) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.IAnimal.Eat(System.String)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="food" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="food">Food to eat</param>
+        <summary>
+            Feed the animal with some food
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Eat&lt;Tool&gt;">
+      <MemberSignature Language="C#" Value="public void Eat&lt;Tool&gt; (Tool tool) where Tool : class;" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Eat&lt;class Tool&gt;(!!Tool tool) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.IAnimal.Eat``1(``0)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="Tool">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="tool" Type="Tool" />
+      </Parameters>
+      <Docs>
+        <typeparam name="Tool">It's a class type.</typeparam>
+        <param name="tool">Tool name.</param>
+        <summary>
+            Overload method of eat. This define the animal eat by which tool.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public string this[int index] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Item(int32)" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.IAnimal.Item(System.Int32)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">Animal number.</param>
+        <summary>
+            Return specific number animal's name.
+            </summary>
+        <value>Animal name.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.IAnimal.Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Name of Animal.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

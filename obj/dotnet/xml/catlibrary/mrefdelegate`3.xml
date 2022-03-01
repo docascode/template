@@ -1,0 +1,53 @@
+<Type Name="MRefDelegate&lt;K,T,L&gt;" FullName="CatLibrary.MRefDelegate&lt;K,T,L&gt;">
+  <TypeSignature Language="C#" Value="public delegate void MRefDelegate&lt;K,T,L&gt;(K k, T t, L l) where K : class, IComparable where T : struct where L : Tom, IEnumerable&lt;long&gt;;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed MRefDelegate`3&lt;class (class System.IComparable) K, struct .ctor (class System.ValueType) T, (class CatLibrary.Tom, class System.Collections.Generic.IEnumerable`1&lt;int64&gt;) L&gt; extends System.MulticastDelegate" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.MRefDelegate`3" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="K">
+      <Constraints>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+        <InterfaceName>System.IComparable</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="T">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+        <BaseTypeName>System.ValueType</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="L">
+      <Constraints>
+        <BaseTypeName>CatLibrary.Tom</BaseTypeName>
+        <InterfaceName>System.Collections.Generic.IEnumerable&lt;System.Int64&gt;</InterfaceName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="k" Type="K" />
+    <Parameter Name="t" Type="T" />
+    <Parameter Name="l" Type="L" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <typeparam name="K">Generic K.</typeparam>
+    <typeparam name="T">Generic T.</typeparam>
+    <typeparam name="L">Generic L.</typeparam>
+    <param name="k">Type K.</param>
+    <param name="t">Type T.</param>
+    <param name="l">Type L.</param>
+    <summary>
+            Generic delegate with many constrains.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

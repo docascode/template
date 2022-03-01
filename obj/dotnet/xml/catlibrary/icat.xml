@@ -1,0 +1,41 @@
+<Type Name="ICat" FullName="CatLibrary.ICat">
+  <TypeSignature Language="C#" Value="public interface ICat : CatLibrary.IAnimal" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICat implements class CatLibrary.IAnimal" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.ICat" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CatLibrary.IAnimal</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Cat's interface
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="eat">
+      <MemberSignature Language="C#" Value="event EventHandler eat;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler eat" />
+      <MemberSignature Language="DocId" Value="E:CatLibrary.ICat.eat" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            eat event of cat. Every cat must implement this event.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

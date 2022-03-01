@@ -1,0 +1,71 @@
+<Type Name="ICatExtension" FullName="CatLibrary.ICatExtension">
+  <TypeSignature Language="C#" Value="public static class ICatExtension" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit ICatExtension extends System.Object" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.ICatExtension" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            It's the class that contains ICat interface's extension method.
+            <para>This class must be <b>public</b> and <b>static</b>.</para><para>Also it shouldn't be a geneic class</para></summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Play">
+      <MemberSignature Language="C#" Value="public static void Play (this CatLibrary.ICat icat, string toy);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Play(class CatLibrary.ICat icat, string toy) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.ICatExtension.Play(CatLibrary.ICat,System.String)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="icat" Type="CatLibrary.ICat" RefType="this" />
+        <Parameter Name="toy" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="icat">Cat</param>
+        <param name="toy">Something to play</param>
+        <summary>
+            Extension method to let cat play
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sleep">
+      <MemberSignature Language="C#" Value="public static void Sleep (this CatLibrary.ICat icat, long hours);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Sleep(class CatLibrary.ICat icat, int64 hours) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.ICatExtension.Sleep(CatLibrary.ICat,System.Int64)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="icat" Type="CatLibrary.ICat" RefType="this" />
+        <Parameter Name="hours" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="icat">The type will be extended.</param>
+        <param name="hours">The length of sleep.</param>
+        <summary>
+            Extension method hint that how long the cat can sleep.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

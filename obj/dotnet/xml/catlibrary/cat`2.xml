@@ -1,0 +1,586 @@
+<Type Name="Cat&lt;T,K&gt;" FullName="CatLibrary.Cat&lt;T,K&gt;">
+  <TypeSignature Language="C#" Value="public class Cat&lt;T,K&gt; : CatLibrary.ICat where T : class, new() where K : struct" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi serializable beforefieldinit Cat`2&lt;class .ctor T, struct .ctor (class System.ValueType) K&gt; extends System.Object implements class CatLibrary.IAnimal, class CatLibrary.ICat" />
+  <TypeSignature Language="DocId" Value="T:CatLibrary.Cat`2" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <TypeParameters>
+    <TypeParameter Name="T">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+      </Constraints>
+    </TypeParameter>
+    <TypeParameter Name="K">
+      <Constraints>
+        <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
+        <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
+        <BaseTypeName>System.ValueType</BaseTypeName>
+      </Constraints>
+    </TypeParameter>
+  </TypeParameters>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CatLibrary.IAnimal</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>CatLibrary.ICat</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Attributes>
+    <Attribute>
+      <AttributeName Language="C#">[System.Serializable]</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <typeparam name="T">This type should be class and can new instance.</typeparam>
+    <typeparam name="K">This type is a struct type, class type can't be used for this parameter.</typeparam>
+    <summary>
+      <para>Here's main class of this <i>Demo</i>.</para>
+      <para>You can see mostly type of article within this class and you for more detail, please see the remarks.</para>
+      <para />
+      <para>this class is a template class. It has two Generic parameter. they are: <typeparamref name="T" /> and <typeparamref name="K" />.</para>
+      <para>The extension method of this class can refer to <see cref="T:CatLibrary.ICatExtension" /> class</para>
+    </summary>
+    <remarks>
+      <para>Here's all the content you can see in this class.</para>
+      <list type="ordered">
+        <listItem>Constructors. With different input parameters.</listItem>
+        <listItem>
+          <b>Methods</b>. Including:
+            <list><listItem>
+            Template method.
+            </listItem><listItem>
+            Normal method wit generic parameter.
+            </listItem><listItem>
+            Override method.
+            </listItem><listItem>
+            unsafe method with pointer.
+            </listItem></list></listItem>
+        <listItem>
+          <b>Operators</b>. You can also see explicit operator here.</listItem>
+        <listItem>
+          <b>Properties</b>. Include normal property and index.</listItem>
+        <listItem>
+          <b>Events</b>.</listItem>
+        <listItem>
+          <b>Fields</b>.</listItem>
+        <listItem>
+          <b>EII</b>. ExplicitImplementInterface. including eii property, eii method, eii event.</listItem>
+        <listItem>
+          <b>Extension Methods</b>. The extension methods not definition in this class, but we can find it!</listItem>
+      </list>
+    </remarks>
+    <example>
+      <para>Here's example of how to create an instance of this class. As T is limited with <c>class</c> and K is limited with <c>struct</c>.</para>
+      <code language="c#">
+                var a = new Cat(object, int)();
+                int catNumber = new int();
+                unsafe
+                {
+                    a.GetFeetLength(catNumber);
+                }
+            </code>
+      <para>As you see, here we bring in <b>pointer</b> so we need to add <languageKeyword>unsafe</languageKeyword> keyword.</para>
+    </example>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Cat ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.#ctor" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>
+            Default constructor.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Cat (T ownType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(!T ownType) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.#ctor(`0)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="ownType" Type="T" />
+      </Parameters>
+      <Docs>
+        <param name="ownType">This parameter type defined by class.</param>
+        <summary>
+            Constructor with one generic parameter.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Cat (string nickName, out int age, string realName, bool isHealthy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string nickName, [out] int32&amp; age, [out] string realName, [in]bool isHealthy) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.#ctor(System.String,System.Int32@,System.String,System.Boolean)" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="nickName" Type="System.String" />
+        <Parameter Name="age" Type="System.Int32" RefType="out" />
+        <Parameter Name="realName" Type="System.String" />
+        <Parameter Name="isHealthy" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="nickName">it's string type.</param>
+        <param name="age">It's an out and ref parameter.</param>
+        <param name="realName">It's an out paramter.</param>
+        <param name="isHealthy">It's an in parameter.</param>
+        <summary>
+            It's a complex constructor. The parameter will have some attributes.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Age">
+      <MemberSignature Language="C#" Value="protected int Age { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Age" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.Cat`2.Age" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Hint cat's age.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CalculateFood">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,System.Collections.Generic.List&lt;int&gt;&gt; CalculateFood (DateTime date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.Dictionary`2&lt;string, class System.Collections.Generic.List`1&lt;int32&gt;&gt; CalculateFood(valuetype System.DateTime date) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.CalculateFood(System.DateTime)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.Collections.Generic.List&lt;System.Int32&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="date" Type="System.DateTime" />
+      </Parameters>
+      <Docs>
+        <param name="date">Date time to now.</param>
+        <summary>
+            It's a method with complex return type.
+            </summary>
+        <returns>It's a relationship map of different kind food.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatLibrary.IAnimal.Eat">
+      <MemberSignature Language="C#" Value="void IAnimal.Eat ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void CatLibrary.IAnimal.Eat() cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:CatLibrary.IAnimal.Eat</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            EII method.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatLibrary.IAnimal.Eat">
+      <MemberSignature Language="C#" Value="void IAnimal.Eat (string food);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void CatLibrary.IAnimal.Eat(string food) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat(System.String)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:CatLibrary.IAnimal.Eat(System.String)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="food" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="food">Food to eat</param>
+        <summary>
+            Implementation of Eat(food)
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatLibrary.IAnimal.Eat&lt;Tool&gt;">
+      <MemberSignature Language="C#" Value="void IAnimal.Eat&lt;Tool&gt; (Tool a) where Tool : class;" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance void CatLibrary.IAnimal.Eat&lt;class Tool&gt;(!!Tool a) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.CatLibrary#IAnimal#Eat``1(``0)" />
+      <MemberType>Method</MemberType>
+      <Implements>
+        <InterfaceMember>M:CatLibrary.IAnimal.Eat``1(``0)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="Tool">
+          <Constraints>
+            <ParameterAttribute>ReferenceTypeConstraint</ParameterAttribute>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="a" Type="Tool" />
+      </Parameters>
+      <Docs>
+        <typeparam name="Tool">Tool for eat.</typeparam>
+        <param name="a">Tool name.</param>
+        <summary>
+            EII template method.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatLibrary.IAnimal.Item">
+      <MemberSignature Language="C#" Value="string CatLibrary.IAnimal.Item[int a] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string CatLibrary.IAnimal.Item(int32)" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.Cat`2.CatLibrary#IAnimal#Item(System.Int32)" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:CatLibrary.IAnimal.Item(System.Int32)</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="a">Cat's number.</param>
+        <summary>
+            EII index.
+            </summary>
+        <value>Cat's name.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CatLibrary.ICat.eat">
+      <MemberSignature Language="C#" Value="event EventHandler CatLibrary.ICat.eat;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler CatLibrary.ICat.eat" />
+      <MemberSignature Language="DocId" Value="E:CatLibrary.Cat`2.CatLibrary#ICat#eat" />
+      <MemberType>Event</MemberType>
+      <Implements>
+        <InterfaceMember>E:CatLibrary.ICat.eat</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.Equals(System.Object)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">Can pass any class type.</param>
+        <summary>
+            Override the method of <c>Object.Equals(object obj).</c></summary>
+        <returns>The return value tell you whehter the compare operation is successful.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTailLength">
+      <MemberSignature Language="C#" Value="public long GetTailLength (int* catName, params object[] parameters);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int64 GetTailLength(int32* catName, object[] parameters) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.GetTailLength(System.Int32*,System.Object[])" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="catName" Type="System.Int32*" />
+        <Parameter Name="parameters" Type="System.Object[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName Language="C#">[System.ParamArray]</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="catName">Thie represent for cat name length.</param>
+        <param name="parameters">Optional parameters.</param>
+        <summary>
+            It's an <c>unsafe</c> method.
+            As you see, <paramref name="catName" /> is a <b>pointer</b>, so we need to add <languageKeyword>unsafe</languageKeyword> keyword.
+            </summary>
+        <returns>Return cat tail's length.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isHealthy">
+      <MemberSignature Language="C#" Value="public bool isHealthy;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool isHealthy" />
+      <MemberSignature Language="DocId" Value="F:CatLibrary.Cat`2.isHealthy" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName Language="C#">[System.ContextStatic]</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Field with attribute.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public int this[string a] { protected get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Item(string)" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.Cat`2.Item(System.String)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="a">Cat's name.</param>
+        <summary>
+            This is index property of Cat. You can see that the visibility is different between <c>get</c> and <c>set</c> method.
+            </summary>
+        <value>Cat's number.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Jump">
+      <MemberSignature Language="C#" Value="public void Jump (T ownType, K anotherOwnType, ref bool cheat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Jump(!T ownType, !K anotherOwnType, bool&amp; cheat) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.Jump(`0,`1,System.Boolean@)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName Language="C#">[System.Diagnostics.Conditional("Debug")]</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ownType" Type="T" />
+        <Parameter Name="anotherOwnType" Type="K" />
+        <Parameter Name="cheat" Type="System.Boolean" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="ownType">Type come from class define.</param>
+        <param name="anotherOwnType">Type come from class define.</param>
+        <param name="cheat">Hint whether this cat has cheat mode.</param>
+        <summary>
+            This method have attribute above it.
+            </summary>
+        <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentException">This is an argument exception</exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberSignature Language="DocId" Value="P:CatLibrary.Cat`2.Name" />
+      <MemberType>Property</MemberType>
+      <Implements>
+        <InterfaceMember>P:CatLibrary.IAnimal.Name</InterfaceMember>
+      </Implements>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            EII property.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static int operator + (CatLibrary.Cat&lt;T,K&gt; lsr, int rsr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname int32 op_Addition(class CatLibrary.Cat`2&lt;!T, !K&gt; lsr, int32 rsr) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.op_Addition(CatLibrary.Cat{`0,`1},System.Int32)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lsr" Type="CatLibrary.Cat&lt;T,K&gt;" />
+        <Parameter Name="rsr" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="lsr">...</param>
+        <param name="rsr">~~~</param>
+        <summary>
+            Addition operator of this class.
+            </summary>
+        <returns>Result with <i>int</i> type.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static explicit operator CatLibrary.Tom (CatLibrary.Cat&lt;T,K&gt; src);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class CatLibrary.Tom op_Explicit(class CatLibrary.Cat`2&lt;!T, !K&gt; src) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.op_Explicit(CatLibrary.Cat{`0,`1})~CatLibrary.Tom" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CatLibrary.Tom</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="src" Type="CatLibrary.Cat&lt;T,K&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="src">Instance of this class.</param>
+        <summary>
+            Expilicit operator of this class.
+            <para>It means this cat can evolve to change to Tom. Tom and Jerry.</para></summary>
+        <returns>Advanced class type of cat.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static int operator - (CatLibrary.Cat&lt;T,K&gt; lsr, int rsr);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname int32 op_Subtraction(class CatLibrary.Cat`2&lt;!T, !K&gt; lsr, int32 rsr) cil managed" />
+      <MemberSignature Language="DocId" Value="M:CatLibrary.Cat`2.op_Subtraction(CatLibrary.Cat{`0,`1},System.Int32)" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="lsr" Type="CatLibrary.Cat&lt;T,K&gt;" />
+        <Parameter Name="rsr" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="lsr">To be added.</param>
+        <param name="rsr">To be added.</param>
+        <summary>
+            Similar with operaotr +, refer to that topic.
+            </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ownEat">
+      <MemberSignature Language="C#" Value="public event EventHandler ownEat;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ownEat" />
+      <MemberSignature Language="DocId" Value="E:CatLibrary.Cat`2.ownEat" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Eat event of this cat
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

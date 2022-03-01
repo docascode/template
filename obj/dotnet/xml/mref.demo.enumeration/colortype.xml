@@ -1,0 +1,93 @@
+<Type Name="ColorType" FullName="MRef.Demo.Enumeration.ColorType">
+  <TypeSignature Language="C#" Value="public enum ColorType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ColorType extends System.Enum" />
+  <TypeSignature Language="DocId" Value="T:MRef.Demo.Enumeration.ColorType" />
+  <AssemblyInfo>
+    <AssemblyName>CatLibrary</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>
+            Enumeration ColorType
+            </summary>
+    <remarks>
+      <para>
+            Red/Blue/Yellow can become all color you want.
+            </para>
+      <list type="bullet">
+        <listItem>
+            Orange = Red + Yellow
+            </listItem>
+        <listItem>
+            Purple = Red + Blue
+            </listItem>
+        <listItem>
+            Green = Blue + Yellow
+            </listItem>
+      </list>
+    </remarks>
+    <altmember cref="T:System.Object" />
+  </Docs>
+  <Members>
+    <Member MemberName="Blue">
+      <MemberSignature Language="C#" Value="Blue" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype MRef.Demo.Enumeration.ColorType Blue = int32(1)" />
+      <MemberSignature Language="DocId" Value="F:MRef.Demo.Enumeration.ColorType.Blue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MRef.Demo.Enumeration.ColorType</ReturnType>
+      </ReturnValue>
+      <MemberValue>1</MemberValue>
+      <Docs>
+        <summary>
+            blue like river
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Red">
+      <MemberSignature Language="C#" Value="Red" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype MRef.Demo.Enumeration.ColorType Red = int32(0)" />
+      <MemberSignature Language="DocId" Value="F:MRef.Demo.Enumeration.ColorType.Red" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MRef.Demo.Enumeration.ColorType</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>
+            this color is red
+            </summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Yellow">
+      <MemberSignature Language="C#" Value="Yellow" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype MRef.Demo.Enumeration.ColorType Yellow = int32(2)" />
+      <MemberSignature Language="DocId" Value="F:MRef.Demo.Enumeration.ColorType.Yellow" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyName>CatLibrary</AssemblyName>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MRef.Demo.Enumeration.ColorType</ReturnType>
+      </ReturnValue>
+      <MemberValue>2</MemberValue>
+      <Docs>
+        <summary>
+            yellow comes from desert
+            </summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
