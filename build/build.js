@@ -52,10 +52,14 @@ function buildTemplate({ watch } = {}) {
 
 function buildContent() {
   const docfx = existsSync('bin/docfx.exe') ? 'bin\\docfx.exe' : 'bin/docfx'
-  const docfxDotnet = existsSync('bin/docfx-api-dotnet.exe') ? 'bin\\docfx-api-dotnet.exe' : 'bin/docfx-api-dotnet'
-  spawnSync(`dotnet build samples/dotnet/CatLibrary`, { stdio: 'inherit', shell: true })
-  spawnSync(`${docfxDotnet} samples/dotnet/CatLibrary/bin/Debug -o samples/api`, { stdio: 'inherit', shell: true })
-  spawnSync(`${docfx} build samples --verbose`, { stdio: 'inherit', shell: true })
+  exec(`dotnet build samples/dotnet/CatLibrary`)
+  exec(`${docfx} build samples --verbose`)
+}
+
+function exec(cmd) {
+  if (spawnSync(cmd, { stdio: 'inherit', shell: true }).status !== 0) {
+    throw Error(`exec error: '${cmd}'`)
+  }
 }
 
 module.exports = { buildTemplate, buildContent }

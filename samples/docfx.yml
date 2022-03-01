@@ -1,10 +1,12 @@
 template: ..
 exclude:
 - dotnet/**
+dotnet:
+  assemblies:
+  - dotnet/CatLibrary/bin/Debug/net6.0/CatLibrary.dll
 monikerDefinition:
   monikers:
-  - moniker_name: net6.0
-  - product_name: .NET Core
+  - moniker_name: latest
 globalMetadata:
   _logo: logo.svg
   menu_path: menu.yml
