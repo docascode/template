@@ -8,13 +8,6 @@
       "dotnet/CatLibrary/bin/Debug/net6.0/CatLibrary.dll"
     ]
   },
-  "monikerDefinition": {
-    "monikers": [
-      {
-        "moniker_name": "latest"
-      }
-    ]
-  },
   "xref": [
     "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
   ],
