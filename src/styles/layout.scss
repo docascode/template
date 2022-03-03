@@ -1,6 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .sticky-top {
   position: sticky;
   top: 0;
@@ -52,4 +58,8 @@ aside {
 article {
   grid-area: article;
   margin-bottom: 2rem;
+}
+
+footer {
+  margin-top: auto;
 }
