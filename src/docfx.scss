@@ -57,15 +57,6 @@ h6 mark {
 .btn + .btn {
   margin-left: 10px;
 }
-.table {
-  margin: 10px 0 20px;
-}
-table p {
-  margin-bottom: 0;
-}
-table a {
-  display: inline-block;
-}
 
 /* Make hidden attribute compatible with old browser.*/
 [hidden] {
@@ -297,9 +288,7 @@ footer {
   .toc-toggle {
     display: block;
   }
-  .sidetoggle.ng-hide {
-    display: none !important;
-  }
+  
   .sideaffix {
     display: none;
   }

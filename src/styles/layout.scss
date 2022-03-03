@@ -17,7 +17,7 @@ $aside-break: 1086px;
 main.layout-conceptual {
  display: grid;
  gap: 1rem 4rem;
- grid-template-columns: 26rem auto 20rem;
+ grid-template-columns: minmax(26rem, 18%) auto minmax(16rem, 12%);
  grid-template-rows: auto auto;
  grid-template-areas:
   'breadcrumb breadcrumb actionbar'

@@ -57,7 +57,7 @@ export async function renderToc(): Promise<TocNode[]> {
     return false
   }
 
-  function buildTocNodes(nodes: TocNode[], level: number = 1) {
+  function buildTocNodes(nodes: TocNode[]) {
     return nodes.map(node => {
       const li = createRef()
       const { href, name, items } = node
@@ -74,7 +74,7 @@ export async function renderToc(): Promise<TocNode[]> {
           {href
             ? <a class={active ? 'active' : null} href={href}>{name}</a>
             : <a class={active ? 'active' : null} onClick={() => toggleTocNode(li.current)}>{name}</a>}
-          {isLeaf ? null : <ul class={['nav', `level${level + 1}`]}>{buildTocNodes(items, level + 1)}</ul>}
+          {isLeaf ? null : <ul class={'nav'}>{buildTocNodes(items)}</ul>}
         </li>)
     })
   }

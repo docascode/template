@@ -7,25 +7,6 @@
   overflow-y: auto;
 }
 
-.sidetoc .level2 li {
-  min-height: 30px;
-  line-height: 30px;
-}
-
-.sidetoggle.ng-hide {
-  display: block !important;
-}
-.sidetoc-expand > .caret {
-  margin-left: 0px;
-  margin-top: -2px;
-}
-.sidetoc-expand > .caret-side {
-  border-left: 4px solid;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  margin-left: 4px;
-  margin-top: -4px;
-}
 .sidetoc-heading {
   font-weight: 500;
 }
@@ -33,6 +14,7 @@
 .toc {
   margin: 0px 0 0 10px;
 }
+
 .expand-stub {
   position: absolute;
   left: -10px;
@@ -44,7 +26,6 @@
 }
 .toc .nav > li > a {
   color: #666666;
-  margin-left: 5px;
   display: block;
   padding: 0;
 }
@@ -93,29 +74,20 @@
   display: none;
 }
 
-.toc ul{
-  font-size: 12px;
-  margin: 0 0 0 3px;
+.toc ul {
+
+  margin-left: 16px;
+
+  > li {
+    position: relative;
+    margin-top: 10px;
+  }
 }
 
-.toc .level1 > li {
-  margin-top: 10px;
-  position: relative;
-  font-size: 14px;
-}
-.toc .level2 {
-  margin: 5px 0 0 0;
-  padding-left: 15px;
-  font-size: 14px;
-}
-.toc-toggle {
-  display: none;
-  margin: 0 15px 0px 15px;
-}
 .sidefilter {
-  width: 260px;
   z-index: 1;
 }
+
 .toc-filter {
   border-radius: 5px;
   background: #fff;
@@ -143,21 +115,4 @@
   position: absolute;
   top: 10px;
   left: 10px;
-}
-.toc-filter > .clear-icon {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  cursor: pointer;
-}
-
-/* For toc iframe */
-@media (max-width: 260px) {
-  .toc .level2 > li {
-    display: block;
-  }
-
-  .toc .level2 > li:after {
-    display: none;
-  }
 }

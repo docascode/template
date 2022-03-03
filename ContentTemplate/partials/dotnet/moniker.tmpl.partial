@@ -1,6 +1,6 @@
 {{! this partial template contains h2 tags with static id, so please only use it once in one page.}}
 {{#monikers.0}}
-	 <h2>{{__global.appliesTo}}</h2>
+	 <h2 class="appliesTo">{{__global.appliesTo}}</h2>
 	 <div class="table-scroll-wrapper moniker-applies-to-table">
       <table class='table border has-inner-borders has-header-background has-row-header-background'>
         <thead>
