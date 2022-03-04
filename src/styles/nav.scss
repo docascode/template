@@ -2,27 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 header {
-  .navbar-light {
-    border-bottom: $gray-400 solid 1px;
-
-    .nav-link {
-      color: $navbar-light-color;
-
-      &:hover,
-      &:focus {
-        color: $navbar-light-hover-color;
-      }
-
-      &.disabled {
-        color: $navbar-light-disabled-color;
-      }
-    }
-
-    .show > .nav-link,
-    .nav-link.active {
-      color: $color-contrast-light;
-      background-color: $primary;
-    }
+  .navbar {
+    background-color: var(--navbar-bg-color);
   }
 }
 
@@ -92,7 +73,7 @@ header {
 
 footer {
   background-color: #f8f8f8;
-  padding: 4rem 0;
+  padding: 2rem 0;
   
   .github-star-button {
     display: inline-block;

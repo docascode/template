@@ -7,9 +7,15 @@
             "type": "string",
             "contentType": "href"
         },
-        "_logo": {
+        "_appLogoPath": {
             "type": "string",
             "contentType": "href"
+        },
+        "_appTitle": {
+            "type": "string"
+        },
+        "_appFooter": {
+            "type": "string"
         }
     }
 }

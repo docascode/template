@@ -1,6 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+:root {
+  --navbar-bg-color: rgb(44, 44, 50)
+}
+
 $primary: #2d74b2 !default;
 $link-decoration: none !default;
 $link-hover-decoration: underline !default;
