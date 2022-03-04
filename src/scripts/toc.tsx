@@ -71,7 +71,7 @@ export async function renderToc(): Promise<TocNode[]> {
 
       return (
         <li ref={li} class={activeClass}>
-          {isLeaf ? null : <span class='toggle' onClick={() => toggleTocNode(li.current)}></span>}
+          {isLeaf ? null : <i class='toggle' onClick={() => toggleTocNode(li.current)}></i>}
           {href
             ? <a class={activeClass} href={href}>{name}</a>
             : <a class={activeClass} onClick={() => toggleTocNode(li.current)}>{name}</a>}

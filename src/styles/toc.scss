@@ -1,5 +1,55 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+/* TOC appearance */
 .toc {
+  font-size: 14px;
+
+  a:not(.active):not(.filtered) {
+    color: inherit
+  }
+  a:not([href]) {
+    &,
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+  ul {
+    padding-left: 16px;
+    list-style-type: none;
+  }
+  li {
+    padding: .25em 0;
+  }
+}
+
+/* TOC toggle */
+.toc {
+  li > ul {
+    display: none;
+  }
+  li.filtered > ul,
+  li.active > ul {
+    display: block
+  }
+
+  .toggle::before {
+    position: absolute;
+    margin: 0 0 0 -1.25em;
+    cursor: pointer;
+    width: 1.25em;
+    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+    transition: transform 0.35s ease;
+    transform-origin: .5em 50%;
+  }
+
+  li.active > .toggle:before,
+  li.filtered > .toggle::before {
+    transform: rotate(90deg);
+  }
+
+  .hide {
+    display: none;
+  }
 }
