@@ -18,11 +18,11 @@
   },
   "devDependencies": {
     "browser-sync": "^2.27.7",
-    "esbuild": "^0.14.13",
-    "esbuild-sass-plugin": "^2.0.3",
+    "esbuild": "^0.14.23",
+    "esbuild-sass-plugin": "^2.2.4",
     "http-server": "^14.1.0",
     "pixelmatch": "^5.2.1",
-    "puppeteer": "^13.0.1",
+    "puppeteer": "^13.4.0",
     "puppeteer-cluster": "^0.23.0"
   }
 }

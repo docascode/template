@@ -1,6 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .sticky-top {
   position: sticky;
   top: 0;
@@ -12,7 +18,7 @@ main.layout-conceptual {
  display: grid;
  margin-top: 1rem;
  gap: 1rem 4rem;
- grid-template-columns: 26rem auto 20rem;
+ grid-template-columns: minmax(26rem, 18%) auto minmax(16rem, 12%);
  grid-template-rows: auto auto;
  grid-template-areas:
   'breadcrumb breadcrumb actionbar'
@@ -53,4 +59,8 @@ aside {
 article {
   grid-area: article;
   margin-bottom: 2rem;
+}
+
+footer {
+  margin-top: auto;
 }

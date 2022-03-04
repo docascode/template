@@ -1,5 +1,5 @@
   <div>
-  <h3>{{__global.appliesTo}}</h3>
+  <h3 class="appliesTo">{{__global.appliesTo}}</h3>
   <details>
     <summary class="margin-bottom-xs">
     </summary>

@@ -1,0 +1,18 @@
+{
+  "template": "..",
+  "exclude": [
+    "dotnet/**"
+  ],
+  "dotnet": {
+    "assemblies": [
+      "dotnet/CatLibrary/bin/Debug/net6.0/CatLibrary.dll"
+    ]
+  },
+  "xref": [
+    "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
+  ],
+  "globalMetadata": {
+    "_logo": "logo.svg",
+    "menu_path": "menu.yml"
+  }
+}

@@ -7,7 +7,7 @@ import { meta } from "./utility";
 // See http://getbootstrap.com/css/#tables
 export function renderTables() {
   document.querySelectorAll('table').forEach(table => {
-    table.classList.add('table', 'table-bordered', 'table-striped', 'table-condensed')
+    table.classList.add('table', 'table-bordered', 'table-condensed')
     const wrapper = document.createElement('div')
     wrapper.className = 'table-responsive'
     table.parentElement.insertBefore(wrapper, table)

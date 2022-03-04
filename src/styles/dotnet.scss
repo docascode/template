@@ -6,26 +6,74 @@ main.page-type-reference {
     display: none;
   }
 
-  h2#applies-to {
+  h2.appliesTo,
+  h3.appliesTo {
     display: none;
+  }
+
+  dl.attributeList {
+    display: flex;
+    margin: 1rem 0;
+    font-weight: 400;
+
+    dt {
+      font-weight: 400;
+    }
+
+    dd {
+      margin-left: 8px;
+    }
+  }
+
+  .stack {
+    margin-top: 24px;
   }
 
   .metadata {
     margin: 1rem 0 2rem 0;
     color: rgb(120, 120, 120);
     dl.attributeList {
-      display: flex;
       font-size: 14px;
-      font-weight: 400;
-      margin: 1rem 0;
+    }
+  }
 
-      dt {
-        font-weight: 400;
-      }
+  .propertyInfoTitle {
+    font-size: 24px;
+    font-weight: 400;
+  }
 
-      dd {
-        margin-left: 8px;
-      }
+  .cdlHolder .cdl,
+  .pdlHolder .pdl {
+    display: inline-block;
+  }
+
+  .cdlHolder .cdl:after {
+    content: ', ';
+    color: rgb(80, 80, 80);
+  }
+
+  .pdlHolder .pdl:after {
+    content: '->';
+    color: rgb(80, 80, 80);
+  }
+  
+  .cdlHolder .cdl:last-child:after,
+  .pdlHolder .pdl:last-child:after {
+    content: '';
+  }
+
+  .memberInfo {
+    margin-left: 24px;
+  }
+
+  .parameterList {
+    display: flex;
+    margin: 0;
+
+    dt {
+      background-color: rgb(242, 242, 242);
+      padding: 0 6px 2px 6px;
+      margin-right: 1rem;
     }
   }
 }
