@@ -1,82 +1,139 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+/* metabar */
+.metabar {
+  color: #999;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+}
+
+.metabar > li {
+  margin: 0 6px;
+}
+
 /* Alerts */
 .alert {
   border-width: 0;
-}
 
-.alert h5 {
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-top: 0;
-}
+  h5 {
+    font-size: inherit;
+    text-transform: uppercase;
+    margin-top: 0;
+  }
 
-.alert h5:before {
-  position:relative;
-  top:1px;
-  display:inline-block;
-  font-family:'Glyphicons Halflings';
-  line-height:1;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  margin-right: 5px;
-  font-weight: normal;
-}
+  h5:before {
+    position: relative;
+    top: .2em;
+    width: 1.25em;
+    height: 1.25em;
+    display: inline-block;
+    padding-top: 4px;
+    margin-right: .25em;
+  }
 
-.alert-info h5:before {
-  content:"\e086"
-}
+  &.NOTE {
+    background-color: rgb(239, 217, 253);
+    h5:before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 448'%3E%3Cpath d='M208 448C93.313 448 0 354.688 0 240S93.313 32 208 32s208 93.313 208 208-93.312 208-208 208zm0-384c-97.047 0-176 78.953-176 176 0 97.031 78.953 176 176 176 97.031 0 176-78.969 176-176 0-97.047-78.969-176-176-176zm16 64h-32v160h32V128zm0 192h-32v32h32v-32z'/%3E%3C/svg%3E");
+    }
+  }
 
-.alert-warning h5:before {
-  content:"\e127"
-}
+  &.TIP {
+    background-color: rgb(223, 246, 221);
+    h5:before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2048 2048'%3E%3Cpath d='M960 0q97 0 187 25t168 71 143 110 110 142 71 169 25 187q0 145-55 269t-157 225q-83 82-127 183t-45 219v256q0 40-15 75t-41 61-61 41-75 15H832q-40 0-75-15t-61-41-41-61-15-75v-256q0-118-44-219t-128-183q-102-101-157-225t-55-269q0-97 25-187t71-168 110-143T604 96t169-71T960 0zm128 1920q26 0 45-19t19-45v-192H768v192q0 26 19 45t45 19h256zm67-384q13-129 66-234t143-196q83-84 127-183t45-219q0-119-45-224t-124-183-183-123-224-46q-119 0-224 45T553 297 430 480t-46 224q0 119 44 218t128 184q90 91 143 196t66 234h390z'/%3E%3C/svg%3E");
+    }
+  }
 
-.alert-danger h5:before {
-  content:"\e107"
+  &.WARNING {
+    background-color: rgb(255, 244, 206);
+    h5:before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 448'%3E%3Cpath d='M413.031 448H2.953L208 36.094 413.031 448zm-358.39-32h306.703L208 107.906 54.641 416zM224 192h-32v128h32V192zm0 160h-32v32h32v-32z'/%3E%3C/svg%3E");
+    }
+  }
+
+  &.IMPORTANT {
+    background-color: rgb(215, 234, 248);
+    h5:before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 448'%3E%3Cpath d='M208 448C93.313 448 0 354.688 0 240S93.313 32 208 32s208 93.313 208 208-93.312 208-208 208zm0-384c-97.047 0-176 78.953-176 176 0 97.031 78.953 176 176 176 97.031 0 176-78.969 176-176 0-97.047-78.969-176-176-176zm16 64h-32v32h32v-32zm0 64h-32v160h32V192z'/%3E%3C/svg%3E");
+    }
+  }
+
+  &.CAUTION {
+    background-color: rgb(253, 231, 233);
+    h5:before {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 448'%3E%3Cpath d='M208 32C93.313 32 0 125.313 0 240s93.313 208 208 208 208-93.313 208-208S322.688 32 208 32zm0 384c-97.047 0-176-78.969-176-176 0-97.047 78.953-176 176-176 97.031 0 176 78.953 176 176 0 97.031-78.969 176-176 176zm107.313-260.687L230.625 240l84.688 84.688-22.625 22.625L208 262.625l-84.688 84.688-22.625-22.625L185.375 240l-84.688-84.688 22.625-22.625L208 217.375l84.688-84.688 22.625 22.626z'/%3E%3C/svg%3E");
+    }
+  }
 }
 
 /* For tabbed content */
-
 .tabGroup {
-  margin-top: 1rem; }
-  .tabGroup ul[role="tablist"] {
+  margin-top: 1rem;
+
+  ul[role="tablist"] {
     margin: 0;
     padding: 0;
-    list-style: none; }
-    .tabGroup ul[role="tablist"] > li {
+    list-style: none;
+
+    & > li {
       list-style: none;
-      display: inline-block; }
-  .tabGroup a[role="tab"] {
+      display: inline-block;
+    }
+  }
+
+  a[role="tab"] {
     color: #6e6e6e;
     box-sizing: border-box;
     display: inline-block;
     padding: 5px 7.5px;
     text-decoration: none;
-    border-bottom: 2px solid #fff; }
-    .tabGroup a[role="tab"]:hover, .tabGroup a[role="tab"]:focus, .tabGroup a[role="tab"][aria-selected="true"] {
-      border-bottom: 2px solid #0050C5; }
-    .tabGroup a[role="tab"][aria-selected="true"] {
-      color: #222; }
-    .tabGroup a[role="tab"]:hover, .tabGroup a[role="tab"]:focus {
-      color: #0050C5; }
-    .tabGroup a[role="tab"]:focus {
-      outline: 1px solid #0050C5;
-      outline-offset: -1px; }
-  @media (min-width: 768px) {
-    .tabGroup a[role="tab"] {
-      padding: 5px 15px; } }
-  .tabGroup section[role="tabpanel"] {
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin: 0;
-    overflow: hidden; }
-    .tabGroup section[role="tabpanel"] > .codeHeader,
-    .tabGroup section[role="tabpanel"] > pre {
-      margin-left: -16px;
-      margin-right: -16px; }
-    .tabGroup section[role="tabpanel"] > :first-child {
-      margin-top: 0; }
-    .tabGroup section[role="tabpanel"] > pre:last-child {
-      display: block;
-      margin-bottom: -16px; }
+    border-bottom: 3px solid #fff;
+  }
+}
+
+.tabGroup a[role="tab"]:hover,
+.tabGroup a[role="tab"]:focus,
+.tabGroup a[role="tab"][aria-selected="true"] {
+  border-bottom: 3px solid $primary;
+}
+.tabGroup a[role="tab"][aria-selected="true"] {
+  color: #222;
+}
+.tabGroup a[role="tab"]:hover, .tabGroup a[role="tab"]:focus {
+  color: $primary;
+}
+.tabGroup a[role="tab"]:focus {
+  outline: 3px solid $primary;
+  outline-offset: -3px;
+}
+@media (min-width: 768px) {
+  .tabGroup a[role="tab"] {
+    padding: 5px 15px;
+  }
+}
+
+.tabGroup section[role="tabpanel"] {
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  margin: 0;
+  overflow: hidden;
+
+  & > .codeHeader,
+  & > pre {
+    margin-left: -16px;
+    margin-right: -16px;
+  }
+  & > :first-child {
+    margin-top: 0;
+  }
+  & > pre:last-child {
+    display: block;
+    margin-bottom: -16px;
+  }
+}

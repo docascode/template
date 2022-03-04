@@ -27,16 +27,3 @@ $container-max-widths: (
   padding: 0;
 }
 
-.metabar {
-  color: #999;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  align-items: center;
-}
-
-.metabar > li {
-  margin: 0 6px;
-}
