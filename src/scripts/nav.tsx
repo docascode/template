@@ -82,8 +82,8 @@ export function renderAside() {
 
   inThisArticle.appendChild(<h5 class='title'>In this Article</h5>)
   inThisArticle.appendChild(
-    <ul class='nav bs-docs-sidenav'>
-      {sections.map(item => <li><a href={item.href}>{item.name}</a></li>)}
+    <ul class='nav'>
+      {sections.map(item => <a class='nav-link' href={item.href}>{item.name}</a>)}
     </ul>
   )
 }
