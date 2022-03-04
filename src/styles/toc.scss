@@ -1,6 +1,24 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+/* TOC panel appearance */
+.layout-toc {  
+  .navbar-toggler {
+    font-size: inherit;
+    cursor: pointer;
+
+    &:before {
+      content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-collapse {
+      margin-top: 1rem;
+    }
+  }
+}
+
 /* TOC appearance */
 .toc {
   font-size: 14px;
@@ -24,8 +42,10 @@
   }
 }
 
-/* TOC toggle */
+/* TOC item toggle */
 .toc {
+  padding: .5em 0;
+
   li > ul {
     display: none;
   }
@@ -35,7 +55,7 @@
   }
 
   .toggle::before {
-    position: absolute;
+    display: inline-block;
     margin: 0 0 0 -1.25em;
     cursor: pointer;
     width: 1.25em;
