@@ -10,9 +10,9 @@ $aside-break: 1086px;
 
 main.layout-conceptual {
  display: grid;
- margin-top: 1rem;
- gap: 1rem 2rem;
- grid-template-columns: minmax(18rem, 18%) minmax(0, 1fr) minmax(12rem, 12%);
+ margin-top: 1em;
+ gap: .5em 2em;
+ grid-template-columns: minmax(18em, 18%) minmax(0, 1fr) minmax(12em, 12%);
  grid-template-rows: auto auto;
  grid-template-areas:
   'breadcrumb breadcrumb actionbar'
@@ -28,7 +28,6 @@ main.layout-conceptual {
     grid-template-columns: 100%;
     grid-template-areas:
      'breadcrumb'
-     'actionbar'
      'toc'
      'article'
   }
@@ -36,10 +35,6 @@ main.layout-conceptual {
 
 nav.layout-breadcrumb {
   grid-area: breadcrumb;
-  
-  .breadcrumb {
-    margin-bottom: 0;
-  }
 }
 
 nav.layout-toc {
@@ -48,6 +43,18 @@ nav.layout-toc {
   .navbar-collapse {
     flex-direction: column;
     align-items: stretch;
+  }
+}
+
+.actionbar {
+  grid-area: actionbar;
+
+  @media only screen and (max-width: 768px) {
+    grid-area: toc;
+    z-index: 9999;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: visible;
   }
 }
 
@@ -61,7 +68,7 @@ aside {
 
 article {
   grid-area: article;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 }
 
 footer {

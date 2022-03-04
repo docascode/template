@@ -12,10 +12,8 @@
     }
   }
 
-  @include media-breakpoint-down(md) {
-    .navbar-collapse {
-      margin-top: 1rem;
-    }
+  .navbar-collapse {
+    margin-top: .5em;
   }
 }
 

@@ -26,6 +26,10 @@
         {%- include toc -%}
       </nav>
 
+      <div class='actionbar'>
+          {%- include actionbar -%}
+      </div>
+
       <article>
         {{ heading1 }}
         {%- unless disableMetabar -%}
@@ -35,7 +39,9 @@
       </article>
 
       <aside>
-        {%- include aside -%}
+        <div class="sticky-top">
+          <nav id="in-this-article" class="in-this-article"></nav>
+        </div>
       </aside>
     {%- else -%}
       {{ content }}
