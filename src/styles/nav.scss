@@ -18,7 +18,7 @@ header {
   h5 {
     font-weight: bold;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: inherit;
   }
   .nav {
     display: block;
@@ -30,6 +30,9 @@ header {
     }
     a.active {
       border-left: 3px solid $primary;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   }
 }
