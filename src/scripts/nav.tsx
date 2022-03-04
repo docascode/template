@@ -83,7 +83,11 @@ export function renderAside() {
   inThisArticle.appendChild(<h5 class='title'>In this Article</h5>)
   inThisArticle.appendChild(
     <ul class='nav'>
-      {sections.map(item => <a class='nav-link' href={item.href}>{item.name}</a>)}
+      {sections.map(item => {
+        // https://github.com/twbs/bootstrap/pull/35566
+        const target = item.href && item.href[0] === '#' ? '#' + CSS.escape(item.href.slice(1)) : item.href
+        return <a class='nav-link' data-bs-target={target} href={item.href}>{item.name}</a>
+      })}
     </ul>
   )
 }
