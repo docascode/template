@@ -3,17 +3,25 @@
     "description": "The schema for home page",
     "type": "object",
     "properties": {
-        "title": {
-            "type": "string"
-        },
-        "description": {
-            "type": "string",
-            "contentType": "markdown"
-        },
         "hero": {
             "type": "object",
             "properties": {
-                "links": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "contentType": "markdown"
+                },
+                "image": {
+                    "type": "string",
+                    "contentType": "href"
+                },
+                "backgroundImage": {
+                    "type": "string",
+                    "contentType": "href"
+                },
+                "actions": {
                     "type": "array",
                     "items": {
                         "properties": {
@@ -26,22 +34,20 @@
                             }
                         }
                     }
-                },
-                "buttons": {
-                    "type": "array",
-                    "items": {
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "icon": {
-                                "type": "string"
-                            },
-                            "href": {
-                                "type": "string",
-                                "contentType": "href"
-                            }
-                        }
+                }
+            }
+        },
+        "highlights": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "contentType": "markdown"
                     }
                 }
             }
@@ -54,12 +60,13 @@
                     "title": {
                         "type": "string"
                     },
-                    "icon": {
-                        "type": "string"
-                    },
                     "description": {
                         "type": "string",
                         "contentType": "markdown"
+                    },
+                    "content": {
+                        "type": "string",
+                        "contentType": "href"
                     }
                 }
             }

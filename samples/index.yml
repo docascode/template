@@ -1,24 +1,30 @@
 #YamlMime:Home
-title: docfx
-description: Static site generator for .NET API documentation.
 hero:
-  links:
-  - name: Release Notes
-    href: '../RELEASENOTE.md'
-  - name: View on Github
-    href: https://github.com/dotnet/docfx
-  buttons:
-  - name: Getting Started
+  title: Build technical documentation sites with Docfx
+  description: |
+    Quickly build static documentation sites using markdown files.
+    Generate .NET API reference pages directly from assemblies.
+  actions:
+  - name: Get Started
     href: tutorial/getting-started.md
-  - name: Download
+  - name: Install
     href: https://github.com/dotnet/docfx/releases
+
+highlights:
+- title: Document as Code
+  description: |
+    Create, collabrate and manage documentations as `code`, using simple text formats like [markdown](https://www.markdownguide.org/) and [YAML](https://yaml.org/).
+
+    Works seamlessly with your favorite text editors and source control systems.
+- title: .NET API Documentation
+  description: Automatically generates .NET API reference documentation from DLLs and standard XML documentation files.
+- title: Publish Static Website
+  description: Produces static HTML files ready to publish to [GitHub Pages](https://pages.github.com/).
+
 sections:
 - title: Generate static sites from Markdown and code files
-  icon: grain
-  description: DocFX can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.
+  description: Docfx can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.
 - title: Run everywhere
-  icon: transfer
-  description: DocFX can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.
+  description: Docfx can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.
 - title: Easily customize the output
-  icon: cutlery
-  description: DocFX provides a flexible way to customize templates and themes.
+  description: Docfx provides a flexible way to customize templates and themes.
