@@ -26,52 +26,37 @@
   <link rel="stylesheet" href="../../dist/docfx.css">
 </head>
 
-<body data-spy="scroll" data-target="#in-this-article">
+<body data-bs-spy="scroll" data-bs-target="#in-this-article">
   <header>
-<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="../../">
-        <img src="../../logo.svg">
-      </a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar">
-    </div>
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container-xxl">
+    <a class="navbar-brand" href="../../">
+        docfx
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar"></div>
   </div>
 </nav>
   </header>
 
-  <main class="container layout-conceptual page-type-conceptual">
-        <nav class="layout-breadcrumb" id="breadcrumb"></nav>
+  <main class="container-xxl layout-conceptual page-type-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb" aria-label="breadcrumb"></nav>
 
       <nav class="layout-toc">
-<div class="sticky-top">
-  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-  <div class="sidetoggle collapse" id="sidetoggle">
+<div class="sticky-top navbar navbar-expand-md navbar-light bg-white">
+  <a class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#toc-pannel" aria-controls="toc-pannel" aria-expanded="false">
+    Table of Contents
+  </a>
+  <div class="collapse navbar-collapse" id="toc-pannel">
     <div>
-      <div id="sidetoggle">
-        <div>
-          <div class="sidefilter">
-            <form class="toc-filter">
-              <span class="glyphicon glyphicon-search filter-icon"></span>
-              <input type="text" id="toc-filter" placeholder="Filter">
-            </form>
-          </div>
-          <div class="sidetoc">
-            <div class="toc" id="toc">
-            </div>
-          </div>
-        </div>
-      </div>
+      <input class="form-control" type="text" id="toc-filter" placeholder="Filter">
+      <div class="toc" id="toc"></div>
     </div>
   </div>
-</div>      </nav>
+</div>
+      </nav>
 
       <article>
         <h1 id="overwrite-files">Overwrite Files</h1>
@@ -90,7 +75,8 @@
         </ul>
       </a>
     </li>
-</ul>        <h2 id="introduction">Introduction</h2>
+</ul>
+        <h2 id="introduction">Introduction</h2>
 <p>DocFX supports processing Markdown files, as well as structured data model in YAML or JSON format.</p>
 <p>We call Markdown files <em>Conceptual File</em>s, and the structured data model files <em>Metadata File</em>s.</p>
 <p>Current supported <em>Metadata File</em>s include:</p>
@@ -743,30 +729,28 @@ footer: &lt;p&gt;Footer for &lt;code&gt;microsoft.com/docfx/Contacts&lt;/code&gt
 </tbody>
 </table>
 
+
+        <a class="edit-this-page" href="https://github.com/docascode/template/blob/main/samples/tutorial/intro_overwrite_files.md">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" fill="currentColor" stroke="currentColor" viewBox="0 0 448 448">
+            <path d="M426.01 21.914c-29.252-29.216-76.87-29.22-106.127-.008l-.008-.008-283.91 284.744L0 448l141.236-34.39 285.413-289.5C446.33 104.45 448 93.188 448 74.917c0-20.028-7.81-38.856-21.99-53.002zM44.437 402.99l18.206-72.676c26.932 6.47 48.067 27.627 54.44 54.56L44.436 402.99zm40.297-99.93L307.14 80.91l59.81 59.707-222.55 222.28c-10.78-27.27-32.407-48.978-59.667-59.837zm318.163-198.245l-.058-.042-12.72 12.7-59.807-59.71L343.04 45.05l.008.008c16.516-16.463 43.338-16.463 59.79 0 8.002 7.976 12.387 18.573 12.387 29.857 0 11.268-4.385 21.865-12.387 29.84l.058.06z"/>
+          </svg>
+          Edit this page on GitHub
+        </a>
       </article>
 
       <aside>
-<div class="sideaffix sticky-top">
-  <div class="contribution">
-    <ul class="nav">
-      <li>
-        <a href="https://github.com/docascode/template/blob/main/samples/tutorial/intro_overwrite_files.md" class="contribution-link">
-          <span class="glyphicon glyphicon-pencil"></span>Edit this doc
-        </a>
-      </li>
-    </ul>
-  </div>
-  <nav id="in-this-article" class="in-this-article">
-  </nav>
-</div>      </aside>
+        <div class="sticky-top">
+          <nav id="in-this-article" class="in-this-article"></nav>
+        </div>
+      </aside>
   </main>
 
   <footer>
-<div class="container">
+<div class="container-xxl">
     © Microsoft
-    <div class="github-star-button">
-      <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-    </div>
+  <div class="github-star-button">
+    <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+  </div>
 </div>
   </footer>
 
