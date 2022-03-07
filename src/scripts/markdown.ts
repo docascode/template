@@ -7,7 +7,7 @@ import { meta } from "./utility";
 // See http://getbootstrap.com/css/#tables
 export function renderTables() {
   document.querySelectorAll('table').forEach(table => {
-    table.classList.add('table', 'table-bordered', 'table-condensed')
+    table.classList.add('table', 'table-bordered')
     const wrapper = document.createElement('div')
     wrapper.className = 'table-responsive'
     table.parentElement.insertBefore(wrapper, table)
@@ -17,9 +17,11 @@ export function renderTables() {
 
 // Styling for alerts.
 export function renderAlerts() {
-  document.querySelectorAll('.NOTE, .TIP').forEach(e => e.classList.add('alert', 'alert-info'));
-  document.querySelectorAll('.WARNING').forEach(e => e.classList.add('alert', 'alert-warning'));
-  document.querySelectorAll('.IMPORTANT, .CAUTION').forEach(e => e.classList.add('alert', 'alert-danger'));
+  document.querySelectorAll('.NOTE').forEach(e => e.classList.add('alert'));
+  document.querySelectorAll('.TIP').forEach(e => e.classList.add('alert'));
+  document.querySelectorAll('.CAUTION').forEach(e => e.classList.add('alert'));
+  document.querySelectorAll('.WARNING').forEach(e => e.classList.add('alert'));
+  document.querySelectorAll('.IMPORTANT').forEach(e => e.classList.add('alert'));
 }
 
 // Open external links to different host in a new window.

@@ -1,50 +1,53 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .sticky-top {
   position: sticky;
   top: 0;
+}
+
+img {
+  max-width: 100%;
 }
 
 $aside-break: 1086px;
 
 main.layout-conceptual {
  display: grid;
- gap: 1rem 4rem;
- grid-template-columns: minmax(26rem, 18%) auto minmax(16rem, 12%);
+ margin-top: 1em;
+ gap: .5em 2em;
+ grid-template-columns: minmax(16em, 20%) minmax(0, 1fr) minmax(12em, 15%);
  grid-template-rows: auto auto;
  grid-template-areas:
-  'breadcrumb breadcrumb actionbar'
   'toc article aside';
 
   @media only screen and (max-width: $aside-break) {
     grid-template-areas:
-     'breadcrumb breadcrumb actionbar'
      'toc article article';
   }
 
   @media only screen and (max-width: 768px) {
-    grid-template-columns: auto;
+    grid-template-columns: 100%;
     grid-template-areas:
-     'breadcrumb'
-     'actionbar'
      'toc'
      'article'
   }
 }
 
-nav.layout-breadcrumb {
-  grid-area: breadcrumb;
-}
-
 nav.layout-toc {
   grid-area: toc;
+
+  .navbar-collapse {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 0;
+  }
+
+  @include media-breakpoint-down(md) {
+    .navbar-collapse {
+      margin-top: 1em;
+    }
+  }
 }
 
 aside {
@@ -57,7 +60,7 @@ aside {
 
 article {
   grid-area: article;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 }
 
 footer {

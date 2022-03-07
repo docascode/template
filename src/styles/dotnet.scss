@@ -6,6 +6,10 @@ main.page-type-reference {
     display: none;
   }
 
+  details {
+    display: none;
+  }
+
   h2.appliesTo,
   h3.appliesTo {
     display: none;
@@ -13,7 +17,7 @@ main.page-type-reference {
 
   dl.attributeList {
     display: flex;
-    margin: 1rem 0;
+    margin: .25em 0;
     font-weight: 400;
 
     dt {
@@ -30,7 +34,7 @@ main.page-type-reference {
   }
 
   .metadata {
-    margin: 1rem 0 2rem 0;
+    margin: 1em 0;
     color: rgb(120, 120, 120);
     dl.attributeList {
       font-size: 14px;
@@ -53,8 +57,13 @@ main.page-type-reference {
   }
 
   .pdlHolder .pdl:after {
-    content: '->';
-    color: rgb(80, 80, 80);
+    position: relative;
+    top: .2em;
+    left: .2em;
+    display: inline-block;
+    width: 1em;
+    margin: 0 .25em;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-255 57 448 448'%3E%3Cpath d='M-253.625 281v-32H131.75L-16.938 100.313 5.687 77.688 193 265 5.687 452.313l-22.625-22.625L131.75 281h-385.375z'/%3E%3C/svg%3E");
   }
   
   .cdlHolder .cdl:last-child:after,
@@ -73,7 +82,7 @@ main.page-type-reference {
     dt {
       background-color: rgb(242, 242, 242);
       padding: 0 6px 2px 6px;
-      margin-right: 1rem;
+      margin-right: 1em;
     }
   }
 }

@@ -1,21 +1,11 @@
-<div class="sticky-top">
-  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Table of Contents</a>
-  <div class="sidetoggle collapse" id="sidetoggle">
+<div class="sticky-top navbar navbar-expand-md navbar-light bg-white">
+  <a class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#toc-pannel" aria-controls="toc-pannel" aria-expanded="false">
+    Table of Contents
+  </a>
+  <div class="collapse navbar-collapse" id="toc-pannel">
     <div>
-      <div id="sidetoggle">
-        <div>
-          <div class="sidefilter">
-            <form class="toc-filter">
-              <span class="glyphicon glyphicon-search filter-icon"></span>
-              <input type="text" id="toc-filter" placeholder="Filter">
-            </form>
-          </div>
-          <div class="sidetoc">
-            <div class="toc" id="toc">
-            </div>
-          </div>
-        </div>
-      </div>
+      <input class="form-control" type="text" id="toc-filter" placeholder="Filter">
+      <div class="toc" id="toc"></div>
     </div>
   </div>
 </div>

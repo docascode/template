@@ -9,5 +9,5 @@ export function enableAnchor() {
     placement: 'right',
     visible: 'hover'
   };
-  anchors.add('article h2:not(.no-anchor)');
+  anchors.add('article h2,h3');
 }

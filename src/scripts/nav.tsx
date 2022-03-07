@@ -9,7 +9,7 @@ export interface NavItem {
   href?: string
 }
 
-export async function renderNavbar(): Promise<NavItem> {
+export async function renderNavbar() {
   const navbarElement = document.getElementById('navbar')
   const navbarPath = meta('menu_path')?.replace(/\\/g, '/')
   if (!navbarPath || !navbarElement) {
@@ -38,14 +38,13 @@ export async function renderNavbar(): Promise<NavItem> {
   })
 
   navbarElement.appendChild(
-    <ul class='nav navbar-nav level1'> {
+    <ul class='nav navbar-nav'> {
       items.map(item => {
-        const className = item === activeItem ? 'active' : null
-        return <li class={className}><a href={item.href} class={className}>{item.name}</a></li>
+        const current = (item === activeItem ? 'page' : false)
+        const active = (item === activeItem ? 'active' : null)
+        return <li class='nav-item'><a class={['nav-link', active]} href={item.href} aria-current={current}>{item.name}</a></li>
       })
-    } </ul>);
-
-  return activeItem
+    } </ul>)
 
   function commonPathPrefixLength(path1, path2) {
     var items1 = path1.split('/');
@@ -60,14 +59,6 @@ export async function renderNavbar(): Promise<NavItem> {
   }
 }
 
-export function renderBreadcrumb(breadcrumb: NavItem[]): void {
-  document.getElementById('breadcrumb')?.appendChild(
-    <ul class='breadcrumb'>
-      {breadcrumb.map(item => <li> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}
-    </ul>
-  )
-}
-
 export function renderAside() {
   const inThisArticle = document.getElementById('in-this-article')
   const sections = Array.from(document.querySelectorAll("article h2"))
@@ -80,8 +71,12 @@ export function renderAside() {
 
   inThisArticle.appendChild(<h5 class='title'>In this Article</h5>)
   inThisArticle.appendChild(
-    <ul class='nav bs-docs-sidenav'>
-      {sections.map(item => <li><a href={item.href}>{item.name}</a></li>)}
+    <ul class='nav'>
+      {sections.map(item => {
+        // https://github.com/twbs/bootstrap/pull/35566
+        const target = item.href && item.href[0] === '#' ? '#' + CSS.escape(item.href.slice(1)) : item.href
+        return <a class='nav-link' data-bs-target={target} href={item.href}>{item.name}</a>
+      })}
     </ul>
   )
 }
