@@ -2,14 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 :root {
-  --navbar-bg-color: rgb(44, 44, 50)
+  --navbar-bg-color: #164268;
 }
 
 $primary: #2d74b2 !default;
 $link-decoration: none !default;
 $link-hover-decoration: underline !default;
-$navbar-padding-y: 0 !default;
-$navbar-brand-padding-y: 0 !default;
 $container-max-widths: (
   xxl: 1768px
 ) !default;
@@ -17,6 +15,7 @@ $container-max-widths: (
 @import '../node_modules/bootstrap/scss/bootstrap.scss';
 @import '../node_modules/highlight.js/styles/stackoverflow-light.css';
 @import './styles/layout.scss';
+@import './styles/article.scss';
 @import './styles/markdown.scss';
 @import './styles/home.scss';
 @import './styles/nav.scss';

@@ -12,8 +12,7 @@
     "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
   ],
   "globalMetadata": {
-    "_appTitle": "Sample Site",
-    "_appLogoPath": "logo.svg",
+    "_appTitle": "docfx",
     "_appFooter": "© Microsoft",
     "menu_path": "menu.yml"
   }

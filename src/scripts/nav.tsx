@@ -9,7 +9,7 @@ export interface NavItem {
   href?: string
 }
 
-export async function renderNavbar(): Promise<NavItem> {
+export async function renderNavbar() {
   const navbarElement = document.getElementById('navbar')
   const navbarPath = meta('menu_path')?.replace(/\\/g, '/')
   if (!navbarPath || !navbarElement) {
@@ -46,8 +46,6 @@ export async function renderNavbar(): Promise<NavItem> {
       })
     } </ul>)
 
-  return activeItem
-
   function commonPathPrefixLength(path1, path2) {
     var items1 = path1.split('/');
     var items2 = path2.split('/');
@@ -59,15 +57,6 @@ export async function renderNavbar(): Promise<NavItem> {
     }
     return length;
   }
-}
-
-export function renderBreadcrumb(breadcrumb: NavItem[]): void {
-  document.getElementById('breadcrumb')?.appendChild(
-    <ol class='breadcrumb'>
-      {breadcrumb.map(item =>
-        <li class="breadcrumb-item"> {item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>)}
-    </ol>
-  )
 }
 
 export function renderAside() {

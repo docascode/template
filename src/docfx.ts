@@ -5,7 +5,7 @@ import 'bootstrap'
 import { enableAnchor } from './scripts/anchor'
 import { highlight } from './scripts/highlight'
 import { renderAlerts, renderLinks, renderTables, renderTabs } from './scripts/markdown'
-import { renderAside, renderBreadcrumb, renderNavbar } from './scripts/nav'
+import { renderAside, renderNavbar } from './scripts/nav'
 import { enableSwitchTheme } from './scripts/theme'
 import { renderToc } from './scripts/toc'
 
@@ -13,16 +13,16 @@ document.addEventListener('DOMContentLoaded', onContentLoad)
 
 function onContentLoad() {
   enableAnchor()
-  enableSwitchTheme();
-  highlight();
+  enableSwitchTheme()
+  highlight()
 
-  renderTables();
-  renderAlerts();
-  renderLinks();
+  renderTables()
+  renderAlerts()
+  renderLinks()
 
-  Promise.all([renderNavbar(), renderToc()])
-         .then(([nav, toc]) => renderBreadcrumb([nav, ...toc]));
+  renderNavbar()
+  renderToc()
 
-  renderAside();
-  renderTabs();
+  renderAside()
+  renderTabs()
 }

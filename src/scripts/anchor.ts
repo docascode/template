@@ -9,5 +9,5 @@ export function enableAnchor() {
     placement: 'right',
     visible: 'hover'
   };
-  anchors.add('');
+  anchors.add('article h2,h3');
 }

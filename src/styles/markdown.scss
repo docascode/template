@@ -1,27 +1,25 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-/* metabar */
-.metabar {
-  color: #999;
-  font-size: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  align-items: center;
+/* base */
+:not(a):not(pre)>code {
+  background-color: rgb(249, 242, 244);
+  padding: .2em .4em;
 }
 
-.metabar > li {
-  margin: 0 6px;
+code,
+pre {
+  border-radius: $border-radius
 }
 
 /* Alerts */
 .alert {
+  border-radius: $border-radius;
   border-width: 0;
 
   h5 {
-    font-size: inherit;
+    font-size: 14px;
+    font-weight: 600;
     text-transform: uppercase;
     margin-top: 0;
   }
@@ -30,7 +28,6 @@
     position: relative;
     top: .2em;
     width: 1.25em;
-    height: 1.25em;
     display: inline-block;
     padding-top: 4px;
     margin-right: .25em;

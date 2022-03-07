@@ -1,0 +1,26 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+/* metabar */
+.metabar {
+  color: #999;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  align-items: center;
+}
+
+.metabar > li {
+  margin: 0 6px;
+}
+
+/* Edit this page */
+.edit-this-page {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  font-size: 14px;
+  margin-top: 4em;
+}

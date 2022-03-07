@@ -9,7 +9,7 @@ interface TocNode extends NavItem {
   items?: TocNode[]
 }
 
-export async function renderToc(): Promise<TocNode[]> {
+export async function renderToc() {
   const tocPath = meta('toc_rel')?.replace(/\\/g, '/')
   const tocElement = document.getElementById('toc')
   if (!tocPath || !tocElement) {
@@ -30,8 +30,6 @@ export async function renderToc(): Promise<TocNode[]> {
   if (activeElement) {
     activeElement.current.scrollIntoView({ block: 'nearest' })
   }
-
-  return activeNodes
 
   function expandNodes(node: TocNode): boolean {
     let isActive = false
