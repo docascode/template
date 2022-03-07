@@ -17,6 +17,17 @@
 </div>
 {{/hero}}
 
+{{#quickstart}}
+<div class="quickstart container-xxl">
+  <section>
+    <h2>{{title}}</h2>
+    <div class="content">
+      {{{content}}}
+    </div>
+  </section>
+</div>
+{{/quickstart}}
+
 {{#highlights.0}}
 <div class="container-xxl">
   <div class="highlights">
@@ -24,24 +35,10 @@
     {{#highlights}}
     <section>
       <h2>{{title}}</h2>
-      <div class="lead">{{{description}}}</div>
+      <div class="content">{{{content}}}</div>
     </section>
     {{/highlights}}
 {{#highlights.0}}
   </div>
 </div>
 {{/highlights.0}}
-
-{{#sections}}
-<div class="sections container-xxl">
-  <section>
-    <div class="head">
-      <h2>{{title}}</h2>
-      <div class="lead">{{{description}}}</div>
-    </div>
-    <div class="content">
-      {{{content}}}
-    </div>
-  </section>
-</div>
-{{/sections}}

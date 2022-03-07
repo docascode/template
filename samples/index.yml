@@ -10,21 +10,60 @@ hero:
   - name: Install
     href: https://github.com/dotnet/docfx/releases
 
+quickstart:
+- title: Installation
+  content: |
+    Install docfx as a [dotnet tool](https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools) on Windows, Mac or Linux.
+
+    ```bash
+    dotnet tool install docfx
+    ```
+- title: Hello World
+  content: |
+    Create a new website and add a new markdown article:
+
+    ```bash
+    mkdir my-docs
+    cd my-docs
+    docfx new conceptual
+    echo "Hello World" > hello.md
+    ```
+- title: Preview Changes
+  content: |
+    Edit and preview content changes locally. Open a browser and go to https://localhost:8080 after executing this command:
+
+    ````bash
+    docfx build
+    docfx serve
+    ````
+
+- title: Publish it to GitHub Pages
+  content: |
+    Create a git repository. Add, commit and push your website to [GitHub Pages](https://pages.github.com/)
+
+    ````bash
+    cd _site
+    git init
+    git add --all
+    git commit -m "Initial commit"
+    git push -u https://github.com/username/username.github.io main
+    ````
+
 highlights:
 - title: Document as Code
-  description: |
+  content: |
     Create, collabrate and manage documentations as `code`, using simple text formats like [markdown](https://www.markdownguide.org/) and [YAML](https://yaml.org/).
 
     Works seamlessly with your favorite text editors and source control systems.
-- title: .NET API Documentation
-  description: Automatically generates .NET API reference documentation from DLLs and standard XML documentation files.
-- title: Publish Static Website
-  description: Produces static HTML files ready to publish to [GitHub Pages](https://pages.github.com/).
 
-sections:
-- title: Generate static sites from Markdown and code files
-  description: Docfx can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.
-- title: Run everywhere
-  description: Docfx can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.
-- title: Easily customize the output
-  description: Docfx provides a flexible way to customize templates and themes.
+    [Read More](./tutorial/getting-started.md).
+- title: .NET API Documentation
+  content: |
+    Automatically generates .NET API reference documentation from DLLs and standard XML documentation files.
+
+    [Read More](./tutorial/getting-started.md).
+- title: Publish Static Website
+  content: |
+    Produces static HTML files ready to publish to [GitHub Pages](https://pages.github.com/).
+
+    [Read More](./tutorial/getting-started.md).

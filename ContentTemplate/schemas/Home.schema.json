@@ -45,14 +45,14 @@
                     "title": {
                         "type": "string"
                     },
-                    "description": {
+                    "content": {
                         "type": "string",
                         "contentType": "markdown"
                     }
                 }
             }
         },
-        "sections": {
+        "quickstart": {
             "type": "array",
             "items": {
                 "type": "object",
@@ -60,13 +60,9 @@
                     "title": {
                         "type": "string"
                     },
-                    "description": {
-                        "type": "string",
-                        "contentType": "markdown"
-                    },
                     "content": {
                         "type": "string",
-                        "contentType": "href"
+                        "contentType": "markdown"
                     }
                 }
             }
