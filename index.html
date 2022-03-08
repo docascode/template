@@ -7,30 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="yufeih" />
 <meta name="depot_name" content="." />
-<meta name="description" content="<p>Static site generator for .NET API documentation.</p>
-" />
 <meta name="document_id" content="c115ee68-f136-8518-0a52-d614ddd68b18" />
 <meta name="document_version_independent_id" content="c115ee68-f136-8518-0a52-d614ddd68b18" />
-<meta name="gitcommit" content="https://github.com/docascode/template/blob/840c757f2832f4a435714b49961835e84ceec3dd/samples/index.yml" />
+<meta name="gitcommit" content="https://github.com/docascode/template/blob/3a0ab5dae99116c4bfc5ef9b9e822833ea107a24/samples/index.yml" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="menu.json" />
 <meta name="original_content_git_url" content="https://github.com/docascode/template/blob/main/samples/index.yml" />
 <meta name="schema" content="Home" />
 <meta name="site_name" content="Docs" />
-<meta name="updated_at" content="2022-01-06 11:49 AM" />
+<meta name="updated_at" content="2022-03-08 02:03 AM" />
 
 
-  <title>docfx</title>
+  <title></title>
 
   <link rel="stylesheet" href="./dist/docfx.css">
 </head>
 
-<body data-bs-spy="scroll" data-bs-target="#in-this-article">
+<body>
   <header>
 <nav class="navbar navbar-expand-md navbar-dark">
   <div class="container-xxl">
     <a class="navbar-brand" href="./">
-        docfx
+        Docfx
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,63 +39,93 @@
   </header>
 
   <main class="container-xxl layout-home page-type-home">
-      <div class="hero">
-  <div class="wrap">
-    <div class="text">
-      <strong>docfx</strong>
-    </div>
-    <div class="buttons-unit-small">
-      <a href="../RELEASENOTE.md" data-linktype="relative-path">Release Notes</a>
-      <a href="https://github.com/dotnet/docfx" data-linktype="external">View on Github</a>
-    </div>
-    <div class="minitext"><p>Static site generator for .NET API documentation.</p>
+      <div class="hero container-xxl">
+  <div class="hero-content">
+    <h1>Build technical documentation sites with Docfx</h1>
+    <div class="lead"><p>Quickly build static documentation sites using markdown files.
+Generate .NET API reference pages directly from assemblies.</p>
 </div>
-    <div class="buttons-unit">
-      <a href="tutorial/getting-started/" class="button" data-linktype="relative-path"><i class="glyphicon "></i>Getting Started</a>
-      <a href="https://github.com/dotnet/docfx/releases" class="button" data-linktype="external"><i class="glyphicon "></i>Download</a>
+    <div class="actions">
+        <a href="tutorial/getting-started/" class="btn btn-primary btn-lg" data-linktype="relative-path">Get Started</a>
+        <a href="https://github.com/dotnet/docfx/releases" class="btn btn-outline-secondary btn-lg" data-linktype="external">Install</a>
     </div>
   </div>
 </div>
-<div class="key-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 text-center">
-        <i class="glyphicon glyphicon-grain"></i>
-        <section>
-          <h2>Generate static sites from Markdown and code files</h2>
-          <div class="lead"><p>DocFX can produce documentation from source code (including C#, F#, Visual Basic, REST, JavaScript, Java, Python and TypeScript) as well as raw Markdown files.</p>
-</div>
-        </section>
-      </div>
+
+<div class="quickstart container-xxl">
+  <section>
+    <h2>Installation</h2>
+    <div class="content">
+      <p>Install docfx as a <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools" data-linktype="external">dotnet tool</a> on Windows, Mac or Linux.</p>
+<pre><code class="lang-bash">dotnet tool install docfx
+</code></pre>
+
     </div>
-  </div>
+  </section>
 </div>
-<div class="key-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 text-center">
-        <i class="glyphicon glyphicon-transfer"></i>
-        <section>
-          <h2>Run everywhere</h2>
-          <div class="lead"><p>DocFX can run on Linux, macOS, and Windows. The generated static website can be deployed to any host such as GitHub Pages or Azure Websites with no additional configuration.</p>
-</div>
-        </section>
-      </div>
+<div class="quickstart container-xxl">
+  <section>
+    <h2>Hello World</h2>
+    <div class="content">
+      <p>Create a new website and add a new markdown article:</p>
+<pre><code class="lang-bash">mkdir my-docs
+cd my-docs
+docfx new conceptual
+echo &quot;Hello World&quot; &gt; hello.md
+</code></pre>
+
     </div>
-  </div>
+  </section>
 </div>
-<div class="key-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 text-center">
-        <i class="glyphicon glyphicon-cutlery"></i>
-        <section>
-          <h2>Easily customize the output</h2>
-          <div class="lead"><p>DocFX provides a flexible way to customize templates and themes.</p>
-</div>
-        </section>
-      </div>
+<div class="quickstart container-xxl">
+  <section>
+    <h2>Preview Changes</h2>
+    <div class="content">
+      <p>Edit and preview content changes locally. Open a browser and go to https://localhost:8080 after executing this command:</p>
+<pre><code class="lang-bash">docfx build
+docfx serve
+</code></pre>
+
     </div>
+  </section>
+</div>
+<div class="quickstart container-xxl">
+  <section>
+    <h2>Publish it to GitHub Pages</h2>
+    <div class="content">
+      <p>Create a git repository. Add, commit and push your website to <a href="https://pages.github.com/" data-linktype="external">GitHub Pages</a></p>
+<pre><code class="lang-bash">cd _site
+git init
+git add --all
+git commit -m &quot;Initial commit&quot;
+git push -u https://github.com/username/username.github.io main
+</code></pre>
+
+    </div>
+  </section>
+</div>
+
+<div class="container-xxl">
+  <div class="highlights">
+    <section>
+      <h2>Document as Code</h2>
+      <div class="content"><p>Create, collabrate and manage documentations as <code>code</code>, using simple text formats like <a href="https://www.markdownguide.org/" data-linktype="external">markdown</a> and <a href="https://yaml.org/" data-linktype="external">YAML</a>.</p>
+<p>Works seamlessly with your favorite text editors and source control systems.</p>
+<p><a href="tutorial/getting-started/" data-linktype="relative-path">Read More</a>.</p>
+</div>
+    </section>
+    <section>
+      <h2>.NET API Documentation</h2>
+      <div class="content"><p>Automatically generates .NET API reference documentation from DLLs and standard XML documentation files.</p>
+<p><a href="tutorial/getting-started/" data-linktype="relative-path">Read More</a>.</p>
+</div>
+    </section>
+    <section>
+      <h2>Publish Static Website</h2>
+      <div class="content"><p>Produces static HTML files ready to publish to <a href="https://pages.github.com/" data-linktype="external">GitHub Pages</a>.</p>
+<p><a href="tutorial/getting-started/" data-linktype="relative-path">Read More</a>.</p>
+</div>
+    </section>
   </div>
 </div>
 
