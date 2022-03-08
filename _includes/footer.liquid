@@ -2,7 +2,10 @@
   {%- if page._appFooter -%}
     {{ page._appFooter }}
   {%- endif -%}
-  <div class="github-star-button">
-    <iframe src="https://ghbtns.com/github-btn?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
-  </div>
+
+  {%- if page._githubOwner and page._githubName -%}
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn?user={{ page._githubOwner }}&repo={{ page._githubName }}&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+  {%- endif -%}
 </div>

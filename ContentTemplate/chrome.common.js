@@ -17,8 +17,21 @@ function preProcessSDPMetadata(model) {
 		}
 		model.metadata = undefined;
 	}
+
+	makeGitHubRepoLink(model);
 }
 
+function makeGitHubRepoLink(model) {
+	if (model.original_content_git_url) {
+		var match = model.original_content_git_url.match(/github.com\/(.*?)\/(.*?)\//)
+		if (match && match[1] && match[2]) {
+			model._githubOwner = match[1]
+			model._githubName = match[2]
+		}
+	}
+}
+
+exports.makeGitHubRepoLink = makeGitHubRepoLink;
 exports.makeCanonicalUrl = () => { };
 exports.makeDescription = () => { };
 exports.makeTitle = () => { };
