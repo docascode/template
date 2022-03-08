@@ -12,7 +12,7 @@
     "https://docs.microsoft.com/en-us/dotnet/.xrefmap.json"
   ],
   "globalMetadata": {
-    "_appTitle": "docfx",
+    "_appTitle": "Docfx",
     "_appFooter": "© Microsoft",
     "menu_path": "menu.yml"
   }

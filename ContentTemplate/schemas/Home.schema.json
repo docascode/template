@@ -3,38 +3,29 @@
     "description": "The schema for home page",
     "type": "object",
     "properties": {
-        "title": {
-            "type": "string"
-        },
-        "description": {
-            "type": "string",
-            "contentType": "markdown"
-        },
         "hero": {
             "type": "object",
             "properties": {
-                "links": {
-                    "type": "array",
-                    "items": {
-                        "properties": {
-                            "name": {
-                                "type": "string"
-                            },
-                            "href": {
-                                "type": "string",
-                                "contentType": "href"
-                            }
-                        }
-                    }
+                "title": {
+                    "type": "string"
                 },
-                "buttons": {
+                "description": {
+                    "type": "string",
+                    "contentType": "markdown"
+                },
+                "image": {
+                    "type": "string",
+                    "contentType": "href"
+                },
+                "backgroundImage": {
+                    "type": "string",
+                    "contentType": "href"
+                },
+                "actions": {
                     "type": "array",
                     "items": {
                         "properties": {
                             "name": {
-                                "type": "string"
-                            },
-                            "icon": {
                                 "type": "string"
                             },
                             "href": {
@@ -46,7 +37,7 @@
                 }
             }
         },
-        "sections": {
+        "highlights": {
             "type": "array",
             "items": {
                 "type": "object",
@@ -54,10 +45,22 @@
                     "title": {
                         "type": "string"
                     },
-                    "icon": {
+                    "content": {
+                        "type": "string",
+                        "contentType": "markdown"
+                    }
+                }
+            }
+        },
+        "quickstart": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
                         "type": "string"
                     },
-                    "description": {
+                    "content": {
                         "type": "string",
                         "contentType": "markdown"
                     }
