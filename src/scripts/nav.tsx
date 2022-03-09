@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 import React from 'jsx-dom'
-import { getAbsolutePath, getDirectory, isVisible, meta } from './utility';
+import { getAbsolutePath, getDirectory, isRelativePath, isVisible, meta } from './utility';
 
 export interface NavItem {
   name: string
@@ -24,7 +24,7 @@ export async function renderNavbar() {
   const windowPath = getAbsolutePath(window.location.pathname).toLowerCase()
 
   const items = data.items.map(item => {
-    const href = navrel + '/' + item.href
+    const href = isRelativePath(item.href) ? navrel + '/' + item.href : item.href;
     const result = { href: href, name: item.name }
     if (href) {
       const itemPath = getAbsolutePath(href).toLowerCase();
