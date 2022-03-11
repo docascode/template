@@ -32,6 +32,12 @@ main.layout-conceptual {
      'toc'
      'article'
   }
+
+  @media print {
+    grid-template-columns: 100%;
+    grid-template-areas:
+     'article'
+  }
 }
 
 nav.layout-toc {
@@ -48,12 +54,20 @@ nav.layout-toc {
       margin-top: 1em;
     }
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 aside {
   grid-area: aside;
 
   @media only screen and (max-width: $aside-break) {
+    display: none;
+  }
+
+  @media print {
     display: none;
   }
 }
