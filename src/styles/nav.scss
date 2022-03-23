@@ -5,10 +5,10 @@ header {
   .navbar {
     background-color: var(--navbar-bg-color);
   }
-}
 
-.breadcrumb {
-  font-size: 14px;
+  @media print {
+    display: none;
+  }
 }
 
 .in-this-article{
@@ -46,5 +46,9 @@ footer {
     position: relative;
     top: 5px;
     margin: 0 10px;
-  }  
+  }
+
+  @media print {
+    display: none;
+  }
 }
