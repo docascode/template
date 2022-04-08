@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{%- assign pageTemplate = 'Hub' -%}
+{%- assign documentClasses = 'hub' -%}
+
+{%- comment -%}
+Allow author override of hideEdit. See PR 23875 and ticket 201811.
+{%- endcomment -%}
+
+{%- assign hideEdit = true -%}
+{%- unless page._op_hideEdit == nil or page._op_hideEdit == '' -%}
+	{%- assign hideEdit = page._op_hideEdit -%}
+{%- endunless -%}
+
+{%- include master.html -%}

@@ -1,0 +1,26 @@
+{{#title}}
+	<h2 class="margin-top-none {{^summary}}margin-bottom-sm{{/summary}}">{{title}}</h2>
+{{/title}}
+{{#summary}}
+	<p class="margin-top-none margin-bottom-sm">{{summary}}</p>
+{{/summary}}
+<div class="columns is-multiline">
+	{{#items}}
+		<div class="column {{columnCount}}">
+			<div class="box position-relative has-body-background-dark is-full-height padding-none has-heavy-shadow-hover border-high-contrast-hover text-decoration-none">
+				<div class="columns is-mobile margin-none is-full-height">
+					<div class="column is-narrow display-flex align-items-center is-full-height">
+						<div class="image is-32x32">
+							<img src="{{imageSrc}}" alt="" loading="lazy" width="32" height="32" />
+						</div>
+					</div>
+					<div class="column align-self-center padding-right-none padding-left-xxs">
+						<h3 id="{{id}}" class="font-size-h6 margin-none font-weight-semibold">
+							<a href="{{url}}" class="has-external-link-indicator stretched-link" aria-labelledby="{{id}}">{{title}}</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/items}}
+</div>

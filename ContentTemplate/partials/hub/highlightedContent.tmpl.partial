@@ -1,0 +1,19 @@
+<div class="columns is-multiline">
+	{{#items}}
+		<div class="column {{columnCount}}">
+			<div class="box position-relative is-full-height has-heavy-shadow-hover border-high-contrast-hover padding-sm text-decoration-none">
+				<div class="columns">
+					<div class=" is-hidden-mobile">
+						<div class="image is-max-64x64 {{#brand}}has-text-{{brand}}{{/brand}}">{{{itemTypeIcon}}}</div>
+					</div>
+					<div class="column is-9 padding-top-xxs">
+						<p class="font-size-xs margin-none has-text-subtle is-uppercase">{{itemType}}</p>
+						<h3 id="{{id}}" class="has-text-primary font-size-h6 margin-none">
+							<a href="{{url}}" class="has-external-link-indicator stretched-link" aria-labelledby="{{id}}">{{title}}</a>
+						</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{/items}}
+</div>
