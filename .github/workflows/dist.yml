@@ -1,0 +1,27 @@
+name: dist
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        submodules: true
+    - uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+    - run: yarn
+    - run: yarn build
+    - run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+    - run: >
+        git diff --quiet -- dist || (
+          git add dist &&
+          git commit -m "chore: Update dist" &&
+          git push origin main)
