@@ -17,7 +17,7 @@
     "jsx-dom": "^8.0.1-beta.5"
   },
   "devDependencies": {
-    "browser-sync": "^2.27.8",
+    "browser-sync": "^2.27.9",
     "esbuild": "^0.14.31",
     "esbuild-sass-plugin": "^2.2.6",
     "http-server": "^14.1.0",
