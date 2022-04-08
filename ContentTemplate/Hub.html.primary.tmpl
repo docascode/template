@@ -1,0 +1,134 @@
+<section id="hero" class="hero {{#brand}}has-background-{{brand}}{{/brand}}{{^brand}}has-background-docs{{/brand}} {{#isQnaHub}}has-background-image{{/isQnaHub}}" {{#isQnaHub}}style="background-image: url('/en-us/media/hubs/qna/hero-banner.svg?branch=main')"{{/isQnaHub}}>
+	<div class="uhf-container {{#brand}}has-text-{{brand}}-invert{{/brand}}{{^brand}}has-text-docs-invert{{/brand}}">
+		<div class="columns">
+			<div class="column {{#isQnaHub}}is-9-desktop{{/isQnaHub}}{{^isQnaHub}}is-10-desktop{{/isQnaHub}}">
+				<div class="padding-block-lg">
+					{{#isQnaHub}}
+						<p id="hero-supertitle" class="supertitle letter-spacing-wide is-uppercase padding-bottom-xxs margin-none">{{__global.welcomeToMicrosoftQA}}</p>
+					{{/isQnaHub}}
+					<h1 id="hero-title" class="title">{{title}}</h1>
+					{{#summary}}
+						<p id="hero-summary" class="margin-none padding-top-xs">{{summary}}</p>
+					{{/summary}}
+					{{#isQnaHub}}
+						<div class="columns">
+							<div class="column is-two-thirds-desktop">
+								<div class="padding-top-sm autocomplete-qna-hero"></div>
+							</div>
+						</div>
+					{{/isQnaHub}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{{#highlightedContent}}
+	<section id="highlighted-content" class="has-background-alternating-grey">
+		<div class="uhf-container padding-block-sm">
+			{{#sections}}
+				{{>partials/hub/highlightedContent}}
+			{{/sections}}
+			{{^sections}}
+				{{>partials/hub/highlightedContent}}
+			{{/sections}}
+		</div>
+	</section>
+{{/highlightedContent}}
+
+{{#productDirectory}}
+	<section id="product-directory" class="has-background-alternating-grey">
+		<div class="uhf-container anchor-headings padding-block-lg">
+			{{#sections}}
+				{{>partials/hub/productDirectory}}
+			{{/sections}}
+			{{^sections}}
+				{{>partials/hub/productDirectory}}
+			{{/sections}}
+		</div>
+	</section>
+{{/productDirectory}}
+
+{{#conceptualContent}}
+	<section id="conceptual-content" class="has-background-alternating-grey padding-block-lg">
+		<div class="uhf-container anchor-headings">
+			{{#sections}}
+				{{>partials/hub/conceptualContent}}
+			{{/sections}}
+			{{^sections}}
+				{{>partials/hub/conceptualContent}}
+			{{/sections}}
+		</div>
+	</section>
+{{/conceptualContent}}
+
+{{#tools}}
+	<section id="tools" class="has-background-alternating-grey padding-block-lg">
+		<div class="uhf-container anchor-headings padding-bottom-sm">
+			{{#sections}}
+				{{>partials/hub/tools}}
+			{{/sections}}
+			{{^sections}}
+				{{>partials/hub/tools}}
+			{{/sections}}
+		</div>
+	</section>
+{{/tools}}
+
+{{#additionalContent}}
+	<section id="additional-content" class="has-background-alternating-grey padding-block-lg">
+		<div class="uhf-container anchor-headings">
+			{{#sections}}
+				{{#title}}
+					<h2 class="margin-top-none {{^summary}}margin-bottom-sm{{/summary}}">{{title}}</h2>
+				{{/title}}
+				{{#summary}}
+					<p class="margin-top-none margin-bottom-sm">{{summary}}</p>
+				{{/summary}}
+				<div class="columns is-multiline">
+					{{#items}}
+					<div class="column {{columnCount}}">
+						{{#url}}
+							<div class="additional-card box is-full-height has-heavy-shadow-hover border-high-contrast-hover padding-sm text-decoration-none" aria-labelledby="{{id}}">				<!--Add it here as its boxed-->
+								<h3 id="{{id}}" class="font-size-h6 margin-top-none margin-bottom-xxs">
+									<a href="{{url}}" class="has-external-link-indicator">
+									{{title}}
+									</a>
+								</h3>
+								<div class="has-text-subtle font-size-sm has-line-height-reset">
+									{{summary}}
+								</div>
+							</div>
+						{{/url}}
+						{{^url}}
+						<div class="additional-card box display-block is-full-height padding-sm">
+							<h3 class="font-size-h6 margin-top-none margin-bottom-xxs">{{title}}</h3>
+							<div class="has-text-subtle font-size-sm has-line-height-reset">{{summary}}</div>
+							<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xxs">
+								{{#links}}
+								<li class="is-unstyled margin-bottom-xxs font-size-sm">
+									<a href="{{url}}" class="has-external-link-indicator">
+										{{text}}
+									</a>
+									{{#note}}
+									<span class="has-text-subtle"> {{note}}</span>
+									{{/note}}
+								</li>
+								{{/links}}
+							</ul>
+						</div>
+						{{/url}}
+					</div>
+					{{/items}}
+				</div>
+			{{/sections}}
+			{{#footer}}
+				<div class="columns">
+					<div class="column is-12 font-size-sm has-line-height-reset">
+						{{{footer}}}
+					</div>
+				</div>
+			{{/footer}}
+		</div>
+	</section>
+{{/additionalContent}}

@@ -1,0 +1,459 @@
+{
+	"title": "Hub",
+	"$schema": "https://dotnet.github.io/docfx/schemas/v1.0/schema.json#",
+	"version": "1.0.0",
+	"description": "The schema for the New Hub Pages",
+	"id": "https://static.docs.com/ui/latest/schemas/Hub.schema.json",
+	"type": "object",
+	"additionalProperties": false,
+	"required": ["title"],
+	"renderType": "content",
+	"archivable": true,
+	"properties": {
+		"brand": {
+			"description": "Brand used to control brand colors in the hero area",
+			"type": "string",
+			"enum": [
+				"aspnet",
+				"azure",
+				"dotnet",
+				"dynamics",
+				"m365",
+				"ms-graph",
+				"nuget",
+				"office",
+				"playfab",
+				"power-apps",
+				"power-automate",
+				"power-bi",
+				"power-platform",
+				"power-virtual-agents",
+				"project",
+				"sharepoint",
+				"sql",
+				"sql-server",
+				"teams",
+				"vs",
+				"visual-studio",
+				"windows",
+				"workplace-analytics",
+				"xamarin"
+			]
+		},
+		"pageModifier": {
+			"description": "A list of page modifiers that modify the layout and functionality for a specific hub page",
+			"type": "string",
+			"enum": ["qna-home"]
+		},
+		"summary": {
+			"description": "The summary of the page, used in the hero",
+			"type": "string",
+			"tags": ["localizable"]
+		},
+		"title": {
+			"description": "The title of the page, used in the hero",
+			"type": "string",
+			"tags": ["localizable"]
+		},
+		"documentTitle": {
+			"description": "The page title, used in the title tag. Use to avoid any suffixes like '| Microsoft Docs' at the end.",
+			"type": "string",
+			"tags": ["localizable"]
+		},
+		"metadata": {
+			"type": "object",
+			"properties": {
+				"description": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] }
+			}
+		},
+		"highlightedContent": {
+			"oneOf": [
+				{ "$ref": "#/definitions/highlightedContentWithoutSections" },
+				{ "$ref": "#/definitions/highlightedContentWithSections" }
+			]
+		},
+		"productDirectory": {
+			"oneOf": [
+				{ "$ref": "#/definitions/productDirectoryWithoutSections" },
+				{ "$ref": "#/definitions/productDirectoryWithSections" }
+			]
+		},
+		"conceptualContent": {
+			"oneOf": [
+				{ "$ref": "#/definitions/conceptualContentWithoutSections" },
+				{ "$ref": "#/definitions/conceptualContentWithSections" }
+			]
+		},
+		"tools": {
+			"oneOf": [
+				{ "$ref": "#/definitions/toolsWithoutSections" },
+				{ "$ref": "#/definitions/toolsWithSections" }
+			]
+		},
+		"additionalContent": {
+			"description": "The additional content section is the most flexible section. It allows for a section title, section summary, several cards, and a footer section.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["sections"],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 4,
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [],
+						"properties": {
+							"title": { "type": "string", "tags": ["localizable"] },
+							"summary": { "type": "string", "tags": ["localizable"] },
+							"items": { "$ref": "#/definitions/additionalContentCollection" }
+						}
+					}
+				},
+				"footer": {
+					"description": "The footer is a catch all for final content that can be included at the bottom of the page.",
+					"type": "string",
+					"contentType": "markdown",
+					"tags": ["localizable"]
+				}
+			}
+		}
+	},
+	"definitions": {
+		"highlightedContentWithoutSections": {
+			"description": "The highlighted content section holds several simple cards, each card points to a single piece of content.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["items"],
+			"properties": {
+				"items": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 8,
+					"items": { "$ref": "#/definitions/highlightedContentItem" }
+				}
+			}
+		},
+		"highlightedContentWithSections": {
+			"description": "The highlighted content section holds several simple cards, each card points to a single piece of content.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["sections"],
+			"properties": {
+				"sections": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": { "$ref": "#/definitions/highlightedContentWithoutSections" }
+				}
+			}
+		},
+		"productDirectoryWithoutSections": {
+			"description": "The product directory can have a section title and summary, it contains several cards, each one points to a product page.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["items"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"items": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 250,
+					"items": { "$ref": "#/definitions/productDirectoryItem" }
+				}
+			}
+		},
+		"productDirectoryWithSections": {
+			"description": "The product directory can have a section title and summary, it contains several cards, each one points to a product page.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["sections"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"sections": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": { "$ref": "#/definitions/productDirectoryWithoutSections" }
+				}
+			}
+		},
+		"conceptualContentWithoutSections": {
+			"description": "The conceptual content section can have a section title and section summary as well as several cards. The cards must have a title and contain at least one link.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["items"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"items": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 18,
+					"items": { "$ref": "#/definitions/conceptualContentItem" }
+				}
+			}
+		},
+		"conceptualContentWithSections": {
+			"description": "The conceptual content section can have a section title and section summary as well as several cards. The cards must have a title and contain at least one link.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["sections"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"sections": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 3,
+					"items": { "$ref": "#/definitions/conceptualContentWithoutSections" }
+				}
+			}
+		},
+		"toolsWithoutSections": {
+			"description": "The tools section may have a section title and a section summary, the section must consist of several cards. Each card is meant to point to a Language, Framework, CLI, Tool or Extension.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["items"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"items": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 16,
+					"items": { "$ref": "#/definitions/toolsItem" }
+				}
+			}
+		},
+		"toolsWithSections": {
+			"description": "The tools section may have a section title and a section summary, the section must consist of several cards. Each card is meant to point to a Language, Framework, CLI, Tool or Extension.",
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["sections"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"sections": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": { "$ref": "#/definitions/toolsWithoutSections" }
+				}
+			}
+		},
+		"additionalContentCollection": {
+			"type": "array",
+			"minItems": 1,
+			"maxItems": 18,
+			"items": { "$ref": "#/definitions/additionalContentItem" }
+		},
+		"highlightedContentItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["itemType", "title", "url"],
+			"properties": {
+				"itemType": {
+					"description": "The itemtype is used to populate the super title and the accompanying icon used on the card",
+					"type": "string",
+					"enum": [
+						"architecture",
+						"concept",
+						"deploy",
+						"download",
+						"get-started",
+						"how-to-guide",
+						"learn",
+						"overview",
+						"quickstart",
+						"reference",
+						"sample",
+						"tutorial",
+						"whats-new",
+						"video"
+					]
+				},
+				"title": { "type": "string", "tags": ["localizable"] },
+				"url": { "type": "string", "contentType": "href" }
+			}
+		},
+		"productDirectoryItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["imageSrc", "title"],
+			"properties": {
+				"imageSrc": { "type": "string", "contentType": "href" },
+				"azureCategories": {
+					"description": "An array of product categories used only for Azure's main hub page",
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "string",
+						"enum": [
+							"ai-machine-learning",
+							"analytics",
+							"azure-virtual-desktop",
+							"compute",
+							"containers",
+							"databases",
+							"developer-tools",
+							"devops",
+							"featured",
+							"hybrid",
+							"identity",
+							"integration",
+							"iot",
+							"management-and-governance",
+							"media",
+							"migration",
+							"mixed-reality",
+							"mobile",
+							"networking",
+							"popular",
+							"security",
+							"storage",
+							"web",
+							"windows-virtual-desktop"
+						]
+					}
+				},
+				"qnaProductCategories": {
+					"description": "An array of product categories used only for Q&A's main hub page",
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "string",
+						"enum": [
+							"all",
+							"aspnet",
+							"azure",
+							"azure-devops",
+							"dotnet",
+							"ms-graph",
+							"m365",
+							"nuget",
+							"office",
+							"powerbi",
+							"powershell",
+							"sql",
+							"visual-studio",
+							"windows",
+							"windows-system-center",
+							"xamarin"
+						]
+					}
+				},
+				"title": { "type": "string", "tags": ["localizable"] },
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"url": { "type": "string", "contentType": "href" },
+				"links": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 6,
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["text", "url"],
+						"properties": {
+							"text": { "type": "string", "tags": ["localizable"] },
+							"url": { "type": "string", "contentType": "href" }
+						}
+					}
+				}
+			}
+		},
+		"conceptualContentItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["links"],
+			"properties": {
+				"footerLink": {
+					"description": "The footer link is the final link at the end of the links list, it always has a right caret at the end of it's text",
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["text", "url"],
+					"properties": {
+						"text": { "type": "string", "tags": ["localizable"] },
+						"url": { "type": "string", "contentType": "href" }
+					}
+				},
+				"links": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 12,
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["itemType", "text", "url"],
+						"properties": {
+							"itemType": {
+								"description": "The item type should match the type of the url. It will decide what glyph image used in front of the link text.",
+								"type": "string",
+								"enum": [
+									"architecture",
+									"concept",
+									"deploy",
+									"download",
+									"get-started",
+									"how-to-guide",
+									"learn",
+									"overview",
+									"quickstart",
+									"reference",
+									"sample",
+									"tutorial",
+									"whats-new",
+									"video"
+								]
+							},
+							"text": { "type": "string", "tags": ["localizable"] },
+							"url": { "type": "string", "contentType": "href" }
+						}
+					}
+				},
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] }
+			}
+		},
+		"toolsItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["imageSrc", "title", "url"],
+			"properties": {
+				"imageSrc": { "type": "string", "contentType": "href" },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"url": { "type": "string", "contentType": "href" }
+			}
+		},
+		"additionalContentItem": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["title"],
+			"properties": {
+				"summary": { "type": "string", "tags": ["localizable"] },
+				"title": { "type": "string", "tags": ["localizable"] },
+				"url": { "type": "string", "contentType": "href" },
+				"links": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 12,
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["text", "url"],
+						"properties": {
+							"text": { "type": "string", "tags": ["localizable"] },
+							"url": { "type": "string", "contentType": "href" },
+							"note": { "type": "string", "tags": ["localizable"] }
+						}
+					}
+				}
+			}
+		}
+	},
+	"metadata": "/metadata"
+}

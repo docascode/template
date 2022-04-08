@@ -1,0 +1,118 @@
+{{#title}}
+	<h2 class="margin-top-none {{^summary}}margin-bottom-sm{{/summary}}">{{title}}</h2>
+{{/title}}
+{{#summary}}
+	<p class="margin-top-none margin-bottom-sm">{{summary}}</p>
+{{/summary}}
+<div class="columns">
+	{{#hasFacet}}
+		<div id="hub-facet-list" class="column is-narrow" hidden>
+			<nav class="is-hidden-mobile" role="navigation" data-bi-name="hub-facet">
+				<ul class="margin-none">
+					{{^isQnaHub}}
+						<li class="is-unstyled {{^hasFeaturedCategory}}border-bottom padding-bottom-xxs margin-bottom-xxs{{/hasFeaturedCategory}}">
+							<button data-facet="all" class="all-facet button has-inner-focus justify-content-space-between button-clear button-sm font-weight-semibold button-block justify-content-">{{__global.all}}</button>
+						</li>
+					{{/isQnaHub}}
+					{{#hasFeaturedCategory}}
+						<li class="is-unstyled border-bottom padding-bottom-xxs margin-bottom-xxs">
+							<button data-facet="popular" class="featured-facet hub-facet button has-inner-focus justify-content-space-between button-clear button-sm font-weight-semibold button-block justify-content-">{{__global.azureCategory_popular}}</button>
+						</li>
+					{{/hasFeaturedCategory}}
+					{{#facetList}}
+						<li class="is-unstyled">
+							<button data-facet="{{id}}" class="hub-facet button has-inner-focus justify-content-space-between button-clear button-sm font-weight-semibold button-block justify-content-">{{title}}</button>
+						</li>
+					{{/facetList}}
+				</ul>
+			</nav>
+			<nav class="is-hidden-tablet dropdown" role="navigation" data-bi-name="hub-facet-mobile">
+				<button type="button" class="dropdown-trigger button button-block justify-content-space-between" aria-controls="category-navigation-mobile" aria-expanded="false">
+					<span id="category-hub-dropdown"></span>
+					<span class="icon" aria-hidden="true">
+						<span class="docon docon-chevron-down-light expanded-indicator"></span>
+					</span>
+				</button>
+				<div id="category-navigation-mobile" class="dropdown-menu button-block padding-xs font-size-sm has-body-background-medium" role="menu">
+					<ul class="margin-none">
+						{{#hasFeaturedCategory}}
+							<li class="is-unstyled border-bottom padding-bottom-xxs margin-bottom-xxs">
+								<button class="hub-facet dropdown-menu-close button button-block justify-content-space-between button-clear button-sm font-weight-semibold has-inner-focus">{{__global.azureCategory_featured}}</button>
+							</li>
+						{{/hasFeaturedCategory}}
+						{{#facetList}}
+							<li class="is-unstyled">
+								<button data-facet="{{id}}" class="hub-facet dropdown-menu-close button button-block justify-content-space-between button-clear button-sm font-weight-semibold has-inner-focus">{{title}}</button>
+							</li>
+						{{/facetList}}
+					</ul>
+				</div>
+			</nav>
+		</div>
+	{{/hasFacet}}
+	<div class="column">
+		<div id="product-cards" class="columns is-multiline {{#hasFacet}}padding-xxs padding-none-tablet{{/hasFacet}}" data-bi-name="hub-product-card">
+			{{#hasFacet}}
+				<div id="section-title" class="column is-full" hidden>
+					<h3 class="margin-none"></h3>
+				</div>
+			{{/hasFacet}}
+			{{#items}}
+				<div class="column {{columnCount}} item-column" data-categories="{{#isAzureHub}}{{#azureCategories}}{{.}} {{/azureCategories}}{{/isAzureHub}}{{#isQnaHub}}{{#qnaProductCategories}}{{.}} {{/qnaProductCategories}}{{/isQnaHub}}">
+					{{#url}}
+						<div class="{{#hasFacet}}is-hidden-mobile{{/hasFacet}} box position-relative margin-none is-full-height has-heavy-shadow-hover border-high-contrast-hover padding-sm text-decoration-none" aria-labelledby="{{id}}">
+							{{#imageSrc}}
+								<img src="{{imageSrc}}" alt="" loading="lazy" width="48" height="48" class="image is-48x48 margin-bottom-xxs" />
+							{{/imageSrc}}
+							<h3 id="{{id}}" class="font-size-h6 margin-none"><a href="{{url}}" class="has-external-link-indicator stretched-link">{{title}}</a ></h3>
+							<p class="margin-none has-text-subtle font-size-sm has-line-height-reset">{{summary}}</p>
+						</div>
+						{{#hasFacet}}
+							<a class="is-hidden-tablet display-block has-external-link-indicator" href="{{url}}">
+								<h3 class="font-size-h6 margin-none">{{title}}</h3>
+							</a>
+						{{/hasFacet}}
+					{{/url}}
+					{{^url}}
+						<div class="box margin-none is-full-height padding-sm">
+							{{#imageSrc}}
+								<img src="{{imageSrc}}" alt="" loading="lazy" width="48" height="48" class="image is-48x48 margin-bottom-xxs" />
+							{{/imageSrc}}
+							<h3 id="{{id}}" class="font-size-h6 margin-none">{{title}}</h3>
+							<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xxs">
+								{{#links}}
+									<li class="is-unstyled margin-bottom-xxs">
+										<a href="{{url}}" class="has-external-link-indicator display-block font-size-sm">{{text}}</a>
+									</li>
+								{{/links}}
+							</ul>
+						</div>
+					{{/url}}
+				</div>
+			{{/items}}
+		</div>
+		{{#hasFacet}}
+			<div id="product-cards-all" class="margin-top-none" hidden>
+				{{#categories}}
+					<div class="box">
+						<h3 class="title margin-top-none margin-bottom-xxs">{{categoryTitle}}</h3>
+						<ul class="grid is-3 margin-left-none margin-bottom-sm">
+							{{#items}}
+								<li class="grid-item">
+									<div class="card is-shadowless">
+										<div class="card-content padding-none">
+											<h4 class="margin-none is-size-h4-responsive">
+												<a href="{{url}}" class="has-external-link-indicator">{{title}}</a>
+											</h4>
+											<p class="card-content-description">{{summary}}</p>
+										</div>
+									</div>
+								</li>
+							{{/items}}
+						</ul>
+					</div>
+				{{/categories}}
+			</div>
+		{{/hasFacet}}
+	</div>
+</div>

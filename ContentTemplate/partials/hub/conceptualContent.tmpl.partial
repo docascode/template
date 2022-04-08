@@ -1,0 +1,36 @@
+{{#title}}
+	<h2 class="margin-top-none {{^summary}}margin-bottom-sm{{/summary}}">{{title}}</h2>
+{{/title}}
+{{#summary}}
+	<p class="margin-top-none margin-bottom-sm">{{summary}}</p>
+{{/summary}}
+<div class="columns is-multiline">
+	{{#items}}
+		<div class="column {{columnCount}}">
+			<div class="box is-full-height padding-sm">
+				<h3 class="font-size-h6 margin-top-none margin-bottom-xxs">{{title}}</h3>
+				{{#summary}}
+					<p class="font-size-sm has-line-height-reset margin-top-none margin-bottom-xs">{{summary}}</p>
+				{{/summary}}
+				<ul class="has-line-height-reset margin-left-none margin-bottom-none margin-top-xxs">
+				{{#links}}
+					<li class="is-unstyled margin-bottom-xxs">
+						<div class="justify-content-flex-start display-flex is-fullwidth font-size-sm has-text-wrap">
+							<span class="docon docon-topic-{{itemType}} font-size-md has-text-primary margin-right-xxs" aria-hidden="true"></span>
+							<a href="{{url}}" class="has-external-link-indicator">{{text}}</a>
+						</div>
+					</li>
+				{{/links}}
+				{{#footerLink}}
+					<li class="is-unstyled margin-top-xs">
+						<a href="{{url}}" class="has-external-link-indicator display-block font-size-sm">
+							<span>{{text}}</span>
+							<span class="icon docon docon-chevron-right-light" aria-hidden="true"></span>
+						</a>
+					</li>
+				{{/footerLink}}
+				</ul>
+			</div>
+		</div>
+	{{/items}}
+</div>
