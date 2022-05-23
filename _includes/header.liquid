@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark">
   <div class="container-xxl">
-    <a class="navbar-brand" href="{{ page._rel }}">
+    {%- if page._appLogoClickUrl -%}
+      {%- assign headerLogoUrl = page._appLogoClickUrl -%}
+    {%- else -%}
+            {%- assign headerLogoUrl = page._rel -%}
+    {%- endif -%}
+    <a class="navbar-brand" href="{{ headerLogoUrl }}">
         {%- if page._appLogoPath -%}
         <img src="{{ page._appLogoPath }}">
         {%- endif -%}
