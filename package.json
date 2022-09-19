@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.27.9",
-    "esbuild": "^0.14.31",
+    "esbuild": "^0.15.8",
     "esbuild-sass-plugin": "^2.2.6",
     "http-server": "^14.1.0",
     "pixelmatch": "^5.2.1",
