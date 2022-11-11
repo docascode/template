@@ -1,0 +1,83 @@
+#YamlMime:Reference
+id: az_account_alias
+languageId: azurecli
+title: az account alias
+summary: Manage subscription alias.
+body:
+- note: |
+    This reference is part of the **account** extension for the Azure CLI  (version 2.38.0 or higher).  The extension will automatically install the first time you run an **az account alias** command.  [Learn more](https://docs.microsoft.com/en-us/cli/azure/azure-cli-extensions-overview) about extensions.
+- markdown: Manage subscription alias.
+- section: Commands
+  body:
+  - jumplist:
+    - name: az account alias create
+      description: Create Alias Subscription.
+    - name: az account alias delete
+      description: Delete Alias.
+    - name: az account alias list
+      description: List Alias Subscriptions.
+    - name: az account alias show
+      description: Get Alias Subscription.
+    - name: az account alias wait
+      description: Place the CLI in a waiting state until a condition of the account alias is met.
+
+- section: az account alias create
+  body:
+  - markdown: Create Alias Subscription.
+  - declaration: |
+      az account alias create --name
+                        [--billing-scope]
+                        [--display-name]
+                        [--no-wait]
+                        [--reseller-id]
+                        [--subscription-id]
+                        [--workload {DevTest, Production}]
+  - section: Examples
+    body:
+    - markdown: CreateAlias
+    - code: az account alias create --name "aliasForNewSub" --billing-scope "/providers/Microsoft.Billing/billingAccounts/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31/billingProfiles/PE2Q-NOIT-BG7-TGB/invoiceSections/MTT4-OBS7-PJA-TGB" --display-name "Contoso MCA subscription" --workload "Production"
+  
+  - section: Parameters
+    body:
+    - parameters:
+      - name: --name -n
+        description: Alias Name.
+      - name: --billing-scope
+        description: Billing scope. It determines whether the subscription is Field-Led, Partner-Led or LegacyEA.
+        required: false
+      - name: --display-name
+        description: The friendly name of the subscription.
+        required: false
+      - name: --no-wait
+        description: Do not wait for the long-running operation to finish.
+        required: true
+      - name: --reseller-id
+        description: Reseller ID, basically MPN Id.
+        required: false
+      - name: --subscription-id
+        description: This parameter can be used to create alias for existing subscription ID.
+        required: false
+      - name: --workload
+        parameterValueGroup: DevTest, Production
+        description: The workload type of the subscription. It can be either Production or DevTest.
+        required: false
+
+- section: Global Parameters
+  body:
+  - parameters:
+    - name: --debug
+      description: Increase logging verbosity to show all debug logs.
+    - name: --help -h
+      description: Show this help message and exit.
+    - name: --only-show-errors
+      description: Only show errors, suppressing warnings.
+    - name: --output -o
+      default: json
+      type: json | jsonc | table | tsv
+      description: Output format.
+    - name: --query
+      description: JMESPath query string. See <a href="http://jmespath.org/">http://jmespath.org/</a> for more information and examples.
+    - name: --subscription
+      description: Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+    - name: --verbose
+      description: Increase logging verbosity. Use --debug for full debug logs.

@@ -1,0 +1,248 @@
+#YamlMime:Reference
+id: net/http
+languageId: go
+title: http package
+summary: Package http provides HTTP client and server implementations.
+body:
+- section: Overview
+  body:
+  - markdown: |
+      Package http provides HTTP client and server implementations.
+
+      Get, Head, Post, and PostForm make HTTP (or HTTPS) requests:
+
+          resp, err := http.Get("http://example.com/")
+          ...
+          resp, err := http.Post("http://example.com/upload", "image/jpeg", &buf)
+          ...
+          resp, err := http.PostForm("http://example.com/form",
+            url.Values{"key": {"Value"}, "id": {"123"}})
+
+      The GODEBUG variables are not covered by Go's API compatibility promise. Please report any issues before disabling HTTP/2 support: https://golang.org/s/http2bug
+
+      The http package's Transport and Server both automatically enable HTTP/2 support for simple configurations. To enable HTTP/2 for more complex configurations, to use lower-level HTTP/2 features, or to use a newer version of Go's http2 package, import "golang.org/x/net/http2" directly and use its ConfigureTransport and/or ConfigureServer functions. Manually configuring HTTP/2 via the golang.org/x/net/http2 package takes precedence over the net/http package's built-in HTTP/2 support.
+
+- section: Index
+  body:
+  - tree:
+    - name: Constants
+    - name: Variables
+    - name: func CanonicalHeaderKey(s string) string
+    - name: func DetectContentType(data []byte) string
+    - name: type Client
+    - name: type CloseNotifier
+      deprecated: true
+    - name: type Transport
+      items:
+      - name: func (t *Transport) CancelRequest(req *Request)
+        deprecated: true
+      - name: func (t *Transport) Clone() *Transport
+      - name: func (t *Transport) CloseIdleConnections()
+
+- section: Examples
+  body:
+  - tree:
+    - name: FileServer
+    - name: FileServer (DotFileHiding)
+    - name: FileServer (StripPrefix)
+    - name: Get
+      
+- section: Constants
+  body:
+  - declaration: |
+      const (
+        MethodGet     = "GET"
+        MethodHead    = "HEAD"
+        MethodPost    = "POST"
+        MethodPut     = "PUT"
+        MethodPatch   = "PATCH" // RFC 5789
+        MethodDelete  = "DELETE"
+        MethodConnect = "CONNECT"
+        MethodOptions = "OPTIONS"
+        MethodTrace   = "TRACE"
+      )
+  - markdown: |
+      Common HTTP methods.
+
+      Unless otherwise noted, these are defined in [RFC 7231 section 4.3](https://www.rfc-editor.org/rfc/rfc7231.html#section-4.3).
+  - declaration: |
+      const (
+        StatusContinue           = 100 // RFC 9110, 15.2.1
+        StatusSwitchingProtocols = 101 // RFC 9110, 15.2.2
+        StatusProcessing         = 102 // RFC 2518, 10.1
+        StatusEarlyHints         = 103 // RFC 8297
+
+        StatusOK                   = 200 // RFC 9110, 15.3.1
+        StatusCreated              = 201 // RFC 9110, 15.3.2
+        StatusAccepted             = 202 // RFC 9110, 15.3.3
+        StatusNonAuthoritativeInfo = 203 // RFC 9110, 15.3.4
+        StatusNoContent            = 204 // RFC 9110, 15.3.5
+        StatusResetContent         = 205 // RFC 9110, 15.3.6
+        StatusPartialContent       = 206 // RFC 9110, 15.3.7
+        StatusMultiStatus          = 207 // RFC 4918, 11.1
+        StatusAlreadyReported      = 208 // RFC 5842, 7.1
+        StatusIMUsed               = 226 // RFC 3229, 10.4.1
+
+        StatusMultipleChoices  = 300 // RFC 9110, 15.4.1
+        StatusMovedPermanently = 301 // RFC 9110, 15.4.2
+        StatusFound            = 302 // RFC 9110, 15.4.3
+        StatusSeeOther         = 303 // RFC 9110, 15.4.4
+        StatusNotModified      = 304 // RFC 9110, 15.4.5
+        StatusUseProxy         = 305 // RFC 9110, 15.4.6
+
+        StatusTemporaryRedirect = 307 // RFC 9110, 15.4.8
+        StatusPermanentRedirect = 308 // RFC 9110, 15.4.9
+
+        StatusBadRequest                   = 400 // RFC 9110, 15.5.1
+        StatusUnauthorized                 = 401 // RFC 9110, 15.5.2
+        StatusPaymentRequired              = 402 // RFC 9110, 15.5.3
+        StatusForbidden                    = 403 // RFC 9110, 15.5.4
+        StatusNotFound                     = 404 // RFC 9110, 15.5.5
+        StatusMethodNotAllowed             = 405 // RFC 9110, 15.5.6
+        StatusNotAcceptable                = 406 // RFC 9110, 15.5.7
+        StatusProxyAuthRequired            = 407 // RFC 9110, 15.5.8
+        StatusRequestTimeout               = 408 // RFC 9110, 15.5.9
+        StatusConflict                     = 409 // RFC 9110, 15.5.10
+        StatusGone                         = 410 // RFC 9110, 15.5.11
+        StatusLengthRequired               = 411 // RFC 9110, 15.5.12
+        StatusPreconditionFailed           = 412 // RFC 9110, 15.5.13
+        StatusRequestEntityTooLarge        = 413 // RFC 9110, 15.5.14
+        StatusRequestURITooLong            = 414 // RFC 9110, 15.5.15
+        StatusUnsupportedMediaType         = 415 // RFC 9110, 15.5.16
+        StatusRequestedRangeNotSatisfiable = 416 // RFC 9110, 15.5.17
+        StatusExpectationFailed            = 417 // RFC 9110, 15.5.18
+        StatusTeapot                       = 418 // RFC 9110, 15.5.19 (Unused)
+        StatusMisdirectedRequest           = 421 // RFC 9110, 15.5.20
+        StatusUnprocessableEntity          = 422 // RFC 9110, 15.5.21
+        StatusLocked                       = 423 // RFC 4918, 11.3
+        StatusFailedDependency             = 424 // RFC 4918, 11.4
+        StatusTooEarly                     = 425 // RFC 8470, 5.2.
+        StatusUpgradeRequired              = 426 // RFC 9110, 15.5.22
+        StatusPreconditionRequired         = 428 // RFC 6585, 3
+        StatusTooManyRequests              = 429 // RFC 6585, 4
+        StatusRequestHeaderFieldsTooLarge  = 431 // RFC 6585, 5
+        StatusUnavailableForLegalReasons   = 451 // RFC 7725, 3
+
+        StatusInternalServerError           = 500 // RFC 9110, 15.6.1
+        StatusNotImplemented                = 501 // RFC 9110, 15.6.2
+        StatusBadGateway                    = 502 // RFC 9110, 15.6.3
+        StatusServiceUnavailable            = 503 // RFC 9110, 15.6.4
+        StatusGatewayTimeout                = 504 // RFC 9110, 15.6.5
+        StatusHTTPVersionNotSupported       = 505 // RFC 9110, 15.6.6
+        StatusVariantAlsoNegotiates         = 506 // RFC 2295, 8.1
+        StatusInsufficientStorage           = 507 // RFC 4918, 11.5
+        StatusLoopDetected                  = 508 // RFC 5842, 7.2
+        StatusNotExtended                   = 510 // RFC 2774, 7
+        StatusNetworkAuthenticationRequired = 511 // RFC 6585, 6
+      )
+  - markdown: |
+      HTTP status codes as registered with IANA. See: <https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml>
+
+- section: Variables
+  body:
+  - declaration: var DefaultClient = &Client{}
+
+- section: Functions
+  body:
+  - section: func CanonicalHeaderKey
+    body:
+    - declaration: func CanonicalHeaderKey(s string) string
+    - markdown: |
+        CanonicalHeaderKey returns the canonical format of the header key s. The canonicalization converts the first letter and any letter following a hyphen to upper case; the rest are converted to lowercase. For example, the canonical key for "accept-encoding" is "Accept-Encoding". If s contains a space or invalid header field bytes, it is returned without modifications.
+  - section: func DetectContentType
+    body:
+    - declaration: func DetectContentType(data []byte) string
+    - markdown: |
+        DetectContentType implements the algorithm described at <https://mimesniff.spec.whatwg.org/> to determine the Content-Type of the given data. It considers at most the first 512 bytes of data. DetectContentType always returns a valid MIME type: if it cannot determine a more specific one, it returns "application/octet-stream".
+        
+- section: Types
+  body:
+  - section: type Client
+    body:
+    - declaration: |
+        type Client struct {
+          // Transport specifies the mechanism by which individual
+          // HTTP requests are made.
+          // If nil, DefaultTransport is used.
+          Transport RoundTripper
+
+          // CheckRedirect specifies the policy for handling redirects.
+          // If CheckRedirect is not nil, the client calls it before
+          // following an HTTP redirect. The arguments req and via are
+          // the upcoming request and the requests made already, oldest
+          // first. If CheckRedirect returns an error, the Client's Get
+          // method returns both the previous Response (with its Body
+          // closed) and CheckRedirect's error (wrapped in a url.Error)
+          // instead of issuing the Request req.
+          // As a special case, if CheckRedirect returns ErrUseLastResponse,
+          // then the most recent response is returned with its body
+          // unclosed, along with a nil error.
+          //
+          // If CheckRedirect is nil, the Client uses its default policy,
+          // which is to stop after 10 consecutive requests.
+          CheckRedirect func(req *Request, via []*Request) error
+
+          // Jar specifies the cookie jar.
+          //
+          // The Jar is used to insert relevant cookies into every
+          // outbound Request and is updated with the cookie values
+          // of every inbound Response. The Jar is consulted for every
+          // redirect that the Client follows.
+          //
+          // If Jar is nil, cookies are only sent if they are explicitly
+          // set on the Request.
+          Jar CookieJar
+
+          // Timeout specifies a time limit for requests made by this
+          // Client. The timeout includes connection time, any
+          // redirects, and reading the response body. The timer remains
+          // running after Get, Head, Post, or Do return and will
+          // interrupt reading of the Response.Body.
+          //
+          // A Timeout of zero means no timeout.
+          //
+          // The Client cancels requests to the underlying Transport
+          // as if the Request's Context ended.
+          //
+          // For compatibility, the Client will also use the deprecated
+          // CancelRequest method on Transport if found. New
+          // RoundTripper implementations should use the Request's Context
+          // for cancellation instead of implementing CancelRequest.
+          Timeout time.Duration
+        }
+    - markdown: |
+        A Client is an HTTP client. Its zero value (DefaultClient) is a usable client that uses DefaultTransport.
+
+        The Client's Transport typically has internal state (cached TCP connections), so Clients should be reused instead of created as needed. Clients are safe for concurrent use by multiple goroutines.
+
+        A Client is higher-level than a RoundTripper (such as Transport) and additionally handles HTTP details such as cookies and redirects.
+
+        When following redirects, the Client will forward all headers set on the initial Request except:
+        - when forwarding sensitive headers like "Authorization", "WWW-Authenticate", and "Cookie" to untrusted targets. These headers will be ignored when following a redirect to a domain that is not a subdomain match or exact match of the initial domain. For example, a redirect from "foo.com" to either "foo.com" or "sub.foo.com" will forward the sensitive headers, but a redirect to "bar.com" will not.
+        - when forwarding the "Cookie" header with a non-nil cookie Jar. Since each redirect may mutate the state of the cookie jar, a redirect may possibly alter a cookie set in the initial request. When forwarding the "Cookie" header, any mutated cookies will be omitted, with the expectation that the Jar will insert those mutated cookies with the updated values (assuming the origin matches). If Jar is nil, the initial cookies are forwarded without change.
+
+    - section: func (*Client) CloseIdleConnections
+      body:
+      - declaration: func (c *Client) CloseIdleConnections()
+      - markdown: |
+          DetectContentType implements the algorithm described at <https://mimesniff.spec.whatwg.org/> to determine the Content-Type of the given data. It considers at most the first 512 bytes of data. DetectContentType always returns a valid MIME type: if it cannot determine a more specific one, it returns "application/octet-stream".
+          
+    - section: func (*Client) Do
+      body:
+      - declaration: func (c *Client) Do(req *Request) (*Response, error)
+      - markdown: |
+          Do sends an HTTP request and returns an HTTP response, following policy (such as redirects, cookies, auth) as configured on the client.
+
+          An error is returned if caused by client policy (such as CheckRedirect), or failure to speak HTTP (such as a network connectivity problem). A non-2xx status code doesn't cause an error.
+
+          If the returned error is nil, the Response will contain a non-nil Body which the user is expected to close. If the Body is not both read to EOF and closed, the Client's underlying RoundTripper (typically Transport) may not be able to re-use a persistent TCP connection to the server for a subsequent "keep-alive" request.
+
+          The request Body, if non-nil, will be closed by the underlying Transport, even on errors.
+
+          On error, any Response can be ignored. A non-nil Response with a non-nil error only occurs when CheckRedirect fails, and even then the returned Response.Body is already closed.
+
+          Generally Get, Post, or PostForm will be used instead of Do.
+
+          If the server replies with a redirect, the Client first uses the CheckRedirect function to determine whether the redirect should be followed. If permitted, a 301, 302, or 303 redirect causes subsequent requests to use HTTP method GET (or HEAD if the original request was HEAD), with no body. A 307 or 308 redirect preserves the original HTTP method and body, provided that the Request.GetBody function is defined. The NewRequest function automatically sets GetBody for common standard library body types.
+
+          Any returned error will be of type *url.Error. The url.Error value's Timeout method will report true if the request timed out.

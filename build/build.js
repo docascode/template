@@ -1,5 +1,6 @@
 const esbuild = require('esbuild')
 const { sassPlugin } = require('esbuild-sass-plugin')
+const { yamlPlugin } = require("esbuild-plugin-yaml")
 const { spawnSync } = require('child_process')
 const { existsSync } = require('fs')
 
@@ -37,7 +38,8 @@ function buildTemplate({ watch } = {}) {
       'src/docfx.scss',
     ],
     plugins: [
-      sassPlugin()
+      sassPlugin(),
+      yamlPlugin()
     ],
     loader: {
       '.eot': 'file',

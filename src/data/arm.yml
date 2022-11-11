@@ -1,0 +1,161 @@
+#YamlMime:Reference
+id: microsoft.web/certificates
+languageId: arm
+title: Microsoft.Web certificates
+summary: Azure Microsoft.Web/certificates syntax and properties to use in Azure Resource Manager templates for deploying the resource. API version latest
+body:
+- section: Definition
+  body:
+  - declaration:
+    - languageId: 'bicep'
+      declaration: |
+        resource symbolicname 'Microsoft.Web/certificates@2022-03-01' = {
+          name: 'string'
+          location: 'string'
+          tags: {
+            tagName1: 'tagValue1'
+            tagName2: 'tagValue2'
+          }
+          kind: 'string'
+          properties: {
+            canonicalName: 'string'
+            domainValidationMethod: 'string'
+            hostNames: [
+              'string'
+            ]
+            keyVaultId: 'string'
+            keyVaultSecretName: 'string'
+            password: 'string'
+            pfxBlob: any()
+            serverFarmId: 'string'
+          }
+        }
+    - languageId: 'arm'
+      declaration: |
+        {
+          "type": "Microsoft.Web/certificates",
+          "apiVersion": "2022-03-01",
+          "name": "string",
+          "location": "string",
+          "tags": {
+            "tagName1": "tagValue1",
+            "tagName2": "tagValue2"
+          },
+          "kind": "string",
+          "properties": {
+            "canonicalName": "string",
+            "domainValidationMethod": "string",
+            "hostNames": [ "string" ],
+            "keyVaultId": "string",
+            "keyVaultSecretName": "string",
+            "password": "string",
+            "pfxBlob": {},
+            "serverFarmId": "string"
+          }
+        }
+    - languageId: terraform
+      declaration: |
+        resource "azapi_resource" "symbolicname" {
+          type = "Microsoft.Web/certificates@2022-03-01"
+          name = "string"
+          location = "string"
+          parent_id = "string"
+          tags = {
+            tagName1 = "tagValue1"
+            tagName2 = "tagValue2"
+          }
+          body = jsonencode({
+            properties = {
+              canonicalName = "string"
+              domainValidationMethod = "string"
+              hostNames = [
+                "string"
+              ]
+              keyVaultId = "string"
+              keyVaultSecretName = "string"
+              password = "string"
+              serverFarmId = "string"
+            }
+            kind = "string"
+          })
+        }
+
+- section: Property Values
+  body:
+  - section: certificates
+    body:
+    - parameters:
+      - name: type
+        description: The resource type
+        type: Microsoft.Web/certificates@2022-03-01
+      - name: name
+        description: The resource name
+        type: string
+        required: true
+        fact:
+          Character limit: 1-260
+          Valid characters:
+          Can't use: /
+          Can't end with space or period:
+      - name: location
+        description: Resource Location.
+        type: string
+        required: true
+      - name: parent_id
+        description: To deploy to a resource group, use the ID of that resource group.
+        type: string
+        required: true
+      - name: tags
+        description: Resource tags.
+        type: Dictionary of tag names and values.
+      - name: kind
+        description: Kind of resource.
+        type: string
+      - name: properties
+        description: Certificate resource specific properties
+        type: CertificateProperties
+        
+  - section: CertificateProperties
+    body:
+    - parameters:
+      - name: canonicalName
+        description: CNAME of the certificate to be issued via free certificate
+        type: string
+      - name: domainValidationMethod
+        description: Method of domain validation for free cert
+        type: string
+      - name: hostNames
+        description: Host names the certificate applies to.
+        type: string[]
+      - name: keyVaultId
+        description: Key Vault Csm resource Id.
+        type: string
+      - name: keyVaultSecretName
+        description: Key Vault secret name.
+        type: string
+      - name: password
+        description: Certificate password.
+        type: string
+      - name: pfxBlob
+        description: Pfx blob.	
+      - name: serverFarmId
+        description: |
+          Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
+        type: string
+
+- section: Quickstart Templates
+  body:
+  - markdown: The following quickstart templates deploy this resource type.
+  - jumplist:
+    - name: Create and assign a standard App Service Certificate
+      description: Creates a standard App Service Certificate, verifies it using an App service App and creates SSL bindings once the certificate is ready      
+    - name: Create and assign a wildcard App Service Certificate
+      description: Creates a wildcard App Service Certificate, verifies it using an App service Domain and creates SSL bindings on an App Service App once the certificate is ready
+    - name: Create a App Services Managed Certificate
+      description: Create Managed Certificate (Free) APEX (root domain) for WebApp
+    - name: SSL certificate for an ILB ASE or an ILB ASE v2
+      description: Configures the default SSL certificate for an ILB ASE or an ILB ASE v2
+    - name: Web App integration with Key Vault
+      description: Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding
+    - name: Web App with a custom domain and optional SSL binding
+      description: Create a web app and with a custom domain and optionally add SSL certificate for https encryption.

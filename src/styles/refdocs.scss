@@ -1,0 +1,38 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+main {
+  .parameterName {
+    font-family: Consolas, "Courier New", monospace;
+    display: inline-block;
+    font-weight: 600;
+    padding: .2rem .5rem;
+  }
+
+  .parameterType {
+    display: inline-block;
+    font-weight: 600;
+    padding: .2rem .5rem;
+    border-radius: .4rem;
+  }
+
+  .parameterDescription {
+    margin-left: 1rem;
+    margin-top: 1rem;
+  }
+
+  .parameterTag {
+    display: inline-block;
+    font-size: .9rem;
+    color: #AAA;
+    border: solid 1px #AAA;
+    border-radius: .4rem;
+    padding: 0 .4rem;
+    margin-left: .4rem;
+  }
+
+  .red {
+    color: rgb(161, 0, 0);
+    border-color: rgb(161, 0, 0);
+  }
+}
