@@ -1,5 +1,7 @@
 # Default docfx Site Template
 
+> ⚠️⚠️⚠️ This repository is archived, the template will be developed in the <https://github.com/dotnet/docfx> repo.
+
 Default site template for [docfx](https://github.com/dotnet/docfx).
 
 Sample site: https://docascode.github.io/template/
